@@ -111,6 +111,7 @@ void ASirDingusCharacter::Move(const FInputActionValue& Value)
 	}
 }
 
+// where camera is looking NOT model
 void ASirDingusCharacter::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
