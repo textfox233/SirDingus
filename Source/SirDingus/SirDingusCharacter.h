@@ -7,6 +7,7 @@
 #include "InputActionValue.h"
 #include "SirDingusCharacter.generated.h"
 
+class AWeapon;
 
 UCLASS(config=Game)
 class ASirDingusCharacter : public ACharacter
@@ -36,6 +37,15 @@ class ASirDingusCharacter : public ACharacter
 	/** Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
+
+	/** Equipped Weapon Class */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AWeapon> EquippedWeaponClass;
+
+	/** Actual Equipped Weapon */
+	UPROPERTY( BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
+	AWeapon* EquippedWeapon;
+
 
 public:
 	ASirDingusCharacter();

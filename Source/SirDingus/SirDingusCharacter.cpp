@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Weapon.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -64,6 +65,8 @@ void ASirDingusCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+
+	EquippedWeapon = GetWorld()->SpawnActor<AWeapon>(EquippedWeaponClass);
 }
 
 //////////////////////////////////////////////////////////////////////////
