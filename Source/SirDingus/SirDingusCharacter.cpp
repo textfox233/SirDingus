@@ -66,7 +66,12 @@ void ASirDingusCharacter::BeginPlay()
 		}
 	}
 
+	// spawn weapon
 	EquippedWeapon = GetWorld()->SpawnActor<AWeapon>(EquippedWeaponClass);
+	// attach to socket (right hand)
+	EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weaponSocket_r"));
+	// set owner (for later)
+	EquippedWeapon->SetOwner(this);
 }
 
 //////////////////////////////////////////////////////////////////////////
