@@ -7,8 +7,6 @@
 #include "InputActionValue.h"
 #include "SirDingusCharacter.generated.h"
 
-class AWeapon;
-
 UCLASS(config=Game)
 class ASirDingusCharacter : public ACharacter
 {
@@ -26,21 +24,26 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputMappingContext* DefaultMappingContext;
 
-	/** Jump Input Action */
+	/** Input Actions */
+	// -- Dodge
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* JumpAction;
+	class UInputAction* DodgeAction;
 
-	/** Move Input Action */
+	// -- Move
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* MoveAction;
+	UInputAction* MoveAction;
 
-	/** Look Input Action */
+	// -- Look
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* LookAction;
+	UInputAction* LookAction;
+
+	// -- Attack
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* AttackAction;
 
 	/** Equipped Weapon Class */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<AWeapon> EquippedWeaponClass;
+	TSubclassOf<class AWeapon> EquippedWeaponClass;
 
 	/** Actual Equipped Weapon */
 	UPROPERTY( BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
@@ -53,12 +56,18 @@ public:
 
 protected:
 
+	/** Called for dodging input */
+	void Dodge(const FInputActionValue& Value);
+	void StopDodging();
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 			
+	/** Called for attacking input */
+	void Attack(const FInputActionValue& Value);
+
 
 protected:
 	// APawn interface

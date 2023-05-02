@@ -72,6 +72,17 @@ void ASirDingusCharacter::BeginPlay()
 	EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weaponSocket_r"));
 	// set owner (for later)
 	EquippedWeapon->SetOwner(this);
+
+	//DEBUG MESSAGE
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Yellow,
+			FString(TEXT("ASirDingusCharacter::BeginPlay()"))
+		);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -83,8 +94,8 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
 		//Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Dodge);
+		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Completed, this, &ASirDingusCharacter::StopDodging);
 
 		//Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Move);
@@ -92,8 +103,41 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 		//Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Look);
 
+		//Attacking
+		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Attack);
 	}
 
+}
+
+void ASirDingusCharacter::Dodge(const FInputActionValue& Value)
+{
+	// input is a bool
+	bool bIsDodging = Value.Get<bool>();
+
+	//DEBUG MESSAGE
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("Dodging = %s"), (bIsDodging ? TEXT("true") : TEXT("false")))
+		);
+	}
+}
+
+void ASirDingusCharacter::StopDodging()
+{
+	//DEBUG MESSAGE
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("Stop Dodging"))
+		);
+	}
 }
 
 void ASirDingusCharacter::Move(const FInputActionValue& Value)
@@ -116,6 +160,17 @@ void ASirDingusCharacter::Move(const FInputActionValue& Value)
 		// add movement 
 		AddMovementInput(ForwardDirection, MovementVector.Y);
 		AddMovementInput(RightDirection, MovementVector.X);
+
+		////DEBUG MESSAGE
+		//if (GEngine)
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		15.f,
+		//		FColor::Yellow,
+		//		FString::Printf(TEXT("Moving"))
+		//	);
+		//}
 	}
 }
 
@@ -130,6 +185,23 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void ASirDingusCharacter::Attack(const FInputActionValue& Value)
+{
+	// input is a bool
+	bool bIsAttacking = Value.Get<bool>();
+
+	//DEBUG MESSAGE
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("Attacking = %s"), (bIsAttacking ? TEXT("true") : TEXT("false") ))
+		);
 	}
 }
 
