@@ -191,7 +191,7 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 {
 	// input is a bool
-	bool bIsAttacking = Value.Get<bool>();
+	bIsAttacking = Value.Get<bool>();
 
 	//DEBUG MESSAGE
 	if (GEngine)
