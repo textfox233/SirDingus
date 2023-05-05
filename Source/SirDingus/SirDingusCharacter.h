@@ -44,7 +44,7 @@ class ASirDingusCharacter : public ACharacter
 	bool bIsAttacking;
 
 	/** Equipped Weapon Class */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<class AWeapon> EquippedWeaponClass;
 
 	/** Actual Equipped Weapon */

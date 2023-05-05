@@ -66,12 +66,28 @@ void ASirDingusCharacter::BeginPlay()
 		}
 	}
 
-	// spawn weapon
-	EquippedWeapon = GetWorld()->SpawnActor<AWeapon>(EquippedWeaponClass);
-	// attach to socket (right hand)
-	EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weaponSocket_r"));
-	// set owner (for later)
-	EquippedWeapon->SetOwner(this);
+	if (EquippedWeaponClass)
+	{
+		// spawn weapon
+		EquippedWeapon = GetWorld()->SpawnActor<AWeapon>(EquippedWeaponClass);
+		// attach to socket (right hand)
+		EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weaponSocket_r"));
+		// set owner (for later)
+		EquippedWeapon->SetOwner(this);
+	}
+	else
+	{
+		//DEBUG MESSAGE
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				15.f,
+				FColor::Red,
+				FString(TEXT("No Weapon Equipped"))
+			);
+		}
+	}
 
 	//DEBUG MESSAGE
 	if (GEngine)
