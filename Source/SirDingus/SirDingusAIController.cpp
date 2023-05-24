@@ -7,9 +7,9 @@
 void ASirDingusAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	//APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
-	SetFocus(PlayerPawn);
+	//SetFocus(PlayerPawn);
 }
 
 void ASirDingusAIController::Tick(float DeltaSeconds)
@@ -17,6 +17,25 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	
 	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-	MoveToActor(PlayerPawn, 5.f);
+
+	//Alive?
+	//Yes
+	//	See Player (In Range)?
+	if(LineOfSightTo(PlayerPawn))
+	//	Yes
+	{
+		//	Run At Player
+		MoveToActor(PlayerPawn, 5.f);
+		//	Attack
+	}
+	//	No
+	else
+	{
+		StopMovement();
+		//	Return To Original
+	}
+	//	No
+	//	Do Nothing
+
 }
 
