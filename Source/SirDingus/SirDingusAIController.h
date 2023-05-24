@@ -15,4 +15,8 @@ class SIRDINGUS_API ASirDingusAIController : public AAIController
 	GENERATED_BODY()
 protected:
 	virtual void BeginPlay() override;
+
+public:
+	virtual void Tick(float DeltaSeconds) override;
+
 };

@@ -11,3 +11,12 @@ void ASirDingusAIController::BeginPlay()
 
 	SetFocus(PlayerPawn);
 }
+
+void ASirDingusAIController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	MoveToActor(PlayerPawn, 5.f);
+}
+
