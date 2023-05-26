@@ -59,15 +59,15 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 
 	}
 	////	No
-	//else
-	//{
-	//	//StopMovement();
-	//	//	Return To Original
+	else
+	{
+		//StopMovement();
+		//	Return To Original
 
-	//	// cannot see player
-	//	//GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
-	//	//GetBlackboardComponent()->ClearValue(TEXT("PlayerActor"));
-	//}
+		// cannot see player
+		GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
+		//GetBlackboardComponent()->ClearValue(TEXT("PlayerActor"));
+	}
 	////	No
 	////	Do Nothing
 
