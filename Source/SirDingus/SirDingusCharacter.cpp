@@ -52,6 +52,11 @@ ASirDingusCharacter::ASirDingusCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
+void ASirDingusCharacter::AIAttack()
+{
+	AttackAction();
+}
+
 void ASirDingusCharacter::BeginPlay()
 {
 	// Call the base class  
@@ -109,7 +114,7 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
-		//Jumping
+		//Dodging
 		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Dodge);
 		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Completed, this, &ASirDingusCharacter::StopDodging);
 

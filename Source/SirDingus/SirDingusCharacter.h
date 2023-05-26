@@ -54,6 +54,8 @@ class ASirDingusCharacter : public ACharacter
 
 public:
 	ASirDingusCharacter();
+
+	void AIAttack();
 	
 
 protected:
