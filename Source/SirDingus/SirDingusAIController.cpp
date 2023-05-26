@@ -9,7 +9,7 @@
 void ASirDingusAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	//APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 	//SetFocus(PlayerPawn);
 
@@ -17,7 +17,7 @@ void ASirDingusAIController::BeginPlay()
 	{
 		RunBehaviorTree(AIBehavior);
 		
-		APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+		//APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 		GetBlackboardComponent()->SetValueAsVector(TEXT("StartLocation"), GetPawn()->GetActorLocation());
 		//GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
@@ -40,24 +40,24 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	
-	////APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 	////Alive?
 	////Yes
 	////	See Player (In Range)?
-	////if(LineOfSightTo(PlayerPawn))
-	////	Yes
-	////{
-	//	//	Run At Player
-	//	//MoveToActor(PlayerPawn, 5.f);
-	//	//	Attack
+	if(LineOfSightTo(PlayerPawn))
+		//Yes
+	{
+			//Run At Player
+		MoveToActor(PlayerPawn, 5.f);
+			//Attack
 
-	//	// Observe Player Position
-	//	//GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-	//	//GetBlackboardComponent()->SetValueAsObject(TEXT("PlayerActor"), PlayerPawn);
-	//	//GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
+		 //Observe Player Position
+		//GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+		GetBlackboardComponent()->SetValueAsObject(TEXT("PlayerActor"), PlayerPawn);
+		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
 
-	////}
+	}
 	////	No
 	//else
 	//{
