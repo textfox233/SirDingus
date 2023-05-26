@@ -14,4 +14,8 @@ class SIRDINGUS_API UBTTask_ClearBlackboardValue : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
 	UBTTask_ClearBlackboardValue();
+
+protected:
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
 };

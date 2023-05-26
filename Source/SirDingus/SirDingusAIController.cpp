@@ -49,7 +49,7 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 		//Yes
 	{
 			//Run At Player
-		MoveToActor(PlayerPawn, 5.f);
+		//MoveToActor(PlayerPawn, 5.f);
 			//Attack
 
 		 //Observe Player Position
