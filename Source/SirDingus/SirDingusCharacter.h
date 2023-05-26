@@ -55,8 +55,8 @@ class ASirDingusCharacter : public ACharacter
 public:
 	ASirDingusCharacter();
 
-	void AIAttack();
-	
+	UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
+	void AttackEvent();
 
 protected:
 
@@ -71,7 +71,6 @@ protected:
 			
 	/** Called for attacking input */
 	void Attack(const FInputActionValue& Value);
-
 
 protected:
 	// APawn interface

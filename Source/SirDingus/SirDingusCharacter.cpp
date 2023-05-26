@@ -11,7 +11,6 @@
 #include "EnhancedInputSubsystems.h"
 #include "Weapon.h"
 
-
 //////////////////////////////////////////////////////////////////////////
 // ASirDingusCharacter
 
@@ -52,10 +51,10 @@ ASirDingusCharacter::ASirDingusCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-void ASirDingusCharacter::AIAttack()
-{
-	AttackAction();
-}
+//void ASirDingusCharacter::AIAttack()
+//{
+//	AttackAction();
+//}
 
 void ASirDingusCharacter::BeginPlay()
 {
@@ -125,7 +124,7 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Look);
 
 		//Attacking
-		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Attack);
+		//EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::BPAttack);
 	}
 
 }
@@ -222,6 +221,7 @@ void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 			15.f,
 			FColor::Yellow,
 			FString::Printf(TEXT("Attacking = %s"), (bIsAttacking ? TEXT("true") : TEXT("false") ))
+			//FString::Printf(TEXT("Attacking"))
 		);
 	}
 }

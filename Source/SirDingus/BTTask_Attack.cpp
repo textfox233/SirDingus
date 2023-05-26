@@ -19,7 +19,7 @@ EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 
 	ASirDingusCharacter* OwnerCharacter = Cast<ASirDingusCharacter>(OwnerPawn);
 
-	OwnerCharacter->AIAttack();
+	OwnerCharacter->AttackEvent();
 
 	return EBTNodeResult::Succeeded;
 }

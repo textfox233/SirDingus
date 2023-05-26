@@ -53,8 +53,8 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 			//Attack
 
 		 //Observe Player Position
-		//GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-		GetBlackboardComponent()->SetValueAsObject(TEXT("PlayerActor"), PlayerPawn);
+		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+		//GetBlackboardComponent()->SetValueAsObject(TEXT("PlayerActor"), PlayerPawn);
 		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
 
 	}
