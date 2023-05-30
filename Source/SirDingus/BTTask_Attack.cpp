@@ -31,60 +31,15 @@ EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 	// Null Test
 	if (OwnerPawn)
 	{
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		15.f,
-		//		FColor::Yellow,
-		//		FString(TEXT("OwnerPawn OK"))
-		//	);
-		//}
-		
 		ASirDingusCharacter* OwnerCharacter = Cast<ASirDingusCharacter>(OwnerPawn);
 
 		// Null Test
 		if (OwnerCharacter)
 		{
-			//if (GEngine)
-			//{
-			//	GEngine->AddOnScreenDebugMessage(
-			//		-1,
-			//		15.f,
-			//		FColor::Yellow,
-			//		FString(TEXT("OwnerCharacter OK"))
-			//	);
-			//}
-
 			OwnerCharacter->AttackEvent();
-		}
-		else
-			// Debug Msg 
-		{
-			if (GEngine)
-			{
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					15.f,
-					FColor::Orange,
-					FString(TEXT("OwnerCharacter is Null"))
-				);
-			}
-		}
-	}
-	else
-	// Debug Msg 
-	{
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				15.f,
-				FColor::Orange,
-				FString(TEXT("OwnerPawn is Null"))
-			);
+			return EBTNodeResult::Succeeded;
 		}
 	}
 
-	return EBTNodeResult::Succeeded;
+	return EBTNodeResult::Failed;
 }

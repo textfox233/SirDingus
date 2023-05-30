@@ -51,11 +51,6 @@ ASirDingusCharacter::ASirDingusCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-//void ASirDingusCharacter::AIAttack()
-//{
-//	AttackAction();
-//}
-
 void ASirDingusCharacter::BeginPlay()
 {
 	// Call the base class  
@@ -110,6 +105,8 @@ void ASirDingusCharacter::BeginPlay()
 
 void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
+	// Are these needed here? Does AI use these?
+
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
@@ -124,7 +121,7 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Look);
 
 		//Attacking
-		//EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::BPAttack);
+		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::AttackEvent);
 	}
 
 }
@@ -208,6 +205,7 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
+// Currently Unused, AttackEvent is called instead
 void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 {
 	// input is a bool
@@ -221,7 +219,6 @@ void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 			15.f,
 			FColor::Yellow,
 			FString::Printf(TEXT("Attacking = %s"), (bIsAttacking ? TEXT("true") : TEXT("false") ))
-			//FString::Printf(TEXT("Attacking"))
 		);
 	}
 }
