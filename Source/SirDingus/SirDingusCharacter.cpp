@@ -94,15 +94,15 @@ void ASirDingusCharacter::BeginPlay()
 	}
 
 	//DEBUG MESSAGE
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			15.f,
-			FColor::Yellow,
-			FString(TEXT("ASirDingusCharacter::BeginPlay()"))
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		15.f,
+	//		FColor::Yellow,
+	//		FString(TEXT("ASirDingusCharacter::BeginPlay()"))
+	//	);
+	//}
 }
 
 //////////////////////////////////////////////////////////////////////////
