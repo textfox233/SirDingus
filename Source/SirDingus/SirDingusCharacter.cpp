@@ -65,6 +65,7 @@ void ASirDingusCharacter::BeginPlay()
 		}
 	}
 
+	//Spawn Weapon
 	if (EquippedWeaponClass)
 	{
 		// spawn weapon
@@ -88,6 +89,9 @@ void ASirDingusCharacter::BeginPlay()
 		}
 	}
 
+	//Initialise Health Value
+	Health = MaxHealth;
+
 	//DEBUG MESSAGE
 	//if (GEngine)
 	//{
@@ -98,6 +102,27 @@ void ASirDingusCharacter::BeginPlay()
 	//		FString(TEXT("ASirDingusCharacter::BeginPlay()"))
 	//	);
 	//}
+}
+
+//bool ASirDingusCharacter::IsDead()
+//{
+//	return Health <= 0;
+//}
+
+bool ASirDingusCharacter::IsDead(int dmg = 0)
+{
+	// apply damage
+	Health -= dmg;
+
+	// if health is less than 0, character is dead
+	if (Health <= 0)
+	{
+		// clamp health to 0, return dead
+		Health = 0;
+		return true;
+	}
+	// return live
+	return false;
 }
 
 //////////////////////////////////////////////////////////////////////////

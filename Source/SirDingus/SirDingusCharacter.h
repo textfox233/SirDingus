@@ -51,6 +51,11 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY( BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 	AWeapon* EquippedWeapon;
 
+	// Health
+	UPROPERTY(BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+	int MaxHealth = 100;
+	UPROPERTY(BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+	int Health;
 
 public:
 	ASirDingusCharacter();
@@ -72,12 +77,19 @@ protected:
 	/** Called for attacking input */
 	void Attack(const FInputActionValue& Value);
 
-protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	// To add mapping context
 	virtual void BeginPlay();
+
+	//// Check for character death
+	//UFUNCTION(BlueprintCallable)
+	//virtual bool IsDead();
+
+	// Apply damage & check for character death
+	UFUNCTION(BlueprintCallable)
+	virtual bool IsDead(int dmg);
 
 public:
 	/** Returns CameraBoom subobject **/
