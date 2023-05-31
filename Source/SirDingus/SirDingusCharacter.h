@@ -63,6 +63,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
 	void AttackEvent();
 
+	UFUNCTION()
+	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
+
 protected:
 
 	/** Called for dodging input */
@@ -83,13 +86,17 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
-	//// Check for character death
-	//UFUNCTION(BlueprintCallable)
-	//virtual bool IsDead();
-
 	// Apply damage & check for character death
 	UFUNCTION(BlueprintCallable)
 	virtual bool IsDead(int dmg);
+
+	// Process Melee Hits
+	UFUNCTION(BlueprintCallable)
+		void ProcessMeleeHit(AActor* hitActor);
+
+	// Perform Weapon Arc via Line Traces
+	UFUNCTION(BlueprintCallable)
+		AActor* DrawWeaponArc(bool bDrawDebug = false);
 
 public:
 	/** Returns CameraBoom subobject **/

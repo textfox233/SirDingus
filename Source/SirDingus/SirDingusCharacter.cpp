@@ -10,6 +10,9 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Weapon.h"
+#include "Kismet/GameplayStatics.h"
+#include "Components/SceneComponent.h"
+#include "Engine/SkeletalMeshSocket.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ASirDingusCharacter
@@ -47,8 +50,25 @@ ASirDingusCharacter::ASirDingusCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
+	// Bind my own take damage event
+	OnTakeAnyDamage.AddDynamic(this, &ASirDingusCharacter::DamageTaken);
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+}
+
+void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
+{
+	// Debug Msg
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Yellow,
+			FString(TEXT("Take damage event"))
+		);
+	}
 }
 
 void ASirDingusCharacter::BeginPlay()
@@ -123,6 +143,91 @@ bool ASirDingusCharacter::IsDead(int dmg = 0)
 	}
 	// return live
 	return false;
+}
+
+// Refactored blueprint function
+void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor)
+{
+	// check tags to see what is being damaged
+	// dont damage players
+	if (hitActor->ActorHasTag("Player"))
+	{
+		//DEBUG MESSAGE
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				15.f,
+				FColor::Yellow,
+				FString(TEXT("Hit target is player"))
+			);
+		}
+		return;
+	}
+	// deal damage to hit actors
+	UClass* DamageTypeClass = UDamageType::StaticClass();
+	UGameplayStatics::ApplyDamage(
+		hitActor,
+		50,
+		Controller,
+		this,
+		DamageTypeClass
+	);
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Yellow,
+			FString(TEXT("Valid Target"))
+		);
+	}
+}
+
+AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug)
+{
+	// define points for line trace
+	if (EquippedWeapon)
+	{
+		FHitResult Hit;
+
+		// grab skeleton
+		const USkeletalMeshComponent* skComp = EquippedWeapon->FindComponentByClass<USkeletalMeshComponent>();
+		USkeletalMesh* skMesh = skComp->GetSkeletalMeshAsset();
+		//USkeletalMesh* skMesh = EquippedWeapon->FindComponentByClass<USkeletalMesh>();
+		
+		// grab sockets
+		//FVector traceStart = skMesh->FindSocket("Base")->GetSocketTransform(skComp).GetLocation();
+		//FVector traceEnd = skMesh->FindSocket("Tip")->GetSocketTransform(skComp).GetLocation();
+		FVector traceStart = skMesh->GetSocketByIndex(0)->GetSocketTransform(skComp).GetLocation();
+		FVector traceEnd = skMesh->GetSocketByIndex(1)->GetSocketTransform(skComp).GetLocation();
+
+		// collision parameters - ignore self
+		FCollisionQueryParams QueryParams;
+		QueryParams.AddIgnoredActor(this);
+
+		// perform line trace
+		GetWorld()->LineTraceSingleByChannel(Hit,traceStart, traceEnd, ECollisionChannel::ECC_Camera, QueryParams);
+
+		// Debug
+		if (bDrawDebug)
+		{
+			DrawDebugLine(GetWorld(), traceStart, traceEnd, Hit.bBlockingHit ? FColor::Green : FColor::Red, false, 5.0f, 0, 1.0f);
+			UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *traceStart.ToCompactString(), *traceEnd.ToCompactString());
+		}
+
+		// if hit occurs and hit actor is valid
+		if (Hit.bBlockingHit && IsValid(Hit.GetActor()))
+		{
+			// return hit actor
+			UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName());
+			return Hit.GetActor();
+		}
+
+		// nothing hit
+		UE_LOG(LogTemp, Log, TEXT("No actors hit"));
+	}
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////////
