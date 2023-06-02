@@ -52,7 +52,7 @@ class ASirDingusCharacter : public ACharacter
 	AWeapon* EquippedWeapon;
 
 	// Health
-	UPROPERTY(BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, Category = Health, meta = (AllowPrivateAccess = "true"))
 	int MaxHealth = 100;
 	UPROPERTY(BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
 	int Health;

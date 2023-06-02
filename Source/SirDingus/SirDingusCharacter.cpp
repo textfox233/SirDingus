@@ -143,21 +143,24 @@ bool ASirDingusCharacter::IsDead(int dmg = 0)
 // Refactored blueprint function
 void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor)
 {
-	// check tags to see what is being damaged
-	// dont damage players
-	if (hitActor->ActorHasTag("Player"))
+	// players shouldn't be able to damage players
+	if(this->ActorHasTag("Player"))
 	{
-		//DEBUG MESSAGE
-		if (GEngine)
+		// check tags to see what is being damaged
+		if (hitActor->ActorHasTag("Player"))
 		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				15.f,
-				FColor::Yellow,
-				FString(TEXT("Hit target is player"))
-			);
+			//DEBUG MESSAGE
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					15.f,
+					FColor::Yellow,
+					FString(TEXT("Hit target is player"))
+				);
+			}
+			return;
 		}
-		return;
 	}
 	// deal damage to hit actors
 	UClass* DamageTypeClass = UDamageType::StaticClass();
