@@ -124,11 +124,6 @@ void ASirDingusCharacter::BeginPlay()
 	//}
 }
 
-//bool ASirDingusCharacter::IsDead()
-//{
-//	return Health <= 0;
-//}
-
 bool ASirDingusCharacter::IsDead(int dmg = 0)
 {
 	// apply damage
@@ -184,6 +179,7 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor)
 	}
 }
 
+// Refactored blueprint function
 AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug)
 {
 	// define points for line trace
@@ -197,8 +193,6 @@ AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug)
 		//USkeletalMesh* skMesh = EquippedWeapon->FindComponentByClass<USkeletalMesh>();
 		
 		// grab sockets
-		//FVector traceStart = skMesh->FindSocket("Base")->GetSocketTransform(skComp).GetLocation();
-		//FVector traceEnd = skMesh->FindSocket("Tip")->GetSocketTransform(skComp).GetLocation();
 		FVector traceStart = skMesh->GetSocketByIndex(0)->GetSocketTransform(skComp).GetLocation();
 		FVector traceEnd = skMesh->GetSocketByIndex(1)->GetSocketTransform(skComp).GetLocation();
 

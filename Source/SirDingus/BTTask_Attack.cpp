@@ -7,7 +7,7 @@
 
 UBTTask_Attack::UBTTask_Attack()
 {
-	NodeName = TEXT("Attack");
+	//NodeName = TEXT("Attack");
 }
 
 
@@ -36,7 +36,13 @@ EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 		// Null Test
 		if (OwnerCharacter)
 		{
+			// clear focus
+			OwnerComp.GetAIOwner()->ClearFocus(EAIFocusPriority::Default);
+
+			// call attack event
 			OwnerCharacter->AttackEvent();
+
+			// return success
 			return EBTNodeResult::Succeeded;
 		}
 	}
