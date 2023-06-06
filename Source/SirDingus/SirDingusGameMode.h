@@ -11,8 +11,24 @@ class ASirDingusGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
-public:
-	ASirDingusGameMode();
+	// Default game mode
+	//	Win: - Clear all enemies
+	//	Loss: - all players dead
+
+protected:
+	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameStart();
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bPlayerVictory);
+
+private:
+	void HandleGameStart();
+	
+	int32 DetermineEnemyCount();
+	int32 EnemyCount = 0;
 };
 
 
