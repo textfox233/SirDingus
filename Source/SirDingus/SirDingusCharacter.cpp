@@ -50,8 +50,8 @@ ASirDingusCharacter::ASirDingusCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	// Bind my own take damage event
-	OnTakeAnyDamage.AddDynamic(this, &ASirDingusCharacter::DamageTaken);
+	//// Bind my own take damage event
+	//OnTakeAnyDamage.AddDynamic(this, &ASirDingusCharacter::DamageTaken);
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
@@ -109,8 +109,8 @@ void ASirDingusCharacter::BeginPlay()
 		}
 	}
 
-	//Initialise Health Value
-	Health = MaxHealth;
+	////Initialise Health Value
+	//Health = MaxHealth;
 
 	//DEBUG MESSAGE
 	//if (GEngine)
@@ -126,29 +126,37 @@ void ASirDingusCharacter::BeginPlay()
 
 bool ASirDingusCharacter::IsDead(int dmg = 0)
 {
-	// apply damage
-	Health -= dmg;
-
-	// if health is less than 0, character is dead
-	if (Health <= 0)
-	{
-		// clamp health to 0, return dead
-		Health = 0;
-		return true;
-	}
+	//// apply damage
+	//Health -= dmg;
+	//
+	//// if health is less than 0, character is dead
+	//if (Health <= 0)
+	//{
+	//	// clamp health to 0, return dead
+	//	Health = 0;
+	//	return true;
+	//}
+	 
 	// return live
 	return false;
 }
 
 // Refactored blueprint function
-void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor)
+void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 {
+	if (bDebugLog) {
+		UE_LOG(LogTemp, Log, TEXT("ASirDingusCharacter::ProcessMeleeHit"));
+		UE_LOG(LogTemp, Warning, TEXT("%s Hit"), *hitActor->GetName());
+	}
+
 	// players shouldn't be able to damage players
 	if(this->ActorHasTag("Player"))
 	{
 		// check tags to see what is being damaged
 		if (hitActor->ActorHasTag("Player"))
 		{
+			if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target is a player")); }
+
 			//DEBUG MESSAGE
 			if (GEngine)
 			{
@@ -162,15 +170,20 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor)
 			return;
 		}
 	}
+	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target not a player")); }
+
+
 	// deal damage to hit actors
 	UClass* DamageTypeClass = UDamageType::StaticClass();
-	UGameplayStatics::ApplyDamage(
-		hitActor,
-		50,
-		Controller,
-		this,
-		DamageTypeClass
+	float dmgDealt = UGameplayStatics::ApplyDamage(
+		hitActor,		// DamagedActor - Actor that will be damaged.
+		50,				// BaseDamage - The base damage to apply.
+		Controller,		// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
+		this,			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
+		DamageTypeClass	// DamageTypeClass - Class that describes the damage that was done.
 	);
+	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
+
 	if (GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
@@ -183,7 +196,7 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor)
 }
 
 // Refactored blueprint function
-AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug)
+AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
 {
 	// define points for line trace
 	if (EquippedWeapon)
@@ -207,22 +220,19 @@ AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug)
 		GetWorld()->LineTraceSingleByChannel(Hit,traceStart, traceEnd, ECollisionChannel::ECC_Camera, QueryParams);
 
 		// Debug
-		if (bDrawDebug)
-		{
-			DrawDebugLine(GetWorld(), traceStart, traceEnd, Hit.bBlockingHit ? FColor::Green : FColor::Red, false, 5.0f, 0, 1.0f);
-			UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *traceStart.ToCompactString(), *traceEnd.ToCompactString());
-		}
+		if (bDrawDebug) { DrawDebugLine(GetWorld(), traceStart, traceEnd, Hit.bBlockingHit ? FColor::Green : FColor::Red, false, 5.0f, 0, 1.0f); }
+		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *traceStart.ToCompactString(), *traceEnd.ToCompactString()); }
 
 		// if hit occurs and hit actor is valid
 		if (Hit.bBlockingHit && IsValid(Hit.GetActor()))
 		{
+			if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName()); }
 			// return hit actor
-			UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName());
 			return Hit.GetActor();
 		}
 
 		// nothing hit
-		UE_LOG(LogTemp, Log, TEXT("No actors hit"));
+		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("No actors hit")); }
 	}
 	return nullptr;
 }

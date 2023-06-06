@@ -12,19 +12,22 @@ class ASirDingusCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-	/** Camera boom positioning the camera behind the character */
+	/** Camera Stuff **/
+	// -- Camera Boom (positions the camera behind the character)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 
-	/** Follow camera */
+	// -- Follow Camera
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 	
-	/** MappingContext */
+
+	/** MappingContext **/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputMappingContext* DefaultMappingContext;
 
-	/** Input Actions */
+
+	/** Input Actions **/
 	// -- Dodge
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* DodgeAction;
@@ -43,41 +46,51 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = MyAnimationInfo, meta = (AllowPrivateAccess = "true"))
 	bool bIsAttacking;
 
-	/** Equipped Weapon Class */
+
+	/** Equipped Weapon **/
+	// -- Weapon Class
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<class AWeapon> EquippedWeaponClass;
 
-	/** Actual Equipped Weapon */
+	// -- Actual Weapon
 	UPROPERTY( BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 	AWeapon* EquippedWeapon;
 
-	// Health
-	UPROPERTY(EditAnywhere, Category = Health, meta = (AllowPrivateAccess = "true"))
-	int MaxHealth = 100;
-	UPROPERTY(BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
-	int Health;
+
+	//// Health
+	//UPROPERTY(EditAnywhere, Category = Health, meta = (AllowPrivateAccess = "true"))
+	//int MaxHealth = 100;
+	//UPROPERTY(BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+	//int Health;
 
 public:
 	ASirDingusCharacter();
 
+	// Blueprint Event for Attacking
 	UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
 	void AttackEvent();
 
+	// When Character Takes Damage
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 
+	// -- Is Character Alive
+	bool bAlive = true;
+
 protected:
 
-	/** Called for dodging input */
+	/** Input Functions **/
+	// -- Dodging
 	void Dodge(const FInputActionValue& Value);
 	void StopDodging();
-	/** Called for movement input */
+
+	// -- Movement
 	void Move(const FInputActionValue& Value);
 
-	/** Called for looking input */
+	// -- Looking
 	void Look(const FInputActionValue& Value);
 			
-	/** Called for attacking input */
+	// -- Attacking (using blueprint atm, need to refactor into here)
 	void Attack(const FInputActionValue& Value);
 
 	// APawn interface
@@ -90,13 +103,14 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	virtual bool IsDead(int dmg);
 
+
 	// Process Melee Hits
 	UFUNCTION(BlueprintCallable)
-		void ProcessMeleeHit(AActor* hitActor);
+	void ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
 
 	// Perform Weapon Arc via Line Traces
 	UFUNCTION(BlueprintCallable)
-		AActor* DrawWeaponArc(bool bDrawDebug = false);
+	AActor* DrawWeaponArc(bool bDrawDebug = false, bool bDebugLog = false);
 
 public:
 	/** Returns CameraBoom subobject **/
