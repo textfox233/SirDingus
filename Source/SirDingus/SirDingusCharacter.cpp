@@ -50,11 +50,16 @@ ASirDingusCharacter::ASirDingusCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	//// Bind my own take damage event
-	//OnTakeAnyDamage.AddDynamic(this, &ASirDingusCharacter::DamageTaken);
-
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	// Load Animation Montage
+	static ConstructorHelpers::FObjectFinder<UAnimMontage>BasicAttackMontageObject(TEXT("/Script/Engine.AnimMontage'/Game/Blueprints/Characters/Animation/Great_Sword_Slash_Vertical_Montage.Great_Sword_Slash_Vertical_Montage'"));
+	if (BasicAttackMontageObject.Succeeded())
+	// if Successful THEN assign object to variable
+	{
+		BasicAttackMontage = BasicAttackMontageObject.Object;
+	}
 }
 
 void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
@@ -69,6 +74,41 @@ void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const 
 			FString(TEXT("Take damage event"))
 		);
 	}
+}
+
+// * Refactored blueprint function
+// Play a given montage over the network
+void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage)
+{
+	PlayAnimMontageMulticast(AnimMontage);
+}
+
+// * Refactored blueprint function
+// Play a given montage on each client
+void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage)
+{
+	//float animTime = 0.1f;		//Default value in case the animation can't be played.
+	//
+	//Log(ELogLevel::INFO, __FUNCTION__);
+	//
+	//// try and play a firing animation if specified
+	//if (AnimMontage != NULL && playerViewMesh != NULL)
+	//{
+	//	// Get the animation object for the arms mesh
+	//	UAnimInstance* AnimInstance = playerViewMesh->GetAnimInstance();
+	//	if (AnimInstance != NULL)
+	//	{
+	//		animTime = AnimInstance->Montage_Play(FireAnimation, 1.f);
+	//		if (animTime < 0.1f)
+	//		{
+	//			//The function returns 0 if the animation can't be played.
+	//			animTime = 0.1f;
+	//		}
+	//	}
+	//}
+
+	// just play the montage
+	PlayAnimMontage(AnimMontage, 1.f, TEXT("DefaultGroup"));
 }
 
 void ASirDingusCharacter::BeginPlay()
@@ -109,9 +149,6 @@ void ASirDingusCharacter::BeginPlay()
 		}
 	}
 
-	////Initialise Health Value
-	//Health = MaxHealth;
-
 	//DEBUG MESSAGE
 	//if (GEngine)
 	//{
@@ -141,7 +178,8 @@ bool ASirDingusCharacter::IsDead(int dmg = 0)
 	return false;
 }
 
-// Refactored blueprint function
+// * Refactored blueprint function
+// process melee hits (is it a player, damage dealing etc)
 void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 {
 	if (bDebugLog) {
@@ -195,7 +233,8 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 	}
 }
 
-// Refactored blueprint function
+// * Refactored blueprint function
+// draw a line trace to track a weapon's movement and detect hit events
 AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
 {
 	// define points for line trace

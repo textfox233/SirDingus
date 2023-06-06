@@ -77,6 +77,15 @@ public:
 	// -- Is Character Alive
 	bool bAlive = true;
 
+	// -- Animation Montages
+	UFUNCTION(Server, Reliable, BlueprintCallable)
+		void PlayAnimMontageServer(UAnimMontage* AnimMontage);
+	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
+		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage);
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
+	UAnimMontage* BasicAttackMontage;
+
 protected:
 
 	/** Input Functions **/
