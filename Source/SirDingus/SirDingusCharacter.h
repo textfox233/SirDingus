@@ -84,7 +84,11 @@ public:
 		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
-	UAnimMontage* BasicAttackMontage;
+	//UPROPERTY(EditAnywhere, Category = Animation, meta = (AllowPrivateAccess))
+	class UAnimMontage* BasicAttackMontage;
+
+	// -- Attacking (currently public so that AI can find it, may want to change this)
+	void Attack(const FInputActionValue& Value);
 
 protected:
 
@@ -99,8 +103,8 @@ protected:
 	// -- Looking
 	void Look(const FInputActionValue& Value);
 			
-	// -- Attacking (using blueprint atm, need to refactor into here)
-	void Attack(const FInputActionValue& Value);
+	//// -- Attacking
+	//void Attack(const FInputActionValue& Value);
 
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -112,7 +116,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	virtual bool IsDead(int dmg);
 
-
+	// TriggerMelee timer function
+	// 
+	
 	// Process Melee Hits
 	UFUNCTION(BlueprintCallable)
 	void ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);

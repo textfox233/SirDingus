@@ -53,13 +53,13 @@ ASirDingusCharacter::ASirDingusCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
-	// Load Animation Montage
-	static ConstructorHelpers::FObjectFinder<UAnimMontage>BasicAttackMontageObject(TEXT("/Script/Engine.AnimMontage'/Game/Blueprints/Characters/Animation/Great_Sword_Slash_Vertical_Montage.Great_Sword_Slash_Vertical_Montage'"));
-	if (BasicAttackMontageObject.Succeeded())
-	// if Successful THEN assign object to variable
-	{
-		BasicAttackMontage = BasicAttackMontageObject.Object;
-	}
+	//// Load Animation Montage
+	//static ConstructorHelpers::FObjectFinder<UAnimMontage>BasicAttackMontageObject(TEXT("/Game/Blueprints/Characters/Animation/Great_Sword_Slash_Vertical_Montage.Great_Sword_Slash_Vertical_Montage"));
+	//if (BasicAttackMontageObject.Succeeded())
+	//// if Successful THEN assign object to variable
+	//{
+	//	BasicAttackMontage = BasicAttackMontageObject.Object;
+	//}
 }
 
 void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
@@ -108,7 +108,8 @@ void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* 
 	//}
 
 	// just play the montage
-	PlayAnimMontage(AnimMontage, 1.f, TEXT("DefaultGroup"));
+	//PlayAnimMontage(AnimMontage);
+	PlayAnimMontage(BasicAttackMontage);
 }
 
 void ASirDingusCharacter::BeginPlay()
@@ -297,7 +298,8 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Look);
 
 		//Attacking
-		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::AttackEvent);
+		//EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::AttackEvent);
+		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Attack);
 	}
 
 }
@@ -384,19 +386,29 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 // Currently Unused, AttackEvent is called instead
 void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 {
+	//if(BasicAttackMontage& =! nullptr)
+	
+	PlayAnimMontageServer(BasicAttackMontage);
+	//PlayAnimMontage(BasicAttackMontage,1.f,FName("start_1"));
+
+	//bool bValid = BasicAttackMontage->HasValidSlotSetup();
+	//BasicAttackMontage->HasValidSlotSetup();
+
 	// input is a bool
 	bIsAttacking = Value.Get<bool>();
 
 	//DEBUG MESSAGE
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			15.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("Attacking = %s"), (bIsAttacking ? TEXT("true") : TEXT("false") ))
-		);
-	}
+	//if (GEngine) 
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		15.f,
+	//		FColor::Yellow,
+	//		//FString::Printf(TEXT("BasicAttackMontage->HasValidSlotSetup() = %s"), (BasicAttackMontage->HasValidSlotSetup() ? TEXT("true") : TEXT("false")))
+	//		FString::Printf(TEXT("Attacking = %s"), (bIsAttacking ? TEXT("true") : TEXT("false")))
+	//		//FString::Printf(TEXT("BasicAttackMontage = %s"), (*BasicAttackMontage->GetName()))
+	//	);
+	//}
 }
 
 
