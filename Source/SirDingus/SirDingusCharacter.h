@@ -116,14 +116,28 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	virtual bool IsDead(int dmg);
 
-	// TriggerMelee timer function
-	// 
+	/** Trigger Melee Timer Refactored **/
+
+	// -- Timer Handle
+	FTimerHandle MeleeTraceHandle;
+
+	// -- Start
+	UFUNCTION(BlueprintCallable)
+		void MeleeTraceStart();
+
+	// -- InProgress
+	UFUNCTION()
+		void MeleeTraceInProgress();
 	
-	// Process Melee Hits
+	// -- Stop
+	UFUNCTION(BlueprintCallable)
+		void MeleeTraceEnd();
+
+	// -- Process Melee Hits
 	UFUNCTION(BlueprintCallable)
 	void ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
 
-	// Perform Weapon Arc via Line Traces
+	// -- Perform Weapon Arc via Line Traces
 	UFUNCTION(BlueprintCallable)
 	AActor* DrawWeaponArc(bool bDrawDebug = false, bool bDebugLog = false);
 

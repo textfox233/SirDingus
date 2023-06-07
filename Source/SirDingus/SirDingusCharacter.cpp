@@ -180,6 +180,35 @@ bool ASirDingusCharacter::IsDead(int dmg = 0)
 }
 
 // * Refactored blueprint function
+// set linetraces to occur until TriggerMeleeEnd()
+void ASirDingusCharacter::MeleeTraceStart()
+{
+	// start timer
+	GetWorld()->GetTimerManager().SetTimer(MeleeTraceHandle, this, &ASirDingusCharacter::MeleeTraceInProgress, 0.01f, true, 0.05f);
+}
+
+void ASirDingusCharacter::MeleeTraceInProgress()
+{
+	//UE_LOG(LogTemp, Warning, TEXT("timer active"));
+
+	// perform line trace (debug? / logs?)
+	AActor* hit = DrawWeaponArc(true);
+
+	if (hit->IsValidLowLevel())
+	// anything hit?
+	{
+		// process hit
+		ProcessMeleeHit(hit);
+	}
+}
+
+void ASirDingusCharacter::MeleeTraceEnd()
+{
+	// clear timer
+	GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
+}
+
+// * Refactored blueprint function
 // process melee hits (is it a player, damage dealing etc)
 void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 {
