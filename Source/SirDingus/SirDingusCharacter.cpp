@@ -13,6 +13,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Components/SceneComponent.h"
 #include "Engine/SkeletalMeshSocket.h"
+#include "Engine/EngineTypes.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ASirDingusCharacter
@@ -62,18 +63,34 @@ ASirDingusCharacter::ASirDingusCharacter()
 	//}
 }
 
-void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
+//void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
+//{
+//	// Debug Msg
+//	if (GEngine)
+//	{
+//		GEngine->AddOnScreenDebugMessage(
+//			-1,
+//			15.f,
+//			FColor::Green,
+//			FString(TEXT("ASirDingusCharacter::DamageTaken()"))
+//		);
+//	}
+//}
+
+float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
+	float result = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	// Debug Msg
 	if (GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
 			-1,
-			15.f,
-			FColor::Yellow,
-			FString(TEXT("Take damage event"))
+			2.f,
+			FColor::Green,
+			FString(TEXT("ASirDingusCharacter::TakeDamage()"))
 		);
 	}
+	return result;
 }
 
 // * Refactored blueprint function
@@ -108,8 +125,7 @@ void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* 
 	//}
 
 	// just play the montage
-	//PlayAnimMontage(AnimMontage);
-	PlayAnimMontage(BasicAttackMontage);
+	PlayAnimMontage(AnimMontage);
 }
 
 void ASirDingusCharacter::BeginPlay()
@@ -125,6 +141,9 @@ void ASirDingusCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+
+	// bind DamageTaken callback to OnTakeAnyDamage delegate - this line crashes editor in multiplayer, unsure why
+	//GetOwner()->OnTakeAnyDamage.AddDynamic(this, &ASirDingusCharacter::DamageTaken);
 
 	//Spawn Weapon
 	if (EquippedWeaponClass)
@@ -179,14 +198,15 @@ bool ASirDingusCharacter::IsDead(int dmg = 0)
 	return false;
 }
 
-// * Refactored blueprint function
-// set linetraces to occur until TriggerMeleeEnd()
+/** Refactored Blueprint Functionality -- Melee Swing Line Traces **/
+// -- Set linetraces to occur until TriggerMeleeEnd()
+// Start traces
 void ASirDingusCharacter::MeleeTraceStart()
 {
 	// start timer
 	GetWorld()->GetTimerManager().SetTimer(MeleeTraceHandle, this, &ASirDingusCharacter::MeleeTraceInProgress, 0.01f, true, 0.05f);
 }
-
+// Perform single trace
 void ASirDingusCharacter::MeleeTraceInProgress()
 {
 	//UE_LOG(LogTemp, Warning, TEXT("timer active"));
@@ -201,15 +221,14 @@ void ASirDingusCharacter::MeleeTraceInProgress()
 		ProcessMeleeHit(hit);
 	}
 }
-
+// End traces
 void ASirDingusCharacter::MeleeTraceEnd()
 {
 	// clear timer
 	GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
 }
 
-// * Refactored blueprint function
-// process melee hits (is it a player, damage dealing etc)
+// -- Process melee hits (is it a player, damage dealing etc)
 void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 {
 	if (bDebugLog) {
@@ -252,19 +271,18 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 	);
 	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
 
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			15.f,
-			FColor::Yellow,
-			FString(TEXT("Valid Target"))
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		15.f,
+	//		FColor::Yellow,
+	//		FString(TEXT("Valid Target"))
+	//	);
+	//}
 }
 
-// * Refactored blueprint function
-// draw a line trace to track a weapon's movement and detect hit events
+// -- Draw a line trace to track a weapon's movement and detect hit events
 AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
 {
 	// define points for line trace
@@ -412,16 +430,15 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-// Currently Unused, AttackEvent is called instead
 void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 {
-	//if(BasicAttackMontage& =! nullptr)
-	
-	PlayAnimMontageServer(BasicAttackMontage);
-	//PlayAnimMontage(BasicAttackMontage,1.f,FName("start_1"));
-
+	if (BasicAttackMontage)
+	{
+		PlayAnimMontageServer(BasicAttackMontage);
+	}
 	//bool bValid = BasicAttackMontage->HasValidSlotSetup();
 	//BasicAttackMontage->HasValidSlotSetup();
+
 
 	// input is a bool
 	bIsAttacking = Value.Get<bool>();
@@ -439,7 +456,3 @@ void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 	//	);
 	//}
 }
-
-
-
-

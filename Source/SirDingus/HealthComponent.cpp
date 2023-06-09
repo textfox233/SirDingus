@@ -14,6 +14,11 @@ UHealthComponent::UHealthComponent()
 }
 
 
+float UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser)
+{
+	return 0.0f;
+}
+
 // Called when the game starts
 void UHealthComponent::BeginPlay()
 {
@@ -22,8 +27,12 @@ void UHealthComponent::BeginPlay()
 	// initialise health
 	Health = MaxHealth;
 
-	// bind DamageTaken callback to OnTakeAnyDamage delegate
-	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
+	AActor* Owner = GetOwner();
+	if (Owner)
+	{
+		// bind DamageTaken callback to OnTakeAnyDamage delegate
+		GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
+	}
 }
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
@@ -41,6 +50,17 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 		//ToonTanksGameMode->ActorDied(DamagedActor);
 		UE_LOG(LogTemp, Warning, TEXT("%s has Died"), *DamagedActor->GetName());
 	}
+	// Debug Msg
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			2.f,
+			FColor::Red,
+			FString(TEXT("UHealthComponent::DamageTaken()"))
+		);
+	}
+
 }
 
 // Called every frame

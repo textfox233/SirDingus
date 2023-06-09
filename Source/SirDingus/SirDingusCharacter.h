@@ -71,8 +71,11 @@ public:
 	void AttackEvent();
 
 	// When Character Takes Damage
-	UFUNCTION()
-	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
+	// - tried at first to bind a new function to OnTakeAnyDamage but ran into problems, decided instead to override AActor::TakeDamage()
+	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
+	//UFUNCTION()
+	//void DamageTaken(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 
 	// -- Is Character Alive
 	bool bAlive = true;
@@ -115,6 +118,7 @@ protected:
 	// Apply damage & check for character death
 	UFUNCTION(BlueprintCallable)
 	virtual bool IsDead(int dmg);
+
 
 	/** Trigger Melee Timer Refactored **/
 

@@ -20,6 +20,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	float GetHealth() { return Health; };
 
+	UFUNCTION()
+	float TakeDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
