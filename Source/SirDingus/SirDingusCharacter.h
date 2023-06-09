@@ -80,15 +80,20 @@ public:
 	// -- Is Character Alive
 	bool bAlive = true;
 
-	// -- Animation Montages
+	// -- Play Animations
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 		void PlayAnimMontageServer(UAnimMontage* AnimMontage);
 	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
 		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage);
 
+	// -- Animation Montages
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
-	//UPROPERTY(EditAnywhere, Category = Animation, meta = (AllowPrivateAccess))
-	class UAnimMontage* BasicAttackMontage;
+		class UAnimMontage* BasicAttackMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
+		class UAnimMontage* FlinchMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
+		class UAnimMontage* DeathMontage;
+
 
 	// -- Attacking (currently public so that AI can find it, may want to change this)
 	void Attack(const FInputActionValue& Value);

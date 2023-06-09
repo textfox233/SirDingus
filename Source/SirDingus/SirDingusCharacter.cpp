@@ -14,6 +14,7 @@
 #include "Components/SceneComponent.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "Engine/EngineTypes.h"
+#include "HealthComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ASirDingusCharacter
@@ -80,16 +81,73 @@ ASirDingusCharacter::ASirDingusCharacter()
 float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	float result = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	// Debug Msg
-	if (GEngine)
+	//// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		2.f,
+	//		FColor::Green,
+	//		FString(TEXT("ASirDingusCharacter::TakeDamage()"))
+	//	);
+	//}
+
+	// check if health is above 0
+	if (Owner)
+	// if owner valid
 	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.f,
-			FColor::Green,
-			FString(TEXT("ASirDingusCharacter::TakeDamage()"))
-		);
+		UHealthComponent* healthComp = FindComponentByClass<UHealthComponent>();
+		// if component valid...
+		if (healthComp)
+		{
+			// Debug Msg
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					15.f,
+					FColor::Green,
+					FString(TEXT("healthComp valid"))
+				);
+			}
+
+			// ...AND health above 0...
+			if (healthComp->GetHealth() > 0)
+			{
+				// ...owner is still alive
+				// play flinch animation
+				if (FlinchMontage)
+				{
+					PlayAnimMontageServer(FlinchMontage);
+				}
+			}
+			else
+			{
+				// otherwise owner is dead
+				// 1. play death animation
+				if (DeathMontage)
+				{
+					PlayAnimMontageServer(DeathMontage);
+				}
+			}
+		}
+		else
+		{
+			// component is invalid
+			// Debug Msg
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					15.f,
+					FColor::Red,
+					FString(TEXT("healthComp invalid"))
+				);
+			}
+		}
+
 	}
+
 	return result;
 }
 

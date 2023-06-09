@@ -50,16 +50,16 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 		//ToonTanksGameMode->ActorDied(DamagedActor);
 		UE_LOG(LogTemp, Warning, TEXT("%s has Died"), *DamagedActor->GetName());
 	}
-	// Debug Msg
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.f,
-			FColor::Red,
-			FString(TEXT("UHealthComponent::DamageTaken()"))
-		);
-	}
+	//// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		2.f,
+	//		FColor::Red,
+	//		FString(TEXT("UHealthComponent::DamageTaken()"))
+	//	);
+	//}
 
 }
 
