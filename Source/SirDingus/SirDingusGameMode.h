@@ -15,6 +15,10 @@ class ASirDingusGameMode : public AGameModeBase
 	//	Win: - Clear all enemies
 	//	Loss: - all players dead
 
+public:
+	void ActorDied(APawn* deadActor);
+	//void ActorDied(AActor* deadActor);
+
 protected:
 	virtual void BeginPlay() override;
 

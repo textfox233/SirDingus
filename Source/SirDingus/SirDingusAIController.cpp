@@ -15,9 +15,9 @@ void ASirDingusAIController::BeginPlay()
 	{
 		RunBehaviorTree(AIBehavior);
 		
-		GetBlackboardComponent()->SetValueAsVector(TEXT("StartLocation"), GetPawn()->GetActorLocation());
-		//GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-		GetBlackboardComponent()->SetValueAsInt(TEXT("Key"), 1);
+		// initialise blackboard values				// key					// value
+		GetBlackboardComponent()->SetValueAsVector	(TEXT("StartLocation"),	GetPawn()->GetActorLocation());
+		GetBlackboardComponent()->SetValueAsBool	(TEXT("IsAlive"),		true);
 	}
 
 	// Debug Msg
@@ -32,6 +32,22 @@ void ASirDingusAIController::BeginPlay()
 	}
 }
 
+void ASirDingusAIController::SetIsAlive(bool bValue)
+{
+	//// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		2.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusAIController::SetIsAlive(%s)"), (bValue ? TEXT("true") : TEXT("false")))
+	//	);
+	//}
+
+	GetBlackboardComponent()->SetValueAsBool(TEXT("IsAlive"), bValue);
+}
+
 void ASirDingusAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
@@ -42,7 +58,6 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 	if(LineOfSightTo(PlayerPawn))
 	{
 		// Observe Player Position
-		//GetBlackboardComponent()->SetValueAsObject(TEXT("PlayerActor"), PlayerPawn);
 		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
 		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
 

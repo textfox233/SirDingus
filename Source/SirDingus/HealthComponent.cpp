@@ -2,6 +2,8 @@
 
 
 #include "HealthComponent.h"
+#include "SirDingusGameMode.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
@@ -13,12 +15,6 @@ UHealthComponent::UHealthComponent()
 	// ...
 }
 
-
-float UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser)
-{
-	return 0.0f;
-}
-
 // Called when the game starts
 void UHealthComponent::BeginPlay()
 {
@@ -27,12 +23,14 @@ void UHealthComponent::BeginPlay()
 	// initialise health
 	Health = MaxHealth;
 
-	AActor* Owner = GetOwner();
-	if (Owner)
+	// bind DamageTaken callback to OnTakeAnyDamage delegate
+	if (AActor* Owner = GetOwner())
 	{
-		// bind DamageTaken callback to OnTakeAnyDamage delegate
-		GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
+		Owner->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
 	}
+
+	// get game mode
+	SirDingusGameMode = Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this));
 }
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
@@ -45,12 +43,18 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
 	
 	// If health goes below zero, the actor has died
-	if (Health <= 0.f) 
+	if (Health <= 0.f)
 	{
 		//ToonTanksGameMode->ActorDied(DamagedActor);
 		UE_LOG(LogTemp, Warning, TEXT("%s has Died"), *DamagedActor->GetName());
-	}
-	//// Debug Msg
+
+		//if (APawn* DamagedPawn = Cast<APawn>(DamagedActor->GetOwner()))
+		//{
+		//	UE_LOG(LogTemp, Warning, TEXT("Successfully cast %s to APawn*"), *DamagedActor->GetName());
+		//}
+		//else { UE_LOG(LogTemp, Warning, TEXT("Failed to cast %s to APawn*"), *DamagedActor->GetName()); }
+
+		//// Debug Msg
 	//if (GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
@@ -60,7 +64,7 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 	//		FString(TEXT("UHealthComponent::DamageTaken()"))
 	//	);
 	//}
-
+	}
 }
 
 // Called every frame

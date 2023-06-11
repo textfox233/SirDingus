@@ -20,9 +20,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	float GetHealth() { return Health; };
 
-	UFUNCTION()
-	float TakeDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
-
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -36,6 +33,7 @@ private:
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 
+	class ASirDingusGameMode* SirDingusGameMode;
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

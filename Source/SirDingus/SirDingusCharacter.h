@@ -77,9 +77,6 @@ public:
 	//UFUNCTION()
 	//void DamageTaken(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 
-	// -- Is Character Alive
-	bool bAlive = true;
-
 	// -- Play Animations
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 		void PlayAnimMontageServer(UAnimMontage* AnimMontage);
@@ -114,15 +111,22 @@ protected:
 	//// -- Attacking
 	//void Attack(const FInputActionValue& Value);
 
+
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	// To add mapping context
 	virtual void BeginPlay();
 
-	// Apply damage & check for character death
+
+	/** Character Death **/
+	// -- Check for character death
 	UFUNCTION(BlueprintCallable)
-	virtual bool IsDead(int dmg);
+	virtual bool HasDied();
+
+	// -- Is Character Alive
+	UPROPERTY()
+	bool bAlive = true;
 
 
 	/** Trigger Melee Timer Refactored **/

@@ -13,5 +13,10 @@ UCLASS()
 class SIRDINGUS_API ASkeletonCharacter : public ASirDingusCharacter
 {
 	GENERATED_BODY()
-	
+
+	/** Character Death **/
+	// -- Check for character death
+	virtual bool HasDied() override;
+
+
 };
