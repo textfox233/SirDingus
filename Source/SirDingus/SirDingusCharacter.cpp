@@ -273,7 +273,8 @@ void ASirDingusCharacter::MeleeTraceInProgress()
 	// perform line trace (debug? / logs?)
 	AActor* hit = DrawWeaponArc(true);
 
-	if (hit->IsValidLowLevel())
+	//if (hit->IsValidLowLevel())
+	if (hit != nullptr)
 	// anything hit?
 	{
 		// process hit

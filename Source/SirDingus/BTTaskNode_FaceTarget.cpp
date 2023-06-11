@@ -8,20 +8,10 @@ EBTNodeResult::Type UBTTaskNode_FaceTarget::ExecuteTask(UBehaviorTreeComponent& 
 {
 	Super::ExecuteTask(OwnerComp, NodeMemory);
 
-	//APawn* OwnerPawn = OwnerComp.GetAIOwner()->GetPawn();
-
 	APawn* TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
 
-	//FVector Direction = TargetPawn->GetTargetLocation() - OwnerPawn->GetTargetLocation();
-	//Direction.Z = 0;
+	//UE_LOG(LogTemp, Warning, TEXT("set %s focus to %s"), *OwnerComp.GetAIOwner()->GetName() , *TargetPawn->GetName())
 
-	//FRotator Rot = FRotationMatrix::MakeFromX(Direction).Rotator();
-
-	//OwnerPawn->SetActorRotation(Rot);
-	OwnerComp.GetAIOwner()->SetFocus(TargetPawn/*, EAIFocusPriority::Default*/);
-
-
-	// may take multiple evaluations before facing the target
-	//return EBTNodeResult::InProgress;
 	return EBTNodeResult::Succeeded;
 }
