@@ -34,17 +34,20 @@ void ASirDingusAIController::BeginPlay()
 
 void ASirDingusAIController::SetIsAlive(bool bValue)
 {
-	//// Debug Msg
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		2.f,
-	//		FColor::Yellow,
-	//		FString::Printf(TEXT("ASirDingusAIController::SetIsAlive(%s)"), (bValue ? TEXT("true") : TEXT("false")))
-	//	);
-	//}
+	// Debug Msg
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			2.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusAIController::SetIsAlive(%s)"), (bValue ? TEXT("true") : TEXT("false")))
+		);
+	}
 
+	// clear focus to stop rotation
+	ClearFocus(EAIFocusPriority::Gameplay);
+	// inform the blackboard of the AI's death
 	GetBlackboardComponent()->SetValueAsBool(TEXT("IsAlive"), bValue);
 }
 
