@@ -12,6 +12,9 @@ class ASirDingusCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+	// Gamemode Pointer
+	class ASirDingusGameMode* CurrentGameMode;
+
 	/** Camera Stuff **/
 	// -- Camera Boom (positions the camera behind the character)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -66,9 +69,13 @@ class ASirDingusCharacter : public ACharacter
 public:
 	ASirDingusCharacter();
 
-	// Blueprint Event for Attacking
-	UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
-	void AttackEvent();
+	/** Character Death **/
+	virtual void CharacterDeath();
+
+
+	//// Blueprint Event for Attacking - Deprecated
+	//UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
+	//void AttackEvent();
 
 	// When Character Takes Damage
 	// - tried at first to bind a new function to OnTakeAnyDamage but ran into problems, decided instead to override AActor::TakeDamage()
@@ -118,11 +125,6 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
-
-	/** Character Death **/
-	// -- Check for character death
-	UFUNCTION(BlueprintCallable)
-	virtual bool HasDied();
 
 	// -- Is Character Alive
 	UPROPERTY()

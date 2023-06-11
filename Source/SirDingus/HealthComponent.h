@@ -21,6 +21,7 @@ public:
 	float GetHealth() { return Health; };
 
 protected:
+	
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
@@ -33,7 +34,7 @@ private:
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 
-	class ASirDingusGameMode* SirDingusGameMode;
+	class ASirDingusGameMode* CurrentGameMode;
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

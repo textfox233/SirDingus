@@ -4,38 +4,33 @@
 #include "SkeletonCharacter.h"
 #include "SirDingusAIController.h"
 
-bool ASkeletonCharacter::HasDied()
+void ASkeletonCharacter::CharacterDeath()
 {
-	bool dead = Super::HasDied();
+	Super::CharacterDeath();
 
-	//// Debug Msg
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		2.f,
-	//		FColor::Yellow,
-	//		FString(TEXT("ASkeletonCharacter::HasDied()"))
-	//	);
-	//}
-
-	if (dead)
+	// Debug Msg
+	if (GEngine)
 	{
-		// check for AI controller
-		AController* rawController = Controller;
-		ASirDingusAIController* aiController;
-
-		if (rawController)
-		{
-			aiController = Cast<ASirDingusAIController>(rawController);
-
-			if (aiController)
-			{
-				// update blackboard value
-				aiController->SetIsAlive(false);
-			}
-		}
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			2.f,
+			FColor::Yellow,
+			FString(TEXT("ASkeletonCharacter::HasDied()"))
+		);
 	}
 
-	return dead;
+	// check for AI controller - not sure this is necessary but for now I'm paranoid so I'm doing it
+	AController* rawController = Controller;
+	//ASirDingusAIController* aiController;
+
+	if (rawController)
+	{
+		//aiController = Cast<ASirDingusAIController>(rawController);
+
+		if (ASirDingusAIController * aiController = Cast<ASirDingusAIController>(rawController))
+		{
+			// update blackboard value
+			aiController->SetIsAlive(false);
+		}
+	}
 }

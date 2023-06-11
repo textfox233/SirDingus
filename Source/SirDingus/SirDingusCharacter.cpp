@@ -15,6 +15,7 @@
 #include "Engine/SkeletalMeshSocket.h"
 #include "Engine/EngineTypes.h"
 #include "HealthComponent.h"
+#include "SirDingusGameMode.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ASirDingusCharacter
@@ -66,22 +67,22 @@ ASirDingusCharacter::ASirDingusCharacter()
 
 //void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
 //{
-//	// Debug Msg
-//	if (GEngine)
-//	{
-//		GEngine->AddOnScreenDebugMessage(
-//			-1,
-//			15.f,
-//			FColor::Green,
-//			FString(TEXT("ASirDingusCharacter::DamageTaken()"))
-//		);
-//	}
+//	/// Debug Msg
+////	if (GEngine)
+////	{
+////		GEngine->AddOnScreenDebugMessage(
+////			-1,
+////			15.f,
+////			FColor::Green,
+////			FString(TEXT("ASirDingusCharacter::DamageTaken()"))
+////		);
+////	}
 //}
 
 float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	float result = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	//// Debug Msg
+	float superResult = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	/// Debug Msg
 	//if (GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
@@ -92,28 +93,64 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	//	);
 	//}
 
-	// if character has died
-	if (HasDied())
-	{
-		// mark as dead
-		bAlive = false;
+	///** Check if Character has Died **///
+	//// get health component
+	//UHealthComponent* healthComp = FindComponentByClass<UHealthComponent>();
+	//
+	//// check for valid component
+	//if (!healthComp)
+	//// if component is invalid, log error + exit early
+	//{
+	//	// Debug Msg
+	//	if (GEngine)
+	//	{
+	//		GEngine->AddOnScreenDebugMessage(
+	//			-1,
+	//			15.f,
+	//			FColor::Red,
+	//			FString(TEXT("healthComp invalid"))
+	//		);
+	//	}
+	//	return false;
+	//}
+	//else // if component is valid, test health
+	//{	
+	//	//// Debug Msg
+	//	//if (GEngine)
+	//	//{
+	//	//	GEngine->AddOnScreenDebugMessage(
+	//	//		-1,
+	//	//		15.f,
+	//	//		FColor::Green,
+	//	//		FString(TEXT("healthComp valid"))
+	//	//	);
+	//	//}
+	//
+	//	// if health is below 0 (or equal), character has died
+	//	if (healthComp->GetHealth() <= 0)
+	//	{
+	//		UE_LOG(LogTemp,Warning,TEXT("Character has Died, Informing GameMode"))
+	//
+	//		// inform gamemode character has died
+	//		CurrentGameMode->CharacterDied(this);
+	//	}
+	//	else
+	//	{
+	//		// play flinch animation
+	//		if (FlinchMontage)
+	//		{
+	//			PlayAnimMontageServer(FlinchMontage);
+	//		}
+	//	}
+	//}
 
-		// play death animation
-		if (DeathMontage)
-		{
-			PlayAnimMontageServer(DeathMontage);
-		}
-	}
-	else
+	// play flinch animation
+	if (bAlive && FlinchMontage)
 	{
-		// play flinch animation
-		if (FlinchMontage)
-		{
-			PlayAnimMontageServer(FlinchMontage);
-		}
+		PlayAnimMontageServer(FlinchMontage);
 	}
 
-	return result;
+	return superResult;
 }
 
 // * Refactored blueprint function
@@ -192,6 +229,9 @@ void ASirDingusCharacter::BeginPlay()
 		}
 	}
 
+	// get current gamemode
+	CurrentGameMode = Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this));
+
 	//DEBUG MESSAGE
 	//if (GEngine)
 	//{
@@ -204,57 +244,16 @@ void ASirDingusCharacter::BeginPlay()
 	//}
 }
 
-bool ASirDingusCharacter::HasDied()
+void ASirDingusCharacter::CharacterDeath()
 {
-	//// apply damage
-	//Health -= dmg;
-	//
-	//// if health is less than 0, character is dead
-	//if (Health <= 0)
-	//{
-	//	// clamp health to 0, return dead
-	//	Health = 0;
-	//	return true;
-	//}
-	 
-	// check if health is above 0
-	UHealthComponent* healthComp = FindComponentByClass<UHealthComponent>();
+	// mark as dead
+	bAlive = false;
 
-	// check for valid component
-	if (!healthComp)
-	// if component is invalid, log error + exit early
+	// play death animation
+	if (DeathMontage)
 	{
-		// Debug Msg
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				15.f,
-				FColor::Red,
-				FString(TEXT("healthComp invalid"))
-			);
-		}
-		return false;
+		PlayAnimMontageServer(DeathMontage);
 	}
-	else
-	// otherwise test the health
-	{
-		//// Debug Msg
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		15.f,
-		//		FColor::Green,
-		//		FString(TEXT("healthComp valid"))
-		//	);
-		//}
-
-		// if health is below 0 (or equal), character is dead
-		return healthComp->GetHealth() <= 0;
-	}
-	//// just in case
-	//return false;
 }
 
 /** Refactored Blueprint Functionality -- Melee Swing Line Traces **/
