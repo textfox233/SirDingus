@@ -7,20 +7,23 @@
 EBTNodeResult::Type UBTTask_ChooseTarget::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	Super::ExecuteTask(OwnerComp, NodeMemory);
-
+	
+	APawn* TargetPawn;
+	
 	if (GetWorld()->GetNumPlayerControllers() > 1)
 	{
-		APawn* TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+		TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 		OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
 	}
 	else
 	// simple, pick player 1
 	{
-		APawn* TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+		TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 		OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
 	}
 
-	//UE_LOG(LogTemp, Warning, TEXT("set %s focus to %s"), *OwnerComp.GetAIOwner()->GetName() , *TargetPawn->GetName())
+	UE_LOG(LogTemp, Warning, TEXT("set %s focus to %s"), *OwnerComp.GetAIOwner()->GetName(), *TargetPawn->GetName());
+	UE_LOG(LogTemp, Warning, TEXT("Number of player controllers is %d"), GetWorld()->GetNumPlayerControllers());
 
 	return EBTNodeResult::Succeeded;
 }
