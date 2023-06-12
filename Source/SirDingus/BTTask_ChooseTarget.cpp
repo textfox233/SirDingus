@@ -10,24 +10,31 @@ EBTNodeResult::Type UBTTask_ChooseTarget::ExecuteTask(UBehaviorTreeComponent& Ow
 {
 	Super::ExecuteTask(OwnerComp, NodeMemory);
 
-	if (int numPlayers = GetWorld()->GetNumPlayerControllers())
+	// upadte number of players
+	_numPlayers = GetWorld()->GetNumPlayerControllers();
+
+	if (_numPlayers)
 	{
 		APawn* TargetPawn;
 	
 		// more than 1 player
-		if (numPlayers > 1)
+		if (_numPlayers > 1)
 		{
-			// select a random player
-			int randomPlayerIndex = GetRandomPlayerIndex();
-			UE_LOG(LogTemp, Warning, TEXT("GetRandomPlayerIndex() returned %d with %d players"), randomPlayerIndex, numPlayers);
+			// Random Player
+			//TargetPawn = GetRandomPlayerPawn();
+			
+			// Closest Player
+			TargetPawn = GetClosestPlayerPawn(OwnerComp.GetAIOwner());
 
-			// get that random player
-			TargetPawn = GetPlayerPawnByIndex(randomPlayerIndex);
 			if (TargetPawn)
 			{
 				// focus on them
 				OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
 				return EBTNodeResult::Succeeded;
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("TargetPawn is nullptr"));
 			}
 		}
 
@@ -67,6 +74,85 @@ APawn* UBTTask_ChooseTarget::GetPlayerPawnByIndex(int Index)
 
 	// return player pawn at the desired index
 	return i->Get()->GetPawn();
+}
+
+APawn* UBTTask_ChooseTarget::GetClosestPlayerPawn(AAIController* Owner)
+{
+	// loop until the iterator reaches the index - actual loop is empty except for some debug logs
+
+	if(APawn* OwnerPawn = Owner->GetPawn())
+	{
+		float ShortestDistance = NULL;
+		APawn* ClosestPlayerPawn = nullptr;
+
+		FVector PlayerLocation;
+		APawn* PlayerPawn;
+
+		// Get owner location
+		FVector OwnerLocation = OwnerPawn->GetActorLocation();
+
+		// for every player
+		for (FConstPlayerControllerIterator i = GetWorld()->GetPlayerControllerIterator(); i.GetIndex() < _numPlayers; i++)
+		{
+			/// Debug Logs
+			//UE_LOG(LogTemp, Warning, TEXT("Index is [%d]"), i.GetIndex());
+			//UE_LOG(LogTemp, Warning, TEXT("Player [%d]: %s"), i.GetIndex(), *i->Get()->GetName());
+
+			/// Get Pawn
+			PlayerPawn = i->Get()->GetPawn();
+			if(PlayerPawn)
+			{
+				// Get Location
+				PlayerLocation = PlayerPawn->GetActorLocation();
+
+				// Get Distance (between owner and player)
+				float CurrentDistance = FVector::Dist(OwnerLocation, PlayerLocation);
+
+				/// Compare Distance to Previously Recorded
+				// if shortest is NULL, recent is first recorded distance
+				// otherwise if recent is smaller, it is the new shortest
+				if (ShortestDistance == NULL || CurrentDistance < ShortestDistance )
+				{
+					// save distance for comparison 
+					ShortestDistance = CurrentDistance;
+					
+					// save player pawn for return value
+					ClosestPlayerPawn = PlayerPawn;
+				}
+				// if recent is larger than shortest do nothing; move on
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::GetClosestPlayerPawn() | PlayerPawn is nullptr"));
+			}
+		}
+		return ClosestPlayerPawn;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::GetClosestPlayerPawn() | OwnerPawn is nullptr"));
+	}
+	
+	/// Debug Logs
+	//UE_LOG(LogTemp, Warning, TEXT("targetIndex is [%d]"), Index);
+	//UE_LOG(LogTemp, Warning, TEXT("Final Index is [%d]"), i.GetIndex());
+	//UE_LOG(LogTemp, Warning, TEXT("Player [%d]: %s"), i.GetIndex(), *i->Get()->GetName());
+	
+	// return player pawn at the desired index
+	//return i->Get()->GetPawn();
+	return nullptr;
+}
+
+APawn* UBTTask_ChooseTarget::GetRandomPlayerPawn()
+{
+	// select a random player
+	int randomPlayerIndex = GetRandomPlayerIndex();
+	UE_LOG(LogTemp, Warning, TEXT("GetRandomPlayerIndex() returned %d with %d players"), randomPlayerIndex, _numPlayers);
+	
+	// return that random player
+	return GetPlayerPawnByIndex(randomPlayerIndex);
+
+	//return nullptr;
 }
 
 int UBTTask_ChooseTarget::GetRandomPlayerIndex()
