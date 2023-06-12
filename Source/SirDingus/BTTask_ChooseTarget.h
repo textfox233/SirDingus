@@ -15,4 +15,8 @@ class SIRDINGUS_API UBTTask_ChooseTarget : public UBTTaskNode
 	GENERATED_BODY()
 	
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
+	APawn* GetPlayerPawnByIndex(int Index);
+
+	int GetRandomPlayerIndex();
 };
