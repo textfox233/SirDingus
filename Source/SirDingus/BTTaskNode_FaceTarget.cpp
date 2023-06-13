@@ -2,16 +2,20 @@
 
 
 #include "BTTaskNode_FaceTarget.h"
+//#include "BehaviorTree/BehaviorTreeComponent.h"
+#include "BehaviorTree/BlackboardComponent.h"
 #include "AIController.h"
 
 EBTNodeResult::Type UBTTaskNode_FaceTarget::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	Super::ExecuteTask(OwnerComp, NodeMemory);
 
-	APawn* TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-	OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
+	if (APawn* TargetPawn = Cast<APawn>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(TEXT("TargetPlayer"))))
+	{
+		OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
+		return EBTNodeResult::Succeeded;
+	}
 
-	//UE_LOG(LogTemp, Warning, TEXT("set %s focus to %s"), *OwnerComp.GetAIOwner()->GetName() , *TargetPawn->GetName())
-
+	UE_LOG(LogTemp, Warning, TEXT("UBTTaskNode_FaceTarget::ExecuteTask | TargetPawn is nullptr"))
 	return EBTNodeResult::Succeeded;
 }

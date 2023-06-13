@@ -57,20 +57,41 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 	
 	//APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
-	// Can See Any Player?
-	if(CanSeeAnyPlayer())
-	{
-		//// Observe Player Position
-		//GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-		//GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
+	// get target player
+	UObject* TargetPlayer = GetBlackboardComponent()->GetValueAsObject(TEXT("TargetPlayer"));
 
-		/// Select a target
-		ChooseTarget();
+	// if target player is not set
+	if (!TargetPlayer)
+	{
+		// Check if you can see ANY player
+		if (CanSeeAnyPlayer())
+		{
+			/// Select a new target
+			if (APawn* TargetPawn = ChooseTarget())
+			{
+				// set focus
+				// set blackboard value
+				GetBlackboardComponent()->SetValueAsObject(TEXT("TargetPlayer"), TargetPawn);
+			}
+		}
+		else
+		{
+			// cannot see player
+			GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
+		}
+	}
+	// if target player is set
+
+	// Observe Player Position
+	if (APawn* PlayerPawn = Cast<APawn>(TargetPlayer))
+	{
+		// set blackboard values
+		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
 	}
 	else
 	{
-		// cannot see player
-		GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
+		UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::Tick() | TargetPlayer cannot cast to APawn*"));
 	}
 }
 
