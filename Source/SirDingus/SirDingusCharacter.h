@@ -56,7 +56,7 @@ class ASirDingusCharacter : public ACharacter
 	TSubclassOf<class AWeapon> EquippedWeaponClass;
 
 	// -- Actual Weapon
-	UPROPERTY( BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 	AWeapon* EquippedWeapon;
 
 

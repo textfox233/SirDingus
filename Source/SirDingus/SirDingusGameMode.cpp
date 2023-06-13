@@ -4,6 +4,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "SirDingusCharacter.h"
 #include "SkeletonCharacter.h"
+#include "KnightCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 //void ASirDingusGameMode::ActorDied(APawn* DeadPawn)
@@ -38,11 +39,40 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 		Skeleton->CharacterDeath();
 
 		// 2. Update number of enemies in the level
-		EnemyCount--;
+		_enemyCount--;
 
 		// 3. Trigger game over with a victory if there are no more enemies
-		if (EnemyCount == 0) { GameOver(true); }
+		if (_enemyCount == 0) { GameOver(true); }
 	}
+	
+	// if the dead actor is a player
+	else if (AKnightCharacter* Knight = Cast<AKnightCharacter>(DeadActor))
+	{
+		// Debug Msg
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				2.f,
+				FColor::Red,
+				FString(TEXT("Dead actor is a player character"))
+			);
+		}
+
+		// 1. Handle Character Death
+		Knight->CharacterDeath();
+
+		// 2. Update number of dead players in the level
+		_deadPlayerCount++;
+
+		UE_LOG(LogTemp, Warning, TEXT("%d players in the game"), GetNumPlayers());
+		UE_LOG(LogTemp, Warning, TEXT("%d players are dead"), _deadPlayerCount);
+
+		// 3. Trigger game over with a loss if there are no more players
+		if (_deadPlayerCount == GetNumPlayers()) { GameOver(false); }
+	}
+	
+	// if casts fail
 	else
 	{
 		// Debug Msg
@@ -52,26 +82,10 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 				-1,
 				2.f,
 				FColor::Red,
-				FString(TEXT("Dead actor is not an AI character"))
+				FString(TEXT("Dead actor neither an AI or player character"))
 			);
 		}
 	}
-
-	//// if the dead actor is a player
-	//if (ASirDingusCharacter* player = Cast<ASirDingusCharacter>(DeadActor))
-	//{
-	//	// Debug Msg
-	//	if (GEngine)
-	//	{
-	//		GEngine->AddOnScreenDebugMessage(
-	//			-1,
-	//			2.f,
-	//			FColor::Green,
-	//			FString(TEXT("Dead pawn is a player character"))
-	//		);
-	//	}
-	//}
-
 }
 
 void ASirDingusGameMode::BeginPlay()
@@ -114,8 +128,8 @@ void ASirDingusGameMode::GameOver(bool bPlayerVictory)
 void ASirDingusGameMode::HandleGameStart()
 {
 	// Get the number of enemies in the level
-	EnemyCount = DetermineEnemyCount();
-	UE_LOG(LogTemp, Warning, TEXT("%d enemies in the level"), EnemyCount);
+	_enemyCount = DetermineEnemyCount();
+	UE_LOG(LogTemp, Warning, TEXT("%d enemies in the level"), _enemyCount);
 
 	// get player?
 	// get player controller?

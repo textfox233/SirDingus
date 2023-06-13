@@ -31,7 +31,9 @@ private:
 	void HandleGameStart();
 	
 	int32 DetermineEnemyCount();
-	int32 EnemyCount = 0;
+	int32 _enemyCount = 0;
+
+	int32 _deadPlayerCount = 0;
 };
 
 

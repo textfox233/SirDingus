@@ -13,5 +13,8 @@ UCLASS()
 class SIRDINGUS_API AKnightCharacter : public ASirDingusCharacter
 {
 	GENERATED_BODY()
-	
+public:
+	/** Character Death **/
+	// -- Check for character death
+	virtual void CharacterDeath() override;
 };
