@@ -27,6 +27,7 @@ private:
 	class UBehaviorTree* AIBehavior;
 
 	bool CanSeeAnyPlayer();
+	void LostSightOfTarget();
 
 	APawn* GetPlayerPawnByIndex(int Index);
 	APawn* GetClosestPlayerPawn();

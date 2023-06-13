@@ -80,19 +80,35 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 			GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
 		}
 	}
-	// if target player is set
-
-	// Observe Player Position
-	if (APawn* PlayerPawn = Cast<APawn>(TargetPlayer))
+	
+	
+	if (TargetPlayer != nullptr)
 	{
-		// set blackboard values
-		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
+		if (APawn* PlayerPawn = Cast<APawn>(TargetPlayer))
+		{
+			// if target player is set AND within line of sight
+			// Observe Player Position
+			if (LineOfSightTo(PlayerPawn))
+			{
+				// set blackboard values
+				GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+				GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
+			}
+			else
+			{
+				LostSightOfTarget();
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::Tick() | TargetPlayer cannot cast to APawn*"));
+		}
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::Tick() | TargetPlayer cannot cast to APawn*"));
+		UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::Tick() | TargetPlayer is nullptr"));
 	}
+
 }
 
 
@@ -277,6 +293,16 @@ APawn* ASirDingusAIController::GetClosestPlayerPawn()
 
 	// if above fails, return nullptr
 	return nullptr;
+}
+
+void ASirDingusAIController::LostSightOfTarget()
+{
+	// clear focus
+	ClearFocus(EAIFocusPriority::Gameplay);
+
+	// clear blackboard values
+	GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
+	//GetBlackboardComponent()->ClearValue(TEXT("TargetPlayer"));
 }
 
 APawn* ASirDingusAIController::GetRandomPlayerPawn()
