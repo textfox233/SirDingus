@@ -3,56 +3,64 @@
 
 #include "BTTask_ChooseTarget.h"
 #include "GameFramework/GameState.h"
-#include "AIController.h"
-//#include <random>
+#include "SirDingusAIController.h"
 
 EBTNodeResult::Type UBTTask_ChooseTarget::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	Super::ExecuteTask(OwnerComp, NodeMemory);
 
-	// upadte number of players
-	_numPlayers = GetWorld()->GetNumPlayerControllers();
-
-	if (_numPlayers)
+	if (ASirDingusAIController* AIOwner = Cast<ASirDingusAIController>(OwnerComp.GetAIOwner()))
 	{
-		APawn* TargetPawn;
-	
-		// more than 1 player
-		if (_numPlayers > 1)
+		if (AIOwner->ChooseTarget() != nullptr)
 		{
-			// Random Player
-			//TargetPawn = GetRandomPlayerPawn();
-			
-			// Closest Player
-			TargetPawn = GetClosestPlayerPawn(OwnerComp.GetAIOwner());
-
-			if (TargetPawn)
-			{
-				// focus on them
-				OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
-				return EBTNodeResult::Succeeded;
-			}
-			else
-			{
-				UE_LOG(LogTemp, Warning, TEXT("TargetPawn is nullptr"));
-			}
-		}
-
-		// only 1 player, pick that one
-		else
-		{
-			TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-			OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
 			return EBTNodeResult::Succeeded;
 		}
-
-		//UE_LOG(LogTemp, Warning, TEXT("set %s focus to %s"), *OwnerComp.GetAIOwner()->GetName(), *TargetPawn->GetName());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::ExecuteTask() | ERROR | GetWorld()->GetNumPlayerControllers() returns False"));
 	}
 	return EBTNodeResult::Failed;
+
+	//// update number of players
+	//_numPlayers = GetWorld()->GetNumPlayerControllers();
+	//
+	//if (_numPlayers)
+	//{
+	//	APawn* TargetPawn;
+	//
+	//	// more than 1 player
+	//	if (_numPlayers > 1)
+	//	{
+	//		// Random Player
+	//		//TargetPawn = GetRandomPlayerPawn();
+	//		
+	//		// Closest Player
+	//		TargetPawn = GetClosestPlayerPawn(OwnerComp.GetAIOwner());
+	//
+	//		if (TargetPawn)
+	//		{
+	//			// focus on them
+	//			OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
+	//			return EBTNodeResult::Succeeded;
+	//		}
+	//		else
+	//		{
+	//			UE_LOG(LogTemp, Warning, TEXT("TargetPawn is nullptr"));
+	//		}
+	//	}
+	//
+	//	// only 1 player, pick that one
+	//	else
+	//	{
+	//		TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	//		OwnerComp.GetAIOwner()->SetFocus(TargetPawn);
+	//		return EBTNodeResult::Succeeded;
+	//	}
+	//
+	//	//UE_LOG(LogTemp, Warning, TEXT("set %s focus to %s"), *OwnerComp.GetAIOwner()->GetName(), *TargetPawn->GetName());
+	//}
+	//else
+	//{
+	//	UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::ExecuteTask() | ERROR | GetWorld()->GetNumPlayerControllers() returns False"));
+	//}
+	//return EBTNodeResult::Failed;
 }
 
 APawn* UBTTask_ChooseTarget::GetPlayerPawnByIndex(int Index)
@@ -113,11 +121,15 @@ APawn* UBTTask_ChooseTarget::GetClosestPlayerPawn(AAIController* Owner)
 				// otherwise if recent is smaller, it is the new shortest
 				if (ShortestDistance == NULL || CurrentDistance < ShortestDistance )
 				{
-					// save distance for comparison 
-					ShortestDistance = CurrentDistance;
-					
-					// save player pawn for return value
-					ClosestPlayerPawn = PlayerPawn;
+					// only save if AI can see them
+					if (Owner->LineOfSightTo(PlayerPawn))
+					{
+						// save distance for comparison 
+						ShortestDistance = CurrentDistance;
+
+						// save player pawn for return value
+						ClosestPlayerPawn = PlayerPawn;
+					}
 				}
 				// if recent is larger than shortest do nothing; move on
 			}

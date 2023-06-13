@@ -20,8 +20,18 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 	void SetIsAlive(bool value);
 
+	APawn* ChooseTarget();
+
 private:
 	UPROPERTY(EditAnywhere)
 	class UBehaviorTree* AIBehavior;
 
+	bool CanSeeAnyPlayer();
+
+	APawn* GetPlayerPawnByIndex(int Index);
+	APawn* GetClosestPlayerPawn();
+	APawn* GetRandomPlayerPawn();
+
+	int GetRandomPlayerIndex();
+	int _numPlayers = 1;
 };

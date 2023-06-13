@@ -55,15 +55,17 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	
-	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	//APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
-	//	Can See Player?
-	if(LineOfSightTo(PlayerPawn))
+	// Can See Any Player?
+	if(CanSeeAnyPlayer())
 	{
-		// Observe Player Position
-		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
+		//// Observe Player Position
+		//GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+		//GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
 
+		/// Select a target
+		ChooseTarget();
 	}
 	else
 	{
@@ -72,3 +74,212 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 	}
 }
 
+
+APawn* ASirDingusAIController::ChooseTarget()
+{
+	// update number of players
+	_numPlayers = GetWorld()->GetNumPlayerControllers();
+
+	if (_numPlayers)
+	{
+		//APawn* TargetPawn;
+
+		// more than 1 player
+		if (_numPlayers > 1)
+		{
+			// Random Player
+			//TargetPawn = GetRandomPlayerPawn();
+
+			// Closest Player
+			return GetClosestPlayerPawn();
+			
+			//TargetPawn = GetClosestPlayerPawn();
+			//
+			//if (TargetPawn)
+			//{
+			//	// set target in blackboard
+			//	GetBlackboardComponent()->SetValueAsObject(TEXT("TargetPlayer"), TargetPawn);
+			//
+			//	// focus on them
+			//	SetFocus(TargetPawn);
+			//	return true;
+			//}
+			//else
+			//{
+			//	UE_LOG(LogTemp, Warning, TEXT("TargetPawn is nullptr"));
+			//}
+		}
+
+		// only 1 player, pick that one
+		else
+		{
+			return GetWorld()->GetFirstPlayerController()->GetPawn();
+			
+			//TargetPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+			//
+			//// set target in blackboard
+			//GetBlackboardComponent()->SetValueAsObject(TEXT("TargetPlayer"), TargetPawn);
+			//
+			//// focus on them
+			//SetFocus(TargetPawn);
+			//return true;
+		}
+
+		//UE_LOG(LogTemp, Warning, TEXT("set %s focus to %s"), *OwnerComp.GetAIOwner()->GetName(), *TargetPawn->GetName());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::ExecuteTask() | ERROR | GetWorld()->GetNumPlayerControllers() returns False"));
+	}
+	return nullptr;
+}
+
+bool ASirDingusAIController::CanSeeAnyPlayer()
+{
+	APawn* PlayerPawn;
+	_numPlayers = GetWorld()->GetNumPlayerControllers();
+	// for every player
+	for (FConstPlayerControllerIterator i = GetWorld()->GetPlayerControllerIterator(); i.GetIndex() < _numPlayers; i++)
+	{
+		/// Debug Logs
+		//UE_LOG(LogTemp, Warning, TEXT("Index is [%d]"), i.GetIndex());
+		//UE_LOG(LogTemp, Warning, TEXT("Player [%d]: %s"), i.GetIndex(), *i->Get()->GetName());
+
+		/// Get Pawn
+		PlayerPawn = i->Get()->GetPawn();
+		if (PlayerPawn)
+		{
+			// Can see this player?
+			if (LineOfSightTo(PlayerPawn))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("%s is visible"), *PlayerPawn->GetName());
+				return true;
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::CanSeeAnyPlayer() | PlayerPawn is nullptr"));
+		}
+	}
+	
+	UE_LOG(LogTemp, Warning, TEXT("No players visible"));
+
+	// Cannot see any player
+	return false;
+}
+
+
+APawn* ASirDingusAIController::GetPlayerPawnByIndex(int Index)
+{
+	FConstPlayerControllerIterator i = GetWorld()->GetPlayerControllerIterator();
+
+	// loop until the iterator reaches the index - actual loop is empty except for some debug logs
+	for (; i.GetIndex() < Index; i++)
+	{
+		// Debug Here
+		//UE_LOG(LogTemp, Warning, TEXT("Index is [%d]"), i.GetIndex());
+		//UE_LOG(LogTemp, Warning, TEXT("Player [%d]: %s"), i.GetIndex(), *i->Get()->GetName());
+	}
+
+	/// Debug Logs
+	//UE_LOG(LogTemp, Warning, TEXT("targetIndex is [%d]"), Index);
+	//UE_LOG(LogTemp, Warning, TEXT("Final Index is [%d]"), i.GetIndex());
+	//UE_LOG(LogTemp, Warning, TEXT("Player [%d]: %s"), i.GetIndex(), *i->Get()->GetName());
+
+	// return player pawn at the desired index
+	return i->Get()->GetPawn();
+}
+
+APawn* ASirDingusAIController::GetClosestPlayerPawn()
+{
+	if (APawn* OwnerPawn = GetPawn())
+	{
+		float ShortestDistance = NULL;
+		APawn* ClosestPlayerPawn = nullptr;
+
+		FVector PlayerLocation;
+		APawn* PlayerPawn;
+
+		// Get owner location
+		FVector OwnerLocation = OwnerPawn->GetActorLocation();
+
+		// for every player
+		for (FConstPlayerControllerIterator i = GetWorld()->GetPlayerControllerIterator(); i.GetIndex() < _numPlayers; i++)
+		{
+			/// Debug Logs
+			//UE_LOG(LogTemp, Warning, TEXT("Index is [%d]"), i.GetIndex());
+			//UE_LOG(LogTemp, Warning, TEXT("Player [%d]: %s"), i.GetIndex(), *i->Get()->GetName());
+
+			/// Get Pawn
+			PlayerPawn = i->Get()->GetPawn();
+			if (PlayerPawn)
+			{
+				// Get Location
+				PlayerLocation = PlayerPawn->GetActorLocation();
+
+				// Get Distance (between owner and player)
+				float CurrentDistance = FVector::Dist(OwnerLocation, PlayerLocation);
+
+				/// Compare Distance to Previously Recorded
+				// if shortest is NULL, recent is first recorded distance
+				// otherwise if recent is smaller, it is the new shortest
+				if (ShortestDistance == NULL || CurrentDistance < ShortestDistance)
+				{
+					// only save if AI can see them
+					if (LineOfSightTo(PlayerPawn))
+					{
+						// save distance for comparison 
+						ShortestDistance = CurrentDistance;
+
+						// save player pawn for return value
+						ClosestPlayerPawn = PlayerPawn;
+					}
+				}
+				// if recent is larger than shortest do nothing; move on
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::GetClosestPlayerPawn() | PlayerPawn is nullptr"));
+			}
+		}
+		return ClosestPlayerPawn;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::GetClosestPlayerPawn() | OwnerPawn is nullptr"));
+	}
+
+	/// Debug Logs
+	//UE_LOG(LogTemp, Warning, TEXT("targetIndex is [%d]"), Index);
+	//UE_LOG(LogTemp, Warning, TEXT("Final Index is [%d]"), i.GetIndex());
+	//UE_LOG(LogTemp, Warning, TEXT("Player [%d]: %s"), i.GetIndex(), *i->Get()->GetName());
+
+	// if above fails, return nullptr
+	return nullptr;
+}
+
+APawn* ASirDingusAIController::GetRandomPlayerPawn()
+{
+	// select a random player
+	int randomPlayerIndex = GetRandomPlayerIndex();
+	UE_LOG(LogTemp, Warning, TEXT("GetRandomPlayerIndex() returned %d with %d players"), randomPlayerIndex, _numPlayers);
+
+	// return that random player
+	return GetPlayerPawnByIndex(randomPlayerIndex);
+
+	//return nullptr;
+}
+
+int ASirDingusAIController::GetRandomPlayerIndex()
+{
+	// select a random player
+	// get a random number between 1 and the total number of players
+	int range = GetWorld()->GetNumPlayerControllers();
+	int num = rand() % range;
+
+	///Debug logs
+	//UE_LOG(LogTemp, Warning, TEXT("Random number between %d and %d is %d"), 1, numPlayers, num);
+	//UE_LOG(LogTemp, Warning, TEXT("Number of player controllers is %d"), GetWorld()->GetNumPlayerControllers());
+
+	return num;
+}
