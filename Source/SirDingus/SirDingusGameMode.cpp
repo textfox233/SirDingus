@@ -48,8 +48,6 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 	// if the dead actor is a player
 	else if (AKnightCharacter* Knight = Cast<AKnightCharacter>(DeadActor))
 	{
-
-
 		// Debug Msg
 		if (GEngine)
 		{

@@ -295,6 +295,16 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 		UE_LOG(LogTemp, Warning, TEXT("%s Hit"), *hitActor->GetName());
 	}
 
+	// don't apply damage to dead characters
+	if (ASirDingusCharacter* Character = Cast<ASirDingusCharacter>(hitActor))
+	{
+		// if character is not alive
+		if (!Character->bAlive)
+		{
+			return;
+		}
+	}
+
 	// players shouldn't be able to damage players
 	if(this->ActorHasTag("Player"))
 	{
@@ -316,8 +326,8 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 			return;
 		}
 	}
-	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target not a player")); }
 
+	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target not a player")); }
 
 	// deal damage to hit actors
 	UClass* DamageTypeClass = UDamageType::StaticClass();
