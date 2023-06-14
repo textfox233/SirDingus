@@ -48,6 +48,8 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 	// if the dead actor is a player
 	else if (AKnightCharacter* Knight = Cast<AKnightCharacter>(DeadActor))
 	{
+
+
 		// Debug Msg
 		if (GEngine)
 		{
@@ -95,35 +97,35 @@ void ASirDingusGameMode::BeginPlay()
 	HandleGameStart();
 }
 
-void ASirDingusGameMode::GameOver(bool bPlayerVictory)
-{
-	if (bPlayerVictory)
-	{
-		// Debug Msg
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				15.f,
-				FColor::Green,
-				FString(TEXT("Player Wins!"))
-			);
-		}
-	}
-	else
-	{
-		// Debug Msg
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				15.f,
-				FColor::Red,
-				FString(TEXT("Player Loses!"))
-			);
-		}
-	}
-}
+//void ASirDingusGameMode::GameOver(bool bPlayerVictory)
+//{
+//	if (bPlayerVictory)
+//	{
+//		// Debug Msg
+//		if (GEngine)
+//		{
+//			GEngine->AddOnScreenDebugMessage(
+//				-1,
+//				15.f,
+//				FColor::Green,
+//				FString(TEXT("Player Wins!"))
+//			);
+//		}
+//	}
+//	else
+//	{
+//		// Debug Msg
+//		if (GEngine)
+//		{
+//			GEngine->AddOnScreenDebugMessage(
+//				-1,
+//				15.f,
+//				FColor::Red,
+//				FString(TEXT("Player Loses!"))
+//			);
+//		}
+//	}
+//}
 
 void ASirDingusGameMode::HandleGameStart()
 {

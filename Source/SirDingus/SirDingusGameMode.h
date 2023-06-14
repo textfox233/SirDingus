@@ -25,6 +25,7 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void GameStart();
 	
+	UFUNCTION(BlueprintImplementableEvent)
 	void GameOver(bool bPlayerVictory);
 
 private:
