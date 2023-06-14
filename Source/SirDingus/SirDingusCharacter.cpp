@@ -272,13 +272,24 @@ void ASirDingusCharacter::MeleeTraceInProgress()
 	// perform line trace (debug? / logs?)
 	AActor* hit = DrawWeaponArc(true);
 
-	//if (hit->IsValidLowLevel())
-	if (hit != nullptr)
-	// anything hit?
+	// process the hit
+	if (ProcessMeleeHit(hit))
+	// if hit was valid
 	{
-		// process hit
-		ProcessMeleeHit(hit);
+		// stop line tracing - should stop multiple hits per swing
+		GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
 	}
+
+	//if (hit != nullptr)
+	//// anything hit?
+	//{
+	//	// process hit
+	//	if (ProcessMeleeHit(hit))
+	//	// if hit was valid
+	//	{
+	//
+	//	}
+	//}
 }
 // End traces
 void ASirDingusCharacter::MeleeTraceEnd()
@@ -287,43 +298,56 @@ void ASirDingusCharacter::MeleeTraceEnd()
 	GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
 }
 
-// -- Process melee hits (is it a player, damage dealing etc)
-void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
+// -- Process melee hits (TRUE means damage was dealt, FALSE means the hit was invalid)
+bool ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 {
+	// Was there no hit?
+	if (hitActor == nullptr)
+	{
+		// FALSE: target invalid
+		return false;
+	}
+	
 	if (bDebugLog) {
 		UE_LOG(LogTemp, Log, TEXT("ASirDingusCharacter::ProcessMeleeHit"));
 		UE_LOG(LogTemp, Warning, TEXT("%s Hit"), *hitActor->GetName());
 	}
 
-	// don't apply damage to dead characters
+	// Was the hit actor a dead character?
 	if (ASirDingusCharacter* Character = Cast<ASirDingusCharacter>(hitActor))
 	{
 		// if character is not alive
 		if (!Character->bAlive)
 		{
-			return;
+			// FALSE: target invalid
+			return false;
 		}
 	}
 
-	// players shouldn't be able to damage players
+	// Did a player just hit another player?
 	if(this->ActorHasTag("Player"))
 	{
 		// check tags to see what is being damaged
 		if (hitActor->ActorHasTag("Player"))
 		{
-			if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target is a player")); }
-
-			//DEBUG MESSAGE
-			if (GEngine)
+			/// Debug
+			if (bDebugLog) 
 			{
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					15.f,
-					FColor::Yellow,
-					FString(TEXT("Hit target is player"))
-				);
+				UE_LOG(LogTemp, Log, TEXT("Target is a player"));
+				
+				if (GEngine)
+				{
+					GEngine->AddOnScreenDebugMessage(
+						-1,
+						15.f,
+						FColor::Yellow,
+						FString(TEXT("Hit target is player"))
+					);
+				}
 			}
-			return;
+
+			// FALSE: target invalid
+			return false;
 		}
 	}
 
@@ -339,6 +363,9 @@ void ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 		DamageTypeClass	// DamageTypeClass - Class that describes the damage that was done.
 	);
 	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
+
+	// TRUE: damage was dealt
+	return true;
 
 	//if (GEngine)
 	//{

@@ -150,7 +150,7 @@ protected:
 
 	// -- Process Melee Hits
 	UFUNCTION(BlueprintCallable)
-	void ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
+	bool ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
 
 	// -- Perform Weapon Arc via Line Traces
 	UFUNCTION(BlueprintCallable)
