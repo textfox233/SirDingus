@@ -430,19 +430,21 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
-		//Dodging
+		/// Dodging - Incomplete
 		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Dodge);
 		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Completed, this, &ASirDingusCharacter::StopDodging);
 
-		//Moving
+		/// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Move);
 
-		//Looking
+		/// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Look);
 
-		//Attacking
-		//EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::AttackEvent);
+		/// Attacking
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Attack);
+
+		/// Restart Game
+		EnhancedInputComponent->BindAction(RestartGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::RestartGame);
 	}
 
 }
@@ -536,8 +538,8 @@ void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 	//BasicAttackMontage->HasValidSlotSetup();
 
 
-	// input is a bool
-	bIsAttacking = Value.Get<bool>();
+	/// input is a bool
+	//bIsAttacking = Value.Get<bool>();
 
 	//DEBUG MESSAGE
 	//if (GEngine) 
@@ -551,4 +553,22 @@ void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 	//		//FString::Printf(TEXT("BasicAttackMontage = %s"), (*BasicAttackMontage->GetName()))
 	//	);
 	//}
+}
+
+void ASirDingusCharacter::RestartGame(const FInputActionValue& Value)
+{
+	// Debug Msg
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			TEXT("ASirDingusCharacter::RestartGame()")
+		);
+	}
+
+
+
+	//CurrentGameMode->RequestRestart();
 }

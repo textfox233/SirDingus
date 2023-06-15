@@ -88,9 +88,28 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 	}
 }
 
+bool ASirDingusGameMode::RequestRestart()
+{
+	// Debug Msg
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			TEXT("ASirDingusGameMode::RequestRestart()")
+		);
+	}
+
+	return false;
+}
+
 void ASirDingusGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// game hasn't started yet
+	_bGameinProgress = false;
 
 	HandleGameStart();
 }
@@ -130,6 +149,9 @@ void ASirDingusGameMode::HandleGameStart()
 	// Get the number of enemies in the level
 	_enemyCount = DetermineEnemyCount();
 	UE_LOG(LogTemp, Warning, TEXT("%d enemies in the level"), _enemyCount);
+
+	// mark game as in progress
+	_bGameinProgress = true;
 
 	// get player?
 	// get player controller?

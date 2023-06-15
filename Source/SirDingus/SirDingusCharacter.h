@@ -46,8 +46,12 @@ class ASirDingusCharacter : public ACharacter
 	// -- Attack
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* AttackAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = MyAnimationInfo, meta = (AllowPrivateAccess = "true"))
-	bool bIsAttacking;
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = MyAnimationInfo, meta = (AllowPrivateAccess = "true"))
+	//bool bIsAttacking;
+
+	// -- Restart Game
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* RestartGameAction;
 
 
 	/** Equipped Weapon **/
@@ -117,6 +121,9 @@ protected:
 			
 	//// -- Attacking
 	//void Attack(const FInputActionValue& Value);
+
+	// -- Restart Game
+	void RestartGame(const FInputActionValue& Value);
 
 
 	// APawn interface

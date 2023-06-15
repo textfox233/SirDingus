@@ -19,6 +19,8 @@ public:
 	//void ActorDied(APawn* deadActor);
 	void CharacterDied(class AActor* DeadActor);
 
+	bool RequestRestart();
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -31,6 +33,9 @@ protected:
 private:
 	void HandleGameStart();
 	
+	UPROPERTY(BlueprintReadWrite, Category = SessionInfo, meta = (AllowPrivateAccess))
+	bool _bGameinProgress;
+
 	int32 DetermineEnemyCount();
 	int32 _enemyCount = 0;
 
