@@ -101,6 +101,11 @@ bool ASirDingusGameMode::RequestRestart()
 		);
 	}
 
+	// must be game over to restart
+	if (!_bGameInProgress)
+	{
+		return true;
+	}
 	return false;
 }
 
@@ -109,7 +114,7 @@ void ASirDingusGameMode::BeginPlay()
 	Super::BeginPlay();
 
 	// game hasn't started yet
-	_bGameinProgress = false;
+	_bGameInProgress = false;
 
 	HandleGameStart();
 }
@@ -151,7 +156,7 @@ void ASirDingusGameMode::HandleGameStart()
 	UE_LOG(LogTemp, Warning, TEXT("%d enemies in the level"), _enemyCount);
 
 	// mark game as in progress
-	_bGameinProgress = true;
+	_bGameInProgress = true;
 
 	// get player?
 	// get player controller?

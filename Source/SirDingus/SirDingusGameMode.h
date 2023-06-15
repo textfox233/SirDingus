@@ -34,7 +34,7 @@ private:
 	void HandleGameStart();
 	
 	UPROPERTY(BlueprintReadWrite, Category = SessionInfo, meta = (AllowPrivateAccess))
-	bool _bGameinProgress;
+	bool _bGameInProgress;
 
 	int32 DetermineEnemyCount();
 	int32 _enemyCount = 0;

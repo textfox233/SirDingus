@@ -568,7 +568,28 @@ void ASirDingusCharacter::RestartGame(const FInputActionValue& Value)
 		);
 	}
 
-
-
-	//CurrentGameMode->RequestRestart();
+	if (CurrentGameMode->RequestRestart())
+	{
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.f,
+				FColor::Green,
+				TEXT("Restart Approved")
+			);
+		}
+	}
+	else
+	{
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.f,
+				FColor::Red,
+				TEXT("Restart Declined")
+			);
+		}
+	}
 }
