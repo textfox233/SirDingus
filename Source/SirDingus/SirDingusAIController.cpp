@@ -106,7 +106,7 @@ void ASirDingusAIController::Tick(float DeltaSeconds)
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::Tick() | TargetPlayer is nullptr"));
+		//UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::Tick() | TargetPlayer is nullptr"));
 	}
 
 }
@@ -195,11 +195,11 @@ bool ASirDingusAIController::CanSeeAnyPlayer()
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::CanSeeAnyPlayer() | PlayerPawn is nullptr"));
+			//UE_LOG(LogTemp, Warning, TEXT("ASirDingusAIController::CanSeeAnyPlayer() | PlayerPawn is nullptr"));
 		}
 	}
 	
-	UE_LOG(LogTemp, Warning, TEXT("No players visible"));
+	//UE_LOG(LogTemp, Warning, TEXT("No players visible"));
 
 	// Cannot see any player
 	return false;

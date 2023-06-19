@@ -123,6 +123,7 @@ protected:
 	//void Attack(const FInputActionValue& Value);
 
 	// -- Restart Game
+	UFUNCTION(Server, Reliable)
 	void RestartGame(const FInputActionValue& Value);
 
 

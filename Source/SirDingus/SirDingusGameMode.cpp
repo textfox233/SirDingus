@@ -6,6 +6,7 @@
 #include "SkeletonCharacter.h"
 #include "KnightCharacter.h"
 #include "UObject/ConstructorHelpers.h"
+//#include "MultiplayerSessionsSubsystem.h"
 
 //void ASirDingusGameMode::ActorDied(APawn* DeadPawn)
 void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
@@ -104,6 +105,23 @@ bool ASirDingusGameMode::RequestRestart()
 	// must be game over to restart
 	if (!_bGameInProgress)
 	{
+		// reset level
+
+		UE_LOG(LogTemp, Warning, TEXT("Level to Reset: %s"), *GetWorld()->GetName());
+		
+		UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+
+		 //if (GetLevel())
+		//{
+		//	UE_LOG(LogTemp, Warning, TEXT("Level to Reset: %s"), *GetLevel()->GetName());
+		//}
+		//else
+		//{
+		//	UE_LOG(LogTemp, Warning, TEXT("can't find level"));
+		//	
+		//}
+
+		//Reset();
 		return true;
 	}
 	return false;

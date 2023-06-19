@@ -21,6 +21,9 @@ public:
 
 	bool RequestRestart();
 
+	//UFUNCTION(BlueprintImplementableEvent)
+	//void RequestRestart();
+
 protected:
 	virtual void BeginPlay() override;
 

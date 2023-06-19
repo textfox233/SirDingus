@@ -18,7 +18,7 @@
 #include "SirDingusGameMode.h"
 
 //////////////////////////////////////////////////////////////////////////
-// ASirDingusCharacter
+/// ASirDingusCharacter
 
 ASirDingusCharacter::ASirDingusCharacter()
 {
@@ -153,14 +153,14 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	return superResult;
 }
 
-// * Refactored blueprint function
+/// * Refactored blueprint function
 // Play a given montage over the network
 void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage)
 {
 	PlayAnimMontageMulticast(AnimMontage);
 }
 
-// * Refactored blueprint function
+/// * Refactored blueprint function
 // Play a given montage on each client
 void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage)
 {
@@ -257,7 +257,7 @@ void ASirDingusCharacter::CharacterDeath()
 }
 
 /** Refactored Blueprint Functionality -- Melee Swing Line Traces **/
-// -- Set linetraces to occur until TriggerMeleeEnd()
+/// -- Set linetraces to occur until TriggerMeleeEnd()
 // Start traces
 void ASirDingusCharacter::MeleeTraceStart()
 {
@@ -555,7 +555,7 @@ void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 	//}
 }
 
-void ASirDingusCharacter::RestartGame(const FInputActionValue& Value)
+void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Value)
 {
 	// Debug Msg
 	if (GEngine)
@@ -567,17 +567,42 @@ void ASirDingusCharacter::RestartGame(const FInputActionValue& Value)
 			TEXT("ASirDingusCharacter::RestartGame()")
 		);
 	}
-
-	if (CurrentGameMode->RequestRestart())
+	if (CurrentGameMode)
 	{
-		if (GEngine)
+		//CurrentGameMode->RequestRestart();
+		//if (GEngine)
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		3.f,
+		//		FColor::Green,
+		//		TEXT("Restart Approved")
+		//	);
+		//}
+		
+		if (CurrentGameMode->RequestRestart())
 		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				3.f,
-				FColor::Green,
-				TEXT("Restart Approved")
-			);
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					3.f,
+					FColor::Green,
+					TEXT("Restart Approved")
+				);
+			}
+		}
+		else
+		{
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					3.f,
+					FColor::Red,
+					TEXT("Restart Declined")
+				);
+			}
 		}
 	}
 	else
@@ -588,7 +613,7 @@ void ASirDingusCharacter::RestartGame(const FInputActionValue& Value)
 				-1,
 				3.f,
 				FColor::Red,
-				TEXT("Restart Declined")
+				TEXT("Cannot Access Game Mode")
 			);
 		}
 	}
