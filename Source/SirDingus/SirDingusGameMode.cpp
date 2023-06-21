@@ -103,13 +103,14 @@ bool ASirDingusGameMode::RequestRestart()
 	}
 
 	// must be game over to restart
-	if (!_bGameInProgress)
+	if (!_bGameInProgress) // matchstate::inprogress??
 	{
 		// reset level
 
 		UE_LOG(LogTemp, Warning, TEXT("Level to Reset: %s"), *GetWorld()->GetName());
 		
-		UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+		//UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+		GetWorld()->ServerTravel("?Restart", false);
 
 		 //if (GetLevel())
 		//{
