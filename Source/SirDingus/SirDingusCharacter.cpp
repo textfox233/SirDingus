@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Weapon.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "Components/SceneComponent.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "Engine/EngineTypes.h"
@@ -445,72 +446,81 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 
 		/// Restart Game
 		EnhancedInputComponent->BindAction(RestartGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::RestartGame);
+
+		/// Quit Game
+		EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::QuitGame);
 	}
 
 }
 
 void ASirDingusCharacter::Dodge(const FInputActionValue& Value)
 {
-	// input is a bool
-	bool bIsDodging = Value.Get<bool>();
-
-	//DEBUG MESSAGE
-	if (GEngine)
+	//// input is a bool
+	//bool bIsDodging = Value.Get<bool>();
+	////DEBUG MESSAGE
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		15.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("Dodging = %s"), (bIsDodging ? TEXT("true") : TEXT("false")))
+	//	);
+	//}
+	if (bAlive)
 	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			15.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("Dodging = %s"), (bIsDodging ? TEXT("true") : TEXT("false")))
-		);
+		PlayAnimMontageServer(DodgeMontage);
 	}
 }
 
 void ASirDingusCharacter::StopDodging()
 {
-	//DEBUG MESSAGE
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			15.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("Stop Dodging"))
-		);
-	}
+	////DEBUG MESSAGE
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		15.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("Stop Dodging"))
+	//	);
+	//}
 }
 
 void ASirDingusCharacter::Move(const FInputActionValue& Value)
 {
-	// input is a Vector2D
-	FVector2D MovementVector = Value.Get<FVector2D>();
-
-	if (Controller != nullptr)
+	if (bAlive)
 	{
-		// find out which way is forward
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
+		// input is a Vector2D
+		FVector2D MovementVector = Value.Get<FVector2D>();
 
-		// get forward vector
-		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-	
-		// get right vector 
-		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+		if (Controller != nullptr)
+		{
+			// find out which way is forward
+			const FRotator Rotation = Controller->GetControlRotation();
+			const FRotator YawRotation(0, Rotation.Yaw, 0);
 
-		// add movement 
-		AddMovementInput(ForwardDirection, MovementVector.Y);
-		AddMovementInput(RightDirection, MovementVector.X);
+			// get forward vector
+			const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 
-		////DEBUG MESSAGE
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		15.f,
-		//		FColor::Yellow,
-		//		FString::Printf(TEXT("Moving"))
-		//	);
-		//}
+			// get right vector 
+			const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+
+			// add movement 
+			AddMovementInput(ForwardDirection, MovementVector.Y);
+			AddMovementInput(RightDirection, MovementVector.X);
+
+			////DEBUG MESSAGE
+			//if (GEngine)
+			//{
+			//	GEngine->AddOnScreenDebugMessage(
+			//		-1,
+			//		15.f,
+			//		FColor::Yellow,
+			//		FString::Printf(TEXT("Moving"))
+			//	);
+			//}
+		}
 	}
 }
 
@@ -530,16 +540,13 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 
 void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 {
-	if (BasicAttackMontage)
+	if (bAlive)
 	{
-		PlayAnimMontageServer(BasicAttackMontage);
+		if (BasicAttackMontage)
+		{
+			PlayAnimMontageServer(BasicAttackMontage);
+		}
 	}
-	//bool bValid = BasicAttackMontage->HasValidSlotSetup();
-	//BasicAttackMontage->HasValidSlotSetup();
-
-
-	/// input is a bool
-	//bIsAttacking = Value.Get<bool>();
 
 	//DEBUG MESSAGE
 	//if (GEngine) 
@@ -617,4 +624,43 @@ void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Va
 			);
 		}
 	}
+}
+
+void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
+{
+	/// Debug Msg
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			TEXT("ASirDingusCharacter::QuitGame()")
+		);
+	}
+
+	if (APlayerController* thisPlayer = Cast<APlayerController>(GetController()))
+	{
+		UKismetSystemLibrary::QuitGame
+		(
+			this,
+			thisPlayer,
+			EQuitPreference::Quit,
+			true
+		);
+	}
+	else
+	{
+		/// Debug Msg
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.f,
+				FColor::Red,
+				TEXT("Controller is not a PlayerController")
+			);
+		}
+	}
+
 }

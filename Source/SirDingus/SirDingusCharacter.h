@@ -52,6 +52,10 @@ class ASirDingusCharacter : public ACharacter
 	// -- Restart Game
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* RestartGameAction;
+	
+	// -- Quit Game
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		class UInputAction* QuitGameAction;
 
 
 	/** Equipped Weapon **/
@@ -63,30 +67,19 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 	AWeapon* EquippedWeapon;
 
-
-	//// Health
-	//UPROPERTY(EditAnywhere, Category = Health, meta = (AllowPrivateAccess = "true"))
-	//int MaxHealth = 100;
-	//UPROPERTY(BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
-	//int Health;
-
 public:
 	ASirDingusCharacter();
 
 	/** Character Death **/
 	virtual void CharacterDeath();
 
-
-	//// Blueprint Event for Attacking - Deprecated
+	/// Blueprint Event for Attacking - Deprecated
 	//UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
 	//void AttackEvent();
 
-	// When Character Takes Damage
+	/// When Character Takes Damage
 	// - tried at first to bind a new function to OnTakeAnyDamage but ran into problems, decided instead to override AActor::TakeDamage()
 	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
-
-	//UFUNCTION()
-	//void DamageTaken(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 
 	// -- Play Animations
 	UFUNCTION(Server, Reliable, BlueprintCallable)
@@ -101,6 +94,8 @@ public:
 		class UAnimMontage* FlinchMontage;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
 		class UAnimMontage* DeathMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
+		class UAnimMontage* DodgeMontage;
 
 
 	// -- Attacking (currently public so that AI can find it, may want to change this)
@@ -125,6 +120,9 @@ protected:
 	// -- Restart Game
 	UFUNCTION(Server, Reliable)
 	void RestartGame(const FInputActionValue& Value);
+	
+	// -- Quit Game
+	void QuitGame(const FInputActionValue& Value);
 
 
 	// APawn interface

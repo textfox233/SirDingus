@@ -105,24 +105,9 @@ bool ASirDingusGameMode::RequestRestart()
 	// must be game over to restart
 	if (!_bGameInProgress) // matchstate::inprogress??
 	{
-		// reset level
-
-		UE_LOG(LogTemp, Warning, TEXT("Level to Reset: %s"), *GetWorld()->GetName());
-		
-		//UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+		/// reset level
 		GetWorld()->ServerTravel("?Restart", false);
 
-		 //if (GetLevel())
-		//{
-		//	UE_LOG(LogTemp, Warning, TEXT("Level to Reset: %s"), *GetLevel()->GetName());
-		//}
-		//else
-		//{
-		//	UE_LOG(LogTemp, Warning, TEXT("can't find level"));
-		//	
-		//}
-
-		//Reset();
 		return true;
 	}
 	return false;
@@ -177,12 +162,7 @@ void ASirDingusGameMode::HandleGameStart()
 	// mark game as in progress
 	_bGameInProgress = true;
 
-	// get player?
-	// get player controller?
-
 	GameStart();
-
-	// disable player?
 }
 
 int32 ASirDingusGameMode::DetermineEnemyCount()

@@ -16,13 +16,9 @@ class ASirDingusGameMode : public AGameModeBase
 	//	Loss: - all players dead
 
 public:
-	//void ActorDied(APawn* deadActor);
 	void CharacterDied(class AActor* DeadActor);
 
 	bool RequestRestart();
-
-	//UFUNCTION(BlueprintImplementableEvent)
-	//void RequestRestart();
 
 protected:
 	virtual void BeginPlay() override;
