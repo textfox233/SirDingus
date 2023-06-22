@@ -55,7 +55,7 @@ class ASirDingusCharacter : public ACharacter
 	
 	// -- Quit Game
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-		class UInputAction* QuitGameAction;
+	class UInputAction* QuitGameAction;
 
 
 	/** Equipped Weapon **/

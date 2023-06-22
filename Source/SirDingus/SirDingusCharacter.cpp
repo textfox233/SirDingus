@@ -639,6 +639,7 @@ void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 		);
 	}
 
+	// if this is a player, exit the game
 	if (APlayerController* thisPlayer = Cast<APlayerController>(GetController()))
 	{
 		UKismetSystemLibrary::QuitGame
@@ -649,6 +650,7 @@ void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 			true
 		);
 	}
+
 	else
 	{
 		/// Debug Msg
