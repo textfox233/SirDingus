@@ -1,0 +1,1265 @@
+"../../../Engine/Content/EditorResources/S_Actor.ubulk" 0
+"../../../Engine/Content/EditorResources/S_Actor.uasset" 1
+"../../../Engine/Content/EditorResources/S_Actor.uexp" 2
+"../../../Engine/Content/EditorResources/S_BoxReflectionCapture.uasset" 3
+"../../../Engine/Content/EditorResources/S_BoxReflectionCapture.uexp" 4
+"../../../Engine/Content/EngineResources/DefaultTexture.ubulk" 5
+"../../../Engine/Content/EngineResources/DefaultTexture.uasset" 6
+"../../../Engine/Content/EngineResources/DefaultTexture.uexp" 7
+"../../../Engine/Content/EngineResources/DefaultTextureCube.uasset" 8
+"../../../Engine/Content/EngineResources/DefaultTextureCube.uexp" 9
+"../../../Engine/Content/EngineResources/DefaultVolumeTexture2D.uasset" 10
+"../../../Engine/Content/EngineResources/DefaultVolumeTexture2D.uexp" 11
+"../../../Engine/Content/EngineResources/DefaultVolumeTexture.uasset" 12
+"../../../Engine/Content/EngineResources/DefaultVolumeTexture.uexp" 13
+"../../../Engine/Content/EditorResources/S_Trigger.ubulk" 14
+"../../../Engine/Content/EditorResources/S_Trigger.uasset" 15
+"../../../Engine/Content/EditorResources/S_Trigger.uexp" 16
+"../../../Engine/Content/EditorResources/S_TriggerBox.uasset" 17
+"../../../Engine/Content/EditorResources/S_TriggerBox.uexp" 18
+"../../../Engine/Content/EditorResources/S_TriggerCapsule.uasset" 19
+"../../../Engine/Content/EditorResources/S_TriggerCapsule.uexp" 20
+"../../../Engine/Content/EditorResources/S_TriggerSphere.uasset" 21
+"../../../Engine/Content/EditorResources/S_TriggerSphere.uexp" 22
+"../../../Engine/Content/EngineMeshes/Sphere.ubulk" 23
+"../../../Engine/Content/EngineMeshes/Sphere.uasset" 24
+"../../../Engine/Content/EngineMeshes/Sphere.uexp" 25
+"../../../Engine/Content/EngineResources/GradientTexture0.uasset" 26
+"../../../Engine/Content/EngineResources/GradientTexture0.uexp" 27
+"../../../Engine/Content/EngineResources/Black.uasset" 28
+"../../../Engine/Content/EngineResources/Black.uexp" 29
+"../../../Engine/Content/VREditor/LaserPointer/VR_LaserPower_01.ubulk" 30
+"../../../Engine/Content/VREditor/LaserPointer/VR_LaserPower_01.uasset" 31
+"../../../Engine/Content/VREditor/LaserPointer/VR_LaserPower_01.uexp" 32
+"../../../Engine/Content/VREditor/TransformGizmo/TransformGizmoMaterial.uasset" 33
+"../../../Engine/Content/VREditor/TransformGizmo/TransformGizmoMaterial.uexp" 34
+"../../../Engine/Content/VREditor/TransformGizmo/TranslucentTransformGizmoMaterial.uasset" 35
+"../../../Engine/Content/VREditor/TransformGizmo/TranslucentTransformGizmoMaterial.uexp" 36
+"../../../Engine/Content/VREditor/TransformGizmo/PlaneTranslationHandle.ubulk" 37
+"../../../Engine/Content/VREditor/TransformGizmo/PlaneTranslationHandle.uasset" 38
+"../../../Engine/Content/VREditor/TransformGizmo/PlaneTranslationHandle.uexp" 39
+"../../../Engine/Content/VREditor/TransformGizmo/BoundingBoxCorner.ubulk" 40
+"../../../Engine/Content/VREditor/TransformGizmo/BoundingBoxCorner.uasset" 41
+"../../../Engine/Content/VREditor/TransformGizmo/BoundingBoxCorner.uexp" 42
+"../../../Engine/Content/VREditor/TransformGizmo/BoundingBoxEdge.ubulk" 43
+"../../../Engine/Content/VREditor/TransformGizmo/BoundingBoxEdge.uasset" 44
+"../../../Engine/Content/VREditor/TransformGizmo/BoundingBoxEdge.uexp" 45
+"../../../Engine/Content/VREditor/TransformGizmo/Main.uasset" 46
+"../../../Engine/Content/VREditor/TransformGizmo/Main.uexp" 47
+"../../../Engine/Content/VREditor/TransformGizmo/Xray.uasset" 48
+"../../../Engine/Content/VREditor/TransformGizmo/Xray.uexp" 49
+"../../../Engine/Content/VREditor/TransformGizmo/SM_Sequencer_Node.ubulk" 50
+"../../../Engine/Content/VREditor/TransformGizmo/SM_Sequencer_Node.uasset" 51
+"../../../Engine/Content/VREditor/TransformGizmo/SM_Sequencer_Node.uexp" 52
+"../../../Engine/Content/EditorMaterials/Camera/CineMat.uasset" 53
+"../../../Engine/Content/EditorMaterials/Camera/CineMat.uexp" 54
+"../../../Engine/Content/EditorMaterials/Camera/MI_CineMat_Rig.uasset" 55
+"../../../Engine/Content/EditorMaterials/Camera/MI_CineMat_Rig.uexp" 56
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Base.ubulk" 57
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Base.uasset" 58
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Base.uexp" 59
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Arm.ubulk" 60
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Arm.uasset" 61
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Arm.uexp" 62
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Mount.ubulk" 63
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Mount.uasset" 64
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Mount.uexp" 65
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Body.ubulk" 66
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Body.uasset" 67
+"../../../Engine/Content/EditorMeshes/Camera/SM_CraneRig_Body.uexp" 68
+"../../../Engine/Content/EditorMeshes/Camera/SM_RailRig_Track.ubulk" 69
+"../../../Engine/Content/EditorMeshes/Camera/SM_RailRig_Track.uasset" 70
+"../../../Engine/Content/EditorMeshes/Camera/SM_RailRig_Track.uexp" 71
+"../../../Engine/Content/EditorMeshes/Camera/SM_RailRig_Mount.ubulk" 72
+"../../../Engine/Content/EditorMeshes/Camera/SM_RailRig_Mount.uasset" 73
+"../../../Engine/Content/EditorMeshes/Camera/SM_RailRig_Mount.uexp" 74
+"../../../Engine/Content/EngineMaterials/T_Default_Material_Grid_M.ubulk" 75
+"../../../Engine/Content/EngineMaterials/T_Default_Material_Grid_M.uasset" 76
+"../../../Engine/Content/EngineMaterials/T_Default_Material_Grid_M.uexp" 77
+"../../../Engine/Content/EngineMaterials/T_Default_Material_Grid_N.ubulk" 78
+"../../../Engine/Content/EngineMaterials/T_Default_Material_Grid_N.uasset" 79
+"../../../Engine/Content/EngineMaterials/T_Default_Material_Grid_N.uexp" 80
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Opacity/CameraDepthFade.uasset" 81
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Opacity/CameraDepthFade.uexp" 82
+"../../../Engine/Content/EngineMaterials/WorldGridMaterial.uasset" 83
+"../../../Engine/Content/EngineMaterials/WorldGridMaterial.uexp" 84
+"../../../Engine/Content/ArtTools/RenderToTexture/Meshes/S_1_Unit_Plane.ubulk" 85
+"../../../Engine/Content/ArtTools/RenderToTexture/Meshes/S_1_Unit_Plane.uasset" 86
+"../../../Engine/Content/ArtTools/RenderToTexture/Meshes/S_1_Unit_Plane.uexp" 87
+"../../../Engine/Content/EditorMaterials/ParticleSystems/PSysThumbnail_NoImage.ubulk" 88
+"../../../Engine/Content/EditorMaterials/ParticleSystems/PSysThumbnail_NoImage.uasset" 89
+"../../../Engine/Content/EditorMaterials/ParticleSystems/PSysThumbnail_NoImage.uexp" 90
+"../../../Engine/Content/EditorMaterials/ParticleSystems/PSysThumbnail_OOD.ubulk" 91
+"../../../Engine/Content/EditorMaterials/ParticleSystems/PSysThumbnail_OOD.uasset" 92
+"../../../Engine/Content/EditorMaterials/ParticleSystems/PSysThumbnail_OOD.uexp" 93
+"../../../Engine/Content/EditorLandscapeResources/SplineEditorMeshMat.uasset" 94
+"../../../Engine/Content/EditorLandscapeResources/SplineEditorMeshMat.uexp" 95
+"../../../Engine/Content/EditorLandscapeResources/SplineEditorMesh.ubulk" 96
+"../../../Engine/Content/EditorLandscapeResources/SplineEditorMesh.uasset" 97
+"../../../Engine/Content/EditorLandscapeResources/SplineEditorMesh.uexp" 98
+"../../../Engine/Content/EditorResources/S_Solver.ubulk" 99
+"../../../Engine/Content/EditorResources/S_Solver.uasset" 100
+"../../../Engine/Content/EditorResources/S_Solver.uexp" 101
+"../../../Engine/Plugins/Media/MediaPlate/Content/SM_MediaPlateScreen.ubulk" 102
+"../../../Engine/Plugins/Media/MediaPlate/Content/SM_MediaPlateScreen.uasset" 103
+"../../../Engine/Plugins/Media/MediaPlate/Content/SM_MediaPlateScreen.uexp" 104
+"../../../Engine/Content/EngineMaterials/Good64x64TilingNoiseHighFreq.uasset" 105
+"../../../Engine/Content/EngineMaterials/Good64x64TilingNoiseHighFreq.uexp" 106
+"../../../Engine/Content/EngineMaterials/DefaultBokeh.uasset" 107
+"../../../Engine/Content/EngineMaterials/DefaultBokeh.uexp" 108
+"../../../Engine/Content/EngineMaterials/PreintegratedSkinBRDF.uasset" 109
+"../../../Engine/Content/EngineMaterials/PreintegratedSkinBRDF.uexp" 110
+"../../../Engine/Content/EngineMaterials/MiniFont.uasset" 111
+"../../../Engine/Content/EngineMaterials/MiniFont.uexp" 112
+"../../../Engine/Content/EngineMaterials/WeightMapPlaceholderTexture.uasset" 113
+"../../../Engine/Content/EngineMaterials/WeightMapPlaceholderTexture.uexp" 114
+"../../../Engine/Content/EngineMaterials/DefaultWhiteGrid.ubulk" 115
+"../../../Engine/Content/EngineMaterials/DefaultWhiteGrid.uasset" 116
+"../../../Engine/Content/EngineMaterials/DefaultWhiteGrid.uexp" 117
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_RestartGame.uasset" 118
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_RestartGame.uexp" 119
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Attack.uasset" 120
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Attack.uexp" 121
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Look.uasset" 122
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Look.uexp" 123
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_TestAction.uasset" 124
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_TestAction.uexp" 125
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Dodge.uasset" 126
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Dodge.uexp" 127
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_QuitGame.uasset" 128
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_QuitGame.uexp" 129
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Move.uasset" 130
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/Actions/IA_Move.uexp" 131
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/IMC_Default.uasset" 132
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Input/IMC_Default.uexp" 133
+"../../../Engine/Content/EngineMeshes/Humanoid.uasset" 134
+"../../../Engine/Content/EngineMeshes/Humanoid.uexp" 135
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Dungeon_Skeleton.uasset" 136
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Dungeon_Skeleton.uexp" 137
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Hero_Knight_Male_PhysicsAsset.uasset" 138
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Hero_Knight_Male_PhysicsAsset.uexp" 139
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Textures/T_Dungeons_01.ubulk" 140
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Textures/T_Dungeons_01.uasset" 141
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Textures/T_Dungeons_01.uexp" 142
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Textures/Emmisive/T_Emmisive_01.ubulk" 143
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Textures/Emmisive/T_Emmisive_01.uasset" 144
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Textures/Emmisive/T_Emmisive_01.uexp" 145
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Materials/Mat_Dungeon_01.uasset" 146
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Materials/Mat_Dungeon_01.uexp" 147
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Hero_Knight_Male.uasset" 148
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Hero_Knight_Male.uexp" 149
+"../../../Engine/Content/Animation/DefaultAnimCurveCompressionSettings.uasset" 150
+"../../../Engine/Content/Animation/DefaultAnimCurveCompressionSettings.uexp" 151
+"../../../Engine/Content/Animation/DefaultAnimBoneCompressionSettings.uasset" 152
+"../../../Engine/Content/Animation/DefaultAnimBoneCompressionSettings.uexp" 153
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Walk_Fwd.uasset" 154
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Walk_Fwd.uexp" 155
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Run_Fwd.uasset" 156
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Run_Fwd.uexp" 157
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Idle.uasset" 158
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Idle.uexp" 159
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/BS_GreatSword_WalkRun.uasset" 160
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/BS_GreatSword_WalkRun.uexp" 161
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/ABP_DungeonCharacter.uasset" 162
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/ABP_DungeonCharacter.uexp" 163
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Roll_Dodge.uasset" 164
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Roll_Dodge.uexp" 165
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Roll_Dodge_Montage.uasset" 166
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Roll_Dodge_Montage.uexp" 167
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Weapons/Skeletals/SK_Wep_GreatSword_01_PhysicsAsset.uasset" 168
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Weapons/Skeletals/SK_Wep_GreatSword_01_PhysicsAsset.uexp" 169
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Weapons/Skeletals/SK_Wep_GreatSword_01_Skeleton.uasset" 170
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Weapons/Skeletals/SK_Wep_GreatSword_01_Skeleton.uexp" 171
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Weapons/Skeletals/SK_Wep_GreatSword_01.uasset" 172
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Weapons/Skeletals/SK_Wep_GreatSword_01.uexp" 173
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Weapons/BP_Greatsword.uasset" 174
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Weapons/BP_Greatsword.uexp" 175
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/UI/WBP_EndGame.uasset" 176
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/UI/WBP_EndGame.uexp" 177
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Two_Handed_Sword_Death.uasset" 178
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Two_Handed_Sword_Death.uexp" 179
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Two_Handed_Sword_Death_Montage.uasset" 180
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Two_Handed_Sword_Death_Montage.uexp" 181
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Textures/T_Dungeons_01.ubulk" 182
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Textures/T_Dungeons_01.uasset" 183
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Textures/T_Dungeons_01.uexp" 184
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Textures/Emmisive/T_Emmisive_01.ubulk" 185
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Textures/Emmisive/T_Emmisive_01.uasset" 186
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Textures/Emmisive/T_Emmisive_01.uexp" 187
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Mat_Dungeon_01.uasset" 188
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Mat_Dungeon_01.uexp" 189
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Great_Sword_Impact.uasset" 190
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Great_Sword_Impact.uexp" 191
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Great_Sword_Impact_Montage.uasset" 192
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Great_Sword_Impact_Montage.uexp" 193
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/AI/BB_EnemyAI.uasset" 194
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/AI/BB_EnemyAI.uexp" 195
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/AI/BT_EnemyAI.uasset" 196
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/AI/BT_EnemyAI.uexp" 197
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/Controllers/BP_EnemyAIController.uasset" 198
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/Controllers/BP_EnemyAIController.uexp" 199
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Knight_PhysicsAsset.uasset" 200
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Knight_PhysicsAsset.uexp" 201
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Knight.uasset" 202
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Knight.uexp" 203
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/BP_EnemyBasic.uasset" 204
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/BP_EnemyBasic.uexp" 205
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Events/MeleeTraceEvent.uasset" 206
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Events/MeleeTraceEvent.uexp" 207
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Slash_Vertical.uasset" 208
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Slash_Vertical.uexp" 209
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Great_Sword_Slash_Vertical_Montage.uasset" 210
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Animation/Great_Sword_Slash_Vertical_Montage.uexp" 211
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/BP_PlayerCharacter.uasset" 212
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/BP_PlayerCharacter.uexp" 213
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/UI/WBP_HealthBar.uasset" 214
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/UI/WBP_HealthBar.uexp" 215
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/Controllers/BP_SirDingusPlayerController.uasset" 216
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/Controllers/BP_SirDingusPlayerController.uexp" 217
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/States/BP_SirDingusPlayerState.uasset" 218
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/States/BP_SirDingusPlayerState.uexp" 219
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/States/BP_SirDingusGameState.uasset" 220
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/States/BP_SirDingusGameState.uexp" 221
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/UI/WBP_StartGame.uasset" 222
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/UI/WBP_StartGame.uexp" 223
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/Gamemodes/BP_DefaultMode.uasset" 224
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Modes+States+Controllers/Gamemodes/BP_DefaultMode.uexp" 225
+"../../../Engine/Content/Animation/DefaultRecorderBoneCompression.uasset" 226
+"../../../Engine/Content/Animation/DefaultRecorderBoneCompression.uexp" 227
+"../../../Engine/Content/EngineMaterials/DefaultMaterial.uasset" 228
+"../../../Engine/Content/EngineMaterials/DefaultMaterial.uexp" 229
+"../../../Engine/Content/BasicShapes/Sphere.ubulk" 230
+"../../../Engine/Content/BasicShapes/Sphere.uasset" 231
+"../../../Engine/Content/BasicShapes/Sphere.uexp" 232
+"../../../Engine/Content/BasicShapes/Plane.ubulk" 233
+"../../../Engine/Content/BasicShapes/Plane.uasset" 234
+"../../../Engine/Content/BasicShapes/Plane.uexp" 235
+"../../../Engine/Content/BasicShapes/Cylinder.ubulk" 236
+"../../../Engine/Content/BasicShapes/Cylinder.uasset" 237
+"../../../Engine/Content/BasicShapes/Cylinder.uexp" 238
+"../../../Engine/Content/BasicShapes/Cube.ubulk" 239
+"../../../Engine/Content/BasicShapes/Cube.uasset" 240
+"../../../Engine/Content/BasicShapes/Cube.uexp" 241
+"../../../Engine/Content/BasicShapes/Cone.ubulk" 242
+"../../../Engine/Content/BasicShapes/Cone.uasset" 243
+"../../../Engine/Content/BasicShapes/Cone.uexp" 244
+"../../../Engine/Content/EditorLandscapeResources/DefaultAlphaTexture.uasset" 245
+"../../../Engine/Content/EditorLandscapeResources/DefaultAlphaTexture.uexp" 246
+"../../../Engine/Content/EditorLandscapeResources/DataLayer.uasset" 247
+"../../../Engine/Content/EditorLandscapeResources/DataLayer.uexp" 248
+"../../../Engine/Content/EditorMaterials/PreviewShadowIndicator.ubulk" 249
+"../../../Engine/Content/EditorMaterials/PreviewShadowIndicator.uasset" 250
+"../../../Engine/Content/EditorMaterials/PreviewShadowIndicator.uexp" 251
+"../../../Engine/Content/EditorMaterials/PreviewShadowIndicatorMaterial.uasset" 252
+"../../../Engine/Content/EditorMaterials/PreviewShadowIndicatorMaterial.uexp" 253
+"../../../Engine/Content/EditorMaterials/PhAT_UnselectedMaterial.uasset" 254
+"../../../Engine/Content/EditorMaterials/PhAT_UnselectedMaterial.uexp" 255
+"../../../Engine/Content/EditorMaterials/PhAT_NoCollisionMaterial.uasset" 256
+"../../../Engine/Content/EditorMaterials/PhAT_NoCollisionMaterial.uexp" 257
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/MakeFloat4.uasset" 258
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/MakeFloat4.uexp" 259
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/MakeFloat3.uasset" 260
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/MakeFloat3.uexp" 261
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat3Components.uasset" 262
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat3Components.uexp" 263
+"../../../Engine/Content/EditorMaterials/WorldPartition/WorldPartitionSpatialHashGridPreviewMaterial.uasset" 264
+"../../../Engine/Content/EditorMaterials/WorldPartition/WorldPartitionSpatialHashGridPreviewMaterial.uexp" 265
+"../../../Engine/Content/EditorResources/S_Terrain.ubulk" 266
+"../../../Engine/Content/EditorResources/S_Terrain.uasset" 267
+"../../../Engine/Content/EditorResources/S_Terrain.uexp" 268
+"../../../Engine/Content/EditorResources/EmptyActor.uasset" 269
+"../../../Engine/Content/EditorResources/EmptyActor.uexp" 270
+"../../../Engine/Content/EditorResources/BSPVertex.uasset" 271
+"../../../Engine/Content/EditorResources/BSPVertex.uexp" 272
+"../../../Engine/Content/EditorResources/LightIcons/S_LightError.uasset" 273
+"../../../Engine/Content/EditorResources/LightIcons/S_LightError.uexp" 274
+"../../../Engine/Content/EditorResources/SequenceRecorder/RecordingIndicator.uasset" 275
+"../../../Engine/Content/EditorResources/SequenceRecorder/RecordingIndicator.uexp" 276
+"../../../Engine/Content/EditorResources/SequenceRecorder/Countdown.uasset" 277
+"../../../Engine/Content/EditorResources/SequenceRecorder/Countdown.uexp" 278
+"../../../Engine/Content/EngineDamageTypes/DmgTypeBP_Environmental.uasset" 279
+"../../../Engine/Content/EngineDamageTypes/DmgTypeBP_Environmental.uexp" 280
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/CameraDirectionVector.uasset" 281
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/CameraDirectionVector.uexp" 282
+"../../../Engine/Content/EngineDebugMaterials/VolumeToRender.uasset" 283
+"../../../Engine/Content/EngineDebugMaterials/VolumeToRender.uexp" 284
+"../../../Engine/Content/EngineDebugMaterials/M_VolumeRenderSphereTracePP.uasset" 285
+"../../../Engine/Content/EngineDebugMaterials/M_VolumeRenderSphereTracePP.uexp" 286
+"../../../Engine/Content/EngineDebugMaterials/M_SimpleUnlitTranslucent.uasset" 287
+"../../../Engine/Content/EngineDebugMaterials/M_SimpleUnlitTranslucent.uexp" 288
+"../../../Engine/Content/EngineDebugMaterials/DebugMeshMaterial.uasset" 289
+"../../../Engine/Content/EngineDebugMaterials/DebugMeshMaterial.uexp" 290
+"../../../Engine/Content/EngineDebugMaterials/DebugEditorMaterial.uasset" 291
+"../../../Engine/Content/EngineDebugMaterials/DebugEditorMaterial.uexp" 292
+"../../../Engine/Content/EngineFonts/Faces/RobotoLight.uexp" 293
+"../../../Engine/Content/EngineFonts/Faces/RobotoLight.uasset" 294
+"../../../Engine/Content/EngineFonts/Faces/RobotoLight.ufont" 295
+"../../../Engine/Content/EngineFonts/Faces/RobotoBold.uexp" 296
+"../../../Engine/Content/EngineFonts/Faces/RobotoBold.uasset" 297
+"../../../Engine/Content/EngineFonts/Faces/RobotoBold.ufont" 298
+"../../../Engine/Content/EngineFonts/Faces/RobotoRegular.uexp" 299
+"../../../Engine/Content/EngineFonts/Faces/RobotoRegular.uasset" 300
+"../../../Engine/Content/EngineFonts/Faces/RobotoRegular.ufont" 301
+"../../../Engine/Content/EngineFonts/Faces/DroidSansFallback.uexp" 302
+"../../../Engine/Content/EngineFonts/Faces/DroidSansFallback.uasset" 303
+"../../../Engine/Content/EngineFonts/Faces/DroidSansFallback.ufont" 304
+"../../../Engine/Content/EngineFonts/Faces/RobotoItalic.uexp" 305
+"../../../Engine/Content/EngineFonts/Faces/RobotoItalic.uasset" 306
+"../../../Engine/Content/EngineFonts/Faces/RobotoItalic.ufont" 307
+"../../../Engine/Content/EngineFonts/Faces/RobotoBoldItalic.uexp" 308
+"../../../Engine/Content/EngineFonts/Faces/RobotoBoldItalic.uasset" 309
+"../../../Engine/Content/EngineFonts/Faces/RobotoBoldItalic.ufont" 310
+"../../../Engine/Content/EngineFonts/Roboto.uasset" 311
+"../../../Engine/Content/EngineFonts/Roboto.uexp" 312
+"../../../Engine/Content/EngineResources/WhiteSquareTexture.uasset" 313
+"../../../Engine/Content/EngineResources/WhiteSquareTexture.uexp" 314
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough.uasset" 315
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough.uexp" 316
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Translucent.uasset" 317
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Translucent.uexp" 318
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Translucent_OneSided.uasset" 319
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Translucent_OneSided.uexp" 320
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Opaque.uasset" 321
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Opaque.uexp" 322
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Opaque_OneSided.uasset" 323
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Opaque_OneSided.uexp" 324
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Masked_OneSided.uasset" 325
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Masked_OneSided.uexp" 326
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Masked.uasset" 327
+"../../../Engine/Content/EngineMaterials/Widget3DPassThrough_Masked.uexp" 328
+"../../../Engine/Plugins/Runtime/MeshModelingToolset/Content/Materials/M_DynamicMeshComponentVtxColor.uasset" 329
+"../../../Engine/Plugins/Runtime/MeshModelingToolset/Content/Materials/M_DynamicMeshComponentVtxColor.uexp" 330
+"../../../Engine/Content/EngineMaterials/STBlueNoise_vec2_128x128x64.uasset" 331
+"../../../Engine/Content/EngineMaterials/STBlueNoise_vec2_128x128x64.uexp" 332
+"../../../Engine/Content/EngineMaterials/STBlueNoise_scalar_128x128x64.uasset" 333
+"../../../Engine/Content/EngineMaterials/STBlueNoise_scalar_128x128x64.uexp" 334
+"../../../Engine/Content/EngineMaterials/RemoveSurfaceMaterial.uasset" 335
+"../../../Engine/Content/EngineMaterials/RemoveSurfaceMaterial.uexp" 336
+"../../../Engine/Content/EngineMaterials/DefaultCalibrationGrayscale.uasset" 337
+"../../../Engine/Content/EngineMaterials/DefaultCalibrationGrayscale.uexp" 338
+"../../../Engine/Content/EngineMaterials/PPM_DefaultCalibrationGrayscale.uasset" 339
+"../../../Engine/Content/EngineMaterials/PPM_DefaultCalibrationGrayscale.uexp" 340
+"../../../Engine/Content/EngineMaterials/DefaultCalibrationColor.uasset" 341
+"../../../Engine/Content/EngineMaterials/DefaultCalibrationColor.uexp" 342
+"../../../Engine/Content/EngineMaterials/PPM_DefaultCalibrationColor.uasset" 343
+"../../../Engine/Content/EngineMaterials/PPM_DefaultCalibrationColor.uexp" 344
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/WorldPositionOffset/CameraOffset.uasset" 345
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/WorldPositionOffset/CameraOffset.uexp" 346
+"../../../Engine/Content/EngineMaterials/PhAT_JointLimitMaterial.uasset" 347
+"../../../Engine/Content/EngineMaterials/PhAT_JointLimitMaterial.uexp" 348
+"../../../Engine/Content/EngineMaterials/InvalidLightmapSettings.ubulk" 349
+"../../../Engine/Content/EngineMaterials/InvalidLightmapSettings.uasset" 350
+"../../../Engine/Content/EngineMaterials/InvalidLightmapSettings.uexp" 351
+"../../../Engine/Content/EngineMaterials/M_InvalidLightmapSettings.uasset" 352
+"../../../Engine/Content/EngineMaterials/M_InvalidLightmapSettings.uexp" 353
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_Gray_Linear.uasset" 354
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_Gray_Linear.uexp" 355
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/MapOrLinearColorFunction.uasset" 356
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/MapOrLinearColorFunction.uexp" 357
+"../../../Engine/Content/EngineMaterials/DefaultNormal.ubulk" 358
+"../../../Engine/Content/EngineMaterials/DefaultNormal.uasset" 359
+"../../../Engine/Content/EngineMaterials/DefaultNormal.uexp" 360
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/MapOrScalarFunction.uasset" 361
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/MapOrScalarFunction.uexp" 362
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/MapOrColorFunction.uasset" 363
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/MapOrColorFunction.uexp" 364
+"../../../Engine/Content/EngineMaterials/BaseFlattenLinearColor.uasset" 365
+"../../../Engine/Content/EngineMaterials/BaseFlattenLinearColor.uexp" 366
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/CommonMaterial.uasset" 367
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/CommonMaterial.uexp" 368
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/PBRSurfaceFunction.uasset" 369
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/PBRSurfaceFunction.uexp" 370
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/ClearCoatMaterial.uasset" 371
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/ClearCoatMaterial.uexp" 372
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/UnlitMaterial.uasset" 373
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/UnlitMaterial.uexp" 374
+"../../../Engine/Content/EngineMaterials/GizmoMaterial.uasset" 375
+"../../../Engine/Content/EngineMaterials/GizmoMaterial.uexp" 376
+"../../../Engine/Content/EngineMaterials/BaseFlattenEmissiveMap_VT.uasset" 377
+"../../../Engine/Content/EngineMaterials/BaseFlattenEmissiveMap_VT.uexp" 378
+"../../../Engine/Content/EngineMaterials/BaseFlattenGrayscaleMap_VT.uasset" 379
+"../../../Engine/Content/EngineMaterials/BaseFlattenGrayscaleMap_VT.uexp" 380
+"../../../Engine/Content/EngineMaterials/BaseFlattenLinearColor_VT.uasset" 381
+"../../../Engine/Content/EngineMaterials/BaseFlattenLinearColor_VT.uexp" 382
+"../../../Engine/Content/EngineMaterials/Black_1x1_EXR_Texture_VT.uasset" 383
+"../../../Engine/Content/EngineMaterials/Black_1x1_EXR_Texture_VT.uexp" 384
+"../../../Engine/Content/EngineMaterials/BaseFlattenDiffuseMap_VT.uasset" 385
+"../../../Engine/Content/EngineMaterials/BaseFlattenDiffuseMap_VT.uexp" 386
+"../../../Engine/Content/EngineMaterials/BaseFlattenNormalMap_VT.uasset" 387
+"../../../Engine/Content/EngineMaterials/BaseFlattenNormalMap_VT.uexp" 388
+"../../../Engine/Content/EngineMaterials/FlattenMaterial_WS_Normal_VT.uasset" 389
+"../../../Engine/Content/EngineMaterials/FlattenMaterial_WS_Normal_VT.uexp" 390
+"../../../Engine/Content/EngineMaterials/FlattenMaterial_VT.uasset" 391
+"../../../Engine/Content/EngineMaterials/FlattenMaterial_VT.uexp" 392
+"../../../Engine/Content/EngineMaterials/BaseFlattenNormalMap.uasset" 393
+"../../../Engine/Content/EngineMaterials/BaseFlattenNormalMap.uexp" 394
+"../../../Engine/Content/EngineMaterials/BaseFlattenGrayscaleMap.uasset" 395
+"../../../Engine/Content/EngineMaterials/BaseFlattenGrayscaleMap.uexp" 396
+"../../../Engine/Content/EngineMaterials/BaseFlattenDiffuseMap.uasset" 397
+"../../../Engine/Content/EngineMaterials/BaseFlattenDiffuseMap.uexp" 398
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/PivotPainter2/Black_1x1_EXR_Texture.uasset" 399
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/PivotPainter2/Black_1x1_EXR_Texture.uexp" 400
+"../../../Engine/Content/EngineMaterials/BaseFlattenEmissiveMap.uasset" 401
+"../../../Engine/Content/EngineMaterials/BaseFlattenEmissiveMap.uexp" 402
+"../../../Engine/Content/EngineMaterials/FlattenMaterial.uasset" 403
+"../../../Engine/Content/EngineMaterials/FlattenMaterial.uexp" 404
+"../../../Engine/Content/EngineMaterials/DefaultWhiteGrid_Low.uasset" 405
+"../../../Engine/Content/EngineMaterials/DefaultWhiteGrid_Low.uexp" 406
+"../../../Engine/Content/EngineMaterials/EmissiveMeshMaterial.uasset" 407
+"../../../Engine/Content/EngineMaterials/EmissiveMeshMaterial.uexp" 408
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultTexturePipeline.uasset" 409
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultTexturePipeline.uexp" 410
+"../../../Engine/Content/EngineFonts/RobotoDistanceField.uasset" 411
+"../../../Engine/Content/EngineFonts/RobotoDistanceField.uexp" 412
+"../../../Engine/Content/EngineMaterials/DefaultTextMaterialOpaque.uasset" 413
+"../../../Engine/Content/EngineMaterials/DefaultTextMaterialOpaque.uexp" 414
+"../../../Engine/Content/EngineMaterials/DefaultDiffuse.ubulk" 415
+"../../../Engine/Content/EngineMaterials/DefaultDiffuse.uasset" 416
+"../../../Engine/Content/EngineMaterials/DefaultDiffuse.uexp" 417
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.uasset" 418
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.uexp" 419
+"../../../Engine/Content/EngineMaterials/DefaultPostProcessMaterial.uasset" 420
+"../../../Engine/Content/EngineMaterials/DefaultPostProcessMaterial.uexp" 421
+"../../../Engine/Content/EngineMaterials/DefaultPhysicalMaterial.uasset" 422
+"../../../Engine/Content/EngineMaterials/DefaultPhysicalMaterial.uexp" 423
+"../../../Engine/Content/EngineMaterials/DefaultLightFunctionMaterial.uasset" 424
+"../../../Engine/Content/EngineMaterials/DefaultLightFunctionMaterial.uexp" 425
+"../../../Engine/Content/EngineMaterials/DefaultDestructiblePhysicalMaterial.uasset" 426
+"../../../Engine/Content/EngineMaterials/DefaultDestructiblePhysicalMaterial.uexp" 427
+"../../../Engine/Content/EngineMaterials/DefaultDeferredDecalMaterial.uasset" 428
+"../../../Engine/Content/EngineMaterials/DefaultDeferredDecalMaterial.uexp" 429
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_Black_srgb.uasset" 430
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_Black_srgb.uexp" 431
+"../../../Engine/Content/EngineMaterials/DefaultBloomKernel.uasset" 432
+"../../../Engine/Content/EngineMaterials/DefaultBloomKernel.uexp" 433
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/ThinTranslucentMaterial.uasset" 434
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/ThinTranslucentMaterial.uexp" 435
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/SubsurfaceMaterial.uasset" 436
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/SubsurfaceMaterial.uexp" 437
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/SheenMaterial.uasset" 438
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/SheenMaterial.uexp" 439
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec.uasset" 440
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Shading/ConvertFromDiffSpec.uexp" 441
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/PhongSurfaceMaterial.uasset" 442
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/PhongSurfaceMaterial.uexp" 443
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/PBRSurfaceMaterial.uasset" 444
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/PBRSurfaceMaterial.uexp" 445
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/LambertSurfaceMaterial.uasset" 446
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/LambertSurfaceMaterial.uexp" 447
+"../../../Engine/Content/EngineResources/FilmGrains/Marcie_Grain_v3_128_M2_000.uasset" 448
+"../../../Engine/Content/EngineResources/FilmGrains/Marcie_Grain_v3_128_M2_000.uexp" 449
+"../../../Engine/Content/EngineSky/VolumetricClouds/CloudWeatherTexture.uasset" 450
+"../../../Engine/Content/EngineSky/VolumetricClouds/CloudWeatherTexture.uexp" 451
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/MakeFloat2.uasset" 452
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/MakeFloat2.uexp" 453
+"../../../Engine/Content/EngineSky/VolumetricClouds/CloudGradientTexture.uasset" 454
+"../../../Engine/Content/EngineSky/VolumetricClouds/CloudGradientTexture.uexp" 455
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_NoiseShape64.ubulk" 456
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_NoiseShape64.uasset" 457
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_NoiseShape64.uexp" 458
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_VolumeNoiseShape64.uasset" 459
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_VolumeNoiseShape64.uexp" 460
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_NoiseErosion.ubulk" 461
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_NoiseErosion.uasset" 462
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_NoiseErosion.uexp" 463
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_VolumeNoiseErosion32.uasset" 464
+"../../../Engine/Content/EngineSky/VolumetricClouds/T_VolumeNoiseErosion32.uexp" 465
+"../../../Engine/Content/EngineSky/VolumetricClouds/m_SimpleVolumetricCloud.uasset" 466
+"../../../Engine/Content/EngineSky/VolumetricClouds/m_SimpleVolumetricCloud.uexp" 467
+"../../../Engine/Content/EngineSky/VolumetricClouds/m_SimpleVolumetricCloud_Inst.uasset" 468
+"../../../Engine/Content/EngineSky/VolumetricClouds/m_SimpleVolumetricCloud_Inst.uexp" 469
+"../../../Engine/Content/EngineSounds/Master.uasset" 470
+"../../../Engine/Content/EngineSounds/Master.uexp" 471
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness.uasset" 472
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Shading/PowerToRoughness.uexp" 473
+"../../../Engine/Content/EngineMaterials/FlatNormal.uasset" 474
+"../../../Engine/Content/EngineMaterials/FlatNormal.uexp" 475
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MF_OrenNayerView.uasset" 476
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MF_OrenNayerView.uexp" 477
+"../../../Engine/Content/EditorLandscapeResources/WhiteSquareTexture.uasset" 478
+"../../../Engine/Content/EditorLandscapeResources/WhiteSquareTexture.uexp" 479
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MF_SchlickApprox.uasset" 480
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MF_SchlickApprox.uexp" 481
+"../../../Engine/Plugins/Interchange/Runtime/Content/Utilities/New_LUT.uasset" 482
+"../../../Engine/Plugins/Interchange/Runtime/Content/Utilities/New_LUT.uexp" 483
+"../../../Engine/Content/Functions/Engine_MaterialFunctions03/Math/RemapValueRange.uasset" 484
+"../../../Engine/Content/Functions/Engine_MaterialFunctions03/Math/RemapValueRange.uexp" 485
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MF_Iridescence.uasset" 486
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MF_Iridescence.uexp" 487
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/OrenNayerMaterial.uasset" 488
+"../../../Engine/Plugins/Interchange/Runtime/Content/Materials/OrenNayerMaterial.uexp" 489
+"../../../Engine/Content/MobileResources/HUD/VirtualJoystick_Background.uasset" 490
+"../../../Engine/Content/MobileResources/HUD/VirtualJoystick_Background.uexp" 491
+"../../../Engine/Content/MobileResources/HUD/VirtualJoystick_Thumb.uasset" 492
+"../../../Engine/Content/MobileResources/HUD/VirtualJoystick_Thumb.uexp" 493
+"../../../Engine/Content/MobileResources/HUD/DefaultVirtualJoysticks.uasset" 494
+"../../../Engine/Content/MobileResources/HUD/DefaultVirtualJoysticks.uexp" 495
+"../../../Engine/Plugins/2D/Paper2D/Content/PlaceholderTextures/DummySpriteTexture.ubulk" 496
+"../../../Engine/Plugins/2D/Paper2D/Content/PlaceholderTextures/DummySpriteTexture.uasset" 497
+"../../../Engine/Plugins/2D/Paper2D/Content/PlaceholderTextures/DummySpriteTexture.uexp" 498
+"../../../Engine/Plugins/2D/Paper2D/Content/DefaultSpriteMaterial.uasset" 499
+"../../../Engine/Plugins/2D/Paper2D/Content/DefaultSpriteMaterial.uexp" 500
+"../../../Engine/Plugins/2D/Paper2D/Content/OpaqueUnlitSpriteMaterial.uasset" 501
+"../../../Engine/Plugins/2D/Paper2D/Content/OpaqueUnlitSpriteMaterial.uexp" 502
+"../../../Engine/Plugins/2D/Paper2D/Content/MaskedUnlitSpriteMaterial.uasset" 503
+"../../../Engine/Plugins/2D/Paper2D/Content/MaskedUnlitSpriteMaterial.uexp" 504
+"../../../Engine/Plugins/2D/Paper2D/Content/DummySprite.uasset" 505
+"../../../Engine/Plugins/2D/Paper2D/Content/DummySprite.uexp" 506
+"../../../Engine/Plugins/2D/Paper2D/Content/DefaultPaperTerrainMaterial.uasset" 507
+"../../../Engine/Plugins/2D/Paper2D/Content/DefaultPaperTerrainMaterial.uexp" 508
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultAssetsPipeline.uasset" 509
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultAssetsPipeline.uexp" 510
+"../../../Engine/Plugins/Animation/ControlRig/Content/M_Manip.uasset" 511
+"../../../Engine/Plugins/Animation/ControlRig/Content/M_Manip.uexp" 512
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/DefaultGizmoLibraryNormalized.uasset" 513
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/DefaultGizmoLibraryNormalized.uexp" 514
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_solid.ubulk" 515
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_solid.uasset" 516
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_solid.uexp" 517
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_3mm.ubulk" 518
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_3mm.uasset" 519
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_3mm.uexp" 520
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_1mm.ubulk" 521
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_1mm.uasset" 522
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Wedge_1mm.uexp" 523
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_solid.ubulk" 524
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_solid.uasset" 525
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_solid.uexp" 526
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_3mm.ubulk" 527
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_3mm.uasset" 528
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_3mm.uexp" 529
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_1mm.ubulk" 530
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_1mm.uasset" 531
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Triangle_1mm.uexp" 532
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_solid.ubulk" 533
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_solid.uasset" 534
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_solid.uexp" 535
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_3mm.ubulk" 536
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_3mm.uasset" 537
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_3mm.uexp" 538
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_1mm.ubulk" 539
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_1mm.uasset" 540
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Star4_1mm.uexp" 541
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_solid.ubulk" 542
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_solid.uasset" 543
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_solid.uexp" 544
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_3mm.ubulk" 545
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_3mm.uasset" 546
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_3mm.uexp" 547
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_1mm.ubulk" 548
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_1mm.uasset" 549
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Square_1mm.uexp" 550
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_solid.ubulk" 551
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_solid.uasset" 552
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_solid.uexp" 553
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_3mm.ubulk" 554
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_3mm.uasset" 555
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_3mm.uexp" 556
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_1mm.ubulk" 557
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_1mm.uasset" 558
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Sphere_1mm.uexp" 559
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_solid.ubulk" 560
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_solid.uasset" 561
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_solid.uexp" 562
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_3mm.ubulk" 563
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_3mm.uasset" 564
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_3mm.uexp" 565
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_1mm.ubulk" 566
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_1mm.uasset" 567
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedTriangle_1mm.uexp" 568
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_solid.ubulk" 569
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_solid.uasset" 570
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_solid.uexp" 571
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_3mm.ubulk" 572
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_3mm.uasset" 573
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_3mm.uexp" 574
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_1mm.ubulk" 575
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_1mm.uasset" 576
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_RoundedSquare_1mm.uexp" 577
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_solid.ubulk" 578
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_solid.uasset" 579
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_solid.uexp" 580
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_3mm.ubulk" 581
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_3mm.uasset" 582
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_3mm.uexp" 583
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_1mm.ubulk" 584
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_1mm.uasset" 585
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_QuarterCircle_1mm.uexp" 586
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_solid.ubulk" 587
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_solid.uasset" 588
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_solid.uexp" 589
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_3mm.ubulk" 590
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_3mm.uasset" 591
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_3mm.uexp" 592
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_1mm.ubulk" 593
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_1mm.uasset" 594
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Pyramid_1mm.uexp" 595
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_solid.ubulk" 596
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_solid.uasset" 597
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_solid.uexp" 598
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_3mm.ubulk" 599
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_3mm.uasset" 600
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_3mm.uexp" 601
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_1mm.ubulk" 602
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_1mm.uasset" 603
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Octagon_1mm.uexp" 604
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_solid.ubulk" 605
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_solid.uasset" 606
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_solid.uexp" 607
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_3mm.ubulk" 608
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_3mm.uasset" 609
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_3mm.uexp" 610
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_1mm.ubulk" 611
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_1mm.uasset" 612
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Hexagon_1mm.uexp" 613
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_solid.ubulk" 614
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_solid.uasset" 615
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_solid.uexp" 616
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_3mm.ubulk" 617
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_3mm.uasset" 618
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_3mm.uexp" 619
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_1mm.ubulk" 620
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_1mm.uasset" 621
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_HalfCircle_1mm.uexp" 622
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_solid.ubulk" 623
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_solid.uasset" 624
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_solid.uexp" 625
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_3mm.ubulk" 626
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_3mm.uasset" 627
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_3mm.uexp" 628
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_1mm.ubulk" 629
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_1mm.uasset" 630
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Diamond_1mm.uexp" 631
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_solid.ubulk" 632
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_solid.uasset" 633
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_solid.uexp" 634
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_3mm.ubulk" 635
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_3mm.uasset" 636
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_3mm.uexp" 637
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_1mm.ubulk" 638
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_1mm.uasset" 639
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Circle_1mm.uexp" 640
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_solid.ubulk" 641
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_solid.uasset" 642
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_solid.uexp" 643
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_3mm.ubulk" 644
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_3mm.uasset" 645
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_3mm.uexp" 646
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_1mm.ubulk" 647
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_1mm.uasset" 648
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Box_1mm.uexp" 649
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_solid.ubulk" 650
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_solid.uasset" 651
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_solid.uexp" 652
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_3mm.ubulk" 653
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_3mm.uasset" 654
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_3mm.uexp" 655
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_1mm.ubulk" 656
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_1mm.uasset" 657
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow_1mm.uexp" 658
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_solid.ubulk" 659
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_solid.uasset" 660
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_solid.uexp" 661
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_3mm.ubulk" 662
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_3mm.uasset" 663
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_3mm.uexp" 664
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_1mm.ubulk" 665
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_1mm.uasset" 666
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow4_1mm.uexp" 667
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_solid.ubulk" 668
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_solid.uasset" 669
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_solid.uexp" 670
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_3mm.ubulk" 671
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_3mm.uasset" 672
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_3mm.uexp" 673
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_1mm.ubulk" 674
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_1mm.uasset" 675
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRig_Arrow2_1mm.uexp" 676
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRigXRayMaterial.uasset" 677
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRigXRayMaterial.uexp" 678
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRigGizmoMaterial.uasset" 679
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/ControlRigGizmoMaterial.uexp" 680
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/game_wind_noise.ubulk" 681
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/game_wind_noise.uasset" 682
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/game_wind_noise.uexp" 683
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/UnpackDirection.uasset" 684
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/UnpackDirection.uexp" 685
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/ObjectLocalBounds.uasset" 686
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/ObjectLocalBounds.uexp" 687
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/UVs/BoundingBoxBased_0-1_UVW.uasset" 688
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/UVs/BoundingBoxBased_0-1_UVW.uexp" 689
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/VectorLength.uasset" 690
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/VectorLength.uexp" 691
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/UnpackInteger3.uasset" 692
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/UnpackInteger3.uexp" 693
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeCameraFacing.uasset" 694
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeCameraFacing.uexp" 695
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/WorldPositionOffset/ObjectScale.uasset" 696
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/WorldPositionOffset/ObjectScale.uexp" 697
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/SafeNormalize.uasset" 698
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/SafeNormalize.uexp" 699
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeWindMotion.uasset" 700
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeWindMotion.uexp" 701
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeBranchMotion.uasset" 702
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeBranchMotion.uexp" 703
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeWind.uasset" 704
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeWind.uexp" 705
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/EmptyNormal.uasset" 706
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/EmptyNormal.uexp" 707
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/Empty.uasset" 708
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/Empty.uexp" 709
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeMaster.uasset" 710
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeMaster.uexp" 711
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeBillboard.uasset" 712
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeBillboard.uexp" 713
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeBillboardMaster.uasset" 714
+"../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/SpeedTree9/SpeedTreeBillboardMaster.uexp" 715
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultMaterialPipeline.uasset" 716
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultMaterialPipeline.uexp" 717
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultSceneLevelPipeline.uasset" 718
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultSceneLevelPipeline.uexp" 719
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultSceneAssetsPipeline.uasset" 720
+"../../../Engine/Plugins/Interchange/Runtime/Content/Pipelines/DefaultSceneAssetsPipeline.uexp" 721
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Texturing/CustomRotator.uasset" 722
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Texturing/CustomRotator.uexp" 723
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Texturing/ScreenAlignedPixelToPixelUVs.uasset" 724
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Texturing/ScreenAlignedPixelToPixelUVs.uexp" 725
+"../../../Engine/Plugins/Interchange/Runtime/Content/Utilities/T_Bayer64_Grayscale_64px.uasset" 726
+"../../../Engine/Plugins/Interchange/Runtime/Content/Utilities/T_Bayer64_Grayscale_64px.uexp" 727
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Temporal_Blur.uasset" 728
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Temporal_Blur.uexp" 729
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Fresnel_DS.uasset" 730
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Fresnel_DS.uexp" 731
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MX_Transmission.uasset" 732
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MX_Transmission.uexp" 733
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MX_StandardSurface.uasset" 734
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MX_StandardSurface.uexp" 735
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MX_TransmissionSurface.uasset" 736
+"../../../Engine/Plugins/Interchange/Runtime/Content/Functions/MX_TransmissionSurface.uexp" 737
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/AddComponents.uasset" 738
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/AddComponents.uexp" 739
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/WorldPositionOffset/V2/ObjectScale.uasset" 740
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/WorldPositionOffset/V2/ObjectScale.uexp" 741
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_TransmissionOpacity.uasset" 742
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_TransmissionOpacity.uexp" 743
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_RotateV2.uasset" 744
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_RotateV2.uexp" 745
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_TransformUVs.uasset" 746
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_TransformUVs.uexp" 747
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_White_srgb.uasset" 748
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_White_srgb.uexp" 749
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_BaseColor.uasset" 750
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_BaseColor.uexp" 751
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_DiffuseSpecGloss.uasset" 752
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_DiffuseSpecGloss.uexp" 753
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_White_Linear.uasset" 754
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_White_Linear.uexp" 755
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_MetallicRoughness.uasset" 756
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_MetallicRoughness.uexp" 757
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Transmission.uasset" 758
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Transmission.uexp" 759
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Occlusion.uasset" 760
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Occlusion.uexp" 761
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Specular.uasset" 762
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Specular.uexp" 763
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_IOR.uasset" 764
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_IOR.uexp" 765
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal.uasset" 766
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal.uexp" 767
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/Transform3x3Matrix.uasset" 768
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/Transform3x3Matrix.uexp" 769
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_RotateNormals_TS.uasset" 770
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_RotateNormals_TS.uexp" 771
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_Generic_N.uasset" 772
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/Textures/T_Generic_N.uexp" 773
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Normals.uasset" 774
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Normals.uexp" 775
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_PerceivedBrightness.uasset" 776
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_PerceivedBrightness.uexp" 777
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_SpecGlossToMetalRoughness.uasset" 778
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_SpecGlossToMetalRoughness.uexp" 779
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Transmission.uasset" 780
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Transmission.uexp" 781
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Transmission_TS.uasset" 782
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Transmission_TS.uexp" 783
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Transmission.uasset" 784
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Transmission.uexp" 785
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Clearcoat.uasset" 786
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Clearcoat.uexp" 787
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Emissive.uasset" 788
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Emissive.uexp" 789
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Translucent.uasset" 790
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Translucent.uexp" 791
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent_TS.uasset" 792
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent_TS.uexp" 793
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent_ClearCoat_TS.uasset" 794
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent_ClearCoat_TS.uexp" 795
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent_ClearCoat.uasset" 796
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent_ClearCoat.uexp" 797
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent.uasset" 798
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Translucent.uexp" 799
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Unlit.uasset" 800
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Unlit.uexp" 801
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Unlit_TS.uasset" 802
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Unlit_TS.uexp" 803
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Unlit.uasset" 804
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Unlit.uexp" 805
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Opaque.uasset" 806
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Opaque.uexp" 807
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_TS.uasset" 808
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_TS.uexp" 809
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Sheen.uasset" 810
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialFunctions/MF_Sheen.uexp" 811
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Shading/FuzzyShading.uasset" 812
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Shading/FuzzyShading.uexp" 813
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Sheen.uasset" 814
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/M_Sheen.uexp" 815
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Sheen_TS.uasset" 816
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Sheen_TS.uexp" 817
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Sheen.uasset" 818
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_Sheen.uexp" 819
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_ClearCoat_TS.uasset" 820
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_ClearCoat_TS.uexp" 821
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_ClearCoat.uasset" 822
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque_ClearCoat.uexp" 823
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque.uasset" 824
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_MR/MI_Opaque.uexp" 825
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Transmission_TS.uasset" 826
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Transmission_TS.uexp" 827
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Transmission.uasset" 828
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Transmission.uexp" 829
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent_TS.uasset" 830
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent_TS.uexp" 831
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent_ClearCoat_TS.uasset" 832
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent_ClearCoat_TS.uexp" 833
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent_ClearCoat.uasset" 834
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent_ClearCoat.uexp" 835
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent.uasset" 836
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Translucent.uexp" 837
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_TS.uasset" 838
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_TS.uexp" 839
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_Sheen_TS.uasset" 840
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_Sheen_TS.uexp" 841
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_Sheen.uasset" 842
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_Sheen.uexp" 843
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_ClearCoat_TS.uasset" 844
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_ClearCoat_TS.uexp" 845
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_ClearCoat.uasset" 846
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque_ClearCoat.uexp" 847
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque.uasset" 848
+"../../../Engine/Plugins/Interchange/Runtime/Content/gltf/MaterialInstances_SG/MI_Opaque.uexp" 849
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Quarter_01.ubulk" 850
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Quarter_01.uasset" 851
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Quarter_01.uexp" 852
+"../../../Engine/Content/EditorResources/S_Emitter.uasset" 853
+"../../../Engine/Content/EditorResources/S_Emitter.uexp" 854
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Misc/Mat_Dungeon_Material_Transparent.uasset" 855
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Misc/Mat_Dungeon_Material_Transparent.uexp" 856
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Misc/Mat_FX_Fire.uasset" 857
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Misc/Mat_FX_Fire.uexp" 858
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/FX_Candle_Flame_Mesh.ubulk" 859
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/FX_Candle_Flame_Mesh.uasset" 860
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/FX_Candle_Flame_Mesh.uexp" 861
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_02_Particle_PhysicsAsset.uasset" 862
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_02_Particle_PhysicsAsset.uexp" 863
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_02_Particle_Skeleton.uasset" 864
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_02_Particle_Skeleton.uexp" 865
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_02_Particle.uasset" 866
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_02_Particle.uexp" 867
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Candle_Flame_Chandelier_02.uasset" 868
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Candle_Flame_Chandelier_02.uexp" 869
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Props/SM_Prop_Candle_Chandelier_02.ubulk" 870
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Props/SM_Prop_Candle_Chandelier_02.uasset" 871
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Props/SM_Prop_Candle_Chandelier_02.uexp" 872
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Props/BP_ChandelierLarge.uasset" 873
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Props/BP_ChandelierLarge.uexp" 874
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Misc/Mat_FX_Flat_Colour.uasset" 875
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Materials/Misc/Mat_FX_Flat_Colour.uexp" 876
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Fire_Small.uasset" 877
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Fire_Small.uexp" 878
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_03.ubulk" 879
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_03.uasset" 880
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_03.uexp" 881
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Architecture/Light_Pillar.uasset" 882
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Architecture/Light_Pillar.uexp" 883
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_01.ubulk" 884
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_01.uasset" 885
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_01.uexp" 886
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_07.ubulk" 887
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_07.uasset" 888
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_07.uexp" 889
+"../../../Engine/Content/EngineMaterials/BlendFunc_DefBlend.uasset" 890
+"../../../Engine/Content/EngineMaterials/BlendFunc_DefBlend.uexp" 891
+"../../../Engine/Content/EngineMaterials/BlendFunc_DefBase.uasset" 892
+"../../../Engine/Content/EngineMaterials/BlendFunc_DefBase.uexp" 893
+"../../../Engine/Content/Functions/Engine_MaterialFunctions03/Blends/Blend_Overlay.uasset" 894
+"../../../Engine/Content/Functions/Engine_MaterialFunctions03/Blends/Blend_Overlay.uexp" 895
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/T_GridChecker_A.ubulk" 896
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/T_GridChecker_A.uasset" 897
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/T_GridChecker_A.uexp" 898
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient.uasset" 899
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient.uexp" 900
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/ImageAdjustment/CheapContrast.uasset" 901
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/ImageAdjustment/CheapContrast.uexp" 902
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/MF_ProcGrid.uasset" 903
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/MF_ProcGrid.uexp" 904
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/M_ProcGrid.uasset" 905
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/M_ProcGrid.uexp" 906
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/MI_ProcGrid.uasset" 907
+"../../../Engine/Content/OpenWorldTemplate/LandscapeMaterial/MI_ProcGrid.uexp" 908
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Stairs_02.ubulk" 909
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Stairs_02.uasset" 910
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Stairs_02.uexp" 911
+"../../../Engine/Content/EditorBlueprintResources/StandardMacros.uasset" 912
+"../../../Engine/Content/EditorBlueprintResources/StandardMacros.uexp" 913
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/BP_DungeonCharacter.uasset" 914
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/BP_DungeonCharacter.uexp" 915
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Idle_Stretch.uasset" 916
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/Mixamo/Animations/Greatsword/Great_Sword_Idle_Stretch.uexp" 917
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Soldier_01_PhysicsAsset.uasset" 918
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Soldier_01_PhysicsAsset.uexp" 919
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Soldier_01.uasset" 920
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Assets/PolygonDungeons/Meshes/Characters/SK_Character_Skeleton_Soldier_01.uexp" 921
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Dummy.uasset" 922
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Characters/Dummy.uexp" 923
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_01.ubulk" 924
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_01.uasset" 925
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_01.uexp" 926
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_07.ubulk" 927
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_07.uasset" 928
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_07.uexp" 929
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_04.ubulk" 930
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_04.uasset" 931
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_04.uexp" 932
+"../../../Engine/Content/EngineSky/T_Sky_Stars.ubulk" 933
+"../../../Engine/Content/EngineSky/T_Sky_Stars.uasset" 934
+"../../../Engine/Content/EngineSky/T_Sky_Stars.uexp" 935
+"../../../Engine/Content/EngineSky/T_Sky_Clouds_M.ubulk" 936
+"../../../Engine/Content/EngineSky/T_Sky_Clouds_M.uasset" 937
+"../../../Engine/Content/EngineSky/T_Sky_Clouds_M.uexp" 938
+"../../../Engine/Content/EngineSky/T_Sky_Blue.ubulk" 939
+"../../../Engine/Content/EngineSky/T_Sky_Blue.uasset" 940
+"../../../Engine/Content/EngineSky/T_Sky_Blue.uexp" 941
+"../../../Engine/Content/EngineSky/M_Sky_Panning_Clouds2.uasset" 942
+"../../../Engine/Content/EngineSky/M_Sky_Panning_Clouds2.uexp" 943
+"../../../Engine/Content/EngineSky/SM_SkySphere.ubulk" 944
+"../../../Engine/Content/EngineSky/SM_SkySphere.uasset" 945
+"../../../Engine/Content/EngineSky/SM_SkySphere.uexp" 946
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_05.ubulk" 947
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_05.uasset" 948
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_05.uexp" 949
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_01.ubulk" 950
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_01.uasset" 951
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_01.uexp" 952
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_06.ubulk" 953
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_06.uasset" 954
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_06.uexp" 955
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_Pillar_01.ubulk" 956
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_Pillar_01.uasset" 957
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_Pillar_01.uexp" 958
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_03.ubulk" 959
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_03.uasset" 960
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_03.uexp" 961
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_01.ubulk" 962
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_01.uasset" 963
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_01.uexp" 964
+"../../../Engine/Content/MapTemplates/SM_Template_Map_Floor.ubulk" 965
+"../../../Engine/Content/MapTemplates/SM_Template_Map_Floor.uasset" 966
+"../../../Engine/Content/MapTemplates/SM_Template_Map_Floor.uexp" 967
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_Corner_01.ubulk" 968
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_Corner_01.uasset" 969
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_Corner_01.uexp" 970
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_08.ubulk" 971
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_08.uasset" 972
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_08.uexp" 973
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Stairs_Wall_01.ubulk" 974
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Stairs_Wall_01.uasset" 975
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Stairs_Wall_01.uexp" 976
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_04.ubulk" 977
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_04.uasset" 978
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_04.uexp" 979
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_07.ubulk" 980
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_07.uasset" 981
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_07.uexp" 982
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Balcony_01.ubulk" 983
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Balcony_01.uasset" 984
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Balcony_01.uexp" 985
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Frame_02.ubulk" 986
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Frame_02.uasset" 987
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Frame_02.uexp" 988
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_02.ubulk" 989
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_02.uasset" 990
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_02.uexp" 991
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_05.ubulk" 992
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_05.uasset" 993
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_05.uexp" 994
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Wall_Round_01.ubulk" 995
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Wall_Round_01.uasset" 996
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Wall_Round_01.uexp" 997
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_04.ubulk" 998
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_04.uasset" 999
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_04.uexp" 1000
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_06.ubulk" 1001
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_06.uasset" 1002
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_06.uexp" 1003
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_Angle_01.ubulk" 1004
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_Angle_01.uasset" 1005
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Railing_Angle_01.uexp" 1006
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_02.ubulk" 1007
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_02.uasset" 1008
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Curved_02.uexp" 1009
+"../../../Engine/Content/EngineSky/M_SimpleSkyDome.uasset" 1010
+"../../../Engine/Content/EngineSky/M_SimpleSkyDome.uexp" 1011
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_01_Particle_PhysicsAsset.uasset" 1012
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_01_Particle_PhysicsAsset.uexp" 1013
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_01_Particle_Skeleton.uasset" 1014
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_01_Particle_Skeleton.uexp" 1015
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_01_Particle.uasset" 1016
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/FX/SM_Prop_Candle_Chandelier_01_Particle.uexp" 1017
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Candle_Flame_Chandelier_01.uasset" 1018
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Candle_Flame_Chandelier_01.uexp" 1019
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Props/SM_Prop_Candle_Chandelier_01.ubulk" 1020
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Props/SM_Prop_Candle_Chandelier_01.uasset" 1021
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Props/SM_Prop_Candle_Chandelier_01.uexp" 1022
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Props/BP_ChandelierSmall.uasset" 1023
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Blueprints/Props/BP_ChandelierSmall.uexp" 1024
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_01.ubulk" 1025
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_01.uasset" 1026
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_01.uexp" 1027
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_03.ubulk" 1028
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_03.uasset" 1029
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Stone_Flat_03.uexp" 1030
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/TestSpace.uexp" 1031
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/TestSpace.umap" 1032
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/Lobby.uexp" 1033
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/Lobby.umap" 1034
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Plugins/MultiplayerSessions/Content/WBP_Menu.uasset" 1035
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Plugins/MultiplayerSessions/Content/WBP_Menu.uexp" 1036
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/GameStartupMap.uexp" 1037
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/GameStartupMap.umap" 1038
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Edge_01.ubulk" 1039
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Edge_01.uasset" 1040
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Edge_01.uexp" 1041
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_02.ubulk" 1042
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_02.uasset" 1043
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_02.uexp" 1044
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Floor_01.ubulk" 1045
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Floor_01.uasset" 1046
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Floor_01.uexp" 1047
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Floor_02.ubulk" 1048
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Floor_02.uasset" 1049
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Trim_Floor_02.uexp" 1050
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_Ornate_02.ubulk" 1051
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_Ornate_02.uasset" 1052
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_Ornate_02.uexp" 1053
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Portcullis_01.ubulk" 1054
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Portcullis_01.uasset" 1055
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Portcullis_01.uexp" 1056
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Textures/T_GridChecker_A.ubulk" 1057
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Textures/T_GridChecker_A.uasset" 1058
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Textures/T_GridChecker_A.uexp" 1059
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/MF_ProcGrid.uasset" 1060
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/MF_ProcGrid.uexp" 1061
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/M_PrototypeGrid.uasset" 1062
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/M_PrototypeGrid.uexp" 1063
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.uasset" 1064
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.uexp" 1065
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Box_C13025CC.ubulk" 1066
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Box_C13025CC.uasset" 1067
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Box_C13025CC.uexp" 1068
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_02.ubulk" 1069
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_02.uasset" 1070
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_02.uexp" 1071
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_DoorDouble_Round_01.ubulk" 1072
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_DoorDouble_Round_01.uasset" 1073
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_DoorDouble_Round_01.uexp" 1074
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_01.ubulk" 1075
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_01.uasset" 1076
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_01.uexp" 1077
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_03.ubulk" 1078
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_03.uasset" 1079
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_03.uexp" 1080
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Archway_01.ubulk" 1081
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Archway_01.uasset" 1082
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Archway_01.uexp" 1083
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_EC42A7B6.ubulk" 1084
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_EC42A7B6.uasset" 1085
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_EC42A7B6.uexp" 1086
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Stone_Vessel_01.ubulk" 1087
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Stone_Vessel_01.uasset" 1088
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Stone_Vessel_01.uexp" 1089
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Wood/SM_Env_Wood_Railing_02.ubulk" 1090
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Wood/SM_Env_Wood_Railing_02.uasset" 1091
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Wood/SM_Env_Wood_Railing_02.uexp" 1092
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_05.ubulk" 1093
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_05.uasset" 1094
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_05.uexp" 1095
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Sewer_Canal_Corner_01.ubulk" 1096
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Sewer_Canal_Corner_01.uasset" 1097
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Sewer_Canal_Corner_01.uexp" 1098
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_DoorDouble_Round_02.ubulk" 1099
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_DoorDouble_Round_02.uasset" 1100
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_DoorDouble_Round_02.uexp" 1101
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_Bars_02.ubulk" 1102
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_Bars_02.uasset" 1103
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_Bars_02.uexp" 1104
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_D260586D.ubulk" 1105
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_D260586D.uasset" 1106
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_D260586D.uexp" 1107
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Alcove_Small_01.ubulk" 1108
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Alcove_Small_01.uasset" 1109
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Alcove_Small_01.uexp" 1110
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Roof_01.ubulk" 1111
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Roof_01.uasset" 1112
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Roof_01.uexp" 1113
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Statue_04.ubulk" 1114
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Statue_04.uasset" 1115
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Statue_04.uexp" 1116
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Stairs_84012EAB.ubulk" 1117
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Stairs_84012EAB.uasset" 1118
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Stairs_84012EAB.uexp" 1119
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Wood_01.ubulk" 1120
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Wood_01.uasset" 1121
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Wood_01.uexp" 1122
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_02.ubulk" 1123
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_02.uasset" 1124
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Window_02.uexp" 1125
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_01.ubulk" 1126
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_01.uasset" 1127
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_01.uexp" 1128
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Half_01.ubulk" 1129
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Half_01.uasset" 1130
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Half_01.uexp" 1131
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_04.ubulk" 1132
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_04.uasset" 1133
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_04.uexp" 1134
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Sewer_Canal_01.ubulk" 1135
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Sewer_Canal_01.uasset" 1136
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Sewer_Canal_01.uexp" 1137
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_6E5E0B7A.ubulk" 1138
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_6E5E0B7A.uasset" 1139
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_6E5E0B7A.uexp" 1140
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_CrackedRock_03.ubulk" 1141
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_CrackedRock_03.uasset" 1142
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_CrackedRock_03.uexp" 1143
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_97FD3999.ubulk" 1144
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_97FD3999.uasset" 1145
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_97FD3999.uexp" 1146
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_14898EA3.ubulk" 1147
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_14898EA3.uasset" 1148
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_14898EA3.uexp" 1149
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Frame_Round_02.ubulk" 1150
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Frame_Round_02.uasset" 1151
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Frame_Round_02.uexp" 1152
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Glow.uasset" 1153
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/ParticleFX/FX_Glow.uexp" 1154
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/MI_PrototypeGrid_Gray.uasset" 1155
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/LevelPrototyping/Materials/MI_PrototypeGrid_Gray.uexp" 1156
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_5AC413DD.ubulk" 1157
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_5AC413DD.uasset" 1158
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_5AC413DD.uexp" 1159
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_044BF5BF.ubulk" 1160
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_044BF5BF.uasset" 1161
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_044BF5BF.uexp" 1162
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_05.ubulk" 1163
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_05.uasset" 1164
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_05.uexp" 1165
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Box_4270DE61.ubulk" 1166
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Box_4270DE61.uasset" 1167
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Box_4270DE61.uexp" 1168
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_35D80A78.ubulk" 1169
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_35D80A78.uasset" 1170
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_35D80A78.uexp" 1171
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_035203C2.ubulk" 1172
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_035203C2.uasset" 1173
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_035203C2.uexp" 1174
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_2570E2EA.ubulk" 1175
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_2570E2EA.uasset" 1176
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_2570E2EA.uexp" 1177
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_09.ubulk" 1178
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_09.uasset" 1179
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_09.uexp" 1180
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_Corner_02.ubulk" 1181
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_Corner_02.uasset" 1182
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Background_Corner_02.uexp" 1183
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_D8690AE8.ubulk" 1184
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_D8690AE8.uasset" 1185
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_D8690AE8.uexp" 1186
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Curved_Corner_01.ubulk" 1187
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Curved_Corner_01.uasset" 1188
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Curved_Corner_01.uexp" 1189
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_01_Alt.ubulk" 1190
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_01_Alt.uasset" 1191
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_01_Alt.uexp" 1192
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_CF741A08.ubulk" 1193
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_CF741A08.uasset" 1194
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_CF741A08.uexp" 1195
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_AABF21F2.ubulk" 1196
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_AABF21F2.uasset" 1197
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_AABF21F2.uexp" 1198
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Statue_03.ubulk" 1199
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Statue_03.uasset" 1200
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Misc/SM_Env_Statue_03.uexp" 1201
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_DoorFrame_Double_Round_01.ubulk" 1202
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_DoorFrame_Double_Round_01.uasset" 1203
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_DoorFrame_Double_Round_01.uexp" 1204
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_0CB2BB0A.ubulk" 1205
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_0CB2BB0A.uasset" 1206
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_0CB2BB0A.uexp" 1207
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Cave_Background_Hole_01.ubulk" 1208
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Cave_Background_Hole_01.uasset" 1209
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Cave_Background_Hole_01.uexp" 1210
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Cave_Hole_01.ubulk" 1211
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Cave_Hole_01.uasset" 1212
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Cave_Hole_01.uexp" 1213
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Tiles_Round_01.ubulk" 1214
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Tiles_Round_01.uasset" 1215
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeonMap/Meshes/SM_Env_Tiles_Round_01.uexp" 1216
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_End_Coner_Inner_01.ubulk" 1217
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_End_Coner_Inner_01.uasset" 1218
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_End_Coner_Inner_01.uexp" 1219
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tile_Simple_01.ubulk" 1220
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tile_Simple_01.uasset" 1221
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tile_Simple_01.uexp" 1222
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Arch_01.ubulk" 1223
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Arch_01.uasset" 1224
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Ceiling_Arch_01.uexp" 1225
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Rock_Flat_05.ubulk" 1226
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Rock_Flat_05.uasset" 1227
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Rock_Flat_05.uexp" 1228
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_26635E65.ubulk" 1229
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_26635E65.uasset" 1230
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_26635E65.uexp" 1231
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_55E8B550.ubulk" 1232
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_55E8B550.uasset" 1233
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Rectangle_55E8B550.uexp" 1234
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_010.ubulk" 1235
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_010.uasset" 1236
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_010.uexp" 1237
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Curved_01.ubulk" 1238
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Curved_01.uasset" 1239
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_Curved_01.uexp" 1240
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_06.ubulk" 1241
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_06.uasset" 1242
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Pillars/SM_Env_Pillar_Square_06.uexp" 1243
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Pillar_Large_01.ubulk" 1244
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Pillar_Large_01.uasset" 1245
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Wall_Pillar_Large_01.uexp" 1246
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_01.ubulk" 1247
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_01.uasset" 1248
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Rocks/SM_Env_Cave_01.uexp" 1249
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Wood_02.ubulk" 1250
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Wood_02.uasset" 1251
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Walls/SM_Env_Door_Large_Wood_02.uexp" 1252
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_Ornate_01.ubulk" 1253
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_Ornate_01.uasset" 1254
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/PolygonDungeons/Meshes/Environments/Floors/SM_Env_Tiles_Ornate_01.uexp" 1255
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_F3C3D945.ubulk" 1256
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_F3C3D945.uasset" 1257
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/CustomMeshes/Boolean_F3C3D945.uexp" 1258
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/MainLevel.uexp" 1259
+"D:/Projects/Mastered Bootcamp/Portfolio Brief/SirDingus/Content/Maps/MainLevel.umap" 1260
+"../../../Engine/Content/Maps/Entry_BuiltData.uasset" 1261
+"../../../Engine/Content/Maps/Entry_BuiltData.uexp" 1262
+"../../../Engine/Content/Maps/Entry.uexp" 1263
+"../../../Engine/Content/Maps/Entry.umap" 1264
