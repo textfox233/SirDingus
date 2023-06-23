@@ -57,6 +57,10 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* QuitGameAction;
 
+	// -- Extra Test Action
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* TestAction;
+
 
 	/** Equipped Weapon **/
 	// -- Weapon Class
@@ -123,6 +127,10 @@ protected:
 	
 	// -- Quit Game
 	void QuitGame(const FInputActionValue& Value);
+
+	// -- Extra Test Action
+	UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
+	void TestSomething(const FInputActionValue& Value);
 
 
 	// APawn interface

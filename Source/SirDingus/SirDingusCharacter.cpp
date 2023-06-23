@@ -66,20 +66,6 @@ ASirDingusCharacter::ASirDingusCharacter()
 	//}
 }
 
-//void ASirDingusCharacter::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
-//{
-//	/// Debug Msg
-////	if (GEngine)
-////	{
-////		GEngine->AddOnScreenDebugMessage(
-////			-1,
-////			15.f,
-////			FColor::Green,
-////			FString(TEXT("ASirDingusCharacter::DamageTaken()"))
-////		);
-////	}
-//}
-
 float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	float superResult = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
@@ -422,7 +408,7 @@ AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
 }
 
 //////////////////////////////////////////////////////////////////////////
-// Input
+/// Input
 
 void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
@@ -449,6 +435,10 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 
 		/// Quit Game
 		EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::QuitGame);
+	
+		/// Test Something
+		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
+
 	}
 
 }
