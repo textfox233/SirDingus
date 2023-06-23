@@ -7,14 +7,14 @@ void AKnightCharacter::CharacterDeath()
 {
 	Super::CharacterDeath();
 
-	// Debug Msg
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.f,
-			FColor::Yellow,
-			FString(TEXT("AKnightCharacter::HasDied()"))
-		);
-	}
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		2.f,
+	//		FColor::Yellow,
+	//		FString(TEXT("AKnightCharacter::HasDied()"))
+	//	);
+	//}
 }

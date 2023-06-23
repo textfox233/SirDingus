@@ -8,16 +8,16 @@ void ASkeletonCharacter::CharacterDeath()
 {
 	Super::CharacterDeath();
 
-	// Debug Msg
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.f,
-			FColor::Yellow,
-			FString(TEXT("ASkeletonCharacter::HasDied()"))
-		);
-	}
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		2.f,
+	//		FColor::Yellow,
+	//		FString(TEXT("ASkeletonCharacter::HasDied()"))
+	//	);
+	//}
 
 	// check for AI controller - not sure this is necessary but for now I'm paranoid so I'm doing it
 	AController* rawController = Controller;

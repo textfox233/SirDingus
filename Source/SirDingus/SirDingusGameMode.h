@@ -18,7 +18,7 @@ class ASirDingusGameMode : public AGameModeBase
 public:
 	void CharacterDied(class AActor* DeadActor);
 
-	bool RequestRestart();
+	bool RequestRestart(bool bDebug = false);
 
 protected:
 	virtual void BeginPlay() override;

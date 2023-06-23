@@ -25,16 +25,16 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 	// if the dead actor is an AI
 	if (ASkeletonCharacter* Skeleton = Cast<ASkeletonCharacter>(DeadActor))
 	{
-		// Debug Msg
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				2.f,
-				FColor::Red,
-				FString(TEXT("Dead actor is an AI character"))
-			);
-		}
+		/// Debug Msg
+		//if (GEngine)
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		2.f,
+		//		FColor::Red,
+		//		FString(TEXT("Dead actor is an AI character"))
+		//	);
+		//}
 
 		// 1. Handle Character Death
 		Skeleton->CharacterDeath();
@@ -49,16 +49,16 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 	// if the dead actor is a player
 	else if (AKnightCharacter* Knight = Cast<AKnightCharacter>(DeadActor))
 	{
-		// Debug Msg
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				2.f,
-				FColor::Red,
-				FString(TEXT("Dead actor is a player character"))
-			);
-		}
+		/// Debug Msg
+		//if (GEngine)
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		2.f,
+		//		FColor::Red,
+		//		FString(TEXT("Dead actor is a player character"))
+		//	);
+		//}
 
 		// 1. Handle Character Death
 		Knight->CharacterDeath();
@@ -89,10 +89,10 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 	}
 }
 
-bool ASirDingusGameMode::RequestRestart()
+bool ASirDingusGameMode::RequestRestart(bool bDebug)
 {
 	// Debug Msg
-	if (GEngine)
+	if (bDebug && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
 			-1,

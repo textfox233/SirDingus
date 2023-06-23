@@ -257,7 +257,7 @@ void ASirDingusCharacter::MeleeTraceInProgress()
 	//UE_LOG(LogTemp, Warning, TEXT("timer active"));
 
 	// perform line trace (debug? / logs?)
-	AActor* hit = DrawWeaponArc(true);
+	AActor* hit = DrawWeaponArc();
 
 	// process the hit
 	if (ProcessMeleeHit(hit))
@@ -554,16 +554,16 @@ void ASirDingusCharacter::Attack(const FInputActionValue& Value)
 
 void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Value)
 {
-	// Debug Msg
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			TEXT("ASirDingusCharacter::RestartGame()")
-		);
-	}
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		TEXT("ASirDingusCharacter::RestartGame()")
+	//	);
+	//}
 	if (CurrentGameMode)
 	{
 		//CurrentGameMode->RequestRestart();
@@ -579,27 +579,29 @@ void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Va
 		
 		if (CurrentGameMode->RequestRestart())
 		{
-			if (GEngine)
-			{
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					3.f,
-					FColor::Green,
-					TEXT("Restart Approved")
-				);
-			}
+			/// Debug Msg
+			//if (GEngine)
+			//{
+			//	GEngine->AddOnScreenDebugMessage(
+			//		-1,
+			//		3.f,
+			//		FColor::Green,
+			//		TEXT("Restart Approved")
+			//	);
+			//}
 		}
 		else
 		{
-			if (GEngine)
-			{
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					3.f,
-					FColor::Red,
-					TEXT("Restart Declined")
-				);
-			}
+			/// Debug Msg
+			//if (GEngine)
+			//{
+			//	GEngine->AddOnScreenDebugMessage(
+			//		-1,
+			//		3.f,
+			//		FColor::Red,
+			//		TEXT("Restart Declined")
+			//	);
+			//}
 		}
 	}
 	else
