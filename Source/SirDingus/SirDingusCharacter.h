@@ -75,6 +75,7 @@ public:
 	ASirDingusCharacter();
 
 	/** Character Death **/
+	UFUNCTION(Client, Reliable)
 	virtual void CharacterDeath();
 
 	/// Blueprint Event for Attacking - Deprecated
@@ -129,7 +130,7 @@ protected:
 	void QuitGame(const FInputActionValue& Value);
 
 	// -- Extra Test Action
-	UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
+	//UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
 	void TestSomething(const FInputActionValue& Value);
 
 
