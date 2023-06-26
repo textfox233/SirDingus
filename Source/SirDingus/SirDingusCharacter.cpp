@@ -154,6 +154,14 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 			FColor::Yellow,
 			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
 		);
+
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
+		);
+
 	}
 
 	return superResult;
@@ -725,4 +733,32 @@ void ASirDingusCharacter::TestSomething(const FInputActionValue& Value)
 	UGameplayStatics::ApplyDamage(this, 50.f, Controller, this, DamageTypeClass);
 
 	//this->TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController * EventInstigator, AActor * DamageCauser);
+}
+
+FString ASirDingusCharacter::GetNetRole()
+{
+	ENetRole localRole = this->GetLocalRole();
+	FString role;
+	if (localRole)
+	{
+		switch (localRole)
+		{
+		case ENetRole::ROLE_Authority:
+			return FString("Authority");
+			break;
+		case ENetRole::ROLE_AutonomousProxy:
+			return FString("AutonomousProxy");
+			break;
+		case ENetRole::ROLE_MAX:
+			return FString("MAX");
+			break;
+		case ENetRole::ROLE_None:
+			return FString("AutNonehority");
+			break;
+		case ENetRole::ROLE_SimulatedProxy:
+			return FString("SimulatedProxy");
+			break;
+		}
+	}
+	return FString("ERROR: local role not found");
 }

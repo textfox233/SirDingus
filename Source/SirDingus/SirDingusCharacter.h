@@ -148,6 +148,11 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
+	
+	/** Debugging Functions **/
+
+	// -- Return NetRole as an FString
+	FString GetNetRole();
 
 	/** Melee Animation Timer (Refactored) **/
 
