@@ -11,7 +11,7 @@
 //void ASirDingusGameMode::ActorDied(APawn* DeadPawn)
 void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 {
-	// Debug Msg
+	/// Debug Msg
 	//if (GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(

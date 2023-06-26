@@ -35,12 +35,23 @@ void UHealthComponent::BeginPlay()
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
-	//UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *DamagedActor->GetName());
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		2.f,
+	//		FColor::Red,
+	//		FString(TEXT("UHealthComponent::DamageTaken()"))
+	//	);
+	//}
+
+	UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *DamagedActor->GetName());
 	if (Damage <= 0.f) return; // no dmg
 
 	// Apply damage
 	Health -= Damage;
-	//UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
 	
 	// If health goes below zero, the actor has died
 	if (Health <= 0.f)
@@ -50,15 +61,6 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 			// inform gamemode character has died
 			CurrentGameMode->CharacterDied(DamagedActor);
 	}
-	//else
-		//{
-		//	// play flinch animation
-		//	if (FlinchMontage)
-		//	{
-		//		PlayAnimMontageServer(FlinchMontage);
-		//	}
-		//}
-	//}
 }
 
 // Called every frame

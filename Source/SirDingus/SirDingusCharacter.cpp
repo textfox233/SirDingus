@@ -17,9 +17,17 @@
 #include "Engine/EngineTypes.h"
 #include "HealthComponent.h"
 #include "SirDingusGameMode.h"
+#include "Net/UnrealNetwork.h"
 
 //////////////////////////////////////////////////////////////////////////
 /// ASirDingusCharacter
+
+void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ASirDingusCharacter, bAlive);
+}
 
 ASirDingusCharacter::ASirDingusCharacter()
 {
@@ -137,6 +145,25 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 		PlayAnimMontageServer(FlinchMontage);
 	}
 
+	/// Debug Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+		);
+
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
+		);
+
+	}
+
 	return superResult;
 }
 
@@ -236,6 +263,17 @@ void ASirDingusCharacter::CharacterDeath()
 	// mark as dead
 	bAlive = false;
 
+	/// Debug Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+		);
+	}
+
 	// play death animation
 	if (DeathMontage)
 	{
@@ -260,7 +298,7 @@ void ASirDingusCharacter::MeleeTraceInProgress()
 	AActor* hit = DrawWeaponArc();
 
 	// process the hit
-	if (ProcessMeleeHit(hit))
+	if (ProcessMeleeHit(hit, true))
 	// if hit was valid
 	{
 		// stop line tracing - should stop multiple hits per swing
@@ -306,6 +344,16 @@ bool ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 		// if character is not alive
 		if (!Character->bAlive)
 		{
+			/// Debug
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					2.f,
+					FColor::Yellow,
+					FString(TEXT("Target is already dead"))
+				);
+			}
 			// FALSE: target invalid
 			return false;
 		}
@@ -350,6 +398,17 @@ bool ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 		DamageTypeClass	// DamageTypeClass - Class that describes the damage that was done.
 	);
 	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
+	if (bDebugLog) { 
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.f,
+				FColor::Yellow,
+				FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
+			);
+		};
+	}
 
 	// TRUE: damage was dealt
 	return true;
@@ -500,7 +559,7 @@ void ASirDingusCharacter::Move(const FInputActionValue& Value)
 			AddMovementInput(ForwardDirection, MovementVector.Y);
 			AddMovementInput(RightDirection, MovementVector.X);
 
-			////DEBUG MESSAGE
+			/// DEBUG MESSAGE
 			//if (GEngine)
 			//{
 			//	GEngine->AddOnScreenDebugMessage(
@@ -657,4 +716,52 @@ void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 		}
 	}
 
+}
+
+void ASirDingusCharacter::TestSomething(const FInputActionValue& Value)
+{
+	/// Debug Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::TestSomething -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+		);
+	}
+
+	UClass* DamageTypeClass = UDamageType::StaticClass();
+	UGameplayStatics::ApplyDamage(this, 50.f, Controller, this, DamageTypeClass);
+
+	//this->TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController * EventInstigator, AActor * DamageCauser);
+}
+
+
+FString ASirDingusCharacter::GetNetRole()
+{
+	ENetRole localRole = this->GetLocalRole();
+	FString role;
+	if (localRole)
+	{
+		switch (localRole)
+		{
+		case ENetRole::ROLE_Authority:
+			return FString("Authority");
+			break;
+		case ENetRole::ROLE_AutonomousProxy:
+			return FString("AutonomousProxy");
+			break;
+		case ENetRole::ROLE_MAX:
+			return FString("MAX");
+			break;
+		case ENetRole::ROLE_None:
+			return FString("AutNonehority");
+			break;
+		case ENetRole::ROLE_SimulatedProxy:
+			return FString("SimulatedProxy");
+			break;
+		}
+	}
+	return FString("ERROR: local role not found");
 }
