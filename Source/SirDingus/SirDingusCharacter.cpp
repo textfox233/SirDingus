@@ -678,15 +678,15 @@ void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Va
 void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 {
 	/// Debug Msg
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			TEXT("ASirDingusCharacter::QuitGame()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		TEXT("ASirDingusCharacter::QuitGame()")
+	//	);
+	//}
 
 	// if this is a player, exit the game
 	if (APlayerController* thisPlayer = Cast<APlayerController>(GetController()))
