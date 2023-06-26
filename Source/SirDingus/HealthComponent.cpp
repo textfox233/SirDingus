@@ -35,16 +35,17 @@ void UHealthComponent::BeginPlay()
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
-	// Debug Msg
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.f,
-			FColor::Red,
-			FString(TEXT("UHealthComponent::DamageTaken()"))
-		);
-	}
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		2.f,
+	//		FColor::Red,
+	//		FString(TEXT("UHealthComponent::DamageTaken()"))
+	//	);
+	//}
+
 	UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *DamagedActor->GetName());
 	if (Damage <= 0.f) return; // no dmg
 
