@@ -74,7 +74,6 @@ public:
 	ASirDingusCharacter();
 
 	/** Character Death **/
-	UFUNCTION(Client, Reliable)
 	virtual void CharacterDeath();
 
 

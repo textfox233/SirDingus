@@ -258,7 +258,7 @@ void ASirDingusCharacter::BeginPlay()
 	//}
 }
 
-void ASirDingusCharacter::CharacterDeath_Implementation()
+void ASirDingusCharacter::CharacterDeath()
 {
 	// mark as dead
 	bAlive = false;
@@ -734,6 +734,7 @@ void ASirDingusCharacter::TestSomething(const FInputActionValue& Value)
 
 	//this->TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController * EventInstigator, AActor * DamageCauser);
 }
+
 
 FString ASirDingusCharacter::GetNetRole()
 {
