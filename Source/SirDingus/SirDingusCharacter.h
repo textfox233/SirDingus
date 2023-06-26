@@ -29,7 +29,6 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputMappingContext* DefaultMappingContext;
 
-
 	/** Input Actions **/
 	// -- Dodge
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
@@ -78,21 +77,29 @@ public:
 	UFUNCTION(Client, Reliable)
 	virtual void CharacterDeath();
 
-	/// Blueprint Event for Attacking - Deprecated
+
+	/** Replication **/
+	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+
+	/** Blueprint Event for Attacking - Deprecated **/
 	//UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
 	//void AttackEvent();
 
-	/// When Character Takes Damage
+
+	/** Taking Damage **/
 	// - tried at first to bind a new function to OnTakeAnyDamage but ran into problems, decided instead to override AActor::TakeDamage()
 	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
-	// -- Play Animations
+
+	//** Playing Animations **/
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 		void PlayAnimMontageServer(UAnimMontage* AnimMontage);
 	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
 		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage);
 
-	// -- Animation Montages
+
+	/** Animation Montages **/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
 		class UAnimMontage* BasicAttackMontage;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
@@ -109,6 +116,7 @@ public:
 protected:
 
 	/** Input Functions **/
+
 	// -- Dodging
 	void Dodge(const FInputActionValue& Value);
 	void StopDodging();
@@ -141,27 +149,25 @@ protected:
 	virtual void BeginPlay();
 
 
-	// -- Is Character Alive
-	UPROPERTY()
-	bool bAlive = true;
-
-
-	/** Trigger Melee Timer Refactored **/
+	/** Melee Animation Timer (Refactored) **/
 
 	// -- Timer Handle
 	FTimerHandle MeleeTraceHandle;
 
 	// -- Start
 	UFUNCTION(BlueprintCallable)
-		void MeleeTraceStart();
+	void MeleeTraceStart();
 
 	// -- InProgress
 	UFUNCTION()
-		void MeleeTraceInProgress();
-	
+	void MeleeTraceInProgress();
+
 	// -- Stop
 	UFUNCTION(BlueprintCallable)
-		void MeleeTraceEnd();
+	void MeleeTraceEnd();
+
+
+	/** Melee Functions **/
 
 	// -- Process Melee Hits
 	UFUNCTION(BlueprintCallable)
@@ -171,10 +177,19 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	AActor* DrawWeaponArc(bool bDrawDebug = false, bool bDebugLog = false);
 
+
+private:
+	/** Is Character Alive **/
+	UPROPERTY(Replicated)
+	bool bAlive = true;
+
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	FORCEINLINE void SetAlive(bool isAlive) { bAlive = isAlive; }
 };
 

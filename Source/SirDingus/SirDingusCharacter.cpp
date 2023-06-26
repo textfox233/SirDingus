@@ -17,9 +17,17 @@
 #include "Engine/EngineTypes.h"
 #include "HealthComponent.h"
 #include "SirDingusGameMode.h"
+#include "Net/UnrealNetwork.h"
 
 //////////////////////////////////////////////////////////////////////////
 /// ASirDingusCharacter
+
+void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ASirDingusCharacter, bAlive);
+}
 
 ASirDingusCharacter::ASirDingusCharacter()
 {
@@ -389,7 +397,7 @@ bool ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 				-1,
 				3.f,
 				FColor::Yellow,
-				FString(TEXT("damage dealt: %f"), dmgDealt)
+				FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
 			);
 		};
 	}
