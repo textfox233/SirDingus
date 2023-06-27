@@ -2,7 +2,7 @@
 
 
 #include "HealthComponent.h"
-#include "SirDingusGameMode.h"
+#include "SirDingus/Modes & States/SirDingusGameMode.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties

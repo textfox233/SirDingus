@@ -9,14 +9,14 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "Weapon.h"
+#include "SirDingus/Weapons/Weapon.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/SceneComponent.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "Engine/EngineTypes.h"
-#include "HealthComponent.h"
-#include "SirDingusGameMode.h"
+#include "SirDingus/Components/HealthComponent.h"
+#include "SirDingus/Modes & States/SirDingusGameMode.h"
 #include "Net/UnrealNetwork.h"
 
 //////////////////////////////////////////////////////////////////////////

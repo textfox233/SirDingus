@@ -2,7 +2,7 @@
 
 
 #include "SkeletonCharacter.h"
-#include "SirDingusAIController.h"
+#include "SirDingus/Controllers/SirDingusAIController.h"
 
 void ASkeletonCharacter::CharacterDeath()
 {

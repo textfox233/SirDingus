@@ -4,7 +4,7 @@
 #include "BTTaskNode_FaceTarget.h"
 //#include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "AIController.h"
+#include "SirDingus/Controllers/SirDingusAIController.h"
 
 EBTNodeResult::Type UBTTaskNode_FaceTarget::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
