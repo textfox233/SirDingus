@@ -494,7 +494,7 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 		EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::QuitGame);
 	
 		/// Test Something
-		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
+		//EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
 
 	}
 
