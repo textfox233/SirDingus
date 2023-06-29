@@ -2,8 +2,11 @@
 
 
 #include "HealthComponent.h"
-#include "SirDingus/Modes & States/SirDingusGameMode.h"
+#include "Net/UnrealNetwork.h"
 #include "Kismet/GameplayStatics.h"
+
+#include "SirDingus/Modes & States/SirDingusGameMode.h"
+#include "SirDingus/Controllers/SirDingusPlayerController.h"
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
@@ -15,10 +18,25 @@ UHealthComponent::UHealthComponent()
 	// ...
 }
 
+void UHealthComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	DOREPLIFETIME(UHealthComponent, Health);
+}
+
 // Called when the game starts
 void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			5.f,
+			FColor::Green,
+			TEXT("UHealthComponent::BeginPlay")
+		);
+	}
 
 	// initialise health
 	Health = MaxHealth;
@@ -31,6 +49,59 @@ void UHealthComponent::BeginPlay()
 
 	// get game mode
 	CurrentGameMode = Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this));
+
+	// get controller
+	if(APawn* OwnerPawn = Cast<APawn>(GetOwner()))
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			5.f,
+			FColor::Blue,
+			FString::Printf(TEXT("OwnerPawn is %s"), *AActor::GetDebugName(OwnerPawn))
+		);
+	
+		PlayerController = Cast<ASirDingusPlayerController>(OwnerPawn->GetController());
+
+		if (PlayerController)
+		{
+			/// Debug Msg
+			//if (GEngine)
+			//{
+			//	GEngine->AddOnScreenDebugMessage(
+			//		-1,
+			//		5.f,
+			//		FColor::Green,
+			//		TEXT("SetHUDHealth")
+			//	);
+			//}
+
+			PlayerController->SetHUDHealth(Health, MaxHealth);
+		}
+		/// Error Msg
+		else
+		{
+			//GEngine->AddOnScreenDebugMessage(
+			//	-1,
+			//	5.f,
+			//	FColor::Red,
+			//	TEXT("SetHUDHealth ERROR - Cannot cast OwnerPawn's Controller to Player Controller")
+			//);
+		}
+	}
+	/// Error Msg
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			5.f,
+			FColor::Red,
+			TEXT("SetHUDHealth ERROR - Cannot cast Owner to APawn")
+		);
+	}
+}
+
+void UHealthComponent::OnRep_Health()
+{
 }
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)

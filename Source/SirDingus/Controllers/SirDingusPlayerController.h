@@ -14,10 +14,10 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-		ASirDingusPlayerController();
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI, meta = (AllowPrivateAccess = "true")) TSubclassOf<class UUserWidget> widgetHUD;
-	UUserWidget* widgetHUDInstance;
-
-
+public:
+	void SetHUDHealth(float Health, float MaxHealth);
+protected:
+	virtual void BeginPlay() override;
+private:
+	class ASirDingusHUD* PlayerHUD;
 };
