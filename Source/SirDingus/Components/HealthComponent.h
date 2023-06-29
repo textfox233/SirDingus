@@ -37,12 +37,16 @@ private:
 	UFUNCTION()
 	void OnRep_Health();
 
-	class ASirDingusPlayerController* PlayerController;
-
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 
+	void UpdateHUDHealth();
+
+	// References
+	APawn* OwnerPawn;
 	class ASirDingusGameMode* CurrentGameMode;
+	class ASirDingusPlayerController* PlayerController;
+
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
