@@ -28,15 +28,16 @@ void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			5.f,
-			FColor::Green,
-			TEXT("UHealthComponent::BeginPlay")
-		);
-	}
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		5.f,
+	//		FColor::Green,
+	//		TEXT("UHealthComponent::BeginPlay")
+	//	);
+	//}
 
 	// initialise health
 	Health = MaxHealth;
@@ -92,15 +93,15 @@ void UHealthComponent::UpdateHUDHealth()
 			PlayerController->SetHUDHealth(Health, MaxHealth);
 		}
 		/// Error Msg
-		else
-		{
-			//GEngine->AddOnScreenDebugMessage(
-			//	-1,
-			//	5.f,
-			//	FColor::Red,
-			//	TEXT("SetHUDHealth ERROR - Cannot cast OwnerPawn's Controller to Player Controller")
-			//);
-		}
+		//else
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		5.f,
+		//		FColor::Red,
+		//		TEXT("SetHUDHealth ERROR - Cannot cast OwnerPawn's Controller to Player Controller")
+		//	);
+		//}
 	}
 	/// Error Msg
 	else
