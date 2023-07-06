@@ -2,9 +2,9 @@
 
 #include "SirDingusGameMode.h"
 #include "Kismet/GameplayStatics.h"
-#include "SirDingusCharacter.h"
-#include "SkeletonCharacter.h"
-#include "KnightCharacter.h"
+#include "SirDingus/Characters/SirDingusCharacter.h"
+#include "SirDingus/Characters/SkeletonCharacter.h"
+#include "SirDingus/Characters/KnightCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 //#include "MultiplayerSessionsSubsystem.h"
 

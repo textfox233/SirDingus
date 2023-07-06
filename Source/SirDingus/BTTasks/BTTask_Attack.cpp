@@ -3,7 +3,7 @@
 
 #include "BTTask_Attack.h"
 #include "AIController.h"
-#include "SirDingusCharacter.h"
+#include "SirDingus/Characters/SirDingusCharacter.h"
 
 UBTTask_Attack::UBTTask_Attack()
 {

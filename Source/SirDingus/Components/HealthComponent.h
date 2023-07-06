@@ -20,6 +20,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	float GetHealth() { return Health; };
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 protected:
 	
 	// Called when the game starts
@@ -29,15 +31,23 @@ private:
 	// Health Values
 	UPROPERTY(EditAnywhere, Category = Health)
 	float MaxHealth = 100;
+	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = Health)
 	float Health;
+
+	UFUNCTION()
+	void OnRep_Health();
 
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 
+	void UpdateHUDHealth();
+
+	// References
+	APawn* OwnerPawn;
 	class ASirDingusGameMode* CurrentGameMode;
+	class ASirDingusPlayerController* PlayerController;
+
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	
 };

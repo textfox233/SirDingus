@@ -3,7 +3,7 @@
 
 #include "BTTask_ChooseTarget.h"
 #include "GameFramework/GameState.h"
-#include "SirDingusAIController.h"
+#include "SirDingus/Controllers/SirDingusAIController.h"
 
 EBTNodeResult::Type UBTTask_ChooseTarget::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
