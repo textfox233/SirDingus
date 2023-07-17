@@ -103,6 +103,7 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	//		FColor::Yellow,
 	//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
 	//	);
+	//
 	//	GEngine->AddOnScreenDebugMessage(
 	//		-1,
 	//		3.f,
@@ -210,10 +211,10 @@ void ASirDingusCharacter::CharacterDeath()
 	// mark as dead
 	bAlive = false;
 
-	// get collision capsule
+	// get capsule component
 	UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
-	
-	// set collision profile to NoCollision
+
+	// set to no collision
 	Capsule->SetCollisionProfileName(TEXT("NoCollision"));
 
 	/// Debug Message
@@ -223,18 +224,8 @@ void ASirDingusCharacter::CharacterDeath()
 			-1,
 			3.f,
 			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> Capsule component is %s"), Capsule ? TEXT("valid") : TEXT("invalid"))
-		);
-	}
-
-	/// Debug Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+			//FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+			FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> Capsule is %s"), Capsule ? TEXT("valid") : TEXT("invalid"))
 		);
 	}
 
@@ -644,15 +635,15 @@ void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Va
 void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 {
 	/// Debug Msg
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			TEXT("ASirDingusCharacter::QuitGame()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		TEXT("ASirDingusCharacter::QuitGame()")
+	//	);
+	//}
 
 	// if this is a player, exit the game
 	if (APlayerController* thisPlayer = Cast<APlayerController>(GetController()))
@@ -669,15 +660,15 @@ void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 	else
 	{
 		/// Debug Msg
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				3.f,
-				FColor::Red,
-				TEXT("Controller is not a PlayerController")
-			);
-		}
+		//if (GEngine)
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		3.f,
+		//		FColor::Red,
+		//		TEXT("Controller is not a PlayerController")
+		//	);
+		//}
 	}
 
 }
@@ -685,15 +676,15 @@ void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 void ASirDingusCharacter::TestSomething(const FInputActionValue& Value)
 {
 	/// Debug Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TestSomething -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusCharacter::TestSomething -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+	//	);
+	//}
 
 	UClass* DamageTypeClass = UDamageType::StaticClass();
 	UGameplayStatics::ApplyDamage(this, 50.f, Controller, this, DamageTypeClass);

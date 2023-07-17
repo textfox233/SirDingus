@@ -15,8 +15,9 @@ void ASirDingusPlayerController::BeginPlay()
 	PlayerHUD = Cast<ASirDingusHUD>(GetHUD());
 }
 
-void ASirDingusPlayerController::SetHUDHealth(float Health, float MaxHealth)
+void ASirDingusPlayerController::SetHUDHealth_Implementation(float Health, float MaxHealth)
 {
+	// if HUD is nullptr cast it, otherwise set to current self / do nothing
 	PlayerHUD = PlayerHUD == nullptr ? Cast<ASirDingusHUD>(GetHUD()) : PlayerHUD;
 
 	// Must Check: HUD, Overlay, Health bar, Health text
@@ -32,13 +33,15 @@ void ASirDingusPlayerController::SetHUDHealth(float Health, float MaxHealth)
 		PlayerHUD->CharacterOverlay->HealthText->SetText(FText::FromString(HealthText));
 	}
 	else
+	{
 		if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(
-			-1,
-			5.f,
-			FColor::Red,
-			TEXT("SetHUDHealth Error")
+				-1,
+				5.f,
+				FColor::Red,
+				TEXT("SetHUDHealth Error - HUD is not Valid")
 			);
 		}
+	}
 }

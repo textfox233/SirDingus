@@ -15,6 +15,7 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
 	GENERATED_BODY()
 
 public:
+	UFUNCTION(Client, Reliable)
 	void SetHUDHealth(float Health, float MaxHealth);
 protected:
 	virtual void BeginPlay() override;
