@@ -210,8 +210,11 @@ void ASirDingusCharacter::CharacterDeath()
 	// mark as dead
 	bAlive = false;
 
-	// set collision profile to NoCollision
+	// get collision capsule
 	UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
+	
+	// set collision profile to NoCollision
+	Capsule->SetCollisionProfileName(TEXT("NoCollision"));
 
 	/// Debug Message
 	if (GEngine)
