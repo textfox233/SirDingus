@@ -146,23 +146,22 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	}
 
 	/// Debug Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
-		);
-
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
-		);
-
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+	//	);
+	//
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
+	//	);
+	//}
 
 	return superResult;
 }
@@ -264,15 +263,15 @@ void ASirDingusCharacter::CharacterDeath()
 	bAlive = false;
 
 	/// Debug Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+	//	);
+	//}
 
 	// play death animation
 	if (DeathMontage)
@@ -298,7 +297,7 @@ void ASirDingusCharacter::MeleeTraceInProgress()
 	AActor* hit = DrawWeaponArc();
 
 	// process the hit
-	if (ProcessMeleeHit(hit, true))
+	if (ProcessMeleeHit(hit))
 	// if hit was valid
 	{
 		// stop line tracing - should stop multiple hits per swing
@@ -721,15 +720,15 @@ void ASirDingusCharacter::QuitGame(const FInputActionValue& Value)
 void ASirDingusCharacter::TestSomething(const FInputActionValue& Value)
 {
 	/// Debug Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TestSomething -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusCharacter::TestSomething -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+	//	);
+	//}
 
 	UClass* DamageTypeClass = UDamageType::StaticClass();
 	UGameplayStatics::ApplyDamage(this, 50.f, Controller, this, DamageTypeClass);
