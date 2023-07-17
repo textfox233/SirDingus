@@ -28,15 +28,16 @@ void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			5.f,
-			FColor::Green,
-			TEXT("UHealthComponent::BeginPlay")
-		);
-	}
+	/// Debug Message
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		5.f,
+	//		FColor::Green,
+	//		TEXT("UHealthComponent::BeginPlay")
+	//	);
+	//}
 
 	// initialise health
 	Health = MaxHealth;

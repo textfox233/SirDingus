@@ -88,57 +88,6 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	//	);
 	//}
 
-	///** Check if Character has Died **///
-	//// get health component
-	//UHealthComponent* healthComp = FindComponentByClass<UHealthComponent>();
-	//
-	//// check for valid component
-	//if (!healthComp)
-	//// if component is invalid, log error + exit early
-	//{
-	//	// Debug Msg
-	//	if (GEngine)
-	//	{
-	//		GEngine->AddOnScreenDebugMessage(
-	//			-1,
-	//			15.f,
-	//			FColor::Red,
-	//			FString(TEXT("healthComp invalid"))
-	//		);
-	//	}
-	//	return false;
-	//}
-	//else // if component is valid, test health
-	//{	
-	//	//// Debug Msg
-	//	//if (GEngine)
-	//	//{
-	//	//	GEngine->AddOnScreenDebugMessage(
-	//	//		-1,
-	//	//		15.f,
-	//	//		FColor::Green,
-	//	//		FString(TEXT("healthComp valid"))
-	//	//	);
-	//	//}
-	//
-	//	// if health is below 0 (or equal), character has died
-	//	if (healthComp->GetHealth() <= 0)
-	//	{
-	//		UE_LOG(LogTemp,Warning,TEXT("Character has Died, Informing GameMode"))
-	//
-	//		// inform gamemode character has died
-	//		CurrentGameMode->CharacterDied(this);
-	//	}
-	//	else
-	//	{
-	//		// play flinch animation
-	//		if (FlinchMontage)
-	//		{
-	//			PlayAnimMontageServer(FlinchMontage);
-	//		}
-	//	}
-	//}
-
 	// play flinch animation
 	if (bAlive && FlinchMontage)
 	{
@@ -146,23 +95,21 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	}
 
 	/// Debug Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
-		);
-
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
-		);
-
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+	//	);
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Yellow,
+	//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
+	//	);
+	//}
 
 	return superResult;
 }
@@ -263,6 +210,20 @@ void ASirDingusCharacter::CharacterDeath()
 	// mark as dead
 	bAlive = false;
 
+	// set collision profile to NoCollision
+	UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
+
+	/// Debug Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> Capsule component is %s"), Capsule ? TEXT("valid") : TEXT("invalid"))
+		);
+	}
+
 	/// Debug Message
 	if (GEngine)
 	{
@@ -298,7 +259,7 @@ void ASirDingusCharacter::MeleeTraceInProgress()
 	AActor* hit = DrawWeaponArc();
 
 	// process the hit
-	if (ProcessMeleeHit(hit, true))
+	if (ProcessMeleeHit(hit))
 	// if hit was valid
 	{
 		// stop line tracing - should stop multiple hits per swing
@@ -345,7 +306,7 @@ bool ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 		if (!Character->bAlive)
 		{
 			/// Debug
-			if (GEngine)
+			if (bDebugLog && GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(
 					-1,

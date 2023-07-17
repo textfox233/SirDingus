@@ -9,30 +9,32 @@ void ASirDingusHUD::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			5.f,
-			FColor::Green,
-			TEXT("HUD::BeginPlay")
-		);
-	}
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		5.f,
+	//		FColor::Green,
+	//		TEXT("HUD::BeginPlay")
+	//	);
+	//}
 
 	AddCharacterOverLay();
 }
 
 void ASirDingusHUD::AddCharacterOverLay()
 {
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			5.f,
-			FColor::Green,
-			TEXT("HUD::AddCharacterOverLay")
-		);
-	}
+	/// Debug Msg
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		5.f,
+	//		FColor::Green,
+	//		TEXT("HUD::AddCharacterOverLay")
+	//	);
+	//}
 
 	APlayerController* playerController = GetOwningPlayerController();
 	if (playerController && CharacterOverlayClass)
