@@ -22,6 +22,18 @@
 //////////////////////////////////////////////////////////////////////////
 /// ASirDingusCharacter
 
+void ASirDingusCharacter::DisableCapsuleCollisionServer_Implementation(UPrimitiveComponent* Capsule)
+{
+	DisableCapsuleCollisionMulticast(Capsule);
+	//Capsule->SetCollisionProfileName(TEXT("NoCollision"));
+}
+
+void ASirDingusCharacter::DisableCapsuleCollisionMulticast_Implementation(UPrimitiveComponent* Capsule)
+{
+	// set to no collision
+	Capsule->SetCollisionProfileName(TEXT("NoCollision"));
+}
+
 void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -215,7 +227,8 @@ void ASirDingusCharacter::CharacterDeath()
 	UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
 
 	// set to no collision
-	Capsule->SetCollisionProfileName(TEXT("NoCollision"));
+	//Capsule->SetCollisionProfileName(TEXT("NoCollision"));
+	if (Capsule) { DisableCapsuleCollisionServer(Capsule); }
 
 	/// Debug Message
 	if (GEngine)

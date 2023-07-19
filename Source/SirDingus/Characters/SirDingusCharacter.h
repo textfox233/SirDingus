@@ -76,6 +76,11 @@ public:
 	/** Character Death **/
 	virtual void CharacterDeath();
 
+	// -- Disable Capsule Collision (code must be replicated)
+	UFUNCTION(Server, Reliable)
+	void DisableCapsuleCollisionServer(UPrimitiveComponent* Capsule);
+	UFUNCTION(NetMulticast, Reliable)
+	void DisableCapsuleCollisionMulticast(UPrimitiveComponent* Capsule);
 
 	/** Replication **/
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
