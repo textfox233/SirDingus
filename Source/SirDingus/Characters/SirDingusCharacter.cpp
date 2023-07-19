@@ -31,7 +31,7 @@ void ASirDingusCharacter::DisableCapsuleCollisionServer_Implementation(UPrimitiv
 void ASirDingusCharacter::DisableCapsuleCollisionMulticast_Implementation(UPrimitiveComponent* Capsule)
 {
 	// set to no collision
-	Capsule->SetCollisionProfileName(TEXT("NoCollision"));
+	Capsule->SetCollisionProfileName(TEXT("Spectator"));
 }
 
 void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -228,7 +228,8 @@ void ASirDingusCharacter::CharacterDeath()
 
 	// set to no collision
 	//Capsule->SetCollisionProfileName(TEXT("NoCollision"));
-	if (Capsule) { DisableCapsuleCollisionServer(Capsule); }
+	//if (Capsule) { DisableCapsuleCollisionServer(Capsule); }
+	if (Capsule) { DisableCapsuleCollisionMulticast(Capsule); }
 
 	/// Debug Message
 	if (GEngine)
@@ -465,9 +466,7 @@ void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	
 		/// Test Something
 		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
-
 	}
-
 }
 
 void ASirDingusCharacter::Dodge(const FInputActionValue& Value)
