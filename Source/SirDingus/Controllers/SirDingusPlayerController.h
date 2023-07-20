@@ -28,7 +28,7 @@ protected:
 	/** Input Functions **/
 
 	/// -- Dodging
-	//void Dodge(const FInputActionValue& Value);
+	void Dodge(const FInputActionValue& Value);
 	//void StopDodging();
 
 	/// -- Movement
@@ -39,22 +39,22 @@ protected:
 	void Look(const FInputActionValue& Value);
 
 	/// -- Attacking
-	//void Attack(const FInputActionValue& Value);
+	void Attack(const FInputActionValue& Value);
 
 	/// -- Restart Game
 	//UFUNCTION(Server, Reliable)
-	//	void RestartGame(const FInputActionValue& Value);
+	void RestartGame(const FInputActionValue& Value);
 
 	/// -- Quit Game
-	//void QuitGame(const FInputActionValue& Value);
+	void QuitGame(const FInputActionValue& Value);
 
 	/// -- Extra Test Action
 	////UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
-	//void TestSomething(const FInputActionValue& Value);
+	void TestSomething(const FInputActionValue& Value);
 
 
 	// APlayerController interface
-	virtual void SetupInputComponent(/*class UInputComponent* PlayerInputComponent*/) override;
+	virtual void SetupInputComponent() override;
 
 	// To add mapping context
 	virtual void BeginPlay() override;
@@ -79,8 +79,8 @@ private:
 		UInputAction* LookAction;
 
 	/// -- Attack
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	//	class UInputAction* AttackAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		class UInputAction* AttackAction;
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = MyAnimationInfo, meta = (AllowPrivateAccess = "true"))
 	//bool bIsAttacking;
 
@@ -89,8 +89,8 @@ private:
 	//	class UInputAction* RestartGameAction;
 
 	/// -- Quit Game
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	//	class UInputAction* QuitGameAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		class UInputAction* QuitGameAction;
 
 	/// -- Extra Test Action
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))

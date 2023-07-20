@@ -2,11 +2,16 @@
 
 
 #include "SirDingusPlayerController.h"
+
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+
+#include "Kismet/KismetSystemLibrary.h"
+
 #include "SirDingus/Characters/SirDingusCharacter.h"
 #include "SirDingus/HUD/SirDingusHUD.h"
 #include "SirDingus/HUD/CharacterOverlay.h"
+
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 
@@ -74,39 +79,182 @@ void ASirDingusPlayerController::SetupInputComponent()
 
 		/// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Move);
-		//EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Move);
 
 		/// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Look);
 
 		/// Attacking
-		//EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Attack);
+		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Attack);
 
 		/// Restart Game
 		//EnhancedInputComponent->BindAction(RestartGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::RestartGame);
 
 		/// Quit Game
-		//EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::QuitGame);
+		EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::QuitGame);
 
 		/// Test Something
 		//EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
 	}
 }
 
+void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
+{
+	/// Function Enter Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			TEXT("ASirDingusCharacter::Dodge()")
+		);
+	}
+}
+
 void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 {
+	/// Function Enter Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			1.f,
+			FColor::Green,
+			TEXT("ASirDingusPlayerController::Move()")
+		);
+	}
+	
 	APawn* pawn = GetPawn();
 	
 	if (pawn)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Pawn valid"))
+		/// Debug Message
+		//if (GEngine)
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		1.f,
+		//		FColor::Green,
+		//		TEXT("Pawn valid")
+		//	);
+		//}
+
+		// input is a Vector2D
+		FVector2D MovementVector = Value.Get<FVector2D>();
+
+		// find out which way is forward
+		const FRotator Rotation = GetControlRotation();
+		const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+		// get forward vector
+		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+
+		// get right vector 
+		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+
+		// add movement 
+		pawn->AddMovementInput(ForwardDirection, MovementVector.Y);
+		pawn->AddMovementInput(RightDirection, MovementVector.X);
+
+		/// DEBUG MESSAGE
+		//if (GEngine)
+		//{
+		//	GEngine->AddOnScreenDebugMessage(
+		//		-1,
+		//		15.f,
+		//		FColor::Yellow,
+		//		FString::Printf(TEXT("Moving"))
+		//	);
+		//}
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Pawn NOT valid"))
+		/// Debug Message
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				1.f,
+				FColor::Red,
+				TEXT("Pawn invalid")
+			);
+		}
+	}
+
+
+}
+
+// where camera is looking NOT model
+void ASirDingusPlayerController::Look(const FInputActionValue& Value)
+{
+	// input is a Vector2D
+	FVector2D LookAxisVector = Value.Get<FVector2D>();
+
+	// add yaw and pitch input to controller
+	AddYawInput(LookAxisVector.X);
+	AddPitchInput(LookAxisVector.Y);
+}
+
+void ASirDingusPlayerController::Attack(const FInputActionValue& Value)
+{
+	/// Function Enter Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			1.f,
+			FColor::Green,
+			TEXT("ASirDingusPlayerController::Attack()")
+		);
 	}
 }
 
-void ASirDingusPlayerController::Look(const FInputActionValue& Value)
+void ASirDingusPlayerController::RestartGame(const FInputActionValue& Value)
 {
+	/// Function Enter Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			TEXT("ASirDingusCharacter::RestartGame()")
+		);
+	}
+}
+
+void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
+{
+	/// Function Enter Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			TEXT("ASirDingusCharacter::QuitGame()")
+		);
+	}
+
+	//UKismetSystemLibrary::QuitGame
+	//(
+	//	this,
+	//	this,
+	//	EQuitPreference::Quit,
+	//	true
+	//);
+}
+
+void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
+{
+	/// Function Enter Message
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			TEXT("ASirDingusCharacter::TestSomething()")
+		);
+	}
 }
