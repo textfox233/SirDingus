@@ -114,11 +114,6 @@ public:
 		class UAnimMontage* DodgeMontage;
 
 
-	// -- Attacking (currently public so that AI can find it, may want to change this)
-	void Attack(const FInputActionValue& Value);
-
-protected:
-
 	/** Input Functions **/
 
 	// -- Dodging
@@ -130,14 +125,14 @@ protected:
 
 	// -- Looking
 	void Look(const FInputActionValue& Value);
-			
-	//// -- Attacking
-	//void Attack(const FInputActionValue& Value);
+
+	// -- Attacking
+	void Attack(const FInputActionValue& Value);
 
 	// -- Restart Game
 	UFUNCTION(Server, Reliable)
-	void RestartGame(const FInputActionValue& Value);
-	
+		void RestartGame(const FInputActionValue& Value);
+
 	// -- Quit Game
 	void QuitGame(const FInputActionValue& Value);
 
@@ -145,9 +140,37 @@ protected:
 	//UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
 	void TestSomething(const FInputActionValue& Value);
 
+protected:
 
-	// APawn interface
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	///** Input Functions **/
+	//
+	//// -- Dodging
+	//void Dodge(const FInputActionValue& Value);
+	//void StopDodging();
+	//
+	//// -- Movement
+	//void Move(const FInputActionValue& Value);
+	//
+	//// -- Looking
+	//void Look(const FInputActionValue& Value);
+	//		
+	////// -- Attacking
+	////void Attack(const FInputActionValue& Value);
+	//
+	//// -- Restart Game
+	//UFUNCTION(Server, Reliable)
+	//void RestartGame(const FInputActionValue& Value);
+	//
+	//// -- Quit Game
+	//void QuitGame(const FInputActionValue& Value);
+	//
+	//// -- Extra Test Action
+	////UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
+	//void TestSomething(const FInputActionValue& Value);
+	//
+	//
+	//// APawn interface
+	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	// To add mapping context
 	virtual void BeginPlay();

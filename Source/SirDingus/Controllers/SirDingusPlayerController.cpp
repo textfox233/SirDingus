@@ -2,16 +2,58 @@
 
 
 #include "SirDingusPlayerController.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "SirDingus/Characters/SirDingusCharacter.h"
 #include "SirDingus/HUD/SirDingusHUD.h"
 #include "SirDingus/HUD/CharacterOverlay.h"
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 
+//////////////////////////////////////////////////////////////////////////
+/// Input
+
+void ASirDingusPlayerController::SetupInputComponent()
+{
+	// Set up action bindings
+	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent)) {
+
+		/// Dodging - Incomplete
+		//EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Dodge);
+		//EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Completed, this, &ASirDingusCharacter::StopDodging);
+
+		/// Moving
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Move);
+		//EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Move);
+
+		/// Looking
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Look);
+
+		/// Attacking
+		//EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Attack);
+
+		/// Restart Game
+		//EnhancedInputComponent->BindAction(RestartGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::RestartGame);
+
+		/// Quit Game
+		//EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::QuitGame);
+
+		/// Test Something
+		//EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
+	}
+}
 
 void ASirDingusPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Add Input Mapping Context
+	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+	{
+		Subsystem->AddMappingContext(DefaultMappingContext, 0);
+	}
+
+	// Get Reference to Hud
 	PlayerHUD = Cast<ASirDingusHUD>(GetHUD());
 }
 
