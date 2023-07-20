@@ -554,7 +554,7 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-void ASirDingusCharacter::Attack(const FInputActionValue& Value)
+void ASirDingusCharacter::SingleSwing()
 {
 	if (bAlive)
 	{

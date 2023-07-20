@@ -39,8 +39,8 @@ EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 			// clear focus
 			OwnerComp.GetAIOwner()->ClearFocus(EAIFocusPriority::Default);
 
-			// call attack event
-			OwnerCharacter->Attack(true);
+			// initate attack
+			OwnerCharacter->SingleSwing();
 
 			// return success
 			return EBTNodeResult::Succeeded;

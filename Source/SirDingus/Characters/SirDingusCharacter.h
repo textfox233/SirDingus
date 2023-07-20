@@ -127,7 +127,7 @@ public:
 	void Look(const FInputActionValue& Value);
 
 	// -- Attacking
-	void Attack(const FInputActionValue& Value);
+	void SingleSwing();
 
 	// -- Restart Game
 	UFUNCTION(Server, Reliable)

@@ -74,7 +74,7 @@ void ASirDingusPlayerController::SetupInputComponent()
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent)) {
 
 		/// Dodging - Incomplete
-		//EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Dodge);
+		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Dodge);
 		//EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Completed, this, &ASirDingusCharacter::StopDodging);
 
 		/// Moving
@@ -87,13 +87,13 @@ void ASirDingusPlayerController::SetupInputComponent()
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Attack);
 
 		/// Restart Game
-		//EnhancedInputComponent->BindAction(RestartGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::RestartGame);
+		EnhancedInputComponent->BindAction(RestartGameAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::RestartGame);
 
 		/// Quit Game
 		EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::QuitGame);
 
 		/// Test Something
-		//EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
+		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::TestSomething);
 	}
 }
 
@@ -105,7 +105,7 @@ void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 		GEngine->AddOnScreenDebugMessage(
 			-1,
 			3.f,
-			FColor::Yellow,
+			FColor::Green,
 			TEXT("ASirDingusCharacter::Dodge()")
 		);
 	}
@@ -180,8 +180,6 @@ void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 			);
 		}
 	}
-
-
 }
 
 // where camera is looking NOT model
@@ -207,6 +205,13 @@ void ASirDingusPlayerController::Attack(const FInputActionValue& Value)
 			TEXT("ASirDingusPlayerController::Attack()")
 		);
 	}
+
+	// Get character
+	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
+	{
+		// Initiate attack
+		character->SingleSwing();
+	}
 }
 
 void ASirDingusPlayerController::RestartGame(const FInputActionValue& Value)
@@ -217,7 +222,7 @@ void ASirDingusPlayerController::RestartGame(const FInputActionValue& Value)
 		GEngine->AddOnScreenDebugMessage(
 			-1,
 			3.f,
-			FColor::Yellow,
+			FColor::Green,
 			TEXT("ASirDingusCharacter::RestartGame()")
 		);
 	}
@@ -231,7 +236,7 @@ void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 		GEngine->AddOnScreenDebugMessage(
 			-1,
 			3.f,
-			FColor::Yellow,
+			FColor::Green,
 			TEXT("ASirDingusCharacter::QuitGame()")
 		);
 	}
@@ -253,7 +258,7 @@ void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 		GEngine->AddOnScreenDebugMessage(
 			-1,
 			3.f,
-			FColor::Yellow,
+			FColor::Green,
 			TEXT("ASirDingusCharacter::TestSomething()")
 		);
 	}
