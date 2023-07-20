@@ -105,11 +105,33 @@ bool ASirDingusGameMode::RequestRestart(bool bDebug)
 	// must be game over to restart
 	if (!_bGameInProgress) // matchstate::inprogress??
 	{
+		// Debug Msg
+		if (bDebug && GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.f,
+				FColor::Green,
+				TEXT("Restart Initiated")
+			);
+		}
+
 		/// reset level
 		GetWorld()->ServerTravel("?Restart", false);
 
 		return true;
 	}
+	// Debug Msg
+	if (bDebug && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Red,
+			TEXT("Restart Denied")
+		);
+	}
+
 	return false;
 }
 

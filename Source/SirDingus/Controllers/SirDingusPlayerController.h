@@ -59,7 +59,10 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay() override;
 private:
+	// HUD Pointer
 	class ASirDingusHUD* PlayerHUD;
+	// Gamemode Pointer
+	class ASirDingusGameMode* CurrentGameMode;
 
 	/** MappingContext **/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))

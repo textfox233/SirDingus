@@ -6,9 +6,11 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 #include "SirDingus/Characters/SirDingusCharacter.h"
+#include "SirDingus/Modes & States/SirDingusGameMode.h"
 #include "SirDingus/HUD/SirDingusHUD.h"
 #include "SirDingus/HUD/CharacterOverlay.h"
 
@@ -233,6 +235,12 @@ void ASirDingusPlayerController::RestartGame(const FInputActionValue& Value)
 			TEXT("ASirDingusCharacter::RestartGame()")
 		);
 	}
+
+	// if current gamemode is nullptr get it, otherwise set to current self / do nothing
+	CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
+
+	// Attempt to initiate restart game
+	CurrentGameMode->RequestRestart(true);
 }
 
 void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
