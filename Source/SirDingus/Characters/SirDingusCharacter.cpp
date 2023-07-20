@@ -469,7 +469,7 @@ AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
 //	}
 //}
 
-void ASirDingusCharacter::Dodge(const FInputActionValue& Value)
+void ASirDingusCharacter::Dodge()
 {
 	//// input is a bool
 	//bool bIsDodging = Value.Get<bool>();

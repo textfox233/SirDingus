@@ -109,20 +109,27 @@ void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 			TEXT("ASirDingusCharacter::Dodge()")
 		);
 	}
+
+	// Get character
+	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
+	{
+		// Initiate dodge
+		character->Dodge();
+	}
 }
 
 void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			1.f,
-			FColor::Green,
-			TEXT("ASirDingusPlayerController::Move()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		1.f,
+	//		FColor::Green,
+	//		TEXT("ASirDingusPlayerController::Move()")
+	//	);
+	//}
 	
 	APawn* pawn = GetPawn();
 	

@@ -117,7 +117,7 @@ public:
 	/** Input Functions **/
 
 	// -- Dodging
-	void Dodge(const FInputActionValue& Value);
+	void Dodge();
 	void StopDodging();
 
 	// -- Movement
