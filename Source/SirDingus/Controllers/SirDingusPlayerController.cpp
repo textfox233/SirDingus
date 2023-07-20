@@ -63,6 +63,8 @@ void ASirDingusPlayerController::SetHUDHealth_Implementation(float Health, float
 
 void ASirDingusPlayerController::SetupInputComponent()
 {
+	Super::SetupInputComponent();
+
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent)) {
 
