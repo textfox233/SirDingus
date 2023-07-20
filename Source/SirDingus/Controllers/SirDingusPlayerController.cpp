@@ -248,13 +248,13 @@ void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 		);
 	}
 
-	//UKismetSystemLibrary::QuitGame
-	//(
-	//	this,
-	//	this,
-	//	EQuitPreference::Quit,
-	//	true
-	//);
+	UKismetSystemLibrary::QuitGame
+	(
+		this,
+		this,
+		EQuitPreference::Quit,
+		true
+	);
 }
 
 void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
