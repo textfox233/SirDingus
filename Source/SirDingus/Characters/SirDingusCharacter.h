@@ -24,6 +24,12 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 
+	/** Components **/
+	// -- Health
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+		class UHealthComponent* HealthComponent;
+
+
 
 	/** Equipped Weapon **/
 	// -- Weapon Class
