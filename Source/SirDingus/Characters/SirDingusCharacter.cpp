@@ -486,7 +486,7 @@ void ASirDingusCharacter::Dodge()
 
 void ASirDingusCharacter::StopDodging()
 {
-	////DEBUG MESSAGE
+	///DEBUG MESSAGE
 	//if (GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
@@ -498,17 +498,14 @@ void ASirDingusCharacter::StopDodging()
 	//}
 }
 
-void ASirDingusCharacter::Move(const FInputActionValue& Value)
+void ASirDingusCharacter::Move(FVector2D MovementVector)
 {
 	if (bAlive)
 	{
-		// input is a Vector2D
-		FVector2D MovementVector = Value.Get<FVector2D>();
-
 		if (Controller != nullptr)
 		{
 			// find out which way is forward
-			const FRotator Rotation = Controller->GetControlRotation();
+			const FRotator Rotation = GetControlRotation();
 			const FRotator YawRotation(0, Rotation.Yaw, 0);
 
 			// get forward vector
@@ -559,7 +556,7 @@ void ASirDingusCharacter::SingleSwing()
 		}
 	}
 
-	//DEBUG MESSAGE
+	///DEBUG MESSAGE
 	//if (GEngine) 
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
@@ -587,17 +584,6 @@ void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Va
 	//}
 	if (CurrentGameMode)
 	{
-		//CurrentGameMode->RequestRestart();
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		3.f,
-		//		FColor::Green,
-		//		TEXT("Restart Approved")
-		//	);
-		//}
-		
 		if (CurrentGameMode->RequestRestart())
 		{
 			/// Debug Msg
@@ -696,6 +682,7 @@ void ASirDingusCharacter::TestSomething(const FInputActionValue& Value)
 	UClass* DamageTypeClass = UDamageType::StaticClass();
 	UGameplayStatics::ApplyDamage(this, 50.f, Controller, this, DamageTypeClass);
 
+	// Apply instant damage
 	//this->TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController * EventInstigator, AActor * DamageCauser);
 }
 

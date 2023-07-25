@@ -92,7 +92,7 @@ public:
 	void StopDodging();
 
 	// -- Movement
-	void Move(const FInputActionValue& Value);
+	void Move(FVector2D MoveVector);
 
 	// -- Looking
 	void Look(const FInputActionValue& Value);

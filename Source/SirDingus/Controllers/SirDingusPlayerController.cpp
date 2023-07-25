@@ -102,15 +102,15 @@ void ASirDingusPlayerController::SetupInputComponent()
 void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Green,
-			TEXT("ASirDingusCharacter::Dodge()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Green,
+	//		TEXT("ASirDingusCharacter::Dodge()")
+	//	);
+	//}
 
 	// Get character
 	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
@@ -133,48 +133,12 @@ void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 	//	);
 	//}
 	
-	APawn* pawn = GetPawn();
-	
-	if (pawn)
+	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
 	{
-		/// Debug Message
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		1.f,
-		//		FColor::Green,
-		//		TEXT("Pawn valid")
-		//	);
-		//}
-
 		// input is a Vector2D
 		FVector2D MovementVector = Value.Get<FVector2D>();
 
-		// find out which way is forward
-		const FRotator Rotation = GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
-
-		// get forward vector
-		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-
-		// get right vector 
-		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-
-		// add movement 
-		pawn->AddMovementInput(ForwardDirection, MovementVector.Y);
-		pawn->AddMovementInput(RightDirection, MovementVector.X);
-
-		/// DEBUG MESSAGE
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		15.f,
-		//		FColor::Yellow,
-		//		FString::Printf(TEXT("Moving"))
-		//	);
-		//}
+		character->Move(MovementVector);
 	}
 	else
 	{
@@ -205,15 +169,15 @@ void ASirDingusPlayerController::Look(const FInputActionValue& Value)
 void ASirDingusPlayerController::Attack(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			1.f,
-			FColor::Green,
-			TEXT("ASirDingusPlayerController::Attack()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		1.f,
+	//		FColor::Green,
+	//		TEXT("ASirDingusPlayerController::Attack()")
+	//	);
+	//}
 
 	// Get character
 	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
@@ -223,18 +187,18 @@ void ASirDingusPlayerController::Attack(const FInputActionValue& Value)
 	}
 }
 
-void ASirDingusPlayerController::RestartGame(const FInputActionValue& Value)
+void ASirDingusPlayerController::RestartGame_Implementation(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Green,
-			TEXT("ASirDingusCharacter::RestartGame()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Green,
+	//		TEXT("ASirDingusCharacter::RestartGame()")
+	//	);
+	//}
 
 	// if current gamemode is nullptr get it, otherwise set to current self / do nothing
 	CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
@@ -246,15 +210,15 @@ void ASirDingusPlayerController::RestartGame(const FInputActionValue& Value)
 void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Green,
-			TEXT("ASirDingusCharacter::QuitGame()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Green,
+	//		TEXT("ASirDingusCharacter::QuitGame()")
+	//	);
+	//}
 
 	UKismetSystemLibrary::QuitGame
 	(
@@ -268,13 +232,13 @@ void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Green,
-			TEXT("ASirDingusCharacter::TestSomething()")
-		);
-	}
+	//if (GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		3.f,
+	//		FColor::Green,
+	//		TEXT("ASirDingusCharacter::TestSomething()")
+	//	);
+	//}
 }
