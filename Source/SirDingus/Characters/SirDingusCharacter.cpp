@@ -491,7 +491,7 @@ void ASirDingusCharacter::Dodge()
 
 void ASirDingusCharacter::StopDodging()
 {
-	////DEBUG MESSAGE
+	///DEBUG MESSAGE
 	//if (GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
@@ -507,39 +507,8 @@ void ASirDingusCharacter::Move(FVector2D MovementVector)
 {
 	if (bAlive)
 	{
-		//// input is a Vector2D
-		//FVector2D MovementVector = Value.Get<FVector2D>();
-
 		if (Controller != nullptr)
 		{
-			//// find out which way is forward
-			//const FRotator Rotation = Controller->GetControlRotation();
-			//const FRotator YawRotation(0, Rotation.Yaw, 0);
-			//
-			//// get forward vector
-			//const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-			//
-			//// get right vector 
-			//const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-			//
-			//// add movement 
-			//AddMovementInput(ForwardDirection, MovementVector.Y);
-			//AddMovementInput(RightDirection, MovementVector.X);
-			//
-			///// DEBUG MESSAGE
-			//if (GEngine)
-			//{
-			//	GEngine->AddOnScreenDebugMessage(
-			//		-1,
-			//		15.f,
-			//		FColor::Yellow,
-			//		FString::Printf(TEXT("Moving"))
-			//	);
-			//}
-
-			// input is a Vector2D
-			//FVector2D MovementVector = Value.Get<FVector2D>();
-
 			// find out which way is forward
 			const FRotator Rotation = GetControlRotation();
 			const FRotator YawRotation(0, Rotation.Yaw, 0);
@@ -592,7 +561,7 @@ void ASirDingusCharacter::SingleSwing()
 		}
 	}
 
-	//DEBUG MESSAGE
+	///DEBUG MESSAGE
 	//if (GEngine) 
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
@@ -620,17 +589,6 @@ void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Va
 	//}
 	if (CurrentGameMode)
 	{
-		//CurrentGameMode->RequestRestart();
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		3.f,
-		//		FColor::Green,
-		//		TEXT("Restart Approved")
-		//	);
-		//}
-		
 		if (CurrentGameMode->RequestRestart())
 		{
 			/// Debug Msg
@@ -729,6 +687,7 @@ void ASirDingusCharacter::TestSomething(const FInputActionValue& Value)
 	UClass* DamageTypeClass = UDamageType::StaticClass();
 	UGameplayStatics::ApplyDamage(this, 50.f, Controller, this, DamageTypeClass);
 
+	// Apply instant damage
 	//this->TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController * EventInstigator, AActor * DamageCauser);
 }
 
