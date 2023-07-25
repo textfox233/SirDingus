@@ -21,12 +21,9 @@ void ASkeletonCharacter::CharacterDeath()
 
 	// check for AI controller - not sure this is necessary but for now I'm paranoid so I'm doing it
 	AController* rawController = Controller;
-	//ASirDingusAIController* aiController;
 
 	if (rawController)
 	{
-		//aiController = Cast<ASirDingusAIController>(rawController);
-
 		if (ASirDingusAIController * aiController = Cast<ASirDingusAIController>(rawController))
 		{
 			// update blackboard value

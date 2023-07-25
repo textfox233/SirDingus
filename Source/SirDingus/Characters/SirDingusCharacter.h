@@ -23,42 +23,6 @@ class ASirDingusCharacter : public ACharacter
 	// -- Follow Camera
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
-	
-
-	/** MappingContext **/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputMappingContext* DefaultMappingContext;
-
-	/** Input Actions **/
-	// -- Dodge
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* DodgeAction;
-
-	// -- Move
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* MoveAction;
-
-	// -- Look
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* LookAction;
-
-	// -- Attack
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* AttackAction;
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = MyAnimationInfo, meta = (AllowPrivateAccess = "true"))
-	//bool bIsAttacking;
-
-	// -- Restart Game
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* RestartGameAction;
-	
-	// -- Quit Game
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* QuitGameAction;
-
-	// -- Extra Test Action
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* TestAction;
 
 
 	/** Equipped Weapon **/
@@ -69,6 +33,7 @@ class ASirDingusCharacter : public ACharacter
 	// -- Actual Weapon
 	UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 	AWeapon* EquippedWeapon;
+
 
 public:
 	ASirDingusCharacter();
@@ -139,6 +104,7 @@ public:
 	// -- Extra Test Action
 	//UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
 	void TestSomething(const FInputActionValue& Value);
+
 
 protected:
 
