@@ -232,13 +232,19 @@ void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		3.f,
-	//		FColor::Green,
-	//		TEXT("ASirDingusCharacter::TestSomething()")
-	//	);
-	//}
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Green,
+			TEXT("ASirDingusCharacter::TestSomething()")
+		);
+	}
+
+	UClass* DamageTypeClass = UDamageType::StaticClass();
+	UGameplayStatics::ApplyDamage(GetPawn(), 50.f, this, GetPawn(), DamageTypeClass);
+
+	// Apply instant damage
+	//this->TakeDamage(50.f, FDamageEvent const& DamageEvent, AController * EventInstigator, AActor * DamageCauser);
 }

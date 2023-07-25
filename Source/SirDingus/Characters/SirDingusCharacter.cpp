@@ -377,7 +377,7 @@ bool ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
 	// TRUE: damage was dealt
 	return true;
 
-	//if (GEngine)
+	///if (GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
 	//		-1,
@@ -430,45 +430,10 @@ AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
 	return nullptr;
 }
 
-//////////////////////////////////////////////////////////////////////////
-/// Input
-
-//void ASirDingusCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
-//{
-//	// Are these needed here? Does AI use these?
-//
-//	// Set up action bindings
-//	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
-//		
-//		/// Dodging - Incomplete
-//		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Dodge);
-//		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Completed, this, &ASirDingusCharacter::StopDodging);
-//
-//		/// Moving
-//		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Move);
-//
-//		/// Looking
-//		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Look);
-//
-//		/// Attacking
-//		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::Attack);
-//
-//		/// Restart Game
-//		EnhancedInputComponent->BindAction(RestartGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::RestartGame);
-//
-//		/// Quit Game
-//		EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::QuitGame);
-//	
-//		/// Test Something
-//		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusCharacter::TestSomething);
-//	}
-//}
-
 void ASirDingusCharacter::Dodge()
 {
-	//// input is a bool
-	//bool bIsDodging = Value.Get<bool>();
-	////DEBUG MESSAGE
+
+	///DEBUG MESSAGE
 	//if (GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
