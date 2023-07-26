@@ -29,19 +29,19 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
 		class UHealthComponent* HealthComponent;
 	// -- Melee
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Melee, meta = (AllowPrivateAccess = "true"))
 		class UMeleeComponent* MeleeComponent;
 
 
 
-	/** Equipped Weapon **/
-	// -- Weapon Class
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loadout, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<class AWeapon> EquippedWeaponClass;
+	///** Equipped Weapon **/
+	//// -- Weapon Class
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loadout, meta = (AllowPrivateAccess = "true"))
+	//TSubclassOf<class AWeapon> EquippedWeaponClass;
 
-	// -- Actual Weapon
-	UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
-	AWeapon* EquippedWeapon;
+	//// -- Actual Weapon
+	//UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
+	//AWeapon* EquippedWeapon;
 
 
 public:
@@ -156,33 +156,33 @@ protected:
 	// -- Return NetRole as an FString
 	FString GetNetRole();
 
-	/** Melee Animation Timer (Refactored) **/
+	///** Melee Animation Timer (Refactored into melee component) **/
+	//
+	//// -- Timer Handle
+	//FTimerHandle MeleeTraceHandle;
+	//
+	//// -- Start
+	//UFUNCTION(BlueprintCallable)
+	//void MeleeTraceStart();
+	//
+	//// -- InProgress
+	//UFUNCTION()
+	//void MeleeTraceInProgress();
+	//
+	//// -- Stop
+	//UFUNCTION(BlueprintCallable)
+	//void MeleeTraceEnd();
 
-	// -- Timer Handle
-	FTimerHandle MeleeTraceHandle;
 
-	// -- Start
-	UFUNCTION(BlueprintCallable)
-	void MeleeTraceStart();
-
-	// -- InProgress
-	UFUNCTION()
-	void MeleeTraceInProgress();
-
-	// -- Stop
-	UFUNCTION(BlueprintCallable)
-	void MeleeTraceEnd();
-
-
-	/** Melee Functions **/
-
-	// -- Process Melee Hits
-	UFUNCTION(BlueprintCallable)
-	bool ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
-
-	// -- Perform Weapon Arc via Line Traces
-	UFUNCTION(BlueprintCallable)
-	AActor* DrawWeaponArc(bool bDrawDebug = false, bool bDebugLog = false);
+	/** Melee Functions (Refactored into melee component) **/
+	//
+	//// -- Process Melee Hits
+	//UFUNCTION(BlueprintCallable)
+	//bool ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
+	//
+	//// -- Perform Weapon Arc via Line Traces
+	//UFUNCTION(BlueprintCallable)
+	//AActor* DrawWeaponArc(bool bDrawDebug = false, bool bDebugLog = false);
 
 
 private:
@@ -198,5 +198,6 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 	FORCEINLINE void SetAlive(bool isAlive) { bAlive = isAlive; }
+	FORCEINLINE bool GetAlive() { return bAlive; }
 };
 
