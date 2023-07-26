@@ -28,6 +28,9 @@ class ASirDingusCharacter : public ACharacter
 	// -- Health
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
 		class UHealthComponent* HealthComponent;
+	// -- Melee
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+		class UMeleeComponent* MeleeComponent;
 
 
 

@@ -15,7 +15,10 @@
 #include "Components/SceneComponent.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "Engine/EngineTypes.h"
+
 #include "SirDingus/Components/HealthComponent.h"
+#include "SirDingus/Components/MeleeComponent.h"
+
 #include "SirDingus/Modes & States/SirDingusGameMode.h"
 #include "Net/UnrealNetwork.h"
 
@@ -77,6 +80,8 @@ ASirDingusCharacter::ASirDingusCharacter()
 	/** Components **/
 	// -- Health
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+	// -- Melee
+	MeleeComponent = CreateDefaultSubobject<UMeleeComponent>(TEXT("MeleeComponent"));
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
