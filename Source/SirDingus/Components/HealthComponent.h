@@ -29,9 +29,9 @@ protected:
 
 private:
 	// Health Values
-	UPROPERTY(EditAnywhere, Category = Health)
+	UPROPERTY(EditAnywhere, Category = "Health Component")
 	float MaxHealth = 100;
-	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = Health)
+	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = "Health Component")
 	float Health;
 
 	UFUNCTION()
