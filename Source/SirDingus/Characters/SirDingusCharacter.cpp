@@ -138,14 +138,14 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 
 /// * Refactored blueprint function
 // Play a given montage over the network
-void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage)
+void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, FName StartSectionName)
 {
-	PlayAnimMontageMulticast(AnimMontage);
+	PlayAnimMontageMulticast(AnimMontage, StartSectionName);
 }
 
 /// * Refactored blueprint function
 // Play a given montage on each client
-void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage)
+void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage, FName StartSectionName)
 {
 	//float animTime = 0.1f;		//Default value in case the animation can't be played.
 	//
@@ -168,7 +168,7 @@ void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* 
 	//}
 
 	// just play the montage
-	PlayAnimMontage(AnimMontage);
+	PlayAnimMontage(AnimMontage, 1.0f, StartSectionName);
 }
 
 void ASirDingusCharacter::BeginPlay()
@@ -523,7 +523,23 @@ void ASirDingusCharacter::SingleSwing()
 	{
 		if (BasicAttackMontage)
 		{
-			PlayAnimMontageServer(BasicAttackMontage);
+			int32 Selection = FMath::RandRange(0, 1);
+			FName Section;
+
+			switch (Selection)
+			{
+				case 0:
+					Section = "Attack1";
+					break;
+				case 1:
+					Section = "Attack2";
+					break;
+				default:
+					Section = NAME_None;
+					break;
+			}
+
+			PlayAnimMontageServer(BasicAttackMontage, Section);
 		}
 	}
 

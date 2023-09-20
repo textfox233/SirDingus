@@ -72,9 +72,9 @@ public:
 
 	//** Playing Animations **/
 	UFUNCTION(Server, Reliable, BlueprintCallable)
-		void PlayAnimMontageServer(UAnimMontage* AnimMontage);
+		void PlayAnimMontageServer(UAnimMontage* AnimMontage, FName StartSectionName = NAME_None);
 	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
-		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage);
+		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage, FName StartSectionName = NAME_None);
 
 
 	/** Animation Montages **/
