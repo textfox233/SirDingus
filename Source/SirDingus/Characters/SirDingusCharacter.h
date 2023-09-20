@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "CharacterTypes.h"
 #include "InputActionValue.h"
 #include "SirDingusCharacter.generated.h"
 
@@ -190,6 +191,7 @@ private:
 	UPROPERTY(Replicated)
 	bool bAlive = true;
 
+	ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
 
 public:
 	/** Returns CameraBoom subobject **/
@@ -198,6 +200,8 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 	FORCEINLINE void SetAlive(bool isAlive) { bAlive = isAlive; }
-	FORCEINLINE bool GetAlive() { return bAlive; }
+	FORCEINLINE bool GetAlive() const { return bAlive; }
+
+	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
 };
 
