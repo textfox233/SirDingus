@@ -76,7 +76,9 @@ public:
 		void PlayAnimMontageServer(UAnimMontage* AnimMontage, FName StartSectionName = NAME_None);
 	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
 		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage, FName StartSectionName = NAME_None);
-
+	
+	UFUNCTION(BlueprintCallable)
+		void AttackEnd();
 
 	/** Animation Montages **/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
@@ -192,6 +194,8 @@ private:
 	bool bAlive = true;
 
 	ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	EActionState ActionState = EActionState::EAS_Unoccupied;
 
 public:
 	/** Returns CameraBoom subobject **/

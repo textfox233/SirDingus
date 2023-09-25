@@ -136,6 +136,11 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	return superResult;
 }
 
+void ASirDingusCharacter::AttackEnd()
+{
+	ActionState = EActionState::EAS_Unoccupied;
+}
+
 /// * Refactored blueprint function
 // Play a given montage over the network
 void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, FName StartSectionName)
@@ -203,8 +208,12 @@ void ASirDingusCharacter::BeginPlay()
 	//	}
 	//}
 
+	// -- Initialisers -- //
+	
 	// get current gamemode
 	CurrentGameMode = Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this));
+
+	ActionState = EActionState::EAS_Unoccupied;
 
 	///DEBUG MESSAGE
 	//if (GEngine)
@@ -519,42 +528,69 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 
 void ASirDingusCharacter::SingleSwing()
 {
+	///DEBUG MESSAGE
+	//if (GEngine)
+	//{
+	//	if (ActionState != null)
+	//	{
+	//		const UEnum* AStatePtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("ActionState"), true);
+
+	//		//Cast<FString>(ActionState);
+	//		FString message = AStatePtr->GetName();
+	//		//FString message = TEXT("Our enum value: ") + EnumToString(ActionState);
+
+	//		GEngine->AddOnScreenDebugMessage(
+	//			-1,
+	//			15.f,
+	//			FColor::Yellow,
+	//			message
+	//		);
+	//	}
+	//}
+
 	if (bAlive)
 	{
-		if (BasicAttackMontage)
+		if (ActionState == EActionState::EAS_Unoccupied)
 		{
-			int32 Selection = FMath::RandRange(0, 1);
-			FName Section;
-
-			switch (Selection)
+			if (BasicAttackMontage)
 			{
-				case 0:
-					Section = "Attack1";
-					break;
-				case 1:
-					Section = "Attack2";
-					break;
-				default:
-					Section = NAME_None;
-					break;
-			}
+				int32 Selection = FMath::RandRange(0, 1);
+				FName Section;
 
-			PlayAnimMontageServer(BasicAttackMontage, Section);
+				switch (Selection)
+				{
+					case 0:
+						Section = "Attack1";
+						break;
+					case 1:
+						Section = "Attack2";
+						break;
+					default:
+						Section = NAME_None;
+						break;
+				}
+
+				PlayAnimMontageServer(BasicAttackMontage, Section);
+
+				ActionState = EActionState::EAS_Attacking;
+			}
+		}
+		else
+		{
+			///DEBUG MESSAGE
+		//	if (GEngine) 
+		//	{
+		//		GEngine->AddOnScreenDebugMessage(
+		//			-1,
+		//			15.f,
+		//			FColor::Yellow,
+		//			//FString::Printf(TEXT("BasicAttackMontage->HasValidSlotSetup() = %s"), (BasicAttackMontage->HasValidSlotSetup() ? TEXT("true") : TEXT("false")))
+		//			FString::Printf(TEXT("ActionState = %s"), (ActionState))
+		//			//FString::Printf(TEXT("BasicAttackMontage = %s"), (*BasicAttackMontage->GetName()))
+		//		);
+		//	}
 		}
 	}
-
-	///DEBUG MESSAGE
-	//if (GEngine) 
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		15.f,
-	//		FColor::Yellow,
-	//		//FString::Printf(TEXT("BasicAttackMontage->HasValidSlotSetup() = %s"), (BasicAttackMontage->HasValidSlotSetup() ? TEXT("true") : TEXT("false")))
-	//		FString::Printf(TEXT("Attacking = %s"), (bIsAttacking ? TEXT("true") : TEXT("false")))
-	//		//FString::Printf(TEXT("BasicAttackMontage = %s"), (*BasicAttackMontage->GetName()))
-	//	);
-	//}
 }
 
 void ASirDingusCharacter::RestartGame_Implementation(const FInputActionValue& Value)
