@@ -65,7 +65,7 @@ void UMeleeComponent::MeleeTraceInProgress()
 	//UE_LOG(LogTemp, Warning, TEXT("timer active"));
 
 	// perform line trace (debug? / logs?)
-	AActor* hit = DrawWeaponArc();
+	AActor* hit = DrawWeaponArc(true);
 
 	// process the hit
 	if (ProcessMeleeHit(hit))
