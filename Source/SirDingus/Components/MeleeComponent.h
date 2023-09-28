@@ -21,7 +21,12 @@ class SIRDINGUS_API UMeleeComponent : public UActorComponent
 	UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 		AWeapon* EquippedWeapon;
 
-public:	
+	// -- Debug booleans
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+		bool bDrawLineTrace;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+		bool bDebugMessages;
+public:
 	// Sets default values for this component's properties
 	UMeleeComponent();
 

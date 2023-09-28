@@ -78,7 +78,9 @@ public:
 		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage, FName StartSectionName = NAME_None);
 	
 	UFUNCTION(BlueprintCallable)
-		void AttackEnd();
+		void ResetActionState();
+	UFUNCTION(BlueprintCallable)
+		void Interrupted();
 
 	/** Animation Montages **/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))

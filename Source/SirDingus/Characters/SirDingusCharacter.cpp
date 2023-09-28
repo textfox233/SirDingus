@@ -113,6 +113,8 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	if (bAlive && FlinchMontage)
 	{
 		PlayAnimMontageServer(FlinchMontage);
+
+		//ResetActionState();
 	}
 
 	/// Debug Message
@@ -136,9 +138,13 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	return superResult;
 }
 
-void ASirDingusCharacter::AttackEnd()
+void ASirDingusCharacter::ResetActionState()
 {
 	ActionState = EActionState::EAS_Unoccupied;
+}
+void ASirDingusCharacter::Interrupted()
+{
+	ActionState = EActionState::EAS_Interrupted;
 }
 
 /// * Refactored blueprint function
@@ -534,11 +540,11 @@ void ASirDingusCharacter::SingleSwing()
 	//	if (ActionState != null)
 	//	{
 	//		const UEnum* AStatePtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("ActionState"), true);
-
+	//
 	//		//Cast<FString>(ActionState);
 	//		FString message = AStatePtr->GetName();
 	//		//FString message = TEXT("Our enum value: ") + EnumToString(ActionState);
-
+	//
 	//		GEngine->AddOnScreenDebugMessage(
 	//			-1,
 	//			15.f,
