@@ -227,15 +227,15 @@ void ASirDingusPlayerController::Attack(const FInputActionValue& Value)
 void ASirDingusPlayerController::RestartGame_Implementation(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		3.f,
-	//		FColor::Green,
-	//		TEXT("ASirDingusCharacter::RestartGame()")
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Green,
+			TEXT("ASirDingusCharacter::RestartGame()")
+		);
+	}
 
 	// if current gamemode is nullptr get it, otherwise set to current self / do nothing
 	CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
@@ -247,15 +247,15 @@ void ASirDingusPlayerController::RestartGame_Implementation(const FInputActionVa
 void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		3.f,
-	//		FColor::Green,
-	//		TEXT("ASirDingusCharacter::QuitGame()")
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Green,
+			TEXT("ASirDingusCharacter::QuitGame()")
+		);
+	}
 
 	UKismetSystemLibrary::QuitGame
 	(
@@ -269,7 +269,7 @@ void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine)
+	if (bDebugMessages && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
 			-1,
