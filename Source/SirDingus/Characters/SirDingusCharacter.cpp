@@ -470,52 +470,52 @@ void ASirDingusCharacter::Dodge()
 	}
 }
 
-void ASirDingusCharacter::StopDodging()
-{
-	///DEBUG MESSAGE
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		15.f,
-	//		FColor::Yellow,
-	//		FString::Printf(TEXT("Stop Dodging"))
-	//	);
-	//}
-}
+///void ASirDingusCharacter::StopDodging()
+//{
+//	//DEBUG MESSAGE
+//	//if (GEngine)
+//	//{
+//	//	GEngine->AddOnScreenDebugMessage(
+//	//		-1,
+//	//		15.f,
+//	//		FColor::Yellow,
+//	//		FString::Printf(TEXT("Stop Dodging"))
+//	//	);
+//	//}
+//}
 
 void ASirDingusCharacter::Move(FVector2D MovementVector)
 {
-	if (bAlive)
-	{
-		if (Controller != nullptr)
-		{
-			// find out which way is forward
-			const FRotator Rotation = GetControlRotation();
-			const FRotator YawRotation(0, Rotation.Yaw, 0);
-
-			// get forward vector
-			const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-
-			// get right vector 
-			const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-
-			// add movement 
-			AddMovementInput(ForwardDirection, MovementVector.Y);
-			AddMovementInput(RightDirection, MovementVector.X);
-
-			/// DEBUG MESSAGE
-			//if (GEngine)
-			//{
-			//	GEngine->AddOnScreenDebugMessage(
-			//		-1,
-			//		15.f,
-			//		FColor::Yellow,
-			//		FString::Printf(TEXT("Moving"))
-			//	);
-			//}
-		}
-	}
+	//if (bAlive)
+	//{
+	//	if (Controller != nullptr)
+	//	{
+	//		// find out which way is forward
+	//		const FRotator Rotation = GetControlRotation();
+	//		const FRotator YawRotation(0, Rotation.Yaw, 0);
+	//
+	//		// get forward vector
+	//		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+	//
+	//		// get right vector 
+	//		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+	//
+	//		// add movement 
+	//		AddMovementInput(ForwardDirection, MovementVector.Y);
+	//		AddMovementInput(RightDirection, MovementVector.X);
+	//
+	//		/// DEBUG MESSAGE
+	//		//if (GEngine)
+	//		//{
+	//		//	GEngine->AddOnScreenDebugMessage(
+	//		//		-1,
+	//		//		15.f,
+	//		//		FColor::Yellow,
+	//		//		FString::Printf(TEXT("Moving"))
+	//		//	);
+	//		//}
+	//	}
+	//}
 }
 
 // where camera is looking NOT model

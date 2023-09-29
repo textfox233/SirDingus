@@ -33,18 +33,6 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Melee, meta = (AllowPrivateAccess = "true"))
 		class UMeleeComponent* MeleeComponent;
 
-
-
-	///** Equipped Weapon **/
-	//// -- Weapon Class
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loadout, meta = (AllowPrivateAccess = "true"))
-	//TSubclassOf<class AWeapon> EquippedWeaponClass;
-
-	//// -- Actual Weapon
-	//UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
-	//AWeapon* EquippedWeapon;
-
-
 public:
 	ASirDingusCharacter();
 
@@ -59,12 +47,6 @@ public:
 
 	/** Replication **/
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-
-
-	/** Blueprint Event for Attacking - Deprecated **/
-	//UFUNCTION(BlueprintImplementableEvent, Category = "Attacks")
-	//void AttackEvent();
-
 
 	/** Taking Damage **/
 	// - tried at first to bind a new function to OnTakeAnyDamage but ran into problems, decided instead to override AActor::TakeDamage()
@@ -97,7 +79,7 @@ public:
 
 	// -- Dodging
 	void Dodge();
-	void StopDodging();
+	//void StopDodging();
 
 	// -- Movement
 	void Move(FVector2D MoveVector);

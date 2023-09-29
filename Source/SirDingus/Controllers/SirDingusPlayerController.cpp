@@ -123,36 +123,73 @@ void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		1.f,
-	//		FColor::Green,
-	//		TEXT("ASirDingusPlayerController::Move()")
-	//	);
-	//}
-	
-	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
+	if (GEngine && bDebugMessages)
 	{
-		// input is a Vector2D
-		FVector2D MovementVector = Value.Get<FVector2D>();
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			1.f,
+			FColor::Green,
+			TEXT("ASirDingusPlayerController::Move()")
+		);
+	}
 
-		character->Move(MovementVector);
-	}
-	else
+	if (ASirDingusCharacter* SDCharacter = Cast<ASirDingusCharacter>(GetCharacter()))
 	{
-		/// Debug Message
-		if (GEngine)
+		if (SDCharacter->GetAlive())
 		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				1.f,
-				FColor::Red,
-				TEXT("Pawn invalid")
-			);
+			// input is a Vector2D
+			FVector2D MovementVector = Value.Get<FVector2D>();
+
+			// find out which way is forward
+			const FRotator Rotation = GetControlRotation();
+			const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+			// get forward vector
+			const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+
+			// get right vector 
+			const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+
+			// add movement 
+			SDCharacter->AddMovementInput(ForwardDirection, MovementVector.Y);
+			SDCharacter->AddMovementInput(RightDirection, MovementVector.X);
+
+			/// DEBUG MESSAGE
+			if (GEngine && bDebugMessages)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					15.f,
+					FColor::Yellow,
+					FString::Printf(TEXT("Moving"))
+				);
+			}
 		}
+		else if (bDebugLogs) { UE_LOG(LogTemp, Error, TEXT("Character is dead - cannot move")); }
 	}
+	else if (bDebugLogs) { UE_LOG(LogTemp, Error, TEXT("Failed to get the SirDingus character - possible bad cast")); }
+
+	//if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
+	//{
+	//	// input is a Vector2D
+	//	FVector2D MovementVector = Value.Get<FVector2D>();
+	//
+	//	character->Move(MovementVector);
+	//}
+	//	
+	//else
+	//{
+	//	/// Debug Message
+	//	if (GEngine)
+	//	{
+	//		GEngine->AddOnScreenDebugMessage(
+	//			-1,
+	//			1.f,
+	//			FColor::Red,
+	//			TEXT("Pawn invalid")
+	//		);
+	//	}
+	//}
 }
 
 // where camera is looking NOT model

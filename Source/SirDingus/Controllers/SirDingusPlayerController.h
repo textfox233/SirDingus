@@ -16,9 +16,20 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
+	// -- Debug booleans
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+		bool bDebugMessages;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+		bool bDebugLogs;
+
 public:
 	UFUNCTION(Client, Reliable)
 	void SetHUDHealth(float Health, float MaxHealth);
+
+	/** Getter for Character */
+	//FORCEINLINE ASirDingusCharacter* GetSDCharacter() { return Cast<ASirDingusCharacter>(GetCharacter()); }
+	/** Getter for Character */
+	//FORCEINLINE ACharacter* GetCharacter() const { return Character; }
 
 	// -- Attacking (currently public so that AI can find it, may want to change this)
 	//void Attack(const FInputActionValue& Value);
@@ -58,11 +69,14 @@ protected:
 
 	// To add mapping context
 	virtual void BeginPlay() override;
+
 private:
 	// HUD Pointer
 	class ASirDingusHUD* PlayerHUD;
 	// Gamemode Pointer
 	class ASirDingusGameMode* CurrentGameMode;
+	// Character Pointer (specific to my class)
+	//class ASirDingusCharacter* SDCharacter;
 
 	/** MappingContext **/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
