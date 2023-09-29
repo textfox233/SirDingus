@@ -532,11 +532,13 @@ void ASirDingusCharacter::Look(const FInputActionValue& Value)
 	//}
 }
 
-void ASirDingusCharacter::SingleSwing()
+void ASirDingusCharacter::Attack()
 {
-	///DEBUG MESSAGE
-	//if (GEngine)
-	//{
+	///DEBUG MESSAGE - Errors in this debug message, ignore for now
+	if (bDebugMessages && GEngine)
+	{
+		FString message;
+
 	//	if (ActionState != null)
 	//	{
 	//		const UEnum* AStatePtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("ActionState"), true);
@@ -552,49 +554,37 @@ void ASirDingusCharacter::SingleSwing()
 	//			message
 	//		);
 	//	}
-	//}
+
+		message = TEXT("ASirDingusCharacter::Attack()");
+
+		GEngine->AddOnScreenDebugMessage(
+		1,
+		15.f,
+		FColor::Green,
+		message
+		);
+	}
 
 	if (bAlive)
 	{
 		if (ActionState == EActionState::EAS_Unoccupied)
 		{
-			if (BasicAttackMontage)
+			if (MeleeComponent)
 			{
-				int32 Selection = FMath::RandRange(0, 1);
-				FName Section;
-
-				switch (Selection)
-				{
-					case 0:
-						Section = "Attack1";
-						break;
-					case 1:
-						Section = "Attack2";
-						break;
-					default:
-						Section = NAME_None;
-						break;
-				}
-
-				PlayAnimMontageServer(BasicAttackMontage, Section);
-
+				MeleeComponent->PerformAttack();
 				ActionState = EActionState::EAS_Attacking;
 			}
 		}
-		else
+		else if (bDebugMessages && GEngine) 
 		{
-			///DEBUG MESSAGE
-		//	if (GEngine) 
-		//	{
-		//		GEngine->AddOnScreenDebugMessage(
-		//			-1,
-		//			15.f,
-		//			FColor::Yellow,
-		//			//FString::Printf(TEXT("BasicAttackMontage->HasValidSlotSetup() = %s"), (BasicAttackMontage->HasValidSlotSetup() ? TEXT("true") : TEXT("false")))
-		//			FString::Printf(TEXT("ActionState = %s"), (ActionState))
-		//			//FString::Printf(TEXT("BasicAttackMontage = %s"), (*BasicAttackMontage->GetName()))
-		//		);
-		//	}
+			FString message = TEXT("Action state is not unnoccupied");
+			GEngine->AddOnScreenDebugMessage(
+				2,
+				15.f,
+				FColor::Red,
+				//FString::Printf(TEXT("ActionState = %s"), (ActionState))
+				message
+			);
 		}
 	}
 }

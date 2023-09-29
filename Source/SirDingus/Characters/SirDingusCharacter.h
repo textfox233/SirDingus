@@ -33,6 +33,13 @@ class ASirDingusCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Melee, meta = (AllowPrivateAccess = "true"))
 		class UMeleeComponent* MeleeComponent;
 
+	/** Debug Booleans **/
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+		bool bDebugMessages;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+		bool bDebugLogs;
+
+
 public:
 	ASirDingusCharacter();
 
@@ -88,7 +95,7 @@ public:
 	void Look(const FInputActionValue& Value);
 
 	// -- Attacking
-	void SingleSwing();
+	void Attack();
 
 	// -- Restart Game
 	UFUNCTION(Server, Reliable)

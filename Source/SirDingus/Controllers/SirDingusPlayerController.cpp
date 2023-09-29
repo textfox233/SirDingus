@@ -206,21 +206,21 @@ void ASirDingusPlayerController::Look(const FInputActionValue& Value)
 void ASirDingusPlayerController::Attack(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		1.f,
-	//		FColor::Green,
-	//		TEXT("ASirDingusPlayerController::Attack()")
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			1.f,
+			FColor::Green,
+			TEXT("ASirDingusPlayerController::Attack()")
+		);
+	}
 
 	// Get character
-	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
+	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetCharacter()))
 	{
 		// Initiate attack
-		character->SingleSwing();
+		character->Attack();
 	}
 }
 

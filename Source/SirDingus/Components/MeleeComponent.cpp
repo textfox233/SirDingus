@@ -201,6 +201,30 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor, bool bDebugLog)
 	}
 }
 
+void UMeleeComponent::PerformAttack()
+{
+	if (AttacksMontage)
+	{
+		int32 Selection = FMath::RandRange(0, 1);
+		FName Section;
+
+		switch (Selection)
+		{
+		case 0:
+			Section = "Attack1";
+			break;
+		case 1:
+			Section = "Attack2";
+			break;
+		default:
+			Section = NAME_None;
+			break;
+		}
+
+		Cast<ASirDingusCharacter>(GetOwner())->PlayAnimMontageServer(AttacksMontage, Section);
+	}
+}
+
 // -- Draw a line trace to track a weapon's movement and detect hit events
 AActor* UMeleeComponent::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
 {

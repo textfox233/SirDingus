@@ -16,7 +16,7 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-	// -- Debug booleans
+	/** Debug Booleans **/
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
 		bool bDebugMessages;
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
@@ -25,14 +25,6 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
 public:
 	UFUNCTION(Client, Reliable)
 	void SetHUDHealth(float Health, float MaxHealth);
-
-	/** Getter for Character */
-	//FORCEINLINE ASirDingusCharacter* GetSDCharacter() { return Cast<ASirDingusCharacter>(GetCharacter()); }
-	/** Getter for Character */
-	//FORCEINLINE ACharacter* GetCharacter() const { return Character; }
-
-	// -- Attacking (currently public so that AI can find it, may want to change this)
-	//void Attack(const FInputActionValue& Value);
 
 protected:
 

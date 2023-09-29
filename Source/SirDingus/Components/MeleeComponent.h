@@ -21,6 +21,10 @@ class SIRDINGUS_API UMeleeComponent : public UActorComponent
 	UPROPERTY(BlueprintReadOnly, Category = Loadout, meta = (AllowPrivateAccess = "true"))
 		AWeapon* EquippedWeapon;
 
+	// -- Attack Animations
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
+		class UAnimMontage* AttacksMontage;
+
 	// -- Debug booleans
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
 		bool bDrawLineTrace;
@@ -29,6 +33,8 @@ class SIRDINGUS_API UMeleeComponent : public UActorComponent
 public:
 	// Sets default values for this component's properties
 	UMeleeComponent();
+
+	void PerformAttack();
 
 protected:
 	// Called when the game starts
