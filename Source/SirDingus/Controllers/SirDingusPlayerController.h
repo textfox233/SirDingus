@@ -17,9 +17,9 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
 	GENERATED_BODY()
 
 	/** Debug Booleans **/
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusPlayerController", meta = (AllowPrivateAccess = "true"))
 		bool bDebugMessages;
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusPlayerController", meta = (AllowPrivateAccess = "true"))
 		bool bDebugLogs;
 
 public:

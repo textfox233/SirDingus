@@ -26,10 +26,12 @@ class SIRDINGUS_API UMeleeComponent : public UActorComponent
 		class UAnimMontage* AttacksMontage;
 
 	// -- Debug booleans
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
-		bool bDrawLineTrace;
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = Debug, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|MeleeComponent", meta = (AllowPrivateAccess = "true"))
+		bool bDrawDebug;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|MeleeComponent", meta = (AllowPrivateAccess = "true"))
 		bool bDebugMessages;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|MeleeComponent", meta = (AllowPrivateAccess = "true"))
+		bool bDebugLog;
 public:
 	// Sets default values for this component's properties
 	UMeleeComponent();
@@ -58,8 +60,8 @@ protected:
 		void MeleeTraceEnd();
 
 	// -- Determine if anything was hit, and if damage should be applied. Returns TRUE if any damage was dealt
-	bool ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
+	bool ProcessMeleeHit(AActor* hitActor);
 
 	// -- Draw a line trace to track a weapon's movement and detect hit events
-	AActor* DrawWeaponArc(bool bDrawDebug = false, bool bDebugLog = false);
+	AActor* DrawWeaponArc();
 };

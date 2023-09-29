@@ -36,18 +36,14 @@ void UMeleeComponent::BeginPlay()
 		// set owner (for later)
 		EquippedWeapon->SetOwner(GetOwner());
 	}
-	else
+	else if (bDebugMessages && GEngine)
 	{
-		//DEBUG MESSAGE
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				15.f,
-				FColor::Red,
-				FString(TEXT("No Weapon Equipped"))
-			);
-		}
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Red,
+			FString(TEXT("No Weapon Equipped"))
+		);
 	}
 }
 
@@ -62,10 +58,10 @@ void UMeleeComponent::MeleeTraceStart()
 // Perform single trace
 void UMeleeComponent::MeleeTraceInProgress()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("timer active"));
+	if (bDebugLog) { UE_LOG(LogTemp, Warning, TEXT("timer active")); }
 
 	// perform line trace (debug? / logs?)
-	AActor* hit = DrawWeaponArc(true);
+	AActor* hit = DrawWeaponArc();
 
 	// process the hit
 	if (ProcessMeleeHit(hit))
@@ -94,7 +90,7 @@ void UMeleeComponent::MeleeTraceEnd()
 }
 
 // -- Process melee hits (TRUE means damage was dealt, FALSE means the hit was invalid)
-bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor, bool bDebugLog)
+bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor)
 {
 	// Was there no hit?
 	if (hitActor == nullptr)
@@ -114,8 +110,7 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor, bool bDebugLog)
 		// if character is not alive
 		if (!Character->GetAlive())
 		{
-			/// Debug
-			if (bDebugLog && GEngine)
+			if (bDebugMessages && GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(
 					-1,
@@ -124,6 +119,7 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor, bool bDebugLog)
 					FString(TEXT("Target is already dead"))
 				);
 			}
+
 			// FALSE: target invalid
 			return false;
 		}
@@ -136,19 +132,15 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor, bool bDebugLog)
 		if (hitActor->ActorHasTag("Player"))
 		{
 			/// Debug
-			if (bDebugLog)
+			if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target is a player")); }
+			if (bDebugMessages && GEngine)
 			{
-				UE_LOG(LogTemp, Log, TEXT("Target is a player"));
-
-				if (GEngine)
-				{
-					GEngine->AddOnScreenDebugMessage(
-						-1,
-						15.f,
-						FColor::Yellow,
-						FString(TEXT("Hit target is player"))
-					);
-				}
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					15.f,
+					FColor::Yellow,
+					FString(TEXT("Hit target is player"))
+				);
 			}
 
 			// FALSE: target invalid
@@ -170,25 +162,22 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor, bool bDebugLog)
 			DamageTypeClass	// DamageTypeClass - Class that describes the damage that was done.
 		);
 		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
-		if (bDebugLog) {
-			if (GEngine)
-			{
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					3.f,
-					FColor::Yellow,
-					FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
-				);
-			};
-		}
+		if (bDebugMessages && GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.f,
+				FColor::Yellow,
+				FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
+			);
+		};
 
 		// TRUE: damage was dealt
 		return true;
 	}
 	else
 	{
-		/// Debug Message
-		if (bDebugLog && GEngine)
+		if (bDebugMessages && GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(
 				-1,
@@ -226,7 +215,7 @@ void UMeleeComponent::PerformAttack()
 }
 
 // -- Draw a line trace to track a weapon's movement and detect hit events
-AActor* UMeleeComponent::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
+AActor* UMeleeComponent::DrawWeaponArc()
 {
 	// define points for line trace
 	if (EquippedWeapon)

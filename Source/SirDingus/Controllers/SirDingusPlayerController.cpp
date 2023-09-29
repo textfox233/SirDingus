@@ -51,7 +51,7 @@ void ASirDingusPlayerController::SetHUDHealth_Implementation(float Health, float
 	}
 	else
 	{
-		if (GEngine)
+		if (bDebugMessages && GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(
 				-1,
@@ -102,7 +102,7 @@ void ASirDingusPlayerController::SetupInputComponent()
 void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	//if (GEngine)
+	//if (bDebugMessages && GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
 	//		-1,
@@ -123,7 +123,7 @@ void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 {
 	/// Function Enter Message
-	if (GEngine && bDebugMessages)
+	if (bDebugMessages && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
 			-1,
@@ -155,7 +155,7 @@ void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 			SDCharacter->AddMovementInput(RightDirection, MovementVector.X);
 
 			/// DEBUG MESSAGE
-			if (GEngine && bDebugMessages)
+			if (bDebugMessages && GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(
 					-1,
@@ -168,28 +168,6 @@ void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 		else if (bDebugLogs) { UE_LOG(LogTemp, Error, TEXT("Character is dead - cannot move")); }
 	}
 	else if (bDebugLogs) { UE_LOG(LogTemp, Error, TEXT("Failed to get the SirDingus character - possible bad cast")); }
-
-	//if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))
-	//{
-	//	// input is a Vector2D
-	//	FVector2D MovementVector = Value.Get<FVector2D>();
-	//
-	//	character->Move(MovementVector);
-	//}
-	//	
-	//else
-	//{
-	//	/// Debug Message
-	//	if (GEngine)
-	//	{
-	//		GEngine->AddOnScreenDebugMessage(
-	//			-1,
-	//			1.f,
-	//			FColor::Red,
-	//			TEXT("Pawn invalid")
-	//		);
-	//	}
-	//}
 }
 
 // where camera is looking NOT model

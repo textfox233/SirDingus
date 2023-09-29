@@ -98,42 +98,39 @@ ASirDingusCharacter::ASirDingusCharacter()
 float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	float superResult = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	/// Debug Msg
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		2.f,
-	//		FColor::Green,
-	//		FString(TEXT("ASirDingusCharacter::TakeDamage()"))
-	//	);
-	//}
+
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			2.f,
+			FColor::Green,
+			FString(TEXT("ASirDingusCharacter::TakeDamage()"))
+		);
+	}
 
 	// play flinch animation
 	if (bAlive && FlinchMontage)
 	{
 		PlayAnimMontageServer(FlinchMontage);
-
-		//ResetActionState();
 	}
 
-	/// Debug Message
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		3.f,
-	//		FColor::Yellow,
-	//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
-	//	);
-	//
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		3.f,
-	//		FColor::Yellow,
-	//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+		);
+	
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
+		);
+	}
 
 	return superResult;
 }
@@ -187,33 +184,6 @@ void ASirDingusCharacter::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 
-	// bind DamageTaken callback to OnTakeAnyDamage delegate - this line crashes editor in multiplayer, unsure why
-	//GetOwner()->OnTakeAnyDamage.AddDynamic(this, &ASirDingusCharacter::DamageTaken);
-
-	///Spawn Weapon (Refactored into melee component)
-	//if (EquippedWeaponClass)
-	//{
-	//	// spawn weapon
-	//	EquippedWeapon = GetWorld()->SpawnActor<AWeapon>(EquippedWeaponClass);
-	//	// attach to socket (right hand)
-	//	EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weaponSocket_r"));
-	//	// set owner (for later)
-	//	EquippedWeapon->SetOwner(this);
-	//}
-	//else
-	//{
-	//	//DEBUG MESSAGE
-	//	if (GEngine)
-	//	{
-	//		GEngine->AddOnScreenDebugMessage(
-	//			-1,
-	//			15.f,
-	//			FColor::Red,
-	//			FString(TEXT("No Weapon Equipped"))
-	//		);
-	//	}
-	//}
-
 	// -- Initialisers -- //
 	
 	// get current gamemode
@@ -221,16 +191,15 @@ void ASirDingusCharacter::BeginPlay()
 
 	ActionState = EActionState::EAS_Unoccupied;
 
-	///DEBUG MESSAGE
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		15.f,
-	//		FColor::Yellow,
-	//		FString(TEXT("ASirDingusCharacter::BeginPlay()"))
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Yellow,
+			FString(TEXT("ASirDingusCharacter::BeginPlay()"))
+		);
+	}
 }
 
 void ASirDingusCharacter::CharacterDeath()
@@ -242,220 +211,25 @@ void ASirDingusCharacter::CharacterDeath()
 	UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
 
 	// set to no collision
-	//Capsule->SetCollisionProfileName(TEXT("NoCollision"));
-	//if (Capsule) { DisableCapsuleCollisionServer(Capsule); }
 	if (Capsule) { DisableCapsuleCollisionMulticast(Capsule); }
 
-	/// Debug Message
-	if (GEngine)
+	if (bDebugMessages && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
 			-1,
 			3.f,
 			FColor::Yellow,
-			//FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
 			FString::Printf(TEXT("ASirDingusCharacter::CharacterDeath -> Capsule is %s"), Capsule ? TEXT("valid") : TEXT("invalid"))
 		);
 	}
 
 	// play death animation
-	if (DeathMontage)
-	{
-		PlayAnimMontageServer(DeathMontage);
-	}
+	if (DeathMontage) { PlayAnimMontageServer(DeathMontage); }
 }
-
-/// (Refactored into melee component)
-////** Refactored Blueprint Functionality -- Melee Swing Line Traces **/
-///// -- Set linetraces to occur until TriggerMeleeEnd()
-//// Start traces
-//void ASirDingusCharacter::MeleeTraceStart()
-//{
-//	// start timer
-//	GetWorld()->GetTimerManager().SetTimer(MeleeTraceHandle, this, &ASirDingusCharacter::MeleeTraceInProgress, 0.01f, true, 0.05f);
-//}
-//// Perform single trace
-//void ASirDingusCharacter::MeleeTraceInProgress()
-//{
-//	//UE_LOG(LogTemp, Warning, TEXT("timer active"));
-//
-//	// perform line trace (debug? / logs?)
-//	AActor* hit = DrawWeaponArc();
-//
-//	// process the hit
-//	if (ProcessMeleeHit(hit))
-//	// if hit was valid
-//	{
-//		// stop line tracing - should stop multiple hits per swing
-//		GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
-//	}
-//
-//	//if (hit != nullptr)
-//	//// anything hit?
-//	//{
-//	//	// process hit
-//	//	if (ProcessMeleeHit(hit))
-//	//	// if hit was valid
-//	//	{
-//	//
-//	//	}
-//	//}
-//}
-//// End traces
-//void ASirDingusCharacter::MeleeTraceEnd()
-//{
-//	// clear timer
-//	GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
-//}
-//
-//// -- Process melee hits (TRUE means damage was dealt, FALSE means the hit was invalid)
-//bool ASirDingusCharacter::ProcessMeleeHit(AActor* hitActor, bool bDebugLog )
-//{
-//	// Was there no hit?
-//	if (hitActor == nullptr)
-//	{
-//		// FALSE: target invalid
-//		return false;
-//	}
-//	
-//	if (bDebugLog) {
-//		UE_LOG(LogTemp, Log, TEXT("ASirDingusCharacter::ProcessMeleeHit"));
-//		UE_LOG(LogTemp, Warning, TEXT("%s Hit"), *hitActor->GetName());
-//	}
-//
-//	// Was the hit actor a dead character?
-//	if (ASirDingusCharacter* Character = Cast<ASirDingusCharacter>(hitActor))
-//	{
-//		// if character is not alive
-//		if (!Character->bAlive)
-//		{
-//			/// Debug
-//			if (bDebugLog && GEngine)
-//			{
-//				GEngine->AddOnScreenDebugMessage(
-//					-1,
-//					2.f,
-//					FColor::Yellow,
-//					FString(TEXT("Target is already dead"))
-//				);
-//			}
-//			// FALSE: target invalid
-//			return false;
-//		}
-//	}
-//
-//	// Did a player just hit another player?
-//	if(this->ActorHasTag("Player"))
-//	{
-//		// check tags to see what is being damaged
-//		if (hitActor->ActorHasTag("Player"))
-//		{
-//			/// Debug
-//			if (bDebugLog) 
-//			{
-//				UE_LOG(LogTemp, Log, TEXT("Target is a player"));
-//				
-//				if (GEngine)
-//				{
-//					GEngine->AddOnScreenDebugMessage(
-//						-1,
-//						15.f,
-//						FColor::Yellow,
-//						FString(TEXT("Hit target is player"))
-//					);
-//				}
-//			}
-//
-//			// FALSE: target invalid
-//			return false;
-//		}
-//	}
-//
-//	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target not a player")); }
-//
-//	// deal damage to hit actors
-//	UClass* DamageTypeClass = UDamageType::StaticClass();
-//	float dmgDealt = UGameplayStatics::ApplyDamage(
-//		hitActor,		// DamagedActor - Actor that will be damaged.
-//		50,				// BaseDamage - The base damage to apply.
-//		Controller,		// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
-//		this,			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
-//		DamageTypeClass	// DamageTypeClass - Class that describes the damage that was done.
-//	);
-//	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
-//	if (bDebugLog) { 
-//		if (GEngine)
-//		{
-//			GEngine->AddOnScreenDebugMessage(
-//				-1,
-//				3.f,
-//				FColor::Yellow,
-//				FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
-//			);
-//		};
-//	}
-//
-//	// TRUE: damage was dealt
-//	return true;
-//
-//	///if (GEngine)
-//	//{
-//	//	GEngine->AddOnScreenDebugMessage(
-//	//		-1,
-//	//		15.f,
-//	//		FColor::Yellow,
-//	//		FString(TEXT("Valid Target"))
-//	//	);
-//	//}
-//}
-//
-//// -- Draw a line trace to track a weapon's movement and detect hit events
-//AActor* ASirDingusCharacter::DrawWeaponArc(bool bDrawDebug, bool bDebugLog)
-//{
-//	// define points for line trace
-//	if (EquippedWeapon)
-//	{
-//		FHitResult Hit;
-//
-//		// grab skeleton
-//		const USkeletalMeshComponent* skComp = EquippedWeapon->FindComponentByClass<USkeletalMeshComponent>();
-//		USkeletalMesh* skMesh = skComp->GetSkeletalMeshAsset();
-//		//USkeletalMesh* skMesh = EquippedWeapon->FindComponentByClass<USkeletalMesh>();
-//		
-//		// grab sockets
-//		FVector traceStart = skMesh->GetSocketByIndex(0)->GetSocketTransform(skComp).GetLocation();
-//		FVector traceEnd = skMesh->GetSocketByIndex(1)->GetSocketTransform(skComp).GetLocation();
-//
-//		// collision parameters - ignore self
-//		FCollisionQueryParams QueryParams;
-//		QueryParams.AddIgnoredActor(this);
-//
-//		// perform line trace
-//		GetWorld()->LineTraceSingleByChannel(Hit,traceStart, traceEnd, ECollisionChannel::ECC_Camera, QueryParams);
-//
-//		// Debug
-//		if (bDrawDebug) { DrawDebugLine(GetWorld(), traceStart, traceEnd, Hit.bBlockingHit ? FColor::Green : FColor::Red, false, 5.0f, 0, 1.0f); }
-//		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *traceStart.ToCompactString(), *traceEnd.ToCompactString()); }
-//
-//		// if hit occurs and hit actor is valid
-//		if (Hit.bBlockingHit && IsValid(Hit.GetActor()))
-//		{
-//			if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName()); }
-//			// return hit actor
-//			return Hit.GetActor();
-//		}
-//
-//		// nothing hit
-//		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("No actors hit")); }
-//	}
-//	return nullptr;
-//}
 
 void ASirDingusCharacter::Dodge()
 {
-
-	///DEBUG MESSAGE
-	//if (GEngine)
+	//if (bDebugMessages && GEngine)
 	//{
 	//	GEngine->AddOnScreenDebugMessage(
 	//		-1,
@@ -473,7 +247,7 @@ void ASirDingusCharacter::Dodge()
 ///void ASirDingusCharacter::StopDodging()
 //{
 //	//DEBUG MESSAGE
-//	//if (GEngine)
+//	//if ( GEngine)
 //	//{
 //	//	GEngine->AddOnScreenDebugMessage(
 //	//		-1,
@@ -489,31 +263,11 @@ void ASirDingusCharacter::Attack()
 	///DEBUG MESSAGE - Errors in this debug message, ignore for now
 	if (bDebugMessages && GEngine)
 	{
-		FString message;
-
-	//	if (ActionState != null)
-	//	{
-	//		const UEnum* AStatePtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("ActionState"), true);
-	//
-	//		//Cast<FString>(ActionState);
-	//		FString message = AStatePtr->GetName();
-	//		//FString message = TEXT("Our enum value: ") + EnumToString(ActionState);
-	//
-	//		GEngine->AddOnScreenDebugMessage(
-	//			-1,
-	//			15.f,
-	//			FColor::Yellow,
-	//			message
-	//		);
-	//	}
-
-		message = TEXT("ASirDingusCharacter::Attack()");
-
 		GEngine->AddOnScreenDebugMessage(
 		1,
 		15.f,
 		FColor::Green,
-		message
+		FString::Printf(TEXT("ASirDingusCharacter::Attack()"))
 		);
 	}
 
