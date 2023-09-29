@@ -1,25 +1,31 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "SirDingusCharacter.h"
-#include "Camera/CameraComponent.h"
+
+#include "SirDingus/Weapons/Weapon.h"
+#include "SirDingus/Components/HealthComponent.h"
+#include "SirDingus/Components/MeleeComponent.h"
+#include "SirDingus/Modes & States/SirDingusGameMode.h"
+#include "SirDingus/Macros/Debug Macros.h"
+
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
+#include "Components/SceneComponent.h"
+
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "SirDingus/Weapons/Weapon.h"
+
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "Components/SceneComponent.h"
+
 #include "Engine/SkeletalMeshSocket.h"
 #include "Engine/EngineTypes.h"
 
-#include "SirDingus/Components/HealthComponent.h"
-#include "SirDingus/Components/MeleeComponent.h"
-
-#include "SirDingus/Modes & States/SirDingusGameMode.h"
+#include "Camera/CameraComponent.h"
 #include "Net/UnrealNetwork.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -133,6 +139,11 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 	}
 
 	return superResult;
+}
+
+void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
+{
+	DRAW_SPHERE(ImpactPoint);
 }
 
 void ASirDingusCharacter::ResetActionState()

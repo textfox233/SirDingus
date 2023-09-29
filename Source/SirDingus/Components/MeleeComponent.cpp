@@ -155,12 +155,13 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor)
 		// deal damage to hit actors
 		UClass* DamageTypeClass = UDamageType::StaticClass();
 		float dmgDealt = UGameplayStatics::ApplyDamage(
-			hitActor,		// DamagedActor - Actor that will be damaged.
-			50,				// BaseDamage - The base damage to apply.
-			OwningController,		// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
+			hitActor,			// DamagedActor - Actor that will be damaged.
+			50,					// BaseDamage - The base damage to apply.
+			OwningController,	// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
 			GetOwner(),			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
-			DamageTypeClass	// DamageTypeClass - Class that describes the damage that was done.
+			DamageTypeClass		// DamageTypeClass - Class that describes the damage that was done.
 		);
+
 		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
 		if (bDebugMessages && GEngine)
 		{
@@ -175,19 +176,17 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor)
 		// TRUE: damage was dealt
 		return true;
 	}
-	else
+	else if (bDebugMessages && GEngine)
 	{
-		if (bDebugMessages && GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				15.f,
-				FColor::Red,
-				FString(TEXT("Owning Controller is Invalid"))
-			);
-		}
-		return false;
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			15.f,
+			FColor::Red,
+			FString(TEXT("Owning Controller is Invalid"))
+		);
 	}
+
+	return false;
 }
 
 void UMeleeComponent::PerformAttack()
@@ -246,6 +245,12 @@ AActor* UMeleeComponent::DrawWeaponArc()
 		if (Hit.bBlockingHit && IsValid(Hit.GetActor()))
 		{
 			if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName()); }
+
+			if (IHitInterface* HitInterface = Cast<IHitInterface>(Hit.GetActor()))
+			{
+				HitInterface->GetHit(Hit.ImpactPoint);
+			}
+
 			// return hit actor
 			return Hit.GetActor();
 		}

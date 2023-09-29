@@ -4,12 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "SirDingus/Interface/HitInterface.h"
 #include "CharacterTypes.h"
 #include "InputActionValue.h"
 #include "SirDingusCharacter.generated.h"
 
 UCLASS(config=Game)
-class ASirDingusCharacter : public ACharacter
+class ASirDingusCharacter : public ACharacter, public IHitInterface
 {
 	GENERATED_BODY()
 
@@ -59,21 +60,21 @@ public:
 	// - tried at first to bind a new function to OnTakeAnyDamage but ran into problems, decided instead to override AActor::TakeDamage()
 	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
+	virtual void GetHit(const FVector& ImpactPoint) override;
 
-	//** Playing Animations **/
+	/** Playing Animations **/
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 		void PlayAnimMontageServer(UAnimMontage* AnimMontage, FName StartSectionName = NAME_None);
 	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
 		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage, FName StartSectionName = NAME_None);
 	
+	/** States **/
 	UFUNCTION(BlueprintCallable)
 		void ResetActionState();
 	UFUNCTION(BlueprintCallable)
 		void Interrupted();
 
 	/** Animation Montages **/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
-		class UAnimMontage* BasicAttackMontage;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
 		class UAnimMontage* FlinchMontage;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
@@ -83,101 +84,22 @@ public:
 
 
 	/** Input Functions **/
-
 	// -- Dodging
 	void Dodge();
 	//void StopDodging();
 
-	// -- Movement
-	void Move(FVector2D MoveVector);
-
-	// -- Looking
-	void Look(const FInputActionValue& Value);
-
 	// -- Attacking
 	void Attack();
 
-	// -- Restart Game
-	UFUNCTION(Server, Reliable)
-		void RestartGame(const FInputActionValue& Value);
-
-	// -- Quit Game
-	void QuitGame(const FInputActionValue& Value);
-
-	// -- Extra Test Action
-	//UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
-	void TestSomething(const FInputActionValue& Value);
-
-
 protected:
-
-	///** Input Functions **/
-	//
-	//// -- Dodging
-	//void Dodge(const FInputActionValue& Value);
-	//void StopDodging();
-	//
-	//// -- Movement
-	//void Move(const FInputActionValue& Value);
-	//
-	//// -- Looking
-	//void Look(const FInputActionValue& Value);
-	//		
-	////// -- Attacking
-	////void Attack(const FInputActionValue& Value);
-	//
-	//// -- Restart Game
-	//UFUNCTION(Server, Reliable)
-	//void RestartGame(const FInputActionValue& Value);
-	//
-	//// -- Quit Game
-	//void QuitGame(const FInputActionValue& Value);
-	//
-	//// -- Extra Test Action
-	////UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
-	//void TestSomething(const FInputActionValue& Value);
-	//
-	//
-	//// APawn interface
-	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	// To add mapping context
 	virtual void BeginPlay();
 
 	
 	/** Debugging Functions **/
-
 	// -- Return NetRole as an FString
 	FString GetNetRole();
-
-	///** Melee Animation Timer (Refactored into melee component) **/
-	//
-	//// -- Timer Handle
-	//FTimerHandle MeleeTraceHandle;
-	//
-	//// -- Start
-	//UFUNCTION(BlueprintCallable)
-	//void MeleeTraceStart();
-	//
-	//// -- InProgress
-	//UFUNCTION()
-	//void MeleeTraceInProgress();
-	//
-	//// -- Stop
-	//UFUNCTION(BlueprintCallable)
-	//void MeleeTraceEnd();
-
-
-	/** Melee Functions (Refactored into melee component) **/
-	//
-	//// -- Process Melee Hits
-	//UFUNCTION(BlueprintCallable)
-	//bool ProcessMeleeHit(AActor* hitActor, bool bDebugLog = false);
-	//
-	//// -- Perform Weapon Arc via Line Traces
-	//UFUNCTION(BlueprintCallable)
-	//AActor* DrawWeaponArc(bool bDrawDebug = false, bool bDebugLog = false);
-
 
 private:
 	/** Is Character Alive **/
