@@ -56,10 +56,7 @@ public:
 	/** Replication **/
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
-	/** Taking Damage **/
-	// - tried at first to bind a new function to OnTakeAnyDamage but ran into problems, decided instead to override AActor::TakeDamage()
-	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
-
+	/** Getting hit by an Attack or Damaging Effect **/
 	virtual void GetHit(const FVector& ImpactPoint) override;
 
 	/** Playing Animations **/

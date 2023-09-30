@@ -45,9 +45,6 @@ private:
 	UFUNCTION()
 	void OnRep_Health();
 
-	UFUNCTION()
-	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
-
 	void UpdateHUDHealth();
 
 	// References

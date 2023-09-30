@@ -41,12 +41,6 @@ void UHealthComponent::BeginPlay()
 	// initialise health
 	Health = MaxHealth;
 
-	//// bind DamageTaken callback to OnTakeAnyDamage delegate
-	//if (AActor* Owner = GetOwner())
-	//{
-	//	Owner->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
-	//}
-
 	// get game mode
 	CurrentGameMode = Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this));
 
@@ -108,39 +102,6 @@ void UHealthComponent::UpdateHUDHealth()
 			FColor::Red,
 			TEXT("SetHUDHealth ERROR - Cannot cast Owner to APawn")
 		);
-	}
-}
-
-void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
-{
-	if (bDebugMessages && GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.f,
-			FColor::Red,
-			FString(TEXT("UHealthComponent::DamageTaken()"))
-		);
-	}
-
-	if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *DamagedActor->GetName());
-
-	if (Damage <= 0.f) return; // no dmg
-
-	// Apply damage
-	Health -= Damage;
-	if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
-	
-	// Update HUD
-	UpdateHUDHealth();
-
-	// If health goes below zero, the actor has died
-	if (Health <= 0.f)
-	{
-		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("Character has Died, Informing GameMode"))
-
-			// inform gamemode character has died
-			CurrentGameMode->CharacterDied(DamagedActor);
 	}
 }
 

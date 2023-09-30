@@ -257,6 +257,9 @@ void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 		);
 	}
 
+	//UClass* DamageTypeClass = UDamageType::StaticClass();
+	//UGameplayStatics::ApplyDamage(GetPawn(), 50.f, this, GetPawn(), DamageTypeClass);
+
 	// Apply instant damage
 	if (IHitInterface* HitInterface = Cast<IHitInterface>(GetPawn())) HitInterface->GetHit(GetPawn()->GetActorLocation());
 }

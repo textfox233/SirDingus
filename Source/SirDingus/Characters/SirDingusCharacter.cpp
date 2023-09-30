@@ -101,9 +101,12 @@ ASirDingusCharacter::ASirDingusCharacter()
 	//}
 }
 
-float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
-	float superResult = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	DRAW_SPHERE(ImpactPoint);
+
+	// take the damage
+	HealthComponent->TakeDamage(50.f);
 
 	if (bDebugMessages && GEngine)
 	{
@@ -129,7 +132,7 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 			FColor::Yellow,
 			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
 		);
-	
+
 		GEngine->AddOnScreenDebugMessage(
 			-1,
 			3.f,
@@ -137,37 +140,6 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
 		);
 	}
-
-	return superResult;
-}
-
-void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
-{
-	DRAW_SPHERE(ImpactPoint);
-
-	// deal damage
-	HealthComponent->TakeDamage(50.f);
-	//if (AController* OwningController = GetOwner()->GetInstigatorController())
-	//{
-	//	// deal damage to hit actors
-	//	UClass* DamageTypeClass = UDamageType::StaticClass();
-	//	float dmgDealt = UGameplayStatics::ApplyDamage(
-	//		hitActor,			// DamagedActor - Actor that will be damaged.
-	//		50,					// BaseDamage - The base damage to apply.
-	//		OwningController,	// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
-	//		GetOwner(),			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
-	//		DamageTypeClass		// DamageTypeClass - Class that describes the damage that was done.
-	//	);
-	//	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
-	//	if (bDebugMessages && GEngine)
-	//	{
-	//		GEngine->AddOnScreenDebugMessage(
-	//			-1,
-	//			3.f,
-	//			FColor::Yellow,
-	//			FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
-	//		);
-	//	};
 }
 
 void ASirDingusCharacter::ResetActionState()
@@ -264,15 +236,6 @@ void ASirDingusCharacter::CharacterDeath()
 
 void ASirDingusCharacter::Dodge()
 {
-	//if (bDebugMessages && GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		15.f,
-	//		FColor::Yellow,
-	//		FString::Printf(TEXT("Dodging = %s"), (bIsDodging ? TEXT("true") : TEXT("false")))
-	//	);
-	//}
 	if (bAlive)
 	{
 		PlayAnimMontageServer(DodgeMontage);
