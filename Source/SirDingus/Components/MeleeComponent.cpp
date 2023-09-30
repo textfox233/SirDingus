@@ -61,15 +61,17 @@ void UMeleeComponent::MeleeTraceInProgress()
 	if (bDebugLog) { UE_LOG(LogTemp, Warning, TEXT("timer active")); }
 
 	// perform line trace (debug? / logs?)
-	AActor* hit = DrawWeaponArc();
-
-	// process the hit
-	if (ProcessMeleeHit(hit))
-		// if hit was valid
-	{
-		// stop line tracing - should stop multiple hits per swing
-		GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
-	}
+	DrawWeaponArc();
+	//if (FHitResult* hitResult = DrawWeaponArc())
+	//{
+	//	// process the hit
+	//	if (ProcessMeleeHit(hitResult))
+	//		// if hit was valid
+	//	{
+	//		// stop line tracing - should stop multiple hits per swing
+	//		GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
+	//	}
+	//}
 
 	//if (hit != nullptr)
 	//// anything hit?
@@ -89,22 +91,22 @@ void UMeleeComponent::MeleeTraceEnd()
 	GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
 }
 
-// -- Process melee hits (TRUE means damage was dealt, FALSE means the hit was invalid)
-bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor)
+// -- Process hit result (TRUE means a valid target was hit, FALSE means an invalid target was hit)
+bool UMeleeComponent::ProcessMeleeHit(FHitResult* hitResult)
 {
-	// Was there no hit?
-	if (hitActor == nullptr)
-	{
-		// FALSE: target invalid
-		return false;
-	}
 
-	if (bDebugLog) {
+
+	AActor* hitActor = hitResult->GetActor();
+	IHitInterface* HitInterface = Cast<IHitInterface>(hitActor);
+
+	// Check 1: Was anything hit?
+	if (hitActor == nullptr) return false; // Return invalid target
+	if (bDebugLog) 
+	{
 		UE_LOG(LogTemp, Log, TEXT("ASirDingusCharacter::ProcessMeleeHit"));
 		UE_LOG(LogTemp, Warning, TEXT("%s Hit"), *hitActor->GetName());
 	}
-
-	// Was the hit actor an already dead character's capsule?
+	// Check 2: Are they already dead?
 	if (ASirDingusCharacter* Character = Cast<ASirDingusCharacter>(hitActor))
 	{
 		// if character is not alive
@@ -119,13 +121,10 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor)
 					FString(TEXT("Target is already dead"))
 				);
 			}
-
-			// FALSE: target invalid
-			return false;
+			return false; // Return invalid target
 		}
 	}
-
-	// Did a player just hit another player?
+	// Check 3: Did a player just hit another player?
 	if (GetOwner()->ActorHasTag("Player"))
 	{
 		// check tags to see what is being damaged
@@ -142,51 +141,52 @@ bool UMeleeComponent::ProcessMeleeHit(AActor* hitActor)
 					FString(TEXT("Hit target is player"))
 				);
 			}
-
-			// FALSE: target invalid
-			return false;
+			return false; // Return invalid target
 		}
 	}
-
-	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Target not a player")); }
-
-	if (AController* OwningController = GetOwner()->GetInstigatorController())
+	// Check 4: Is it a valid target?
+	if (HitInterface)
 	{
-		// deal damage to hit actors
-		UClass* DamageTypeClass = UDamageType::StaticClass();
-		float dmgDealt = UGameplayStatics::ApplyDamage(
-			hitActor,			// DamagedActor - Actor that will be damaged.
-			50,					// BaseDamage - The base damage to apply.
-			OwningController,	// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
-			GetOwner(),			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
-			DamageTypeClass		// DamageTypeClass - Class that describes the damage that was done.
-		);
-
-		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
-		if (bDebugMessages && GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				3.f,
-				FColor::Yellow,
-				FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
-			);
-		};
-
-		// TRUE: damage was dealt
-		return true;
-	}
-	else if (bDebugMessages && GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			15.f,
-			FColor::Red,
-			FString(TEXT("Owning Controller is Invalid"))
-		);
+		// Hit the actor
+		HitInterface->GetHit(hitResult->ImpactPoint);
+		return true; // Return valid target
 	}
 
-	return false;
+	//if (AController* OwningController = GetOwner()->GetInstigatorController())
+	//{
+	//	// deal damage to hit actors
+	//	UClass* DamageTypeClass = UDamageType::StaticClass();
+	//	float dmgDealt = UGameplayStatics::ApplyDamage(
+	//		hitActor,			// DamagedActor - Actor that will be damaged.
+	//		50,					// BaseDamage - The base damage to apply.
+	//		OwningController,	// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
+	//		GetOwner(),			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
+	//		DamageTypeClass		// DamageTypeClass - Class that describes the damage that was done.
+	//	);
+	//	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
+	//	if (bDebugMessages && GEngine)
+	//	{
+	//		GEngine->AddOnScreenDebugMessage(
+	//			-1,
+	//			3.f,
+	//			FColor::Yellow,
+	//			FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
+	//		);
+	//	};
+	//	// TRUE: damage was dealt
+	//	return true;
+	//}
+	//else if (bDebugMessages && GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		15.f,
+	//		FColor::Red,
+	//		FString(TEXT("Owning Controller is Invalid"))
+	//	);
+	//}
+
+	return false; // Return invalid target
 }
 
 void UMeleeComponent::PerformAttack()
@@ -214,7 +214,7 @@ void UMeleeComponent::PerformAttack()
 }
 
 // -- Draw a line trace to track a weapon's movement and detect hit events
-AActor* UMeleeComponent::DrawWeaponArc()
+void UMeleeComponent::DrawWeaponArc()
 {
 	// define points for line trace
 	if (EquippedWeapon)
@@ -241,22 +241,33 @@ AActor* UMeleeComponent::DrawWeaponArc()
 		if (bDrawDebug) { DrawDebugLine(GetWorld(), traceStart, traceEnd, Hit.bBlockingHit ? FColor::Green : FColor::Red, false, 5.0f, 0, 1.0f); }
 		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *traceStart.ToCompactString(), *traceEnd.ToCompactString()); }
 
-		// if hit occurs and hit actor is valid
-		if (Hit.bBlockingHit && IsValid(Hit.GetActor()))
+		// process the hit
+		if (ProcessMeleeHit(&Hit))
+		// if hit was valid
 		{
-			if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName()); }
-
-			if (IHitInterface* HitInterface = Cast<IHitInterface>(Hit.GetActor()))
-			{
-				HitInterface->GetHit(Hit.ImpactPoint);
-			}
-
-			// return hit actor
-			return Hit.GetActor();
+			// stop line tracing - should stop multiple hits per swing
+			GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
 		}
-
-		// nothing hit
-		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("No actors hit")); }
 	}
-	return nullptr;
+		//return &Hit;
+		//
+		//// if hit occurs
+		//if (Hit.bBlockingHit/* && IsValid(Hit.GetActor())*/)
+		//{
+		//	if (bDebugLog) UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName());
+		//
+		//	if (IHitInterface* HitInterface = Cast<IHitInterface>(Hit.GetActor()))
+		//	{
+		//		HitInterface->GetHit(Hit.ImpactPoint);
+		//	}
+		//	else if (bDebugLog) UE_LOG(LogTemp, Log, TEXT("Hit actor doesn't inherit from IHitInterface"));
+		//
+		//	// return hit actor
+		//	return Hit.GetActor();
+		//}
+		//
+		//// nothing hit
+		//if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("No actors hit")); }
+	//}
+	//return nullptr;
 }

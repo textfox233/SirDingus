@@ -60,8 +60,8 @@ protected:
 		void MeleeTraceEnd();
 
 	// -- Determine if anything was hit, and if damage should be applied. Returns TRUE if any damage was dealt
-	bool ProcessMeleeHit(AActor* hitActor);
+	bool ProcessMeleeHit(FHitResult* hitResult);
 
 	// -- Draw a line trace to track a weapon's movement and detect hit events
-	AActor* DrawWeaponArc();
+	void DrawWeaponArc();
 };
