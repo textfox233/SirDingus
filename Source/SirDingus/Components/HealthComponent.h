@@ -22,6 +22,8 @@ public:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	void TakeDamage(float Damage);
+
 protected:
 	
 	// Called when the game starts
@@ -33,6 +35,12 @@ private:
 	float MaxHealth = 100;
 	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = "Health Component")
 	float Health;
+
+	// -- Debug booleans
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|HealthComponent", meta = (AllowPrivateAccess = "true"))
+		bool bDebugMessages;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|HealthComponent", meta = (AllowPrivateAccess = "true"))
+		bool bDebugLog;
 
 	UFUNCTION()
 	void OnRep_Health();

@@ -144,6 +144,30 @@ float ASirDingusCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Da
 void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
 	DRAW_SPHERE(ImpactPoint);
+
+	// deal damage
+	HealthComponent->TakeDamage(50.f);
+	//if (AController* OwningController = GetOwner()->GetInstigatorController())
+	//{
+	//	// deal damage to hit actors
+	//	UClass* DamageTypeClass = UDamageType::StaticClass();
+	//	float dmgDealt = UGameplayStatics::ApplyDamage(
+	//		hitActor,			// DamagedActor - Actor that will be damaged.
+	//		50,					// BaseDamage - The base damage to apply.
+	//		OwningController,	// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
+	//		GetOwner(),			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
+	//		DamageTypeClass		// DamageTypeClass - Class that describes the damage that was done.
+	//	);
+	//	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
+	//	if (bDebugMessages && GEngine)
+	//	{
+	//		GEngine->AddOnScreenDebugMessage(
+	//			-1,
+	//			3.f,
+	//			FColor::Yellow,
+	//			FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
+	//		);
+	//	};
 }
 
 void ASirDingusCharacter::ResetActionState()

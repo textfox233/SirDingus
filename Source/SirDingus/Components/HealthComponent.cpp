@@ -28,25 +28,24 @@ void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	/// Debug Message
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		5.f,
-	//		FColor::Green,
-	//		TEXT("UHealthComponent::BeginPlay")
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			5.f,
+			FColor::Green,
+			TEXT("UHealthComponent::BeginPlay")
+		);
+	}
 
 	// initialise health
 	Health = MaxHealth;
 
-	// bind DamageTaken callback to OnTakeAnyDamage delegate
-	if (AActor* Owner = GetOwner())
-	{
-		Owner->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
-	}
+	//// bind DamageTaken callback to OnTakeAnyDamage delegate
+	//if (AActor* Owner = GetOwner())
+	//{
+	//	Owner->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
+	//}
 
 	// get game mode
 	CurrentGameMode = Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this));
@@ -64,43 +63,40 @@ void UHealthComponent::UpdateHUDHealth()
 	OwnerPawn = OwnerPawn == nullptr ? Cast<APawn>(GetOwner()) : OwnerPawn;
 	if (OwnerPawn)
 	{
-		/// Debug Msg
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		5.f,
-		//		FColor::Blue,
-		//		FString::Printf(TEXT("OwnerPawn is %s"), *AActor::GetDebugName(OwnerPawn))
-		//	);
-		//}
+		if (bDebugMessages && GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				5.f,
+				FColor::Blue,
+				FString::Printf(TEXT("OwnerPawn is %s"), *AActor::GetDebugName(OwnerPawn))
+			);
+		}
 
 		PlayerController = PlayerController == nullptr ? Cast<ASirDingusPlayerController>(OwnerPawn->GetController()) : PlayerController;
 
 		if (PlayerController)
 		{
-			/// Debug Msg
-			//if (GEngine)
-			//{
-			//	GEngine->AddOnScreenDebugMessage(
-			//		-1,
-			//		5.f,
-			//		FColor::Green,
-			//		TEXT("SetHUDHealth")
-			//	);
-			//}
+			if (bDebugMessages && GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					5.f,
+					FColor::Green,
+					TEXT("SetHUDHealth")
+				);
+			}
 
 			PlayerController->SetHUDHealth(Health, MaxHealth);
 		}
-		/// Error Msg
-		else
+		else if (bDebugMessages && GEngine)
 		{
-			//GEngine->AddOnScreenDebugMessage(
-			//	-1,
-			//	5.f,
-			//	FColor::Red,
-			//	TEXT("SetHUDHealth ERROR - Cannot cast OwnerPawn's Controller to Player Controller")
-			//);
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				5.f,
+				FColor::Red,
+				TEXT("SetHUDHealth ERROR - Cannot cast OwnerPawn's Controller to Player Controller")
+			);
 		}
 	}
 	/// Error Msg
@@ -117,24 +113,23 @@ void UHealthComponent::UpdateHUDHealth()
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
-	/// Debug Msg
-	//if (GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		2.f,
-	//		FColor::Red,
-	//		FString(TEXT("UHealthComponent::DamageTaken()"))
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			2.f,
+			FColor::Red,
+			FString(TEXT("UHealthComponent::DamageTaken()"))
+		);
+	}
 
-	UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *DamagedActor->GetName());
+	if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *DamagedActor->GetName());
 
 	if (Damage <= 0.f) return; // no dmg
 
 	// Apply damage
 	Health -= Damage;
-	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+	if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
 	
 	// Update HUD
 	UpdateHUDHealth();
@@ -142,13 +137,44 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 	// If health goes below zero, the actor has died
 	if (Health <= 0.f)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Character has Died, Informing GameMode"))
+		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("Character has Died, Informing GameMode"))
 
 			// inform gamemode character has died
 			CurrentGameMode->CharacterDied(DamagedActor);
 	}
 }
 
+void UHealthComponent::TakeDamage(float Damage)
+{
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			2.f,
+			FColor::Red,
+			FString(TEXT("UHealthComponent::TakeDamage()"))
+		);
+	}
+	if(bDebugLog && GetOwner()) UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *GetOwner()->GetName());
+
+	if (Damage <= 0.f) return; // no dmg
+
+	// Apply damage
+	Health -= Damage;
+	if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+
+	// Update HUD
+	UpdateHUDHealth();
+
+	// If health goes below zero, the actor has died
+	if (Health <= 0.f)
+	{
+		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("Character has Died, Informing GameMode"))
+
+			// inform gamemode character has died
+			CurrentGameMode->CharacterDied(GetOwner());
+	}
+}
 
 // Called every frame
 void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
