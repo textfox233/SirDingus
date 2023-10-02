@@ -118,10 +118,10 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 		);
 	}
 
-	// play flinch animation
+	// play hit react animation
 	if (bAlive && FlinchMontage)
 	{
-		PlayAnimMontageServer(FlinchMontage);
+		PlayAnimMontageServer(FlinchMontage, "FromLeft");
 	}
 
 	if (bDebugMessages && GEngine)
@@ -153,14 +153,14 @@ void ASirDingusCharacter::Interrupted()
 
 /// * Refactored blueprint function
 // Play a given montage over the network
-void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, FName StartSectionName)
+void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
 {
 	PlayAnimMontageMulticast(AnimMontage, StartSectionName);
 }
 
 /// * Refactored blueprint function
 // Play a given montage on each client
-void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage, FName StartSectionName)
+void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
 {
 	//float animTime = 0.1f;		//Default value in case the animation can't be played.
 	//
