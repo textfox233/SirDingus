@@ -103,8 +103,6 @@ ASirDingusCharacter::ASirDingusCharacter()
 
 void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
-	DRAW_SPHERE(ImpactPoint);
-
 	// take the damage
 	HealthComponent->TakeDamage(50.f);
 
@@ -124,6 +122,17 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 		PlayAnimMontageServer(FlinchMontage, "FromLeft");
 	}
 
+	const FVector Forward = GetActorForwardVector();
+	const FVector ToHit = (ImpactPoint - GetActorLocation()).GetSafeNormal();
+
+	// Forward * ToHit = |Forward||ToHit| * cos(theta)
+	// |Forward| = 1, |ToHit| = 1, so Forward * ToHit = cos(theta)
+	const double CosTheta = FVector::DotProduct(Forward, ToHit);
+	// Take the inverse cosine of cos(theta) to get theta
+	double Theta = FMath::Acos(CosTheta);
+	// conver from radians to degrees
+	Theta = FMath::RadiansToDegrees(Theta);
+
 	if (bDebugMessages && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
@@ -139,6 +148,18 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 			FColor::Yellow,
 			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
 		);
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Blue,
+			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Angle is %f"), Theta)
+		);
+	}
+	if(bDrawDebug)
+	{
+		DRAW_SPHERE(ImpactPoint);
+		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
+		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
 	}
 }
 

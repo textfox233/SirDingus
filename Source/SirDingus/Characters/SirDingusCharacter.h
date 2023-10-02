@@ -36,6 +36,8 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 
 	/** Debug Booleans **/
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
+		bool bDrawDebug;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
 		bool bDebugMessages;
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
 		bool bDebugLogs;

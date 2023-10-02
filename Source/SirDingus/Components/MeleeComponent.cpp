@@ -208,7 +208,6 @@ void UMeleeComponent::PerformAttack()
 			Section = NAME_None;
 			break;
 		}
-
 		Cast<ASirDingusCharacter>(GetOwner())->PlayAnimMontageServer(AttacksMontage, Section);
 	}
 }
