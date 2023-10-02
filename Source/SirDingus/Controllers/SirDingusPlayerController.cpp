@@ -154,7 +154,6 @@ void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 			SDCharacter->AddMovementInput(ForwardDirection, MovementVector.Y);
 			SDCharacter->AddMovementInput(RightDirection, MovementVector.X);
 
-			/// DEBUG MESSAGE
 			if (bDebugMessages && GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(

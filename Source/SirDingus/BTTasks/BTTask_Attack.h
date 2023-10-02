@@ -16,6 +16,12 @@ class SIRDINGUS_API UBTTask_Attack : public UBTTaskNode
 
 	UBTTask_Attack();
 
+	/** Debug Booleans **/
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|UBTTask_Attack", meta = (AllowPrivateAccess = "true"))
+		bool bDebugMessages;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|UBTTask_Attack", meta = (AllowPrivateAccess = "true"))
+		bool bDebugLogs;
+
 protected:
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 
