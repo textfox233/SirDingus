@@ -226,8 +226,8 @@ void UMeleeComponent::DrawWeaponArc()
 		//USkeletalMesh* skMesh = EquippedWeapon->FindComponentByClass<USkeletalMesh>();
 
 		// grab sockets
-		FVector traceStart = skMesh->GetSocketByIndex(0)->GetSocketTransform(skComp).GetLocation();
-		FVector traceEnd = skMesh->GetSocketByIndex(1)->GetSocketTransform(skComp).GetLocation();
+		FVector traceStart = skMesh->GetSocketByIndex(1)->GetSocketTransform(skComp).GetLocation();
+		FVector traceEnd = skMesh->GetSocketByIndex(0)->GetSocketTransform(skComp).GetLocation();
 
 		// collision parameters - ignore self
 		FCollisionQueryParams QueryParams;

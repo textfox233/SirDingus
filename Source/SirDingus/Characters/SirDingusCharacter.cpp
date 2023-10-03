@@ -119,11 +119,12 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	// play hit react animation
 	if (bAlive && FlinchMontage)
 	{
-		PlayAnimMontageServer(FlinchMontage, "FromLeft");
+		//PlayAnimMontageServer(FlinchMontage, "FromLeft");
 	}
 
 	const FVector Forward = GetActorForwardVector();
-	const FVector ToHit = (ImpactPoint - GetActorLocation()).GetSafeNormal();
+	const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
+	const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
 
 	// Forward * ToHit = |Forward||ToHit| * cos(theta)
 	// |Forward| = 1, |ToHit| = 1, so Forward * ToHit = cos(theta)
