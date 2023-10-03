@@ -103,9 +103,6 @@ ASirDingusCharacter::ASirDingusCharacter()
 
 void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
-	// take the damage
-	HealthComponent->TakeDamage(50.f);
-
 	if (bDebugMessages && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
@@ -115,24 +112,40 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 			FString(TEXT("ASirDingusCharacter::TakeDamage()"))
 		);
 	}
-
-	// play hit react animation
-	if (bAlive && FlinchMontage)
-	{
-		//PlayAnimMontageServer(FlinchMontage, "FromLeft");
-	}
+	
+	// take the damage
+	HealthComponent->TakeDamage(50.f);
 
 	const FVector Forward = GetActorForwardVector();
 	const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
 	const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
 
-	// Forward * ToHit = |Forward||ToHit| * cos(theta)
-	// |Forward| = 1, |ToHit| = 1, so Forward * ToHit = cos(theta)
+	// 1. Determine Angle
+	// A * B = |A||B| * cos(theta)
+	// |A| = 1, |B| = 1, so A * B = cos(theta)
 	const double CosTheta = FVector::DotProduct(Forward, ToHit);
 	// Take the inverse cosine of cos(theta) to get theta
 	double Theta = FMath::Acos(CosTheta);
-	// conver from radians to degrees
+	// convert from radians to degrees
 	Theta = FMath::RadiansToDegrees(Theta);
+
+	// 2. Determine Positive / Negative
+	const FVector CrossProduct = FVector::CrossProduct(Forward, ToHit);
+	// if CrossProduct's pointing down, make Theta negative
+	if (CrossProduct.Z < 0) Theta *= -1.f;
+
+	// 3. Determine Correct animation
+	FName Section = "FromBack";
+
+	if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
+	else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
+	else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
+
+	// play hit react animation
+	if (bAlive && FlinchMontage)
+	{
+		PlayAnimMontageServer(FlinchMontage, Section);
+	}
 
 	if (bDebugMessages && GEngine)
 	{
@@ -161,6 +174,7 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 		DRAW_SPHERE(ImpactPoint);
 		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
 		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
+		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f, FColor::Blue, 5.f);
 	}
 }
 
