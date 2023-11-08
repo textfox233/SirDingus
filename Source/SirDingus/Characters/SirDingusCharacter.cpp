@@ -114,7 +114,7 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	}
 	
 	// take the damage
-	HealthComponent->TakeDamage(50.f);
+	HealthComponent->TakeDamage(5.f);
 
 	const FVector Forward = GetActorForwardVector();
 	const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
@@ -135,11 +135,12 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	if (CrossProduct.Z < 0) Theta *= -1.f;
 
 	// 3. Determine Correct animation
-	FName Section = "FromBack";
+	FName Section = "Rooted";
 
 	if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
 	else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
 	else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
+	else if (Theta > -135.f && Theta < -135.f)	Section = "FromBack";	// Back
 
 	// play hit react animation
 	if (bAlive && FlinchMontage)
@@ -267,7 +268,7 @@ void ASirDingusCharacter::CharacterDeath()
 	}
 
 	// play death animation
-	if (DeathMontage) { PlayAnimMontageServer(DeathMontage); }
+	if (DeathMontage) { PlayAnimMontageServer(DeathMontage, "Death 02"); }
 }
 
 void ASirDingusCharacter::Dodge()
