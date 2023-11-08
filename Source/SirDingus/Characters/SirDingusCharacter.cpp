@@ -143,7 +143,7 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	}
 	
 	// take the damage
-	HealthComponent->TakeDamage(5.f);
+	HealthComponent->TakeDamage(1000.f);
 
 	const FVector Forward = GetActorForwardVector();
 	const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);

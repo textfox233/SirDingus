@@ -35,4 +35,8 @@ private:
 
 	int GetRandomPlayerIndex();
 	int _numPlayers = 1;
+
+	/** Debug Area **/
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusAIController", meta = (AllowPrivateAccess = "true"))
+	bool bDebugMessages = false;
 };
