@@ -169,7 +169,7 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
 	else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
 	else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
-	else if (Theta > -135.f && Theta < -135.f)	Section = "FromBack";	// Back
+	else if (Theta > 135.f || Theta < -135.f)	Section = "FromBack";	// Back
 
 	// play hit react animation
 	if (bAlive && FlinchMontage)
