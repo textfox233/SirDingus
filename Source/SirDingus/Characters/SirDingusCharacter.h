@@ -34,17 +34,25 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Melee", meta = (AllowPrivateAccess = "true"))
 		class UMeleeComponent* MeleeComponent;
 
-	/** Debug Booleans **/
+	/** Debug Area **/
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
-		bool bDrawDebug;
+		bool bDrawDebug = false;
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
-		bool bDebugMessages;
+		bool bDebugMessages = false;
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
-		bool bDebugLogs;
+		bool bDebugLogs = false;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
+		bool bDebugStates = false;
 
+	UFUNCTION(BlueprintCallable)
+		void PrintActionState();
+		void TestFlinchAnimation(FName Section);
 
 public:
 	ASirDingusCharacter();
+
+	// used when the player controller wants to test something that requires private access
+	void TestPrivateFunction();
 
 	/** Character Death **/
 	virtual void CharacterDeath();
@@ -72,6 +80,8 @@ public:
 		void ResetActionState();
 	UFUNCTION(BlueprintCallable)
 		void Interrupted();
+	UFUNCTION(BlueprintCallable)
+		void UpdateActionState(const EActionState State);
 
 	/** Animation Montages **/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))

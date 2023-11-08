@@ -50,6 +50,35 @@ void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	DOREPLIFETIME(ASirDingusCharacter, bAlive);
 }
 
+void ASirDingusCharacter::PrintActionState()
+{
+	if (bDebugStates && GEngine)
+	{
+		FString msg = FString( this->GetName() + TEXT("::ActionState = ") + UEnum::GetValueAsString(ActionState));
+		GEngine->AddOnScreenDebugMessage(
+			1,
+			2.f,
+			FColor::Green,
+			msg
+		);
+	}
+}
+
+void ASirDingusCharacter::TestFlinchAnimation(FName Section)
+{
+	// play flinch animation
+	if (bAlive && FlinchMontage)
+	{
+		PlayAnimMontageServer(FlinchMontage, Section);
+	}
+}
+
+void ASirDingusCharacter::TestPrivateFunction()
+{
+	/// Test flinch animations
+	TestFlinchAnimation("FromBack");
+}
+
 ASirDingusCharacter::ASirDingusCharacter()
 {
 	// Set size for collision capsule
@@ -188,6 +217,11 @@ void ASirDingusCharacter::Interrupted()
 	ActionState = EActionState::EAS_Interrupted;
 }
 
+void ASirDingusCharacter::UpdateActionState(const EActionState State)
+{
+	ActionState = State;
+}
+
 /// * Refactored blueprint function
 // Play a given montage over the network
 void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
@@ -235,15 +269,15 @@ void ASirDingusCharacter::BeginPlay()
 
 	ActionState = EActionState::EAS_Unoccupied;
 
-	if (bDebugMessages && GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			15.f,
-			FColor::Yellow,
-			FString(TEXT("ASirDingusCharacter::BeginPlay()"))
-		);
-	}
+	//if (bDebugMessages && GEngine)
+	//{
+	//	GEngine->AddOnScreenDebugMessage(
+	//		-1,
+	//		15.f,
+	//		FColor::Yellow,
+	//		FString(TEXT("ASirDingusCharacter::BeginPlay()"))
+	//	);
+	//}
 }
 
 void ASirDingusCharacter::CharacterDeath()

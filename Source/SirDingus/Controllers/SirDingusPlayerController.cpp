@@ -256,6 +256,9 @@ void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 		);
 	}
 
-	// Apply instant damage
-	if (IHitInterface* HitInterface = Cast<IHitInterface>(GetPawn())) HitInterface->GetHit(GetPawn()->GetActorLocation());
+	/// Apply instant damage
+	//if (IHitInterface* HitInterface = Cast<IHitInterface>(GetPawn())) HitInterface->GetHit(GetPawn()->GetActorLocation());
+
+	/// Test private function
+	if (ASirDingusCharacter* OwnedCharacter = Cast<ASirDingusCharacter>(GetPawn())) OwnedCharacter->TestPrivateFunction();
 }
