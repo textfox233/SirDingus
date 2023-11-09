@@ -129,5 +129,8 @@ public:
 	FORCEINLINE bool GetAlive() const { return bAlive; }
 
 	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
+	FORCEINLINE EActionState GetActionState() const { return ActionState; }
+
+	FORCEINLINE bool CanMove() const { return ActionState == EActionState::EAS_Unoccupied; }
 };
 

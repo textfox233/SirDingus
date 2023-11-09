@@ -135,7 +135,7 @@ void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 
 	if (ASirDingusCharacter* SDCharacter = Cast<ASirDingusCharacter>(GetCharacter()))
 	{
-		if (SDCharacter->GetAlive())
+		if (SDCharacter->GetAlive() && SDCharacter->CanMove())
 		{
 			// input is a Vector2D
 			FVector2D MovementVector = Value.Get<FVector2D>();
