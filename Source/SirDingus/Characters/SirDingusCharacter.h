@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "SirDingus/Interface/HitInterface.h"
-#include "CharacterTypes.h"
+//#include "CharacterTypes.h"
 #include "InputActionValue.h"
 #include "SirDingusCharacter.generated.h"
 
@@ -44,8 +44,8 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", meta = (AllowPrivateAccess = "true"))
 		bool bDebugStates = false;
 
-	UFUNCTION(BlueprintCallable)
-		void PrintActionState();
+	//UFUNCTION(BlueprintCallable)
+	//	void PrintActionState();
 		void TestFlinchAnimation(FName Section);
 
 public:
@@ -75,14 +75,6 @@ public:
 	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
 		void PlayAnimMontageMulticast(UAnimMontage* AnimMontage, const FName& StartSectionName = NAME_None);
 	
-	/** States **/
-	UFUNCTION(BlueprintCallable)
-		void ResetActionState();
-	UFUNCTION(BlueprintCallable)
-		void Interrupted();
-	UFUNCTION(BlueprintCallable)
-		void UpdateActionState(const EActionState State);
-
 	/** Animation Montages **/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess))
 		class UAnimMontage* FlinchMontage;
@@ -95,7 +87,6 @@ public:
 	/** Input Functions **/
 	// -- Dodging
 	void Dodge();
-	//void StopDodging();
 
 	// -- Attacking
 	void Attack();
@@ -115,9 +106,9 @@ private:
 	UPROPERTY(Replicated)
 	bool bAlive = true;
 
-	ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	EActionState ActionState = EActionState::EAS_Unoccupied;
+	//ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
+	//UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//EActionState ActionState = EActionState::EAS_Unoccupied;
 
 public:
 	/** Returns CameraBoom subobject **/
@@ -128,9 +119,9 @@ public:
 	FORCEINLINE void SetAlive(bool isAlive) { bAlive = isAlive; }
 	FORCEINLINE bool GetAlive() const { return bAlive; }
 
-	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
-	FORCEINLINE EActionState GetActionState() const { return ActionState; }
+	//FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
+	//FORCEINLINE EActionState GetActionState() const { return ActionState; }
 
-	FORCEINLINE bool CanMove() const { return ActionState == EActionState::EAS_Unoccupied; }
+	//FORCEINLINE bool CanMove() const { return ActionState == EActionState::EAS_Unoccupied; }
 };
 

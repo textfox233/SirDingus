@@ -2,11 +2,12 @@
 
 #include "SirDingusCharacter.h"
 
-#include "SirDingus/Weapons/Weapon.h"
 #include "SirDingus/Components/HealthComponent.h"
 #include "SirDingus/Components/MeleeComponent.h"
-#include "SirDingus/Modes & States/SirDingusGameMode.h"
+#include "SirDingus/Interface/ActionStateInterface.h"
 #include "SirDingus/Macros/Debug Macros.h"
+#include "SirDingus/Modes & States/SirDingusGameMode.h"
+#include "SirDingus/Weapons/Weapon.h"
 
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -48,20 +49,6 @@ void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ASirDingusCharacter, bAlive);
-}
-
-void ASirDingusCharacter::PrintActionState()
-{
-	if (bDebugStates && GEngine)
-	{
-		FString msg = FString( this->GetName() + TEXT("::ActionState = ") + UEnum::GetValueAsString(ActionState));
-		GEngine->AddOnScreenDebugMessage(
-			1,
-			2.f,
-			FColor::Green,
-			msg
-		);
-	}
 }
 
 void ASirDingusCharacter::TestFlinchAnimation(FName Section)
@@ -208,19 +195,19 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	}
 }
 
-void ASirDingusCharacter::ResetActionState()
-{
-	ActionState = EActionState::EAS_Unoccupied;
-}
-void ASirDingusCharacter::Interrupted()
-{
-	ActionState = EActionState::EAS_Interrupted;
-}
-
-void ASirDingusCharacter::UpdateActionState(const EActionState State)
-{
-	ActionState = State;
-}
+//void ASirDingusCharacter::ResetActionState()
+//{
+//	ActionState = EActionState::EAS_Unoccupied;
+//}
+//void ASirDingusCharacter::Interrupted()
+//{
+//	ActionState = EActionState::EAS_Interrupted;
+//}
+//
+//void ASirDingusCharacter::UpdateActionState(const EActionState State)
+//{
+//	ActionState = State;
+//}
 
 /// * Refactored blueprint function
 // Play a given montage over the network
@@ -267,7 +254,7 @@ void ASirDingusCharacter::BeginPlay()
 	// get current gamemode
 	CurrentGameMode = Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this));
 
-	ActionState = EActionState::EAS_Unoccupied;
+	//ActionState = EActionState::EAS_Unoccupied;
 
 	//if (bDebugMessages && GEngine)
 	//{
@@ -329,7 +316,6 @@ void ASirDingusCharacter::Dodge()
 
 void ASirDingusCharacter::Attack()
 {
-	///DEBUG MESSAGE - Errors in this debug message, ignore for now
 	if (bDebugMessages && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
@@ -342,22 +328,43 @@ void ASirDingusCharacter::Attack()
 
 	if (bAlive)
 	{
-		if (ActionState == EActionState::EAS_Unoccupied)
+		if (bool bControllerUsesInterface = GetController()->Implements<UActionStateInterface>()) // check interface works
 		{
-			if (MeleeComponent)
+			IActionStateInterface* ActionStateObject = Cast<IActionStateInterface>(GetController());
+			if (ActionStateObject->GetActionState() == EActionState::EAS_Unoccupied)
 			{
-				MeleeComponent->PerformAttack();
-				ActionState = EActionState::EAS_Attacking;
+				if (MeleeComponent)
+					MeleeComponent->PerformAttack();
+				else if (bDebugMessages && GEngine)
+				{
+					FString message = TEXT("Missing melee component");
+					GEngine->AddOnScreenDebugMessage(
+						2,
+						15.f,
+						FColor::Red,
+						message
+					);
+				}
+			}
+			else if (bDebugMessages && GEngine)
+			{
+				FString message = TEXT("Action state is not unnoccupied");
+				GEngine->AddOnScreenDebugMessage(
+					2,
+					15.f,
+					FColor::Red,
+					//FString::Printf(TEXT("ActionState = %s"), (ActionState))
+					message
+				);
 			}
 		}
-		else if (bDebugMessages && GEngine) 
+		else if (bDebugMessages && GEngine)
 		{
-			FString message = TEXT("Action state is not unnoccupied");
+			FString message = TEXT("Controller does not implement UActionStateInterface");
 			GEngine->AddOnScreenDebugMessage(
 				2,
 				15.f,
 				FColor::Red,
-				//FString::Printf(TEXT("ActionState = %s"), (ActionState))
 				message
 			);
 		}

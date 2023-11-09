@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SirDingus/Interface/ActionStateInterface.h"
 #include "GameFramework/PlayerController.h"
 #include "InputAction.h"
 //#include "InputActionValue.h"
@@ -12,7 +13,7 @@
  * 
  */
 UCLASS()
-class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
+class SIRDINGUS_API ASirDingusPlayerController : public APlayerController, public IActionStateInterface
 {
 	GENERATED_BODY()
 
@@ -25,6 +26,8 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController
 public:
 	UFUNCTION(Client, Reliable)
 	void SetHUDHealth(float Health, float MaxHealth);
+
+	virtual void UpdateActionState(const EActionState State) override;
 
 protected:
 

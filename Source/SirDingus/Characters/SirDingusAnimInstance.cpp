@@ -28,6 +28,6 @@ void USirDingusAnimInstance::NativeUpdateAnimation(float DeltaTime)
 	{
 		// Get Variables
 		Speed = UKismetMathLibrary::VSizeXY(SirDingusCharacterMovement->Velocity);
-		CharacterState = SirDingusCharacter->GetCharacterState();
+		//CharacterState = SirDingusCharacter->GetCharacterState();
 	}
 }

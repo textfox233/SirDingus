@@ -63,6 +63,10 @@ void ASirDingusPlayerController::SetHUDHealth_Implementation(float Health, float
 	}
 }
 
+void ASirDingusPlayerController::UpdateActionState(const EActionState State)
+{
+	IActionStateInterface::UpdateActionState(State);
+}
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -122,7 +126,6 @@ void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 
 void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 {
-	/// Function Enter Message
 	if (bDebugMessages && GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(
@@ -135,7 +138,7 @@ void ASirDingusPlayerController::Move(const FInputActionValue& Value)
 
 	if (ASirDingusCharacter* SDCharacter = Cast<ASirDingusCharacter>(GetCharacter()))
 	{
-		if (SDCharacter->GetAlive() && SDCharacter->CanMove())
+		if (SDCharacter->GetAlive() && CanMove())
 		{
 			// input is a Vector2D
 			FVector2D MovementVector = Value.Get<FVector2D>();

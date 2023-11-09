@@ -18,6 +18,7 @@ void ASirDingusAIController::BeginPlay()
 		// initialise blackboard values				// key					// value
 		GetBlackboardComponent()->SetValueAsVector	(TEXT("StartLocation"),	GetPawn()->GetActorLocation());
 		GetBlackboardComponent()->SetValueAsBool	(TEXT("IsAlive"),		true);
+		GetBlackboardComponent()->SetValueAsBool	(TEXT("CanMove"),		true);
 	}
 
 	// Debug Msg
@@ -169,6 +170,17 @@ APawn* ASirDingusAIController::ChooseTarget()
 		UE_LOG(LogTemp, Warning, TEXT("UBTTask_ChooseTarget::ExecuteTask() | ERROR | GetWorld()->GetNumPlayerControllers() returns False"));
 	}
 	return nullptr;
+}
+
+void ASirDingusAIController::UpdateActionState(const EActionState State)
+{
+	IActionStateInterface::UpdateActionState(State);
+
+	// set can move
+	//if (State == EActionState::EAS_Unoccupied)
+	GetBlackboardComponent()->SetValueAsBool(TEXT("CanMove"), CanMove());
+	//else
+	//	GetBlackboardComponent()->SetValueAsBool(TEXT("CanMove"), false);
 }
 
 bool ASirDingusAIController::CanSeeAnyPlayer()

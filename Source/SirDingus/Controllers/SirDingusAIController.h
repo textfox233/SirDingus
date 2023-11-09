@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SirDingus/Interface/ActionStateInterface.h"
 #include "AIController.h"
 #include "SirDingusAIController.generated.h"
 
@@ -10,7 +11,7 @@
  * 
  */
 UCLASS()
-class SIRDINGUS_API ASirDingusAIController : public AAIController
+class SIRDINGUS_API ASirDingusAIController : public AAIController, public IActionStateInterface
 {
 	GENERATED_BODY()
 protected:
@@ -21,6 +22,8 @@ public:
 	void SetIsAlive(bool value);
 
 	APawn* ChooseTarget();
+
+	virtual void UpdateActionState(const EActionState State) override;
 
 private:
 	UPROPERTY(EditAnywhere)
