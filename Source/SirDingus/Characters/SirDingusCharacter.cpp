@@ -353,7 +353,7 @@ void ASirDingusCharacter::ReportDeath_Implementation()
 
 	// inform gamemode character has died
 	if (CurrentGameMode)
-		CurrentGameMode->CharacterDied(GetOwner());
+		CurrentGameMode->CharacterDied(this);
 	else if (bDebugLogs)
 	{
 		UE_LOG(LogTemp, Error, TEXT("CurrentGameMode is nullptr in %s"), *GetName());

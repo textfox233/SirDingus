@@ -42,6 +42,8 @@ private:
 
 	/** Debug Area **/
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusGameMode", meta = (AllowPrivateAccess = "true"))
+	bool bDebugMessages = false;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusGameMode", meta = (AllowPrivateAccess = "true"))
 	bool bDebugLogs = false;
 };
 
