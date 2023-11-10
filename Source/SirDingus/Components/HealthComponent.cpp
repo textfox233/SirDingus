@@ -105,7 +105,8 @@ void UHealthComponent::UpdateHUDHealth()
 	}
 }
 
-void UHealthComponent::TakeDamage_Implementation(float Damage)
+//void UHealthComponent::TakeDamage_Implementation(float Damage)
+bool UHealthComponent::TakeDamage(float Damage)
 {
 	if (bDebugMessages && GEngine)
 	{
@@ -116,9 +117,9 @@ void UHealthComponent::TakeDamage_Implementation(float Damage)
 			FString(TEXT("UHealthComponent::TakeDamage()"))
 		);
 	}
-	if(bDebugLog && GetOwner()) UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *GetOwner()->GetName());
+	if (bDebugLog && GetOwner()) UE_LOG(LogTemp, Warning, TEXT("%s Damaged"), *GetOwner()->GetName());
 
-	if (Damage <= 0.f) return; // no dmg
+	if (Damage <= 0.f) return true; // no dmg
 
 	// Apply damage
 	Health -= Damage;
@@ -132,12 +133,15 @@ void UHealthComponent::TakeDamage_Implementation(float Damage)
 	{
 		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("%s has Died, Informing GameMode"), *GetOwner()->GetName());
 
-		// if current gamemode is nullptr get it, otherwise set to current self / do nothing
-		CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
+		return false; // inform character death is necessary
 
-		// inform gamemode character has died
-		CurrentGameMode->CharacterDied(GetOwner());
+		//// if current gamemode is nullptr get it, otherwise set to current self / do nothing
+		//CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
+		//
+		//// inform gamemode character has died
+		//CurrentGameMode->CharacterDied(GetOwner());
 	}
+	return true;
 }
 
 // Called every frame

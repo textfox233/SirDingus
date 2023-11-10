@@ -39,6 +39,10 @@ private:
 	int32 _enemyCount = 0;
 
 	int32 _deadPlayerCount = 0;
+
+	/** Debug Area **/
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusGameMode", meta = (AllowPrivateAccess = "true"))
+	bool bDebugLogs = false;
 };
 
 

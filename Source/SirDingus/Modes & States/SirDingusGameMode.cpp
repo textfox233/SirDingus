@@ -11,83 +11,86 @@
 //void ASirDingusGameMode::ActorDied(APawn* DeadPawn)
 void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 {
-	/// Debug Msg
-	//if (GEngine)
+	///// Debug Msg
+	////if (GEngine)
+	////{
+	////	GEngine->AddOnScreenDebugMessage(
+	////		-1,
+	////		2.f,
+	////		FColor::Yellow,
+	////		FString(TEXT("ASirDingusGameMode::ActorDied()"))
+	////	);
+	////}
+	//
+	//// if the dead actor is an AI
+	//if (ASkeletonCharacter* Skeleton = Cast<ASkeletonCharacter>(DeadActor))
 	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		2.f,
-	//		FColor::Yellow,
-	//		FString(TEXT("ASirDingusGameMode::ActorDied()"))
-	//	);
+	//	/// Debug Msg
+	//	//if (GEngine)
+	//	//{
+	//	//	GEngine->AddOnScreenDebugMessage(
+	//	//		-1,
+	//	//		2.f,
+	//	//		FColor::Red,
+	//	//		FString(TEXT("Dead actor is an AI character"))
+	//	//	);
+	//	//}
+	//
+	//	// 1. Handle Character Death
+	//	Skeleton->CharacterDeath();
+	//
+	//	// 2. Update number of enemies in the level
+	//	_enemyCount--;
+	//
+	//	// 3. Trigger game over with a victory if there are no more enemies
+	//	if (_enemyCount == 0) { GameOver(true); }
+	//}
+	//
+	//// if the dead actor is a player
+	//else if (AKnightCharacter* Knight = Cast<AKnightCharacter>(DeadActor))
+	//{
+	//	/// Debug Msg
+	//	//if (GEngine)
+	//	//{
+	//	//	GEngine->AddOnScreenDebugMessage(
+	//	//		-1,
+	//	//		2.f,
+	//	//		FColor::Red,
+	//	//		FString(TEXT("Dead actor is a player character"))
+	//	//	);
+	//	//}
+	//	UE_LOG(LogTemp, Warning, TEXT("%s has died."), *Knight->GetName());
+	//
+	//	// 1. Handle Character Death
+	//	Knight->CharacterDeath();
+	//
+	//	// 2. Update number of dead players in the level
+	//	_deadPlayerCount++;
+	//
+	//	UE_LOG(LogTemp, Warning, TEXT("%d players in the game"), GetNumPlayers());
+	//	UE_LOG(LogTemp, Warning, TEXT("%d players are dead"), _deadPlayerCount);
+	//
+	//	// 3. Trigger game over with a loss if there are no more players
+	//	if (_deadPlayerCount == GetNumPlayers()) { GameOver(false); }
+	//}
+	//
+	//// if casts fail
+	//else
+	//{
+	//	// Debug Msg
+	//	if (GEngine)
+	//	{
+	//		GEngine->AddOnScreenDebugMessage(
+	//			-1,
+	//			2.f,
+	//			FColor::Red,
+	//			FString(TEXT("Dead actor neither an AI or player character"))
+	//		);
+	//	}
 	//}
 
-	// if the dead actor is an AI
-	if (ASkeletonCharacter* Skeleton = Cast<ASkeletonCharacter>(DeadActor))
-	{
-		/// Debug Msg
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		2.f,
-		//		FColor::Red,
-		//		FString(TEXT("Dead actor is an AI character"))
-		//	);
-		//}
-
-		// 1. Handle Character Death
-		Skeleton->CharacterDeath();
-
-		// 2. Update number of enemies in the level
-		_enemyCount--;
-
-		// 3. Trigger game over with a victory if there are no more enemies
-		if (_enemyCount == 0) { GameOver(true); }
-	}
-	
-	// if the dead actor is a player
-	else if (AKnightCharacter* Knight = Cast<AKnightCharacter>(DeadActor))
-	{
-		/// Debug Msg
-		//if (GEngine)
-		//{
-		//	GEngine->AddOnScreenDebugMessage(
-		//		-1,
-		//		2.f,
-		//		FColor::Red,
-		//		FString(TEXT("Dead actor is a player character"))
-		//	);
-		//}
-		UE_LOG(LogTemp, Warning, TEXT("%s has died."), *Knight->GetName());
-
-		// 1. Handle Character Death
-		Knight->CharacterDeath();
-
-		// 2. Update number of dead players in the level
-		_deadPlayerCount++;
-
-		UE_LOG(LogTemp, Warning, TEXT("%d players in the game"), GetNumPlayers());
-		UE_LOG(LogTemp, Warning, TEXT("%d players are dead"), _deadPlayerCount);
-
-		// 3. Trigger game over with a loss if there are no more players
-		if (_deadPlayerCount == GetNumPlayers()) { GameOver(false); }
-	}
-	
-	// if casts fail
-	else
-	{
-		// Debug Msg
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(
-				-1,
-				2.f,
-				FColor::Red,
-				FString(TEXT("Dead actor neither an AI or player character"))
-			);
-		}
-	}
+	if (bDebugLogs)
+		UE_LOG(LogTemp, Display, TEXT("Successfully accessed ASirDingusGameMode::CharacterDied()"));
 }
 
 bool ASirDingusGameMode::RequestRestart(bool bDebug)

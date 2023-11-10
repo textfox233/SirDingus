@@ -49,14 +49,18 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 		//void TestFlinchAnimation(FName Section);
 		void TestMontageAnimation(UAnimMontage* Montage, FName Section = NAME_None);
 
+	/** Character Death **/
+	UFUNCTION(Server, Reliable)
+	void ReportDeath();
+
 public:
 	ASirDingusCharacter();
 
+	virtual void CharacterDeath();
+
+
 	// used when the player controller wants to test something that requires private access
 	void TestPrivateFunction();
-
-	/** Character Death **/
-	virtual void CharacterDeath();
 
 	// -- Disable Capsule Collision (code must be replicated)
 	UFUNCTION(Server, Reliable)
