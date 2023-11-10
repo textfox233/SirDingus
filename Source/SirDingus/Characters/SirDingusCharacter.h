@@ -56,7 +56,7 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 public:
 	ASirDingusCharacter();
 
-	virtual void CharacterDeath();
+	virtual void Die();
 
 
 	// used when the player controller wants to test something that requires private access

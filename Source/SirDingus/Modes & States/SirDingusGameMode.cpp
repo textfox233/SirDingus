@@ -3,13 +3,13 @@
 #include "SirDingusGameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "SirDingus/Characters/SirDingusCharacter.h"
-#include "SirDingus/Characters/SkeletonCharacter.h"
-#include "SirDingus/Characters/KnightCharacter.h"
+#include "AIController.h"
+//#include "SirDingus/Characters/SkeletonCharacter.h"
+//#include "SirDingus/Characters/KnightCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 //#include "MultiplayerSessionsSubsystem.h"
 
-//void ASirDingusGameMode::ActorDied(APawn* DeadPawn)
-void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
+void ASirDingusGameMode::AddToDeathToll(AController* DeadGuy)
 {
 	if (bDebugLogs)
 		UE_LOG(LogTemp, Display, TEXT("Successfully accessed ASirDingusGameMode::CharacterDied()"));
@@ -24,8 +24,10 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 	}
 	
 	// if the dead actor is an AI
-	if (ASkeletonCharacter* Skeleton = Cast<ASkeletonCharacter>(DeadActor))
+	if (AAIController* DeadAI = Cast<AAIController>(DeadGuy))
 	{
+		if (bDebugLogs)
+			UE_LOG(LogTemp, Warning, TEXT("AI %s has died."), *DeadAI->GetName()); 
 		if (bDebugMessages && GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(
@@ -36,21 +38,18 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 			);
 		}
 	
-		// 1. Handle Character Death
-		//Skeleton->CharacterDeath();
-	
-		// 2. Update number of enemies in the level
+		// 1. Update number of enemies left in the level
 		_enemyCount--;
 	
-		// 3. Trigger game over with a victory if there are no more enemies
+		// 2. Trigger game over with a victory if there are no more enemies
 		if (_enemyCount == 0) { GameOver(true); }
 	}
 	
 	// if the dead actor is a player
-	else if (AKnightCharacter* Knight = Cast<AKnightCharacter>(DeadActor))
+	else if (APlayerController* DeadPlayer = Cast<APlayerController>(DeadGuy))
 	{
 		if (bDebugLogs)
-			UE_LOG(LogTemp, Warning, TEXT("%s has died."), *Knight->GetName());
+			UE_LOG(LogTemp, Warning, TEXT("Player %s has died."), *DeadPlayer->GetName());
 		if (bDebugMessages && GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(
@@ -61,10 +60,7 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 			);
 		}
 	
-		// 1. Handle Character Death
-		//Knight->CharacterDeath();
-	
-		// 2. Update number of dead players in the level
+		// 1. Update number of dead players in the level
 		_deadPlayerCount++;
 	
 		if (bDebugLogs)
@@ -73,13 +69,13 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 			UE_LOG(LogTemp, Warning, TEXT("%d players are dead"), _deadPlayerCount);
 		}
 
-		// 3. Trigger game over with a loss if there are no more players
+		// 2. Trigger game over with a loss if there are no more players
 		if (_deadPlayerCount == GetNumPlayers()) { GameOver(false); }
 	}
 	
 	// if casts fail
 	else if (bDebugLogs)
-			UE_LOG(LogTemp, Error, TEXT("Dead character is neither an AI or a player character"));
+			UE_LOG(LogTemp, Error, TEXT("Dead guy is neither an AI or a player controlled character"));
 }
 
 bool ASirDingusGameMode::RequestRestart(bool bDebug)
@@ -184,7 +180,7 @@ int32 ASirDingusGameMode::DetermineEnemyCount()
 {
 	// get all skeletons in the level
 	TArray<AActor*> AllEnemies;
-	UGameplayStatics::GetAllActorsOfClass(this, ASkeletonCharacter::StaticClass(), AllEnemies);
+	UGameplayStatics::GetAllActorsOfClass(this, AAIController::StaticClass(), AllEnemies);
 
 	return AllEnemies.Num();
 }

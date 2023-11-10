@@ -16,7 +16,7 @@ class ASirDingusGameMode : public AGameModeBase
 	//	Loss: - all players dead
 
 public:
-	void CharacterDied(class AActor* DeadActor);
+	void AddToDeathToll(class AController* DeadGuy);
 
 	bool RequestRestart(bool bDebug = false);
 

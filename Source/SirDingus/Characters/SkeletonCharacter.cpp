@@ -4,9 +4,9 @@
 #include "SkeletonCharacter.h"
 #include "SirDingus/Controllers/SirDingusAIController.h"
 
-void ASkeletonCharacter::CharacterDeath()
+void ASkeletonCharacter::Die()
 {
-	Super::CharacterDeath();
+	Super::Die();
 
 	/// Debug Msg
 	//if (GEngine)

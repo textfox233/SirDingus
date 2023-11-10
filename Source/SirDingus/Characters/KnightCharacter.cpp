@@ -3,9 +3,9 @@
 
 #include "KnightCharacter.h"
 
-void AKnightCharacter::CharacterDeath()
+void AKnightCharacter::Die()
 {
-	Super::CharacterDeath();
+	Super::Die();
 
 	/// Debug Msg
 	//if (GEngine)

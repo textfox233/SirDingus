@@ -16,7 +16,7 @@ class SIRDINGUS_API ASkeletonCharacter : public ASirDingusCharacter
 public:
 	/** Character Death **/
 	// -- Check for character death
-	virtual void CharacterDeath() override;
+	virtual void Die() override;
 
 
 };

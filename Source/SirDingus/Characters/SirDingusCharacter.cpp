@@ -77,7 +77,7 @@ void ASirDingusCharacter::TestPrivateFunction()
 	//// Test death animations
 	//TestMontageAnimation(DeathMontage, "Death 02");
 
-	CharacterDeath();
+	Die();
 
 	//UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
 	//if (Capsule)
@@ -215,7 +215,7 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 
 	// HealthComponent says die
 	else
-		CharacterDeath();
+		Die();
 
 	if (bDebugMessages && GEngine)
 	{
@@ -319,7 +319,7 @@ void ASirDingusCharacter::BeginPlay()
 	//}
 }
 
-void ASirDingusCharacter::CharacterDeath()
+void ASirDingusCharacter::Die()
 {
 	// mark as dead
 	bAlive = false;
@@ -353,7 +353,7 @@ void ASirDingusCharacter::ReportDeath_Implementation()
 
 	// inform gamemode character has died
 	if (CurrentGameMode)
-		CurrentGameMode->CharacterDied(this);
+		CurrentGameMode->AddToDeathToll(Controller);
 	else if (bDebugLogs)
 	{
 		UE_LOG(LogTemp, Error, TEXT("CurrentGameMode is nullptr in %s"), *GetName());
