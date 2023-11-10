@@ -105,7 +105,7 @@ void UHealthComponent::UpdateHUDHealth()
 	}
 }
 
-void UHealthComponent::TakeDamage(float Damage)
+void UHealthComponent::TakeDamage_Implementation(float Damage)
 {
 	if (bDebugMessages && GEngine)
 	{
@@ -130,10 +130,13 @@ void UHealthComponent::TakeDamage(float Damage)
 	// If health goes below zero, the actor has died
 	if (Health <= 0.f)
 	{
-		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("Character has Died, Informing GameMode"))
+		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("%s has Died, Informing GameMode"), *GetOwner()->GetName());
 
-			// inform gamemode character has died
-			CurrentGameMode->CharacterDied(GetOwner());
+		// if current gamemode is nullptr get it, otherwise set to current self / do nothing
+		CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
+
+		// inform gamemode character has died
+		CurrentGameMode->CharacterDied(GetOwner());
 	}
 }
 

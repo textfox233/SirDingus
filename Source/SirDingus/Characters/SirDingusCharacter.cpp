@@ -51,19 +51,33 @@ void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	DOREPLIFETIME(ASirDingusCharacter, bAlive);
 }
 
-void ASirDingusCharacter::TestFlinchAnimation(FName Section)
+//void ASirDingusCharacter::TestFlinchAnimation(FName Section)
+//{
+//	// play flinch animation
+//	if (bAlive && FlinchMontage)
+//	{
+//		PlayAnimMontageServer(FlinchMontage, Section);
+//	}
+//}
+
+void ASirDingusCharacter::TestMontageAnimation(UAnimMontage* Montage, FName Section)
 {
-	// play flinch animation
-	if (bAlive && FlinchMontage)
+	// play animation
+	if (bAlive && Montage)
 	{
-		PlayAnimMontageServer(FlinchMontage, Section);
+		PlayAnimMontageServer(Montage, Section);
 	}
 }
 
 void ASirDingusCharacter::TestPrivateFunction()
 {
-	/// Test flinch animations
-	TestFlinchAnimation("FromBack");
+	//// Test flinch animations
+	//TestMontageAnimation(FlinchMontage, "FromBack");
+
+	//// Test death animations
+	//TestMontageAnimation(DeathMontage, "Death 02");
+
+	CharacterDeath();
 }
 
 ASirDingusCharacter::ASirDingusCharacter()
@@ -130,7 +144,7 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	}
 	
 	// take the damage
-	HealthComponent->TakeDamage(5.f);
+	HealthComponent->TakeDamage(20.f);
 
 	const FVector Forward = GetActorForwardVector();
 	const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
@@ -289,7 +303,9 @@ void ASirDingusCharacter::CharacterDeath()
 	}
 
 	// play death animation
-	if (DeathMontage) { PlayAnimMontageServer(DeathMontage, "Death 02"); }
+	if (DeathMontage)
+		PlayAnimMontageServer(DeathMontage, "Death 02");
+		//PlayAnimMontageServer(DeathMontage);
 }
 
 void ASirDingusCharacter::Dodge()

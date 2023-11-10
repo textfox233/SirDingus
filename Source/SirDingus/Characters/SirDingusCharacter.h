@@ -46,7 +46,8 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 
 	//UFUNCTION(BlueprintCallable)
 	//	void PrintActionState();
-		void TestFlinchAnimation(FName Section);
+		//void TestFlinchAnimation(FName Section);
+		void TestMontageAnimation(UAnimMontage* Montage, FName Section = NAME_None);
 
 public:
 	ASirDingusCharacter();

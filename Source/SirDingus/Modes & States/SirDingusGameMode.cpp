@@ -59,6 +59,7 @@ void ASirDingusGameMode::CharacterDied(AActor* DeadActor)
 		//		FString(TEXT("Dead actor is a player character"))
 		//	);
 		//}
+		UE_LOG(LogTemp, Warning, TEXT("%s has died."), *Knight->GetName());
 
 		// 1. Handle Character Death
 		Knight->CharacterDeath();
