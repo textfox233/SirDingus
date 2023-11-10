@@ -78,6 +78,20 @@ void ASirDingusCharacter::TestPrivateFunction()
 	//TestMontageAnimation(DeathMontage, "Death 02");
 
 	CharacterDeath();
+
+	//UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
+	//if (Capsule)
+	//{
+	//	if (bDebugLogs)
+	//		UE_LOG(LogTemp, Display, TEXT("Disabling collision capsule on %s"), *GetName());
+	//	DisableCapsuleCollisionServer(Capsule);
+	//}
+	//else
+	//{
+	//	if (bDebugLogs)
+	//		UE_LOG(LogTemp, Error, TEXT("Failed to retrieve collision capsule on %s"), *GetName());
+	//}
+
 }
 
 ASirDingusCharacter::ASirDingusCharacter()
@@ -312,11 +326,10 @@ void ASirDingusCharacter::CharacterDeath()
 
 	ReportDeath();
 
-	// get capsule component
+	// get capsule component - error here
 	UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
-
 	// set to no collision
-	if (Capsule) { DisableCapsuleCollisionMulticast(Capsule); }
+	if (Capsule) { DisableCapsuleCollisionServer(Capsule); }
 
 	if (bDebugMessages && GEngine)
 	{
@@ -331,7 +344,6 @@ void ASirDingusCharacter::CharacterDeath()
 	// play death animation
 	if (DeathMontage)
 		PlayAnimMontageServer(DeathMontage, "Death 02");
-		//PlayAnimMontageServer(DeathMontage);
 }
 
 void ASirDingusCharacter::ReportDeath_Implementation()
