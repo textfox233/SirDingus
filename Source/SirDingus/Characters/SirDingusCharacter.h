@@ -72,6 +72,7 @@ public:
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	/** Getting hit by an Attack or Damaging Effect **/
+	//UFUNCTION(Server, Reliable)
 	virtual void GetHit(const FVector& ImpactPoint) override;
 
 	/** Playing Animations **/

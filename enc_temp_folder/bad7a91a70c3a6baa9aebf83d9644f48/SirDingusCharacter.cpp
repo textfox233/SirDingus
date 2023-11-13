@@ -147,7 +147,7 @@ ASirDingusCharacter::ASirDingusCharacter()
 //void ASirDingusCharacter::GetHit_Implementation(const FVector& ImpactPoint)
 void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
-	// if it's on the server or an autonomous proxy (chance this may activate twice)
+	// if it's on the server or an autonomous proxy
 	ENetRole NetRole{ GetLocalRole() };
 	if (NetRole == ENetRole::ROLE_Authority || NetRole == ENetRole::ROLE_AutonomousProxy)
 	{
@@ -239,6 +239,11 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 				FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
 			);
 		}
+	}
+	else
+	{
+		UE_LOG(LogTemp,Warning,TEXT("%s does not have authority"), *GetName())
+
 	}
 }
 
