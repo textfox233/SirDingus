@@ -77,7 +77,7 @@ void ASirDingusCharacter::TestPrivateFunction()
 	//// Test death animations
 	//TestMontageAnimation(DeathMontage, "Death 02");
 
-	Die();
+	//Die();
 
 	//UPrimitiveComponent* Capsule = Cast<UPrimitiveComponent>(GetCapsuleComponent());
 	//if (Capsule)
@@ -91,7 +91,6 @@ void ASirDingusCharacter::TestPrivateFunction()
 	//	if (bDebugLogs)
 	//		UE_LOG(LogTemp, Error, TEXT("Failed to retrieve collision capsule on %s"), *GetName());
 	//}
-
 }
 
 ASirDingusCharacter::ASirDingusCharacter()
@@ -145,93 +144,101 @@ ASirDingusCharacter::ASirDingusCharacter()
 	//}
 }
 
+//void ASirDingusCharacter::GetHit_Implementation(const FVector& ImpactPoint)
 void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
-	if (bDebugMessages && GEngine)
+	// if it's on the server or an autonomous proxy (chance this may activate twice)
+	ENetRole NetRole{ GetLocalRole() };
+	if (NetRole == ENetRole::ROLE_Authority || NetRole == ENetRole::ROLE_AutonomousProxy)
 	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.f,
-			FColor::Green,
-			FString(TEXT("ASirDingusCharacter::TakeDamage()"))
-		);
-	}
-	
-	// take the damage
-	bool bSurvived = HealthComponent->TakeDamage(20.f);
-
-	// HealthComponent says live
-	if (bSurvived)
-	{
-		const FVector Forward = GetActorForwardVector();
-		const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
-		const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
-
-		// 1. Determine Angle
-		// A * B = |A||B| * cos(theta)
-		// |A| = 1, |B| = 1, so A * B = cos(theta)
-		const double CosTheta = FVector::DotProduct(Forward, ToHit);
-		// Take the inverse cosine of cos(theta) to get theta
-		double Theta = FMath::Acos(CosTheta);
-		// convert from radians to degrees
-		Theta = FMath::RadiansToDegrees(Theta);
-
-		// 2. Determine Positive / Negative
-		const FVector CrossProduct = FVector::CrossProduct(Forward, ToHit);
-		// if CrossProduct's pointing down, make Theta negative
-		if (CrossProduct.Z < 0) Theta *= -1.f;
-
-		// 3. Determine Correct animation
-		FName Section = "Rooted";
-
-		if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
-		else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
-		else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
-		else if (Theta > 135.f || Theta < -135.f)	Section = "FromBack";	// Back
-
-		// play hit react animation
-		if (bAlive && FlinchMontage)
+		if (bDebugMessages && GEngine)
 		{
-			PlayAnimMontageServer(FlinchMontage, Section);
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				2.f,
+				FColor::Green,
+				FString(TEXT("ASirDingusCharacter::GetHit()"))
+			);
 		}
+		UE_LOG(LogTemp, Warning, TEXT("ASirDingusCharacter::GetHit()->%s"), *GetNetRole());
+
+
+		// take the damage
+		bool bSurvived = HealthComponent->TakeDamage(20.f);
+
+		// HealthComponent says live
+		if (bSurvived)
+		{
+			const FVector Forward = GetActorForwardVector();
+			const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
+			const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
+
+			// 1. Determine Angle
+			// A * B = |A||B| * cos(theta)
+			// |A| = 1, |B| = 1, so A * B = cos(theta)
+			const double CosTheta = FVector::DotProduct(Forward, ToHit);
+			// Take the inverse cosine of cos(theta) to get theta
+			double Theta = FMath::Acos(CosTheta);
+			// convert from radians to degrees
+			Theta = FMath::RadiansToDegrees(Theta);
+
+			// 2. Determine Positive / Negative
+			const FVector CrossProduct = FVector::CrossProduct(Forward, ToHit);
+			// if CrossProduct's pointing down, make Theta negative
+			if (CrossProduct.Z < 0) Theta *= -1.f;
+
+			// 3. Determine Correct animation
+			FName Section = "Rooted";
+
+			if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
+			else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
+			else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
+			else if (Theta > 135.f || Theta < -135.f)	Section = "FromBack";	// Back
+
+			// play hit react animation
+			if (bAlive && FlinchMontage)
+			{
+				PlayAnimMontageServer(FlinchMontage, Section);
+			}
+
+			if (bDebugMessages && GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					3.f,
+					FColor::Blue,
+					FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Angle is %f"), Theta)
+				);
+			}
+			if (bDrawDebug)
+			{
+				DRAW_SPHERE(ImpactPoint);
+				UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
+				UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
+				UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f, FColor::Blue, 5.f);
+			}
+		}
+
+		// HealthComponent says die
+		else
+			Die();
 
 		if (bDebugMessages && GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(
 				-1,
 				3.f,
-				FColor::Blue,
-				FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Angle is %f"), Theta)
+				FColor::Yellow,
+				FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
+			);
+
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.f,
+				FColor::Yellow,
+				FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
 			);
 		}
-		if (bDrawDebug)
-		{
-			DRAW_SPHERE(ImpactPoint);
-			UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
-			UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
-			UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f, FColor::Blue, 5.f);
-		}
-	}
-
-	// HealthComponent says die
-	else
-		Die();
-
-	if (bDebugMessages && GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> bAlive: %s"), bAlive ? TEXT("true") : TEXT("false"))
-		);
-
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			3.f,
-			FColor::Yellow,
-			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Role is %s"), *GetNetRole())
-		);
 	}
 }
 
@@ -249,37 +256,15 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 //	ActionState = State;
 //}
 
-/// * Refactored blueprint function
 // Play a given montage over the network
 void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
 {
 	PlayAnimMontageMulticast(AnimMontage, StartSectionName);
 }
 
-/// * Refactored blueprint function
 // Play a given montage on each client
 void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
 {
-	//float animTime = 0.1f;		//Default value in case the animation can't be played.
-	//
-	//Log(ELogLevel::INFO, __FUNCTION__);
-	//
-	//// try and play a firing animation if specified
-	//if (AnimMontage != NULL && playerViewMesh != NULL)
-	//{
-	//	// Get the animation object for the arms mesh
-	//	UAnimInstance* AnimInstance = playerViewMesh->GetAnimInstance();
-	//	if (AnimInstance != NULL)
-	//	{
-	//		animTime = AnimInstance->Montage_Play(FireAnimation, 1.f);
-	//		if (animTime < 0.1f)
-	//		{
-	//			//The function returns 0 if the animation can't be played.
-	//			animTime = 0.1f;
-	//		}
-	//	}
-	//}
-
 	// just play the montage
 	PlayAnimMontage(AnimMontage, 1.0f, StartSectionName);
 }
@@ -368,20 +353,6 @@ void ASirDingusCharacter::Dodge()
 		PlayAnimMontageServer(DodgeMontage);
 	}
 }
-
-///void ASirDingusCharacter::StopDodging()
-//{
-//	//DEBUG MESSAGE
-//	//if ( GEngine)
-//	//{
-//	//	GEngine->AddOnScreenDebugMessage(
-//	//		-1,
-//	//		15.f,
-//	//		FColor::Yellow,
-//	//		FString::Printf(TEXT("Stop Dodging"))
-//	//	);
-//	//}
-//}
 
 void ASirDingusCharacter::Attack()
 {

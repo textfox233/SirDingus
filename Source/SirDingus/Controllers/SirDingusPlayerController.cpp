@@ -248,6 +248,9 @@ void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)
 
 void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 {
+	UE_LOG(LogTemp, Display, TEXT("%s:: TestSomething()"), *GetPawn()->GetName());
+
+	
 	/// Function Enter Message
 	if (bDebugMessages && GEngine)
 	{
@@ -260,8 +263,14 @@ void ASirDingusPlayerController::TestSomething(const FInputActionValue& Value)
 	}
 
 	/// Apply instant damage
-	//if (IHitInterface* HitInterface = Cast<IHitInterface>(GetPawn())) HitInterface->GetHit(GetPawn()->GetActorLocation());
+	if (IHitInterface* HitInterface = Cast<IHitInterface>(GetPawn()))
+	{
+		UE_LOG(LogTemp, Display, TEXT("%s implements IHitInterface"), *GetPawn()->GetName());
+		HitInterface->GetHit(GetPawn()->GetActorLocation());
+	}
+	else
+		UE_LOG(LogTemp, Error, TEXT("%s doesn't implement IHitInterface"), *GetPawn()->GetName());
 
 	/// Test private function
-	if (ASirDingusCharacter* OwnedCharacter = Cast<ASirDingusCharacter>(GetPawn())) OwnedCharacter->TestPrivateFunction();
+	//if (ASirDingusCharacter* OwnedCharacter = Cast<ASirDingusCharacter>(GetPawn())) OwnedCharacter->TestPrivateFunction();
 }
