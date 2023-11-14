@@ -306,6 +306,9 @@ void ASirDingusCharacter::BeginPlay()
 
 void ASirDingusCharacter::Die()
 {
+	if (!HasAuthority())
+		return;
+
 	// mark as dead
 	bAlive = false;
 
