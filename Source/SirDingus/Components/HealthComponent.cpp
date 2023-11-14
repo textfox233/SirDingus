@@ -131,24 +131,18 @@ bool UHealthComponent::TakeDamage(float Damage)
 	// If health goes below zero, the actor has died
 	if (Health <= 0.f)
 	{
-		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("%s has Died, Informing GameMode"), *GetOwner()->GetName());
+		if (bDebugLog) UE_LOG(LogTemp, Warning, TEXT("%s has dropped below 0 health, informing Character"), *GetOwner()->GetName());
 
 		return false; // inform character death is necessary
-
-		//// if current gamemode is nullptr get it, otherwise set to current self / do nothing
-		//CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
-		//
-		//// inform gamemode character has died
-		//CurrentGameMode->CharacterDied(GetOwner());
 	}
 	return true;
 }
 
-// Called every frame
-void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
-}
+//// Called every frame
+//void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+//{
+//	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+//
+//	// ...
+//}
 
