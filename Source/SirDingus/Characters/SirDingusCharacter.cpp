@@ -5,6 +5,7 @@
 #include "SirDingus/Components/HealthComponent.h"
 #include "SirDingus/Components/MeleeComponent.h"
 #include "SirDingus/Interface/ActionStateInterface.h"
+#include "SirDingus/Controllers/SirDingusAIController.h"
 #include "SirDingus/Macros/Debug Macros.h"
 #include "SirDingus/Modes & States/SirDingusGameMode.h"
 #include "SirDingus/Weapons/Weapon.h"
@@ -169,54 +170,55 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 		// HealthComponent says live
 		if (bSurvived)
 		{
-			const FVector Forward = GetActorForwardVector();
-			const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
-			const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
-
-			// 1. Determine Angle
-			// A * B = |A||B| * cos(theta)
-			// |A| = 1, |B| = 1, so A * B = cos(theta)
-			const double CosTheta = FVector::DotProduct(Forward, ToHit);
-			// Take the inverse cosine of cos(theta) to get theta
-			double Theta = FMath::Acos(CosTheta);
-			// convert from radians to degrees
-			Theta = FMath::RadiansToDegrees(Theta);
-
-			// 2. Determine Positive / Negative
-			const FVector CrossProduct = FVector::CrossProduct(Forward, ToHit);
-			// if CrossProduct's pointing down, make Theta negative
-			if (CrossProduct.Z < 0) Theta *= -1.f;
-
-			// 3. Determine Correct animation
-			FName Section = "Rooted";
-
-			if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
-			else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
-			else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
-			else if (Theta > 135.f || Theta < -135.f)	Section = "FromBack";	// Back
-
-			// play hit react animation
-			if (bAlive && FlinchMontage)
-			{
-				PlayAnimMontageServer(FlinchMontage, Section);
-			}
-
-			if (bDebugMessages && GEngine)
-			{
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					3.f,
-					FColor::Blue,
-					FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Angle is %f"), Theta)
-				);
-			}
-			if (bDrawDebug)
-			{
-				DRAW_SPHERE(ImpactPoint);
-				UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
-				UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
-				UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f, FColor::Blue, 5.f);
-			}
+			ReactToHit(ImpactPoint);
+			//const FVector Forward = GetActorForwardVector();
+			//const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
+			//const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
+			//
+			//// 1. Determine Angle
+			//// A * B = |A||B| * cos(theta)
+			//// |A| = 1, |B| = 1, so A * B = cos(theta)
+			//const double CosTheta = FVector::DotProduct(Forward, ToHit);
+			//// Take the inverse cosine of cos(theta) to get theta
+			//double Theta = FMath::Acos(CosTheta);
+			//// convert from radians to degrees
+			//Theta = FMath::RadiansToDegrees(Theta);
+			//
+			//// 2. Determine Positive / Negative
+			//const FVector CrossProduct = FVector::CrossProduct(Forward, ToHit);
+			//// if CrossProduct's pointing down, make Theta negative
+			//if (CrossProduct.Z < 0) Theta *= -1.f;
+			//
+			//// 3. Determine Correct animation
+			//FName Section = "Rooted";
+			//
+			//if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
+			//else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
+			//else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
+			//else if (Theta > 135.f || Theta < -135.f)	Section = "FromBack";	// Back
+			//
+			//// play hit react animation
+			//if (bAlive && FlinchMontage)
+			//{
+			//	PlayAnimMontageServer(FlinchMontage, Section);
+			//}
+			//
+			//if (bDebugMessages && GEngine)
+			//{
+			//	GEngine->AddOnScreenDebugMessage(
+			//		-1,
+			//		3.f,
+			//		FColor::Blue,
+			//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Angle is %f"), Theta)
+			//	);
+			//}
+			//if (bDrawDebug)
+			//{
+			//	DRAW_SPHERE(ImpactPoint);
+			//	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
+			//	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
+			//	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f, FColor::Blue, 5.f);
+			//}
 		}
 
 		// HealthComponent says die
@@ -242,19 +244,56 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 	}
 }
 
-//void ASirDingusCharacter::ResetActionState()
-//{
-//	ActionState = EActionState::EAS_Unoccupied;
-//}
-//void ASirDingusCharacter::Interrupted()
-//{
-//	ActionState = EActionState::EAS_Interrupted;
-//}
-//
-//void ASirDingusCharacter::UpdateActionState(const EActionState State)
-//{
-//	ActionState = State;
-//}
+void ASirDingusCharacter::ReactToHit(const FVector& ImpactPoint)
+{
+	const FVector Forward = GetActorForwardVector();
+	const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
+	const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
+
+	// 1. Determine Angle
+	// A * B = |A||B| * cos(theta)
+	// |A| = 1, |B| = 1, so A * B = cos(theta)
+	const double CosTheta = FVector::DotProduct(Forward, ToHit);
+	// Take the inverse cosine of cos(theta) to get theta
+	double Theta = FMath::Acos(CosTheta);
+	// convert from radians to degrees
+	Theta = FMath::RadiansToDegrees(Theta);
+
+	// 2. Determine Positive / Negative
+	const FVector CrossProduct = FVector::CrossProduct(Forward, ToHit);
+	// if CrossProduct's pointing down, make Theta negative
+	if (CrossProduct.Z < 0) 
+		Theta *= -1.f;
+
+	// 3. Determine Correct animation
+	FName Section = "Rooted";
+
+	if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
+	else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
+	else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
+	else if (Theta > 135.f || Theta < -135.f)	Section = "FromBack";	// Back
+
+	// play hit react animation
+	if (bAlive && FlinchMontage)
+		PlayAnimMontageServer(FlinchMontage, Section);
+
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Blue,
+			FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Angle is %f"), Theta)
+		);
+	}
+	if (bDrawDebug)
+	{
+		DRAW_SPHERE(ImpactPoint);
+		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
+		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
+		UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f, FColor::Blue, 5.f);
+	}
+}
 
 // Play a given montage over the network
 void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
@@ -291,7 +330,6 @@ void ASirDingusCharacter::BeginPlay()
 			UE_LOG(LogTemp, Error, TEXT("NetRole is %s"), *GetNetRole());
 		}
 	}
-	//ActionState = EActionState::EAS_Unoccupied;
 
 	//if (bDebugMessages && GEngine)
 	//{
@@ -311,6 +349,22 @@ void ASirDingusCharacter::Die()
 
 	// mark as dead
 	bAlive = false;
+
+	// if ai controlled, run this too to inform the blackboard - probably not the best solution, but leaving it for now
+	if (AController* rawController = Controller)
+	{
+		if (ASirDingusAIController* AIController = Cast<ASirDingusAIController>(rawController))
+		//if (AAIController* AIController = Cast<AAIController>(rawController))
+		{
+			// update blackboard value
+			AIController->SetIsAlive(false);
+
+			//// clear focus to stop rotation
+			//AIController->ClearFocus(EAIFocusPriority::Gameplay);
+			//// inform the blackboard of the AI's death
+			//AIController->GetBlackboardComponent()->SetValueAsBool(TEXT("IsAlive"), bValue);
+		}
+	}
 
 	ReportDeath();
 

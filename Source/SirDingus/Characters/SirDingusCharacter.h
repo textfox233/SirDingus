@@ -56,9 +56,6 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 public:
 	ASirDingusCharacter();
 
-	virtual void Die();
-
-
 	// used when the player controller wants to test something that requires private access
 	void TestPrivateFunction();
 
@@ -72,8 +69,9 @@ public:
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	/** Getting hit by an Attack or Damaging Effect **/
-	//UFUNCTION(Server, Reliable)
 	virtual void GetHit(const FVector& ImpactPoint) override;
+	void ReactToHit(const FVector& ImpactPoint);
+	virtual void Die();
 
 	/** Playing Animations **/
 	UFUNCTION(Server, Reliable, BlueprintCallable)
