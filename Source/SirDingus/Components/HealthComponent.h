@@ -34,7 +34,7 @@ private:
 	// Health Values
 	UPROPERTY(EditAnywhere, Category = "Health Component")
 	float MaxHealth = 100;
-	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = "Health Component")
+	UPROPERTY(Replicated, VisibleAnywhere, Category = "Health Component")
 	float Health;
 
 	// -- Debug booleans
@@ -42,9 +42,6 @@ private:
 		bool bDebugMessages;
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|HealthComponent", meta = (AllowPrivateAccess = "true"))
 		bool bDebugLog;
-
-	UFUNCTION()
-	void OnRep_Health();
 
 	void UpdateHUDHealth();
 

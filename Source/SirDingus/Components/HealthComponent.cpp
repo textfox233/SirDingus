@@ -47,10 +47,6 @@ void UHealthComponent::BeginPlay()
 	UpdateHUDHealth();
 }
 
-void UHealthComponent::OnRep_Health()
-{
-}
-
 void UHealthComponent::UpdateHUDHealth()
 {
 	// get controller
