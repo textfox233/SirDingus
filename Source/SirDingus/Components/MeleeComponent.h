@@ -43,25 +43,17 @@ protected:
 	virtual void BeginPlay() override;
 
 	/** Melee Animation Timer (Refactored) **/
-
-	// -- Timer Handle
 	FTimerHandle MeleeTraceHandle;
-
-	// -- Start
 	UFUNCTION(BlueprintCallable)
 		void MeleeTraceStart();
-
-	// -- InProgress
 	UFUNCTION()
 		void MeleeTraceInProgress();
-
-	// -- Stop
 	UFUNCTION(BlueprintCallable)
 		void MeleeTraceEnd();
 
 	// -- Determine if anything was hit, and if damage should be applied. Returns TRUE if any damage was dealt
 	bool ProcessMeleeHit(FHitResult* hitResult);
 
-	// -- Draw a line trace to track a weapon's movement and detect hit events
+	// -- Draw a line trace to track a weapon's movement and detect hits
 	void DrawWeaponArc();
 };

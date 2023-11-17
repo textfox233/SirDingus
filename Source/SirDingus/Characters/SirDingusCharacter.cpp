@@ -52,15 +52,6 @@ void ASirDingusCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	DOREPLIFETIME(ASirDingusCharacter, bAlive);
 }
 
-//void ASirDingusCharacter::TestFlinchAnimation(FName Section)
-//{
-//	// play flinch animation
-//	if (bAlive && FlinchMontage)
-//	{
-//		PlayAnimMontageServer(FlinchMontage, Section);
-//	}
-//}
-
 void ASirDingusCharacter::TestMontageAnimation(UAnimMontage* Montage, FName Section)
 {
 	// play animation
@@ -132,20 +123,8 @@ ASirDingusCharacter::ASirDingusCharacter()
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 	// -- Melee
 	MeleeComponent = CreateDefaultSubobject<UMeleeComponent>(TEXT("MeleeComponent"));
-
-	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
-	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
-
-	//// Load Animation Montage
-	//static ConstructorHelpers::FObjectFinder<UAnimMontage>BasicAttackMontageObject(TEXT("/Game/Blueprints/Characters/Animation/Great_Sword_Slash_Vertical_Montage.Great_Sword_Slash_Vertical_Montage"));
-	//if (BasicAttackMontageObject.Succeeded())
-	//// if Successful THEN assign object to variable
-	//{
-	//	BasicAttackMontage = BasicAttackMontageObject.Object;
-	//}
 }
 
-//void ASirDingusCharacter::GetHit_Implementation(const FVector& ImpactPoint)
 void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
 	// if it's on the server or an autonomous proxy (chance this may activate twice)
@@ -161,65 +140,17 @@ void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 				FString(TEXT("ASirDingusCharacter::GetHit()"))
 			);
 		}
-		UE_LOG(LogTemp, Warning, TEXT("ASirDingusCharacter::GetHit()->%s"), *GetNetRole());
-
+		if (bDebugLogs)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("ASirDingusCharacter::GetHit()->%s"), *GetNetRole());
+		}
 
 		// take the damage
 		bool bSurvived = HealthComponent->TakeDamage(20.f);
 
 		// HealthComponent says live
 		if (bSurvived)
-		{
 			ReactToHit(ImpactPoint);
-			//const FVector Forward = GetActorForwardVector();
-			//const FVector ImpactLowered(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
-			//const FVector ToHit = (ImpactLowered - GetActorLocation()).GetSafeNormal();
-			//
-			//// 1. Determine Angle
-			//// A * B = |A||B| * cos(theta)
-			//// |A| = 1, |B| = 1, so A * B = cos(theta)
-			//const double CosTheta = FVector::DotProduct(Forward, ToHit);
-			//// Take the inverse cosine of cos(theta) to get theta
-			//double Theta = FMath::Acos(CosTheta);
-			//// convert from radians to degrees
-			//Theta = FMath::RadiansToDegrees(Theta);
-			//
-			//// 2. Determine Positive / Negative
-			//const FVector CrossProduct = FVector::CrossProduct(Forward, ToHit);
-			//// if CrossProduct's pointing down, make Theta negative
-			//if (CrossProduct.Z < 0) Theta *= -1.f;
-			//
-			//// 3. Determine Correct animation
-			//FName Section = "Rooted";
-			//
-			//if (Theta > 45.f && Theta < 135.f)			Section = "FromRight";	// Right
-			//else if (Theta > -45.f && Theta < 45.f)		Section = "FromFront";	// Forward
-			//else if (Theta > -135.f && Theta < -45.f)	Section = "FromLeft";	// Left
-			//else if (Theta > 135.f || Theta < -135.f)	Section = "FromBack";	// Back
-			//
-			//// play hit react animation
-			//if (bAlive && FlinchMontage)
-			//{
-			//	PlayAnimMontageServer(FlinchMontage, Section);
-			//}
-			//
-			//if (bDebugMessages && GEngine)
-			//{
-			//	GEngine->AddOnScreenDebugMessage(
-			//		-1,
-			//		3.f,
-			//		FColor::Blue,
-			//		FString::Printf(TEXT("ASirDingusCharacter::TakeDamage -> Angle is %f"), Theta)
-			//	);
-			//}
-			//if (bDrawDebug)
-			//{
-			//	DRAW_SPHERE(ImpactPoint);
-			//	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + Forward * 60.f, 5.f, FColor::Red, 5.f);
-			//	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f, FColor::Green, 5.f);
-			//	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f, FColor::Blue, 5.f);
-			//}
-		}
 
 		// HealthComponent says die
 		else
@@ -296,13 +227,17 @@ void ASirDingusCharacter::ReactToHit(const FVector& ImpactPoint)
 }
 
 // Play a given montage over the network
-void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
+void ASirDingusCharacter::PlayAnimMontageServer_Implementation(
+	UAnimMontage* AnimMontage, 
+	const FName& StartSectionName)
 {
 	PlayAnimMontageMulticast(AnimMontage, StartSectionName);
 }
 
 // Play a given montage on each client
-void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage, const FName& StartSectionName)
+void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(
+	UAnimMontage* AnimMontage, 
+	const FName& StartSectionName)
 {
 	// just play the montage
 	PlayAnimMontage(AnimMontage, 1.0f, StartSectionName);
@@ -450,7 +385,6 @@ void ASirDingusCharacter::Attack()
 					2,
 					15.f,
 					FColor::Red,
-					//FString::Printf(TEXT("ActionState = %s"), (ActionState))
 					message
 				);
 			}

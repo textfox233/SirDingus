@@ -21,7 +21,8 @@ class SIRDINGUS_API IActionStateInterface
 {
 	GENERATED_BODY()
 
-	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
+	// Add interface functions to this class. 
+	// This is the class that will be inherited to implement this interface.
 	
 	EActionState ActionState = EActionState::EAS_Unoccupied;
 
@@ -36,7 +37,8 @@ public:
 	{
 		if (GEngine)
 		{
-			FString msg = FString(ObjectName + TEXT("::ActionState = ") + UEnum::GetValueAsString(ActionState));
+			FString msg = FString(ObjectName + TEXT("::ActionState = ") + 
+				UEnum::GetValueAsString(ActionState));
 			GEngine->AddOnScreenDebugMessage(
 				1,
 				2.f,

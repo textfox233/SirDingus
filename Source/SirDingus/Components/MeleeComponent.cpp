@@ -47,42 +47,21 @@ void UMeleeComponent::BeginPlay()
 	}
 }
 
-/** Refactored Blueprint Functionality -- Melee Swing Line Traces **/
 /// -- Set linetraces to occur until TriggerMeleeEnd()
 // Start traces
 void UMeleeComponent::MeleeTraceStart()
 {
 	// start timer
-	GetWorld()->GetTimerManager().SetTimer(MeleeTraceHandle, this, &UMeleeComponent::MeleeTraceInProgress, 0.01f, true, 0.05f);
+	GetWorld()->GetTimerManager().SetTimer(
+		MeleeTraceHandle, this, &UMeleeComponent::MeleeTraceInProgress, 0.01f, true, 0.05f);
 }
 // Perform single trace
 void UMeleeComponent::MeleeTraceInProgress()
 {
 	if (bDebugLog) { UE_LOG(LogTemp, Warning, TEXT("timer active")); }
 
-	// perform line trace (debug? / logs?)
+	// perform line trace
 	DrawWeaponArc();
-	//if (FHitResult* hitResult = DrawWeaponArc())
-	//{
-	//	// process the hit
-	//	if (ProcessMeleeHit(hitResult))
-	//		// if hit was valid
-	//	{
-	//		// stop line tracing - should stop multiple hits per swing
-	//		GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
-	//	}
-	//}
-
-	//if (hit != nullptr)
-	//// anything hit?
-	//{
-	//	// process hit
-	//	if (ProcessMeleeHit(hit))
-	//	// if hit was valid
-	//	{
-	//
-	//	}
-	//}
 }
 // End traces
 void UMeleeComponent::MeleeTraceEnd()
@@ -94,8 +73,6 @@ void UMeleeComponent::MeleeTraceEnd()
 // -- Process hit result (TRUE means a valid target was hit, FALSE means an invalid target was hit)
 bool UMeleeComponent::ProcessMeleeHit(FHitResult* hitResult)
 {
-
-
 	AActor* hitActor = hitResult->GetActor();
 	IHitInterface* HitInterface = Cast<IHitInterface>(hitActor);
 
@@ -106,6 +83,7 @@ bool UMeleeComponent::ProcessMeleeHit(FHitResult* hitResult)
 		UE_LOG(LogTemp, Log, TEXT("ASirDingusCharacter::ProcessMeleeHit"));
 		UE_LOG(LogTemp, Warning, TEXT("%s Hit"), *hitActor->GetName());
 	}
+
 	// Check 2: Are they already dead?
 	if (ASirDingusCharacter* Character = Cast<ASirDingusCharacter>(hitActor))
 	{
@@ -124,6 +102,7 @@ bool UMeleeComponent::ProcessMeleeHit(FHitResult* hitResult)
 			return false; // Return invalid target
 		}
 	}
+
 	// Check 3: Did a player just hit another player?
 	if (GetOwner()->ActorHasTag("Player"))
 	{
@@ -144,6 +123,7 @@ bool UMeleeComponent::ProcessMeleeHit(FHitResult* hitResult)
 			return false; // Return invalid target
 		}
 	}
+
 	// Check 4: Is it a valid target?
 	if (HitInterface)
 	{
@@ -151,40 +131,6 @@ bool UMeleeComponent::ProcessMeleeHit(FHitResult* hitResult)
 		HitInterface->GetHit(hitResult->ImpactPoint);
 		return true; // Return valid target
 	}
-
-	//if (AController* OwningController = GetOwner()->GetInstigatorController())
-	//{
-	//	// deal damage to hit actors
-	//	UClass* DamageTypeClass = UDamageType::StaticClass();
-	//	float dmgDealt = UGameplayStatics::ApplyDamage(
-	//		hitActor,			// DamagedActor - Actor that will be damaged.
-	//		50,					// BaseDamage - The base damage to apply.
-	//		OwningController,	// EventInstigator - Controller that was responsible for causing this damage (e.g. player who swung the weapon)
-	//		GetOwner(),			// DamageCauser - Actor that actually caused the damage (e.g. the grenade that exploded)
-	//		DamageTypeClass		// DamageTypeClass - Class that describes the damage that was done.
-	//	);
-	//	if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("damage dealt: %f"), dmgDealt); }
-	//	if (bDebugMessages && GEngine)
-	//	{
-	//		GEngine->AddOnScreenDebugMessage(
-	//			-1,
-	//			3.f,
-	//			FColor::Yellow,
-	//			FString::Printf(TEXT("ASirDingusCharacter::ProcessMeleeHit -> damage dealt: %f"), dmgDealt)
-	//		);
-	//	};
-	//	// TRUE: damage was dealt
-	//	return true;
-	//}
-	//else if (bDebugMessages && GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		15.f,
-	//		FColor::Red,
-	//		FString(TEXT("Owning Controller is Invalid"))
-	//	);
-	//}
 
 	return false; // Return invalid target
 }
@@ -212,7 +158,7 @@ void UMeleeComponent::PerformAttack()
 	}
 }
 
-// -- Draw a line trace to track a weapon's movement and detect hit events
+// -- Draw a line trace to track a weapon's movement and detect hits
 void UMeleeComponent::DrawWeaponArc()
 {
 	// define points for line trace
@@ -221,9 +167,9 @@ void UMeleeComponent::DrawWeaponArc()
 		FHitResult Hit;
 
 		// grab skeleton
-		const USkeletalMeshComponent* skComp = EquippedWeapon->FindComponentByClass<USkeletalMeshComponent>();
+		const USkeletalMeshComponent* skComp = EquippedWeapon->
+			FindComponentByClass<USkeletalMeshComponent>();
 		USkeletalMesh* skMesh = skComp->GetSkeletalMeshAsset();
-		//USkeletalMesh* skMesh = EquippedWeapon->FindComponentByClass<USkeletalMesh>();
 
 		// grab sockets
 		FVector traceStart = skMesh->GetSocketByIndex(1)->GetSocketTransform(skComp).GetLocation();
@@ -234,39 +180,27 @@ void UMeleeComponent::DrawWeaponArc()
 		QueryParams.AddIgnoredActor(GetOwner());
 
 		// perform line trace
-		GetWorld()->LineTraceSingleByChannel(Hit, traceStart, traceEnd, ECollisionChannel::ECC_Camera, QueryParams);
+		GetWorld()->LineTraceSingleByChannel(
+			Hit, traceStart, traceEnd, ECollisionChannel::ECC_Camera, QueryParams);
 
 		// Debug
-		if (bDrawDebug) { DrawDebugLine(GetWorld(), traceStart, traceEnd, Hit.bBlockingHit ? FColor::Green : FColor::Red, false, 5.0f, 0, 1.0f); }
-		if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *traceStart.ToCompactString(), *traceEnd.ToCompactString()); }
+		if (bDrawDebug)
+		{ 
+			DrawDebugLine(GetWorld(), traceStart, traceEnd, 
+				Hit.bBlockingHit ? FColor::Green : FColor::Red, false, 5.0f, 0, 1.0f);
+		}
+		if (bDebugLog) 
+		{
+			UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *traceStart.ToCompactString(), 
+				*traceEnd.ToCompactString()); 
+		}
 
 		// process the hit
 		if (ProcessMeleeHit(&Hit))
 		// if hit was valid
 		{
-			// stop line tracing - should stop multiple hits per swing
+			// stop line tracing - should prevent multiple hits per swing
 			GetWorld()->GetTimerManager().ClearTimer(MeleeTraceHandle);
 		}
 	}
-		//return &Hit;
-		//
-		//// if hit occurs
-		//if (Hit.bBlockingHit/* && IsValid(Hit.GetActor())*/)
-		//{
-		//	if (bDebugLog) UE_LOG(LogTemp, Log, TEXT("Trace hit actor: %s"), *Hit.GetActor()->GetName());
-		//
-		//	if (IHitInterface* HitInterface = Cast<IHitInterface>(Hit.GetActor()))
-		//	{
-		//		HitInterface->GetHit(Hit.ImpactPoint);
-		//	}
-		//	else if (bDebugLog) UE_LOG(LogTemp, Log, TEXT("Hit actor doesn't inherit from IHitInterface"));
-		//
-		//	// return hit actor
-		//	return Hit.GetActor();
-		//}
-		//
-		//// nothing hit
-		//if (bDebugLog) { UE_LOG(LogTemp, Log, TEXT("No actors hit")); }
-	//}
-	//return nullptr;
 }
