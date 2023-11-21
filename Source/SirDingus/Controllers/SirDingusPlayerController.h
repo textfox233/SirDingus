@@ -6,7 +6,6 @@
 #include "SirDingus/Interface/ActionStateInterface.h"
 #include "GameFramework/PlayerController.h"
 #include "InputAction.h"
-//#include "InputActionValue.h"
 #include "SirDingusPlayerController.generated.h"
 
 /**
@@ -35,7 +34,6 @@ protected:
 
 	/// -- Dodging
 	void Dodge(const FInputActionValue& Value);
-	//void StopDodging();
 
 	/// -- Movement
 	//UFUNCTION()
@@ -55,7 +53,7 @@ protected:
 	void QuitGame(const FInputActionValue& Value);
 
 	/// -- Extra Test Action
-	////UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
+	//UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
 	void TestSomething(const FInputActionValue& Value);
 
 
@@ -66,12 +64,9 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	// HUD Pointer
+	// HUD & Gamemode Pointers
 	class ASirDingusHUD* PlayerHUD;
-	// Gamemode Pointer
 	class ASirDingusGameMode* CurrentGameMode;
-	// Character Pointer (specific to my class)
-	//class ASirDingusCharacter* SDCharacter;
 
 	/** MappingContext **/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
@@ -93,8 +88,6 @@ private:
 	/// -- Attack
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 		class UInputAction* AttackAction;
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = MyAnimationInfo, meta = (AllowPrivateAccess = "true"))
-	//bool bIsAttacking;
 
 	/// -- Restart Game
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))

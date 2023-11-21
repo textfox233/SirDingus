@@ -23,7 +23,8 @@ void ASirDingusPlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	// Add Input Mapping Context
-	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = 
+		ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
 		Subsystem->AddMappingContext(DefaultMappingContext, 0);
 	}
@@ -81,7 +82,6 @@ void ASirDingusPlayerController::SetupInputComponent()
 
 		/// Dodging - Incomplete
 		EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Dodge);
-		//EnhancedInputComponent->BindAction(DodgeAction, ETriggerEvent::Completed, this, &ASirDingusCharacter::StopDodging);
 
 		/// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::Move);
@@ -105,16 +105,15 @@ void ASirDingusPlayerController::SetupInputComponent()
 
 void ASirDingusPlayerController::Dodge(const FInputActionValue& Value)
 {
-	/// Function Enter Message
-	//if (bDebugMessages && GEngine)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(
-	//		-1,
-	//		3.f,
-	//		FColor::Green,
-	//		TEXT("ASirDingusCharacter::Dodge()")
-	//	);
-	//}
+	if (bDebugMessages && GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Green,
+			TEXT("ASirDingusCharacter::Dodge()")
+		);
+	}
 
 	// Get character
 	if (ASirDingusCharacter* character = Cast<ASirDingusCharacter>(GetPawn()))

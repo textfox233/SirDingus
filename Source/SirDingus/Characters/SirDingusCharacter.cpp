@@ -30,9 +30,6 @@
 #include "Camera/CameraComponent.h"
 #include "Net/UnrealNetwork.h"
 
-//////////////////////////////////////////////////////////////////////////
-/// ASirDingusCharacter
-
 void ASirDingusCharacter::DisableCapsuleCollisionServer_Implementation(UPrimitiveComponent* Capsule)
 {
 	DisableCapsuleCollisionMulticast(Capsule);
@@ -227,16 +224,14 @@ void ASirDingusCharacter::ReactToHit(const FVector& ImpactPoint)
 }
 
 // Play a given montage over the network
-void ASirDingusCharacter::PlayAnimMontageServer_Implementation(
-	UAnimMontage* AnimMontage, 
+void ASirDingusCharacter::PlayAnimMontageServer_Implementation(UAnimMontage* AnimMontage, 
 	const FName& StartSectionName)
 {
 	PlayAnimMontageMulticast(AnimMontage, StartSectionName);
 }
 
 // Play a given montage on each client
-void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(
-	UAnimMontage* AnimMontage, 
+void ASirDingusCharacter::PlayAnimMontageMulticast_Implementation(UAnimMontage* AnimMontage, 
 	const FName& StartSectionName)
 {
 	// just play the montage
@@ -360,7 +355,8 @@ void ASirDingusCharacter::Attack()
 
 	if (bAlive)
 	{
-		if (bool bControllerUsesInterface = GetController()->Implements<UActionStateInterface>()) // check interface works
+		// check interface works
+		if (bool bControllerUsesInterface = GetController()->Implements<UActionStateInterface>()) 
 		{
 			IActionStateInterface* ActionStateObject = Cast<IActionStateInterface>(GetController());
 			if (ActionStateObject->GetActionState() == EActionState::EAS_Unoccupied)

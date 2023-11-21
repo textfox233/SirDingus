@@ -7,9 +7,6 @@
 #include "AIController.h"
 #include "SirDingusAIController.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class SIRDINGUS_API ASirDingusAIController : public AAIController, public IActionStateInterface
 {
