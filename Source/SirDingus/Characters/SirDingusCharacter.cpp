@@ -124,7 +124,7 @@ ASirDingusCharacter::ASirDingusCharacter()
 
 void ASirDingusCharacter::GetHit(const FVector& ImpactPoint)
 {
-	// if it's on the server or an autonomous proxy (chance this may activate twice)
+	// if it's on the server or an autonomous proxy
 	ENetRole NetRole{ GetLocalRole() };
 	if (NetRole == ENetRole::ROLE_Authority || NetRole == ENetRole::ROLE_AutonomousProxy)
 	{

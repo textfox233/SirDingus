@@ -22,7 +22,6 @@ public:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
-	//UFUNCTION(Server, Reliable)
 	bool TakeDamage(float Damage); // return false if dead
 
 protected:

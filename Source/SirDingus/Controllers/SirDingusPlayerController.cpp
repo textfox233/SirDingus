@@ -99,7 +99,7 @@ void ASirDingusPlayerController::SetupInputComponent()
 		EnhancedInputComponent->BindAction(QuitGameAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::QuitGame);
 
 		/// Test Something
-		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::TestSomething);
+		//EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ASirDingusPlayerController::TestSomething);
 	}
 }
 
@@ -220,7 +220,7 @@ void ASirDingusPlayerController::RestartGame_Implementation(const FInputActionVa
 	CurrentGameMode = CurrentGameMode == nullptr ? Cast<ASirDingusGameMode>(UGameplayStatics::GetGameMode(this)) : CurrentGameMode;
 
 	// Attempt to initiate restart game
-	CurrentGameMode->RequestRestart(true);
+	CurrentGameMode->RequestRestart();
 }
 
 void ASirDingusPlayerController::QuitGame(const FInputActionValue& Value)

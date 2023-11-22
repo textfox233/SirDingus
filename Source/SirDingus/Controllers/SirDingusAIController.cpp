@@ -176,11 +176,8 @@ void ASirDingusAIController::UpdateActionState(const EActionState State)
 {
 	IActionStateInterface::UpdateActionState(State);
 
-	// set can move
-	//if (State == EActionState::EAS_Unoccupied)
+	// update can move
 	GetBlackboardComponent()->SetValueAsBool(TEXT("CanMove"), CanMove());
-	//else
-	//	GetBlackboardComponent()->SetValueAsBool(TEXT("CanMove"), false);
 }
 
 bool ASirDingusAIController::CanSeeAnyPlayer()
