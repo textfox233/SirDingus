@@ -11,9 +11,6 @@ UCLASS()
 class SIRDINGUS_API ASirDingusAIController : public AAIController, public IActionStateInterface
 {
 	GENERATED_BODY()
-protected:
-	virtual void BeginPlay() override;
-
 public:
 	virtual void Tick(float DeltaSeconds) override;
 	void SetIsAlive(bool value);
@@ -21,6 +18,9 @@ public:
 	APawn* ChooseTarget();
 
 	virtual void UpdateActionState(const EActionState State) override;
+
+protected:
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY(EditAnywhere)

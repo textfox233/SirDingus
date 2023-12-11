@@ -22,6 +22,5 @@ class SIRDINGUS_API IHitInterface
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	//UFUNCTION(Client, Reliable)
 	virtual void GetHit(const FVector& ImpactPoint) = 0;
 };

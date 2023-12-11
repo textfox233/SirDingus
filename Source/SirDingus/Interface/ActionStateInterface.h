@@ -21,8 +21,6 @@ class SIRDINGUS_API IActionStateInterface
 {
 	GENERATED_BODY()
 	
-	EActionState ActionState = EActionState::EAS_Unoccupied;
-
 public:
 	UFUNCTION(BlueprintCallable)
 	virtual void UpdateActionState(const EActionState State) { ActionState = State; };
@@ -46,4 +44,7 @@ public:
 	}
 
 	bool CanMove() { return ActionState == EActionState::EAS_Unoccupied; }
+
+private:
+	EActionState ActionState = EActionState::EAS_Unoccupied;
 };

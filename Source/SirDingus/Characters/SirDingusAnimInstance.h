@@ -19,7 +19,6 @@ public:
 	virtual void NativeInitializeAnimation();
 	virtual void NativeUpdateAnimation(float DeltaTime);
 
-public:
 	UPROPERTY(BlueprintReadOnly)
 	class ASirDingusCharacter* SirDingusCharacter;
 

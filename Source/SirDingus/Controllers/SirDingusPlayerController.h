@@ -16,11 +16,6 @@ class SIRDINGUS_API ASirDingusPlayerController : public APlayerController, publi
 {
 	GENERATED_BODY()
 
-	/** Debug Booleans **/
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusPlayerController", meta = (AllowPrivateAccess = "true"))
-		bool bDebugMessages;
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusPlayerController", meta = (AllowPrivateAccess = "true"))
-		bool bDebugLogs;
 
 public:
 	UFUNCTION(Client, Reliable)
@@ -36,7 +31,6 @@ protected:
 	void Dodge(const FInputActionValue& Value);
 
 	/// -- Movement
-	//UFUNCTION()
 	void Move(const FInputActionValue& Value);
 
 	/// -- Looking
@@ -53,7 +47,6 @@ protected:
 	void QuitGame(const FInputActionValue& Value);
 
 	/// -- Extra Test Action
-	//UFUNCTION(BlueprintImplementableEvent, meta = (AllowPrivateAccess))
 	void TestSomething(const FInputActionValue& Value);
 
 
@@ -100,4 +93,10 @@ private:
 	/// -- Extra Test Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 		class UInputAction* TestAction;
+
+	/** Debug Booleans **/
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusPlayerController", meta = (AllowPrivateAccess = "true"))
+	bool bDebugMessages;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusPlayerController", meta = (AllowPrivateAccess = "true"))
+	bool bDebugLogs;
 };

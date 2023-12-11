@@ -25,7 +25,6 @@ public:
 	bool TakeDamage(float Damage); // return false if dead
 
 protected:
-	
 	// Called when the game starts
 	virtual void BeginPlay() override;
 

@@ -14,49 +14,6 @@ class ASirDingusCharacter : public ACharacter, public IHitInterface
 {
 	GENERATED_BODY()
 
-	// Gamemode Pointer
-	class ASirDingusGameMode* CurrentGameMode;
-
-	/** Camera Stuff **/
-	// -- Camera Boom (positions the camera behind the character)
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", 
-		meta = (AllowPrivateAccess = "true"))
-	class USpringArmComponent* CameraBoom;
-
-	// -- Follow Camera
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", 
-		meta = (AllowPrivateAccess = "true"))
-	class UCameraComponent* FollowCamera;
-
-	/** Components **/
-	// -- Health
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", 
-			meta = (AllowPrivateAccess = "true"))
-		class UHealthComponent* HealthComponent;
-	// -- Melee
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Melee", 
-			meta = (AllowPrivateAccess = "true"))
-		class UMeleeComponent* MeleeComponent;
-
-	/** Debug Area **/
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", 
-			meta = (AllowPrivateAccess = "true"))
-		bool bDrawDebug = false;
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", 
-			meta = (AllowPrivateAccess = "true"))
-		bool bDebugMessages = false;
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", 
-			meta = (AllowPrivateAccess = "true"))
-		bool bDebugLogs = false;
-	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter", 
-			meta = (AllowPrivateAccess = "true"))
-		bool bDebugStates = false;
-
-	void TestMontageAnimation(UAnimMontage* Montage, FName Section = NAME_None);
-
-	/** Character Death **/
-	UFUNCTION(Server, Reliable)
-	void ReportDeath();
 
 public:
 	ASirDingusCharacter();
@@ -101,6 +58,14 @@ public:
 	void Dodge();
 	void Attack();
 
+	/** Returns CameraBoom subobject **/
+	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+	/** Returns FollowCamera subobject **/
+	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	FORCEINLINE void SetAlive(bool isAlive) { bAlive = isAlive; }
+	FORCEINLINE bool GetAlive() const { return bAlive; }
+
 protected:
 	
 	// To add mapping context
@@ -115,17 +80,48 @@ private:
 	UPROPERTY(Replicated)
 	bool bAlive = true;
 
-	//ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
+	// Gamemode Pointer
+	class ASirDingusGameMode* CurrentGameMode;
 
-public:
-	/** Returns CameraBoom subobject **/
-	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-	/** Returns FollowCamera subobject **/
-	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	/** Camera Stuff **/
+	// -- Camera Boom (positions the camera behind the character)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera",
+		meta = (AllowPrivateAccess = "true"))
+	class USpringArmComponent* CameraBoom;
 
-	FORCEINLINE void SetAlive(bool isAlive) { bAlive = isAlive; }
-	FORCEINLINE bool GetAlive() const { return bAlive; }
+	// -- Follow Camera
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera",
+		meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FollowCamera;
 
-	//FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
+	/** Components **/
+	// -- Health
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health",
+		meta = (AllowPrivateAccess = "true"))
+	class UHealthComponent* HealthComponent;
+	// -- Melee
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Melee",
+		meta = (AllowPrivateAccess = "true"))
+	class UMeleeComponent* MeleeComponent;
+
+	/** Debug Area **/
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter",
+		meta = (AllowPrivateAccess = "true"))
+	bool bDrawDebug = false;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter",
+		meta = (AllowPrivateAccess = "true"))
+	bool bDebugMessages = false;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter",
+		meta = (AllowPrivateAccess = "true"))
+	bool bDebugLogs = false;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Debug|SirDingusCharacter",
+		meta = (AllowPrivateAccess = "true"))
+	bool bDebugStates = false;
+
+	void TestMontageAnimation(UAnimMontage* Montage, FName Section = NAME_None);
+
+	/** Character Death **/
+	UFUNCTION(Server, Reliable)
+	void ReportDeath();
+
 };
-
